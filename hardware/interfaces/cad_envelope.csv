@@ -1,0 +1,27 @@
+param,value,unit,status,source,notes
+version,v1,-,FROZEN,Shreehan,Frozen for CAD v1 at CP1; changes bump to v2
+sensors_per_module,2,count,FROZEN,Project constraint,Two pockets per module (A and B)
+heater_outline_hand_mm,,mm (L x W),TBD,Shreehan (datasheet of chosen heater),PLACEHOLDER: Neharika models as magenta body
+heater_outline_foot_mm,,mm (L x W),TBD,Shreehan (datasheet of chosen heater),PLACEHOLDER
+heater_thickness_mm,,mm,TBD,Shreehan (datasheet),PLACEHOLDER
+heater_min_bend_radius_mm,,mm,TBD,Shreehan (datasheet),PLACEHOLDER
+heater_lead_exit,,position,TBD,Shreehan (datasheet),PLACEHOLDER
+sensor_pkg_mm,,mm (L x W x H),TBD,Shreehan (sensor datasheet),PLACEHOLDER
+sensor_lead_dia_mm,,mm,TBD,Shreehan (sensor datasheet),PLACEHOLDER
+sensor_max_cover_mm,,mm,TBD,Shreehan (datasheet mounting guidance or stated assumption),PLACEHOLDER
+cutoff_device_mm,,mm,TBD,Shreehan (cutoff datasheet),Only if an in-module thermal cutoff is chosen
+connector_body_mm,,mm,TBD,Shreehan (connector datasheet),PLACEHOLDER
+connector_mated_length_mm,,mm,TBD,Shreehan (connector datasheet),PLACEHOLDER
+connector_panel_cutout_mm,,mm,TBD,Shreehan (connector datasheet),PLACEHOLDER
+connector_pins,,count,TBD,Shreehan (connector datasheet),PLACEHOLDER
+connector_keying,,type,TBD,Shreehan (connector datasheet),Different key per channel if offered; else label + colour only
+cable_od_mm,,mm,TBD,Shreehan (cable datasheet),PLACEHOLDER
+cable_min_bend_radius_mm,,mm,TBD,Shreehan (cable datasheet),PLACEHOLDER
+cable_length_ch_m,,m,TBD,Shreehan (design choice),PLACEHOLDER
+ctrl_pcb_mm,,mm,TBD,Shreehan,PLACEHOLDER
+ctrl_psu_mm,,mm,TBD,Shreehan (supply datasheet),PLACEHOLDER
+ctrl_internal_volume_l,,L,TBD,Shreehan,PLACEHOLDER
+ctrl_heat_W,,W,TBD,Shreehan (power budget),Used by Neharika to size vents
+ctrl_ui,"4 channel indicators, status display, START, STOP, RESET",count,PROVISIONAL,Shreehan + Suchitha,Front panel items
+ctrl_mains_inlet,,type,TBD,Shreehan,PLACEHOLDER
+rail_profile_mm,,mm,TBD,Shreehan (verify on real table or standard),PLACEHOLDER
