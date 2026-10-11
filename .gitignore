@@ -1,0 +1,27 @@
+# Forbidden data (never commit)
+vitaldb_bt_cache/
+dev_robust_inputs/
+dev_robust_outputs/
+development_adequacy/
+code4_outputs/
+final_holdout_freeze/*case*
+
+# Notebooks and Colab
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# Unity generated folders
+Library/
+Temp/
+Build/
+Logs/
+UserSettings/
+obj/
+
+# Secrets
+.env
+*.key
+
+# OS junk
+.DS_Store
+Thumbs.db
