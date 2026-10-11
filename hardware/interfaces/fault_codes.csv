@@ -1,0 +1,21 @@
+code,name,scope,detected_by,description,display_text
+0,NONE,-,-,No fault,No fault
+1,HOST_HEARTBEAT_LOST,System,MCU,No valid command frame from host within host_heartbeat_timeout_s,Host link lost
+2,MCU_WATCHDOG_RESET,System,MCU,Independent watchdog reset the MCU,MCU watchdog reset
+3,PSU_UNDERVOLTAGE,System,MCU,Supply voltage below limit,Supply undervoltage
+4,PSU_OVERVOLTAGE,System,MCU,Supply voltage above limit,Supply overvoltage
+5,MASTER_SWITCH_FAULT,System,MCU,Master safety switch did not respond as commanded,Master switch fault
+6,COMM_CRC_ERROR_RATE,System,MCU / host,Too many invalid-CRC frames in a window,Communication errors
+7,TWIN_DATA_STALE,System,Controller (software),Twin output older than data_stale_twin_s,Twin data stale
+8,HW_DATA_STALE,System,Controller (software),Hardware status older than data_stale_hw_s,Hardware data stale
+100i+1,SENSOR_A_OPEN,Channel i,MCU,Sensor A open circuit (reads invalid),Channel i: sensor A open
+100i+2,SENSOR_A_SHORT,Channel i,MCU,Sensor A short circuit (reads invalid),Channel i: sensor A short
+100i+3,SENSOR_B_OPEN,Channel i,MCU,Sensor B open circuit (reads invalid),Channel i: sensor B open
+100i+4,SENSOR_B_SHORT,Channel i,MCU,Sensor B short circuit (reads invalid),Channel i: sensor B short
+100i+5,SENSOR_DISAGREE,Channel i,Controller,Sensors A and B differ by more than dt_sensor_disagree_degC,Channel i: sensors disagree
+100i+6,OVERTEMP_SW,Channel i,MCU / controller,Module temperature at or above t_mod_trip_degC,Channel i: over-temperature (software)
+100i+7,OVERTEMP_HW_CUTOFF,Channel i,Hardware -> MCU,Hardware cutoff tripped,Channel i: hardware cutoff tripped
+100i+8,DISCONNECTED,Channel i,MCU (presence pin),Module connector not detected,Channel i: module disconnected
+100i+9,HEATER_OPEN,Channel i,MCU / controller,Heater commanded ON but current below i_open_max_A,Channel i: heater open circuit
+100i+10,OVERCURRENT,Channel i,MCU / controller,Heater current above i_over_A,Channel i: overcurrent
+100i+11,STUCK_ON,Channel i,MCU / controller,Current above i_stuck_A while commanded OFF,Channel i: driver stuck on
