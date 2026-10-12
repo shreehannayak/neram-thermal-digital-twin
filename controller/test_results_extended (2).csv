@@ -1,0 +1,4 @@
+tc_id,title,result,notes
+TC04,Active recovery to target,FAIL,see console note if FAIL - placeholder plant gain likely insufficient
+TC05,Clinician early start,PASS,
+TC13,Twin unreliable - no autonomous warming,PASS,
