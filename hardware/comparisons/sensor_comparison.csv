@@ -1,1 +1,5 @@
 type,candidate part,accuracy (degC),range,response time,package size (mm),interface,open/short detectable,needs reference/cold junction,cost (INR),India availability,datasheet link,verdict
+NTC thermistor,TBD,TBD,TBD,TBD,TBD,Analog (ADC + divider),TBD,No,TBD,TBD,TBD,TBD
+Thin-film platinum RTD (Pt1000),TBD,TBD,TBD,TBD,TBD,Analog (ADC + excitation),TBD,No,TBD,TBD,TBD,TBD
+Digital IC (I2C/SPI),TBD,TBD,TBD,TBD,TBD,I2C or SPI,TBD,No,TBD,TBD,TBD,TBD
+Thermocouple,TBD,TBD,TBD,TBD,TBD,Analog (amplifier + cold-junction compensation),TBD,Yes,TBD,TBD,TBD,Expected poor fit (microvolt signal; needs cold-junction compensation): verify
