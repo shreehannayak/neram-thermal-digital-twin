@@ -1,5 +1,5 @@
 type,candidate part,rated voltage (V),power density (W/cm2),thickness (mm),min bend radius (mm),max material temperature (C),self-limiting,fits hand and foot coverage,cost (INR),India availability,datasheet link,verdict
-Etched-foil polyimide laminate,TBD,TBD,TBD,TBD,TBD,TBD,No (expected: verify),TBD,TBD,TBD,TBD,TBD
+Etched-foil polyimide laminate,Omega KHLVA series (28 V; example model KHLVA-101/5; size for hand and foot TBD),28 (max 28 VDC per Omega Q&A),0.39 / 0.78 / 1.55 (converted from 2.5 / 5 / 10 W/in2 listed),0.254 max (converted from 0.010 in listed),TBD,150 without adhesive; 149 with adhesive,No (not self-limiting),TBD (standard sizes are small; custom shapes listed; need Neharika's coverage area),TBD (INR; listings seen in GBP and USD only),TBD,https://omega.com/en-us/p/KHRA-KHLVA-KHA-Series,Candidate: thin and flexible; not self-limiting so hardware cutoff is essential; bend radius and sizes TBD
 Silicone-rubber heater (etched foil or wire-wound),TBD,TBD,TBD,TBD,TBD,TBD,No (expected: verify),TBD,TBD,TBD,TBD,TBD
 PTC self-regulating polymer heater,TBD,TBD,TBD,TBD,TBD,TBD,Yes (by design; verify at the sizes needed),TBD,TBD,TBD,TBD,TBD
 Carbon-fibre or conductive-textile heater,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
