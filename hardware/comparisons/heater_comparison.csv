@@ -1,1 +1,6 @@
-
+type,candidate part,rated voltage (V),power density (W/cm2),thickness (mm),min bend radius (mm),max material temperature (C),self-limiting,fits hand and foot coverage,cost (INR),India availability,datasheet link,verdict
+Etched-foil polyimide laminate,TBD,TBD,TBD,TBD,TBD,TBD,No (expected: verify),TBD,TBD,TBD,TBD,TBD
+Silicone-rubber heater (etched foil or wire-wound),TBD,TBD,TBD,TBD,TBD,TBD,No (expected: verify),TBD,TBD,TBD,TBD,TBD
+PTC self-regulating polymer heater,TBD,TBD,TBD,TBD,TBD,TBD,Yes (by design; verify at the sizes needed),TBD,TBD,TBD,TBD,TBD
+Carbon-fibre or conductive-textile heater,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
+Thermal-fluid system,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,n/a,Rejected: pump; reservoir; leak risk; complexity
