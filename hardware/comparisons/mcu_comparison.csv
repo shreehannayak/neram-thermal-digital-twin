@@ -1,0 +1,5 @@
+candidate,board,independent PWM outputs (need >=5),analog inputs (need >=12),ADC resolution (bits),independent hardware watchdog,USB CDC serial,outputs low at reset,free documented toolchain,board cost (INR),India availability,datasheet link,verdict
+ESP32-S3,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
+STM32 (G4 or F4 Nucleo),TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
+RP2040/RP2350 (Pico),TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
+Arduino Uno R4,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
