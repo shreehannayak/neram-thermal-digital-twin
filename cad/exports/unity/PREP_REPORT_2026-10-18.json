@@ -1,0 +1,156 @@
+[
+ {
+  "file": "NERAM_Left_Hand_Module.fbx",
+  "source": "NERAM_CH1_Hand_Module.fbx",
+  "changes": [
+   "units: file now in metres (UnitScaleFactor 100); vertex data converted cm->m; per-part x10 transform scale removed",
+   "axes: Z-up design rotated to Y-up (+Y away from skin for modules); pivot = centroid of the CH1_Liner skin-contact face",
+   "MAT_Liner: \"Fabric (Light Brown)\" exported with no flat colour -> flat (0.76, 0.62, 0.46) from its appearance name",
+   "MAT_Insulation: \"Fabric (Grey)\" exported with no flat colour -> flat (0.55, 0.55, 0.57) from its appearance name",
+   "MAT_Shell: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "MAT_Heater <- colour of \"Aluminum - Anodized Glossy (Blue)\"",
+   "MAT_Strap: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "MAT_Sensor <- colour of \"EPX 150 - Air Baked (with Carbon M2 M3 L1 3D Printers)\"",
+   "root 'NERAM_CH1_Hand_Module v19' -> 'Left_Hand_Module' (only CH1_* parts; pair split into one file per module, plan V.1)"
+  ],
+  "triangles": 4698,
+  "materials": [
+   "MAT_Heater",
+   "MAT_Insulation",
+   "MAT_Liner",
+   "MAT_Sensor",
+   "MAT_Shell",
+   "MAT_Strap"
+  ]
+ },
+ {
+  "file": "NERAM_Right_Hand_Module.fbx",
+  "source": "NERAM_CH1_Hand_Module.fbx",
+  "changes": [
+   "units: file now in metres (UnitScaleFactor 100); vertex data converted cm->m; per-part x10 transform scale removed",
+   "renamed 'CH2_Liner ' -> 'CH2_Liner' (trailing space)",
+   "renamed 'CH2_Strap_1 ' -> 'CH2_Strap_1' (trailing space)",
+   "renamed 'CH2_Strap_2 ' -> 'CH2_Strap_2' (trailing space)",
+   "renamed 'CH2_Hook_1 ' -> 'CH2_Hook_1' (trailing space)",
+   "renamed 'CH2_Hook_2 ' -> 'CH2_Hook_2' (trailing space)",
+   "renamed 'CH2_Sensor_A ' -> 'CH2_Sensor_A' (trailing space)",
+   "axes: Z-up design rotated to Y-up (+Y away from skin for modules); pivot = centroid of the CH2_Liner skin-contact face",
+   "MAT_Liner: \"Fabric (Light Brown)\" exported with no flat colour -> flat (0.76, 0.62, 0.46) from its appearance name",
+   "MAT_Insulation: \"Fabric (Grey)\" exported with no flat colour -> flat (0.55, 0.55, 0.57) from its appearance name",
+   "MAT_Shell: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "MAT_Heater <- colour of \"Aluminum - Anodized Glossy (Blue)\"",
+   "MAT_Strap: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "MAT_Sensor <- colour of \"EPX 150 - Air Baked (with Carbon M2 M3 L1 3D Printers)\"",
+   "root 'NERAM_CH1_Hand_Module v19' -> 'Right_Hand_Module' (only CH2_* parts; pair split into one file per module, plan V.1)"
+  ],
+  "triangles": 4698,
+  "materials": [
+   "MAT_Heater",
+   "MAT_Insulation",
+   "MAT_Liner",
+   "MAT_Sensor",
+   "MAT_Shell",
+   "MAT_Strap"
+  ]
+ },
+ {
+  "file": "NERAM_Left_Foot_Module.fbx",
+  "source": "NERAM_CH3_Foot_Module.fbx",
+  "changes": [
+   "units: file now in metres (UnitScaleFactor 100); vertex data converted cm->m; per-part x10 transform scale removed",
+   "axes: Z-up design rotated to Y-up (+Y away from skin for modules); pivot = centroid of the CH3_Liner skin-contact face",
+   "MAT_Liner: \"Fabric (Light Brown)\" exported with no flat colour -> flat (0.76, 0.62, 0.46) from its appearance name",
+   "MAT_Heater <- colour of \"Aluminum - Anodized Glossy (Blue)\"",
+   "MAT_Insulation: \"Fabric (Grey)\" exported with no flat colour -> flat (0.55, 0.55, 0.57) from its appearance name",
+   "MAT_Shell: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "MAT_Strap: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "MAT_Sensor <- colour of \"EPX 150 - Air Baked (with Carbon M2 M3 L1 3D Printers)\"",
+   "root 'NERAM_CH3_Foot_Module v3' -> 'Left_Foot_Module' (only CH3_* parts; pair split into one file per module, plan V.1)"
+  ],
+  "triangles": 2060,
+  "materials": [
+   "MAT_Heater",
+   "MAT_Insulation",
+   "MAT_Liner",
+   "MAT_Sensor",
+   "MAT_Shell",
+   "MAT_Strap"
+  ]
+ },
+ {
+  "file": "NERAM_Right_Foot_Module.fbx",
+  "source": "NERAM_CH3_Foot_Module.fbx",
+  "changes": [
+   "units: file now in metres (UnitScaleFactor 100); vertex data converted cm->m; per-part x10 transform scale removed",
+   "renamed 'CH4_Liner ' -> 'CH4_Liner' (trailing space)",
+   "renamed 'CH4_Hook_1 ' -> 'CH4_Hook_1' (trailing space)",
+   "renamed 'CH4_Sensor_A ' -> 'CH4_Sensor_A' (trailing space)",
+   "axes: Z-up design rotated to Y-up (+Y away from skin for modules); pivot = centroid of the CH4_Liner skin-contact face",
+   "MAT_Liner: \"Fabric (Light Brown)\" exported with no flat colour -> flat (0.76, 0.62, 0.46) from its appearance name",
+   "MAT_Heater <- colour of \"Aluminum - Anodized Glossy (Blue)\"",
+   "MAT_Insulation: \"Fabric (Grey)\" exported with no flat colour -> flat (0.55, 0.55, 0.57) from its appearance name",
+   "MAT_Shell: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "MAT_Strap: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "MAT_Sensor <- colour of \"EPX 150 - Air Baked (with Carbon M2 M3 L1 3D Printers)\"",
+   "root 'NERAM_CH3_Foot_Module v3' -> 'Right_Foot_Module' (only CH4_* parts; pair split into one file per module, plan V.1)"
+  ],
+  "triangles": 2060,
+  "materials": [
+   "MAT_Heater",
+   "MAT_Insulation",
+   "MAT_Liner",
+   "MAT_Sensor",
+   "MAT_Shell",
+   "MAT_Strap"
+  ]
+ },
+ {
+  "file": "NERAM_Bedside_Controller.fbx",
+  "source": "NERAM_Bedside_Controller.fbx",
+  "changes": [
+   "units: file now in metres (UnitScaleFactor 100); vertex data converted cm->m; per-part x10 transform scale removed",
+   "BC_Enclosure decimated 9772 -> 5200 triangles (runtime copy; plan V.5)",
+   "BC_Front_Panel decimated 5770 -> 3200 triangles (runtime copy; plan V.5)",
+   "renamed 'BC_LED_CH2 ' -> 'BC_LED_CH2' (trailing space)",
+   "axes: Z-up design rotated to Y-up (+Y away from skin for modules); pivot = centre of BC_Rail_Clamp",
+   "MAT_Enclosure <- colour of \"PEKK - Polyetherketoneketone Reinforced With Carbon Fibers - HT-23 (with EOS P 810 3D Printer)\"",
+   "MAT_Display <- colour of \"Glass (Grey)\"",
+   "MAT_Indicator <- colour of \"Plastic - Translucent Glossy (Green)\"",
+   "MAT_Button_Start <- colour of \"Plastic - Translucent Matte (Green)\"",
+   "MAT_Button_Stop <- colour of \"Plastic - Translucent Matte (Red)\"",
+   "MAT_Button_Reset <- colour of \"Plastic - Translucent Matte (Gray)\"",
+   "MAT_Connector <- colour of \"PA 11 - Nylon- HP 11-30 (with EOS P 396 3D Printer)\"",
+   "MAT_Placeholder = magenta (plan placeholder convention)",
+   "root 'NERAM_Bedside_Controller v9' -> 'Bedside_Controller'"
+  ],
+  "triangles": 12748,
+  "materials": [
+   "MAT_Button_Reset",
+   "MAT_Button_Start",
+   "MAT_Button_Stop",
+   "MAT_Connector",
+   "MAT_Display",
+   "MAT_Enclosure",
+   "MAT_Indicator",
+   "MAT_Placeholder"
+  ]
+ },
+ {
+  "file": "NERAM_Watch_Concept.fbx",
+  "source": "NERAM_Watch_Concept.fbx",
+  "changes": [
+   "units: file now in metres (UnitScaleFactor 100); vertex data converted cm->m; per-part x10 transform scale removed",
+   "axes: Z-up design rotated to Y-up (+Y away from skin for modules); pivot = centre of the watch case underside (skin side)",
+   "MAT_Enclosure <- colour of \"Steel - Satin\"",
+   "MAT_Display <- colour of \"Glass - Heavy Color\"",
+   "MAT_Strap: \"Fabric (Black)\" exported with no flat colour -> flat (0.1, 0.1, 0.11) from its appearance name",
+   "root 'NERAM_Watch_Concept v3' -> 'Watch_Concept'"
+  ],
+  "triangles": 2430,
+  "materials": [
+   "MAT_Display",
+   "MAT_Enclosure",
+   "MAT_Strap"
+  ]
+ }
+]

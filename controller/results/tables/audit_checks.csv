@@ -1,0 +1,21 @@
+id,requirement checked (plan section G / K / L / J),measured,PASS/FAIL
+AU-G1a,"Twin_Valid = VALID but T_est = NaN -> twin not ok, TWIN_DEGRADED, no heat (never T_est = 0)","twin_ok=0, state=5, Heat=[0.0, 0.0, 0.0, 0.0]",PASS
+AU-G1b,P_below_hypo = NaN never triggers or releases a forecast latch (risk_pred stays 0),risk_pred seen = [0],PASS
+AU-G1c,"RESET with an unreadable (NaN) module temperature is blocked, not treated as cool","state=6, alert=8",PASS
+AU-G1d,"Heater_Current = NaN (sense fault) is a CH1 fault (code 109), not 0 A",Channel_Fault_1=109,PASS
+AU-G1e,HW_Heartbeat_s = NaN -> hardware stale -> SAFETY_SHUTDOWN (fault 8),"state=6, fault_code=8",PASS
+AU-G1f,"T_twin_s = NaN (no twin output yet) -> Data_Stale_Twin -> TWIN_DEGRADED, no shutdown","state=5, stale=1",PASS
+AU-G1g,"HW_Fault_Code = NaN is not read as ""no fault"": shutdown",state=6,PASS
+AU-G2a,Module sensor range check against Shreehan's range,module_temp_min/max_degC not supplied (null). Range hook implemented; checks are DISABLED until Shreehan supplies the range,BLOCKED
+AU-G2b,"range hook works when a range is supplied (self-check with TEST-ONLY limits 20..60 degC, not project values)",Channel_Fault_1=101 (101 expected for out-of-range sensor A),PASS
+AU-G3a,system code outranks channel codes: HW_Fault_Code 3 + CH1 over-temp + CH3 sensor B NaN + CH4 disconnected,"fault_code=3; Channel_Fault=[106, 0, 303, 408]",PASS
+AU-G3b,lower channel first among isolating faults,fault_code=303,PASS
+AU-G3c,a shutdown-class channel fault (CH4 406) outranks a lower channel isolating fault (CH1 408) in fault_code and in the state,"fault_code=406, state=6",PASS
+AU-G5,HW_Fault_Code 1-6 each force SAFETY_SHUTDOWN on the same sample with the code reported,"codes [1, 2, 3, 4, 5, 6]",PASS
+AU-G5b,"over-current (CH2 > i_over_A) -> shutdown, code 210","state=6, fault_code=210",PASS
+AU-G7a,"Clinician_Stop on the exact sample the T10 dwell completes wins: no warming, inhibit starts",states [0],PASS
+AU-G7b,Stop in NORMAL (nothing to stop) still starts the inhibit: no autonomous warming for t_stop_inhibit_s,states in window [0],PASS
+AU-G7c,Clinician_Start in ACTIVE_WARMING only sets Clinician_Mode (state unchanged),"state 2->2, Clinician_Mode 0->1",PASS
+AU-G7d,"Clinician_Mode set in ACTIVE is honoured when the twin degrades (-> CLINICIAN_FIXED, not MONITOR)","state=5, substate=2",PASS
+AU-G9,"invariants on all 104926 logged samples of every run: Heat = 0 in SAFETY_SHUTDOWN and TWIN_DEGRADED.MONITOR, 0 <= Heat_i <= p_max_ch_pct_i, Heat <= mode cap, never NaN",0 violations,PASS
+AU-D1,"DEVIATION D1 evidence: spec-literal open-circuit rule (Heat>0 and I<i_open_max_A held) vs qualified rule, at a small duty (Heat ~0.25 % -> expected current 0.0013 A < i_open_max_A 0.05 A)",literal rule: false HEATER_OPEN on all channels at t=16 s; qualified rule: first fault t=None,PASS
