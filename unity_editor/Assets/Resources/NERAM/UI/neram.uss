@@ -1,0 +1,1038 @@
+/* NERAM digital-twin dashboard - clinical-engineering theme.
+   Reference layout 1600 x 900 logical px, ScaleWithScreenSize matched to HEIGHT: the logical height is always 900 and the
+   logical width follows the aspect ratio (16:9 -> 1600, 16:10 -> 1440, 4:3 -> 1200). 1920 x 1080 renders at 1.2x,
+   1366 x 768 at 0.85x. Breakpoint classes set by NeramApp (.bp-compact < 1500, .bp-narrow < 1300) reflow the side panels.
+   Palette: deep blue / slate surfaces, white + soft grey text, teal / cyan highlights, amber for the foot channels and
+   ASSUMED values, red only for critical states. Design tokens live here (and in chart custom properties).
+   Fonts: Inter (UI) and JetBrains Mono (numbers), SIL OFL, see Assets/Resources/NERAM/Fonts. */
+
+:root {
+    --bg-0: rgb(8, 12, 18);
+    --bg-1: rgba(12, 19, 29, 0.90);
+    --bg-2: rgb(17, 26, 38);
+    --bg-3: rgb(26, 38, 54);
+    --line: rgb(34, 48, 66);
+    --line-strong: rgb(52, 70, 94);
+    --text-1: rgb(232, 238, 245);
+    --text-2: rgb(156, 170, 188);
+    --text-3: rgb(104, 120, 140);
+
+    --teal: rgb(45, 212, 191);
+    --cyan: rgb(56, 189, 248);
+    --amber: rgb(245, 158, 11);
+
+    --st-normal: rgb(100, 116, 139);
+    --st-predictive: rgb(167, 139, 250);
+    --st-active: rgb(245, 158, 11);
+    --st-maint: rgb(16, 185, 129);
+    --st-clinician: rgb(56, 189, 248);
+    --st-degraded: rgb(234, 179, 8);
+    --st-shutdown: rgb(239, 68, 68);
+
+    --tag-real: rgb(74, 222, 128);
+    --tag-model: rgb(96, 165, 250);
+    --tag-sim: rgb(192, 132, 252);
+    --tag-assumed: rgb(251, 191, 36);
+
+    --ok: rgb(52, 211, 153);
+    --warn: rgb(234, 179, 8);
+    --crit: rgb(239, 68, 68);
+    --info: rgb(56, 189, 248);
+
+    -unity-font-definition: url("../Fonts/Inter-Regular.ttf");
+    color: var(--text-1);
+    font-size: 14px;
+}
+
+.root { flex-grow: 1; }
+
+/* ---------- typography ---------- */
+.mono { -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.mono-strong { -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.semibold { -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.medium { -unity-font-definition: url("../Fonts/Inter-Medium.ttf"); }
+.t-xs { font-size: 11px; }
+.t-sm { font-size: 12px; }
+.t-md { font-size: 13px; }
+.t-lg { font-size: 16px; }
+.t-xl { font-size: 22px; }
+.t-xxl { font-size: 30px; }
+.c-2 { color: var(--text-2); }
+.c-3 { color: var(--text-3); }
+.caps { letter-spacing: 1px; }
+.nowrap { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wrap { white-space: normal; }
+.value-missing { color: var(--text-3); }
+
+/* ---------- surfaces ---------- */
+.panel {
+    background-color: var(--bg-1);
+    border-color: var(--line);
+    border-width: 1px;
+    border-radius: 7px;
+    padding: 9px 11px 9px 11px;
+    margin: 4px;
+}
+.panel-title-row { flex-direction: row; align-items: center; justify-content: space-between; margin-bottom: 5px; }
+.panel-title { font-size: 12px; color: var(--text-2); letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.row { flex-direction: row; align-items: center; }
+.col { flex-direction: column; }
+.grow { flex-grow: 1; }
+.spacer { flex-grow: 1; }
+.sep { height: 1px; background-color: var(--line); margin: 6px 0 6px 0; }
+.hidden { display: none; }
+
+/* ---------- chips ---------- */
+.chip {
+    border-width: 1px;
+    border-radius: 3px;
+    padding: 1px 6px 1px 6px;
+    margin-left: 4px;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    -unity-text-align: middle-center;
+    -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf");
+    border-color: var(--line-strong);
+    color: var(--text-2);
+}
+.chip-ok { border-color: var(--ok); color: var(--ok); }
+.chip-warn { border-color: var(--warn); color: var(--warn); }
+.chip-crit { border-color: var(--crit); color: var(--crit); background-color: rgba(239, 68, 68, 0.12); }
+.chip-info { border-color: var(--info); color: var(--info); }
+.chip-placeholder { border-color: var(--tag-assumed); color: var(--tag-assumed); background-color: rgba(251, 191, 36, 0.10); }
+.chip-status-FROZEN { border-color: var(--tag-model); color: var(--tag-model); }
+.chip-status-PROVISIONAL { border-color: var(--text-2); color: var(--text-2); }
+.chip-status-TBD { border-color: var(--crit); color: var(--crit); }
+.chip-status-ASSUMED { border-color: var(--tag-assumed); color: var(--tag-assumed); }
+
+/* ---------- source badges ---------- */
+.src-badge { flex-direction: row; align-items: center; margin-left: 6px; border-width: 1px; border-radius: 3px; border-color: var(--line-strong); }
+.src-badge-group { font-size: 10px; color: var(--text-3); padding: 1px 4px 1px 5px; letter-spacing: 0.5px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.src-badge-tag { font-size: 10px; padding: 1px 5px 1px 4px; letter-spacing: 0.5px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.src-badge-meaning { font-size: 10px; color: var(--text-3); padding-right: 5px; max-width: 260px; }
+.src-REAL_DEV { border-color: var(--tag-real); }
+.src-REAL_DEV .src-badge-tag { color: var(--tag-real); }
+.src-MODEL { border-color: var(--tag-model); }
+.src-MODEL .src-badge-tag { color: var(--tag-model); }
+.src-SIMULATED { border-color: var(--tag-sim); }
+.src-SIMULATED .src-badge-tag { color: var(--tag-sim); }
+.src-ASSUMED { border-color: var(--tag-assumed); }
+.src-ASSUMED .src-badge-tag { color: var(--tag-assumed); }
+.tag-REAL_DEV { color: var(--tag-real); border-color: var(--tag-real); }
+.tag-MODEL { color: var(--tag-model); border-color: var(--tag-model); }
+.tag-SIMULATED { color: var(--tag-sim); border-color: var(--tag-sim); }
+.tag-ASSUMED { color: var(--tag-assumed); border-color: var(--tag-assumed); }
+
+/* ---------- buttons ---------- */
+.btn {
+    background-color: var(--bg-3);
+    border-color: var(--line-strong);
+    border-width: 1px;
+    border-radius: 4px;
+    color: var(--text-1);
+    padding: 3px 9px 3px 9px;
+    margin: 0 2px 0 2px;
+    font-size: 13px;
+    min-height: 28px;
+    transition-property: background-color;
+    transition-duration: 0.12s;
+}
+.btn:hover { background-color: rgb(36, 52, 72); border-color: var(--teal); }
+.btn:active { background-color: rgb(44, 64, 88); }
+.btn.selected { border-color: var(--teal); color: var(--teal); background-color: rgba(45, 212, 191, 0.10); }
+.btn:disabled { opacity: 0.4; }
+.btn-icon { min-width: 30px; padding: 3px 6px 3px 6px; -unity-text-align: middle-center; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.btn-primary { background-color: rgb(14, 86, 92); border-color: var(--teal); }
+.btn-primary:hover { background-color: rgb(16, 104, 110); }
+.btn-ghost { background-color: rgba(0, 0, 0, 0); border-color: rgba(0, 0, 0, 0); color: var(--text-2); }
+.btn-ghost:hover { color: var(--text-1); background-color: var(--bg-3); }
+.btn-small { font-size: 12px; min-height: 26px; padding: 2px 7px 2px 7px; margin: 2px 4px 2px 0; }
+.btn-tiny { font-size: 11px; min-height: 20px; padding: 1px 5px 1px 5px; }
+
+/* ---------- header (56 px): menu · identity · scenario + chips · status · clock · fullscreen · capture ---------- */
+#top-bar {
+    position: absolute; left: 0; right: 0; top: 0; height: 56px;
+    flex-direction: row; align-items: center;
+    background-color: rgba(8, 12, 18, 0.97);
+    border-bottom-width: 1px; border-color: var(--line);
+    padding: 0 10px 0 8px;
+}
+#btn-menu { min-height: 34px; margin-right: 12px; font-size: 13px; letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); flex-shrink: 0; }
+#hdr-brand { flex-shrink: 0; }
+#brand { font-size: 22px; letter-spacing: 3px; color: var(--teal); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+#brand-title { display: none; font-size: 13px; margin-left: 8px; color: var(--text-1); -unity-font-definition: url("../Fonts/Inter-Medium.ttf"); }
+#brand-sub { font-size: 11px; color: var(--text-2); margin-top: 1px; }
+/* The full disclaimer is permanently visible in the footer; the header keeps no duplicate. */
+#hdr-disclaimer { display: none; }
+.hdr-sep { width: 1px; height: 38px; background-color: var(--line); margin: 0 14px 0 14px; flex-shrink: 0; }
+#hdr-scenario { flex-shrink: 1; min-width: 0; overflow: hidden; }
+#hdr-scenario > .row { overflow: hidden; }
+#scenario-id { font-size: 13px; color: var(--teal); margin-right: 8px; flex-shrink: 0; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+#scenario-title { font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex-shrink: 1; -unity-font-definition: url("../Fonts/Inter-Medium.ttf"); }
+.hdr-chip-row { margin-top: 4px; }
+#scenario-chips { flex-shrink: 0; }
+.chip, .hdr-badge { flex-shrink: 0; }
+#scenario-chips .chip { margin-left: 0; margin-right: 3px; padding: 1px 4px 1px 4px; font-size: 10px; }
+.hdr-badge {
+    font-size: 10px; letter-spacing: 1px; margin-left: 2px; padding: 1px 6px 1px 6px; border-width: 1px; border-radius: 3px;
+    border-color: var(--tag-sim); color: var(--tag-sim); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf");
+}
+/* The cohort chip (e.g. SYNTHETIC) already states the replay kind; the second badge was a duplicate. */
+#hdr-synthetic { display: none; }
+.hdr-badge-synthetic { background-color: rgba(192, 132, 252, 0.12); }
+.hdr-badge-assumed { border-color: var(--tag-assumed); color: var(--tag-assumed); background-color: rgba(251, 191, 36, 0.08); }
+.hdr-status { align-items: flex-end; margin: 0 14px 0 10px; flex-shrink: 0; }
+.hdr-chip {
+    font-size: 13px; padding: 1px 8px 1px 8px; margin-left: 4px; border-radius: 3px; border-width: 1px; border-color: var(--line-strong);
+    color: var(--text-2); -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf");
+}
+.hdr-playing { color: var(--teal); border-color: var(--teal); }
+.hdr-model { font-size: 12px; color: var(--text-2); margin-top: 3px; white-space: nowrap; }
+#clock-block { flex-direction: column; align-items: flex-end; margin-right: 12px; flex-shrink: 0; }
+#clock-time { font-size: 27px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+#clock-sub { font-size: 11px; color: var(--text-3); -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+#btn-fullscreen { min-height: 32px; border-color: var(--teal); color: var(--teal); flex-shrink: 0; font-size: 12px; letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+#btn-capture { flex-shrink: 0; }
+
+/* ---------- controller banner (top of the stage) ---------- */
+#controller-banner {
+    flex-direction: row; flex-shrink: 0;
+    background-color: var(--bg-1);
+    border-width: 1px; border-color: var(--line); border-radius: 7px;
+    margin: 4px 4px 2px 4px;
+    overflow: hidden;
+}
+#banner-stripe { width: 5px; background-color: var(--st-normal); }
+#banner-body { flex-grow: 1; padding: 5px 10px 5px 10px; }
+#banner-kicker { margin-right: 8px; }
+#banner-state { font-size: 19px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+#banner-sub { font-size: 12px; color: var(--text-2); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#banner-chips { flex-direction: row; align-items: center; flex-wrap: wrap; margin-top: 2px; }
+.tone-neutral #banner-stripe { background-color: var(--st-normal); }
+.tone-warming #banner-stripe { background-color: var(--st-active); }
+.tone-degraded #banner-stripe { background-color: var(--st-degraded); }
+.tone-critical #banner-stripe { background-color: var(--st-shutdown); }
+.tone-critical { border-color: var(--st-shutdown); }
+
+/* ---------- safety banner ---------- */
+#safety-banner {
+    position: absolute; left: 0; right: 0; top: 60px; min-height: 60px;
+    background-color: rgba(127, 29, 29, 0.97);
+    border-bottom-width: 2px; border-color: var(--st-shutdown);
+    flex-direction: row; align-items: center; padding: 8px 18px 8px 18px;
+}
+#safety-title { font-size: 20px; letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); color: rgb(254, 226, 226); }
+#safety-detail { font-size: 13px; color: rgb(254, 202, 202); margin-top: 2px; }
+#safety-reset { font-size: 12px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); color: rgb(254, 242, 242); border-width: 1px; border-color: rgb(254, 202, 202); border-radius: 4px; padding: 4px 10px 4px 10px; }
+#safety-reset.blocked { background-color: rgba(0, 0, 0, 0.35); }
+#safety-released {
+    position: absolute; left: 330px; right: 314px; top: 172px;
+    background-color: rgba(6, 78, 59, 0.92); border-color: var(--ok); border-width: 1px; border-radius: 4px;
+    padding: 4px 10px 4px 10px; font-size: 12px; color: rgb(209, 250, 229);
+}
+#channel-fault-strip {
+    position: absolute; left: 330px; right: 314px; top: 172px; flex-direction: row; align-items: center;
+    background-color: rgba(66, 32, 6, 0.92); border-color: var(--warn); border-width: 1px; border-radius: 4px;
+    padding: 4px 10px 4px 10px;
+}
+
+/* ---------- layout regions (reference 1600 x 900) ----------
+   header 56 | left column 296 | stage | right column 300 | charts 200 above transport 70 + footer 22 */
+#left-column { position: absolute; left: 0; top: 58px; bottom: 296px; width: 316px; overflow: hidden; }
+#right-column { position: absolute; right: 0; top: 58px; bottom: 296px; width: 300px; overflow: hidden; }
+#pipeline-strip {
+    position: absolute; left: 320px; right: 304px; top: 58px; height: 80px;
+    background-color: var(--bg-1); border-width: 1px; border-color: var(--line); border-radius: 7px; padding: 4px 8px 5px 8px;
+}
+#stage { position: absolute; left: 320px; right: 304px; top: 142px; bottom: 336px; }
+#view-toolbar {
+    position: absolute; left: 320px; right: 304px; bottom: 298px; height: 36px;
+    flex-direction: row; align-items: center; padding: 0 6px 0 6px; overflow: hidden;
+    background-color: rgba(12, 19, 29, 0.86); border-width: 1px; border-color: var(--line); border-radius: 7px;
+}
+#mode-legend {
+    position: absolute; right: 310px; top: 146px; width: 300px;
+    background-color: rgba(12, 19, 29, 0.92); border-width: 1px; border-color: var(--line-strong); border-radius: 7px; padding: 8px 10px 8px 10px;
+}
+#charts-strip { position: absolute; left: 0; right: 0; bottom: 94px; height: 200px; flex-direction: row; }
+/* The latched safety banner is ~110 logical px tall (title + up to three detail lines, measured in Unity 6000.3):
+   push everything below it instead of letting it cover the controller banner and the pipeline. */
+#safety-banner { max-height: 114px; overflow: hidden; }
+.with-safety #left-column { top: 174px; }
+.with-safety #right-column { top: 174px; }
+.with-safety #pipeline-strip { top: 174px; }
+.with-safety #stage { top: 258px; }
+.with-safety #mode-legend { top: 262px; }
+.with-safety #placeholder-mark { top: 262px; }
+.with-safety.no-pipeline #stage { top: 174px; }
+.with-safety.bp-compact #right-column { top: 258px; }
+
+/* taller charts (Settings) */
+.charts-tall #charts-strip { height: 240px; }
+.charts-tall #left-column { bottom: 336px; }
+.charts-tall #right-column { bottom: 336px; }
+.charts-tall #stage { bottom: 376px; }
+.charts-tall #view-toolbar { bottom: 338px; }
+
+/* pipeline strip hidden (Settings) */
+.no-pipeline #pipeline-strip { display: none; }
+.no-pipeline #stage { top: 60px; }
+.no-pipeline #mode-legend { top: 62px; }
+.no-pipeline #placeholder-mark { top: 62px; }
+
+/* region panel collapsed: the stage, pipeline and toolbar take the full width */
+.details-collapsed #right-column { display: none; }
+.details-collapsed #stage { right: 4px; }
+.details-collapsed #pipeline-strip { right: 4px; }
+.details-collapsed #view-toolbar { right: 4px; }
+.details-collapsed #mode-legend { right: 10px; }
+.details-collapsed #module-inspector { right: 10px; }
+
+/* compact (< 1500 logical px): the region panel is a deliberate overlay on the stage instead of squeezing it */
+.bp-compact #stage { right: 4px; }
+.bp-compact #pipeline-strip { right: 4px; }
+.bp-compact #view-toolbar { right: 4px; }
+.bp-compact #right-column { top: 142px; bottom: 336px; background-color: rgba(8, 12, 18, 0.96); border-left-width: 1px; border-color: var(--line-strong); }
+.bp-compact.no-pipeline #right-column { top: 60px; }
+.bp-compact.charts-tall #right-column { bottom: 376px; }
+.bp-compact #mode-legend { right: 10px; }
+.bp-compact #module-inspector { right: 10px; }
+
+/* narrow (< 1300 logical px, e.g. 4:3 windows): narrower left column */
+.bp-narrow #left-column { width: 280px; }
+.bp-narrow #pipeline-strip { left: 284px; }
+.bp-narrow #stage { left: 284px; }
+.bp-narrow #view-toolbar { left: 284px; }
+.bp-narrow .ch-c-id { width: 60px; }
+.bp-narrow .tb-preset { display: none; }
+
+/* ---------- pipeline ---------- */
+#pipeline-stages { flex-grow: 1; align-items: stretch; margin-top: 3px; }
+.pl-note { font-size: 11px; color: var(--text-3); margin-left: 10px; }
+.pl-card {
+    flex-grow: 1; flex-basis: 0; background-color: var(--bg-2); border-width: 1px; border-color: var(--line);
+    border-radius: 5px; padding: 3px 7px 3px 7px; transition-property: border-color, background-color; transition-duration: 0.3s;
+}
+.pl-card.pl-active { border-color: var(--teal); background-color: rgba(45, 212, 191, 0.12); }
+.pl-card.pl-recent .pl-title { color: var(--teal); }
+.pl-card.pl-unavailable .pl-value { color: var(--text-3); }
+.pl-arrow { font-size: 20px; color: var(--text-3); -unity-text-align: middle-center; width: 14px; }
+.pl-title { font-size: 11px; letter-spacing: 0.5px; color: var(--text-2); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.pl-value { font-size: 14px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pl-detail { font-size: 11px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pl-tag { font-size: 9px; padding: 0 3px 0 3px; border-width: 1px; border-radius: 2px; border-color: var(--line-strong); color: var(--text-3); -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.tag-VIEW { color: var(--teal); border-color: var(--teal); }
+
+/* ---------- toolbar + legends ---------- */
+.tb-label { margin: 0 6px 0 4px; }
+.btn-tb { min-height: 28px; font-size: 13px; padding: 2px 9px 2px 9px; }
+.btn-hand { border-color: rgba(45, 212, 191, 0.6); }
+.btn-foot { border-color: rgba(245, 158, 11, 0.6); }
+.tb-preset { font-size: 12px; color: var(--text-2); margin: 0 6px 0 2px; min-width: 96px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+/* Exploded view adds CH1-CH4 + Assemble to the toolbar: drop the group captions and the preset name so nothing overlaps (seen in Unity 6000.3 at 1600x900). */
+#view-toolbar.exp-on .tb-label, #view-toolbar.exp-on .tb-preset { display: none; }
+#view-toolbar.exp-on .btn-tb { padding: 2px 6px 2px 6px; }
+#btn-details { margin-left: 6px; }
+.legend-title { font-size: 12px; letter-spacing: 0.5px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); margin-bottom: 4px; white-space: normal; }
+.legend-warn { color: var(--tag-assumed); }
+.legend-value { font-size: 14px; margin-top: 14px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.legend-note { font-size: 11px; color: var(--text-2); white-space: normal; margin-top: 4px; }
+.key-artery { background-color: rgb(179, 43, 48); }
+.key-vein { background-color: rgb(51, 84, 179); }
+.key-pulse { background-color: rgb(255, 240, 240); }
+#thermal-legend-bar { height: 12px; margin-top: 2px; }
+.thermal-bar { flex-grow: 1; height: 12px; }
+.thermal-marker { position: absolute; top: -3px; width: 3px; height: 16px; background-color: rgb(255, 255, 255); }
+.thermal-tick { position: absolute; top: 12px; font-size: 9px; color: var(--text-3); }
+#freeroam-hint {
+    position: absolute; left: 50%; top: 170px; translate: -50% 0; font-size: 14px; color: var(--text-1);
+    background-color: rgba(8, 12, 18, 0.85); border-width: 1px; border-color: var(--teal); border-radius: 4px; padding: 4px 10px 4px 10px;
+}
+.ov-section { margin-top: 7px; margin-bottom: 2px; }
+.ov-row { flex-direction: row; align-items: center; min-height: 21px; }
+.ov-row-k { width: 126px; font-size: 12px; color: var(--text-2); flex-shrink: 0; }
+.ov-row-v { flex-grow: 1; flex-shrink: 1; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.value-alert { color: var(--warn); }
+.hdr-sources { font-size: 9px; color: var(--text-3); margin-top: 2px; }
+
+/* ---------- overview ---------- */
+/* The overview scrolls inside the left column; it must be allowed to shrink or it overflows behind chart A. */
+#overview-panel { flex-grow: 1; flex-shrink: 1; min-height: 0; }
+#overview-panel .unity-scroller--horizontal { display: none; }
+.ov-card { background-color: var(--bg-2); border-width: 1px; border-color: var(--line); border-radius: 5px; padding: 5px 7px 5px 7px; margin-bottom: 5px; }
+.ov-pair { flex-direction: row; margin-top: 4px; }
+.ov-half { flex-grow: 1; flex-basis: 0; margin: 0 2px 5px 2px; }
+.ov-src { margin-top: 2px; margin-left: -6px; }
+.ov-k { font-size: 11px; color: var(--text-2); letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.ov-big { font-size: 24px; margin-top: 2px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.ov-mid { font-size: 24px; margin-top: 2px; color: var(--tag-model); -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.ov-sub { font-size: 11px; color: var(--text-3); white-space: normal; }
+.ov-channels { margin-top: 2px; }
+.ch-row { flex-direction: row; align-items: center; min-height: 24px; border-radius: 3px; padding: 0 3px 0 3px; }
+.ch-row-data { border-left-width: 3px; margin-top: 1px; background-color: rgba(17, 26, 38, 0.7); }
+.ch-row-data:hover { background-color: var(--bg-3); }
+.ch-row-data.selected { background-color: rgba(45, 212, 191, 0.14); }
+.ch-hand { border-color: var(--teal); }
+.ch-foot { border-color: var(--amber); }
+.ch-head { color: var(--text-3); font-size: 11px; }
+.ch-c-id { width: 72px; font-size: 12px; color: var(--text-2); flex-shrink: 0; }
+.ch-c-status { width: 74px; flex-shrink: 0; font-size: 11px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); color: var(--text-2); }
+.ch-c-num { width: 40px; flex-shrink: 0; font-size: 12px; -unity-text-align: middle-right; }
+.ch-st-Heating { color: var(--amber); }
+.ch-st-Fault { color: var(--warn); }
+.ch-st-Disconnected { color: var(--warn); }
+.ch-st-Cutoff { color: var(--crit); }
+.ch-st-Shutdown { color: var(--crit); }
+.na-row { flex-direction: row; align-items: center; min-height: 16px; }
+.na-row { margin-top: 6px; }
+.na-name { width: 126px; font-size: 12px; color: var(--text-2); }
+.na-value { width: 36px; font-size: 12px; color: var(--text-3); -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.na-why { font-size: 11px; color: var(--text-3); white-space: normal; flex-shrink: 1; }
+
+/* ---------- telemetry ---------- */
+.tele-group { margin-bottom: 8px; }
+.tele-group-head { flex-direction: row; align-items: center; margin-bottom: 3px; }
+.tele-group-title { font-size: 10px; color: var(--text-2); letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.tele-row { flex-direction: row; align-items: center; height: 21px; }
+.tele-name { width: 160px; font-size: 12px; color: var(--text-2); }
+.tele-value { flex-grow: 1; font-size: 12px; -unity-text-align: middle-right; -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.tele-trend { width: 64px; font-size: 10px; color: var(--text-3); -unity-text-align: middle-right; -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.tele-missing { color: var(--text-3); }
+.ch-table-head { flex-direction: row; height: 18px; }
+.ch-cell { width: 52px; font-size: 11px; -unity-text-align: middle-right; -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.ch-label { width: 104px; font-size: 11px; color: var(--text-2); }
+
+/* ---------- region detail ---------- */
+.dp-title { font-size: 17px; color: var(--teal); letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.dp-sub { font-size: 12px; color: var(--text-2); white-space: normal; margin-top: 2px; }
+.dp-actions { flex-direction: row; flex-wrap: wrap; margin: 5px 0 4px 0; }
+.dp-section { margin-top: 8px; margin-bottom: 2px; border-top-width: 1px; border-color: var(--line); padding-top: 5px; }
+.dp-section-title { font-size: 11px; letter-spacing: 1px; color: var(--text-1); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.dp-section-sub { font-size: 11px; color: var(--text-3); white-space: normal; }
+.dp-row { flex-direction: row; align-items: center; min-height: 21px; }
+.dp-name { width: 112px; flex-shrink: 0; font-size: 12px; color: var(--text-2); white-space: normal; }
+.dp-value { flex-grow: 1; flex-shrink: 1; font-size: 13px; white-space: normal; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.dp-tag { font-size: 9px; padding: 0 3px 0 3px; border-width: 1px; border-radius: 2px; border-color: var(--line-strong); color: var(--text-3); margin-left: 4px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.dp-note { font-size: 11px; color: var(--tag-assumed); white-space: normal; margin-top: 8px; }
+
+/* ---------- charts ---------- */
+.chart-panel { flex-grow: 1; flex-basis: 0; padding: 7px 9px 6px 9px; overflow: hidden; }
+/* Plots keep a minimum height: a long legend is clipped instead of squeezing the plot (seen in Unity at 16:10). */
+#chart-a-host, #chart-c-host { min-height: 66px; flex-shrink: 1; }
+#thermal-chart-host { min-height: 88px; flex-shrink: 1; }
+#chart-a-legend, #chart-c-legend, #thermal-legend { flex-shrink: 0; }
+#thermal-panel { flex-grow: 1.15; }
+.chart-subtitle { font-size: 11px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 1; }
+.chart-value { font-size: 13px; color: var(--text-1); -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.chart {
+    flex-grow: 1;
+    --chart-bg: rgb(11, 18, 27);
+    --chart-grid: rgb(30, 42, 58);
+    --chart-axis: rgb(64, 80, 100);
+    --chart-obs: rgb(232, 238, 245);
+    --chart-obs-flag: rgb(251, 146, 60);
+    --chart-est: rgb(96, 165, 250);
+    --chart-band: rgba(96, 165, 250, 0.20);
+    --chart-fc: rgb(167, 139, 250);
+    --chart-fc-80: rgba(167, 139, 250, 0.85);
+    --chart-fc-95: rgba(167, 139, 250, 0.45);
+    --chart-future: rgba(167, 139, 250, 0.05);
+    --chart-hypo: rgb(248, 113, 113);
+    --chart-target: rgb(52, 211, 153);
+    --chart-plant: rgb(251, 191, 36);
+    --chart-nowarm: rgb(148, 163, 184);
+    --chart-now: rgb(226, 232, 240);
+    --chart-missing: rgb(104, 120, 140);
+    --chart-shift: rgb(236, 72, 153);
+}
+.series-chart { background-color: rgb(11, 18, 27); border-radius: 4px; }
+.chart-cursor { position: absolute; width: 2px; background-color: rgba(45, 212, 191, 0.9); }
+.chart-cursor-label { position: absolute; font-size: 10px; color: var(--teal); background-color: rgba(8, 12, 18, 0.85); padding: 0 3px 0 3px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.chart-overlay { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.axis-label { position: absolute; font-size: 10px; color: var(--text-3); -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.chart-note { position: absolute; font-size: 10px; color: var(--text-2); }
+.chart-note-dim { position: absolute; font-size: 10px; color: var(--text-3); }
+.lane-label { position: absolute; font-size: 10px; color: var(--text-2); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.legend { flex-direction: row; flex-wrap: wrap; align-items: center; margin-top: 3px; }
+.legend-item { flex-direction: row; align-items: center; margin-right: 10px; }
+.legend-swatch { width: 14px; height: 3px; margin-right: 4px; }
+.legend-block { width: 10px; height: 8px; margin-right: 4px; border-radius: 2px; }
+.legend-dot { width: 6px; height: 6px; border-radius: 3px; margin-right: 4px; }
+.legend-text { font-size: 11px; color: var(--text-2); }
+/* Chart B has the most legend entries: keep them compact so the plot keeps its height. */
+#thermal-legend .legend-item { margin-right: 7px; }
+#thermal-legend .legend-text { font-size: 10px; }
+#thermal-legend .legend-swatch { width: 10px; margin-right: 3px; }
+.tooltip {
+    position: absolute;
+    background-color: rgba(8, 12, 18, 0.96); border-color: var(--line-strong); border-width: 1px; border-radius: 4px;
+    padding: 6px 8px 6px 8px; font-size: 11px;
+    -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf");
+    white-space: normal;
+}
+
+/* ---------- forecast ---------- */
+/* The forecast must never squeeze the region panel to nothing (seen in Unity at T+21:00 of SYN_SCN_B): the cards keep one
+   line per value (ellipsis, full text in the card tooltip) and the region panel keeps a minimum height. */
+#forecast-panel { flex-shrink: 0; padding-left: 6px; padding-right: 6px; }
+#detail-panel { min-height: 190px; }
+.with-safety #detail-panel { min-height: 150px; } /* safety banner leaves ~430 px for the right column */
+#forecast-prov { white-space: normal; }
+/* Root cause of the collapsed right column (Unity 6000.3, SYN_SCN_B T+21:00): the long "NO-INTERVENTION FORECAST" title
+   squeezed the source badge to zero width, its text wrapped one glyph per line and the title row grew ~200 px tall.
+   The badge keeps its width and the title wraps onto a second line instead. */
+#forecast-src { flex-shrink: 0; }
+#forecast-src Label { white-space: nowrap; }
+#forecast-title { flex-shrink: 1; white-space: normal; margin-right: 6px; }
+#forecast-cards { flex-direction: column; }
+.fc-card { flex-direction: row; flex-wrap: wrap; align-items: center; min-width: 0; overflow: hidden; border-width: 1px; border-color: var(--line); border-radius: 5px; padding: 3px 6px 3px 6px; margin: 0 0 3px 0; background-color: var(--bg-2); }
+.fc-card Label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fc-h { width: 74px; font-size: 11px; color: var(--text-2); letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.fc-mean { width: 84px; font-size: 15px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.fc-int { width: 100px; font-size: 10px; color: var(--text-2); -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.p-track { width: 56px; height: 6px; background-color: var(--bg-3); border-radius: 3px; margin: 0 8px 0 0; overflow: hidden; }
+.p-fill { height: 5px; background-color: var(--st-predictive); border-radius: 3px; }
+.p-text { font-size: 10px; color: var(--text-2); -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.fc-info { border-color: var(--line); }
+.fc-hidden-msg { font-size: 13px; color: var(--st-degraded); padding: 10px; -unity-text-align: middle-center; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+
+/* ---------- event log ---------- */
+#event-panel { flex-grow: 1; }
+.ev-row { flex-direction: row; align-items: center; min-height: 17px; padding: 1px 2px 1px 2px; border-radius: 3px; }
+.ev-row:hover { background-color: var(--bg-3); }
+.ev-time { width: 74px; font-size: 11px; color: var(--text-3); -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.ev-dot { width: 6px; height: 6px; border-radius: 3px; margin-right: 6px; background-color: var(--text-3); }
+.ev-title { font-size: 12px; flex-shrink: 1; white-space: normal; }
+.ev-future { opacity: 0.35; }
+.ev-sev-Critical .ev-dot { background-color: var(--crit); }
+.ev-sev-Warning .ev-dot { background-color: var(--warn); }
+.ev-sev-Info .ev-dot { background-color: var(--info); }
+.kv-row { flex-direction: row; min-height: 17px; }
+.kv-k { width: 140px; font-size: 12px; color: var(--text-2); }
+.kv-v { flex-grow: 1; flex-shrink: 1; font-size: 12px; white-space: normal; -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+
+/* ---------- transport ---------- */
+#transport {
+    position: absolute; left: 0; right: 0; bottom: 22px; height: 70px;
+    background-color: rgba(8, 12, 18, 0.97);
+    border-top-width: 1px; border-color: var(--line);
+    padding: 4px 14px 2px 14px;
+}
+#transport-row { flex-direction: row; align-items: center; height: 32px; overflow: hidden; }
+#timeline { height: 24px; margin-top: 1px; }
+#timeline-times { flex-direction: row; justify-content: space-between; }
+.speed-btn { min-width: 38px; -unity-text-align: middle-center; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+
+/* ---------- footer / disclaimer ---------- */
+#footer {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 22px;
+    flex-direction: row; align-items: center; padding: 0 14px 0 14px;
+    background-color: rgb(6, 9, 14); border-top-width: 1px; border-color: var(--line);
+}
+#footer-text { font-size: 12px; color: var(--text-2); }
+#footer-strong { font-size: 12px; color: var(--tag-assumed); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); margin-right: 6px; }
+/* Watermark at the top-left of the stage (it used to sit over the feet). */
+#placeholder-mark {
+    position: absolute; left: 328px; top: 146px;
+    font-size: 11px; letter-spacing: 2px;
+    color: rgba(251, 191, 36, 0.75); background-color: rgba(8, 12, 18, 0.55); padding: 1px 6px 1px 6px; border-radius: 3px;
+    -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf");
+}
+
+/* ---------- viewport, world labels, wearable, hover ---------- */
+#viewport { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+#world-layer { position: absolute; left: 0; right: 0; top: 0; bottom: 0; }
+.wl-chip {
+    position: absolute;
+    background-color: rgba(8, 12, 18, 0.86); border-width: 1px; border-color: var(--line-strong); border-radius: 4px;
+    padding: 2px 6px 2px 6px;
+}
+.wl-chip { translate: -50% -100%; }
+.wl-chip:hover { border-color: var(--teal); }
+.wl-title { font-size: 10px; color: var(--text-2); letter-spacing: 0.5px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.wl-value { font-size: 12px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.wl-status-Heating { border-color: var(--st-active); }
+.wl-status-Fault { border-color: var(--warn); background-color: rgba(66, 32, 6, 0.92); }
+.wl-status-Disconnected { border-color: var(--warn); background-color: rgba(66, 32, 6, 0.92); }
+.wl-status-Cutoff { border-color: var(--crit); background-color: rgba(69, 10, 10, 0.92); }
+.wl-status-Shutdown { border-color: var(--crit); }
+.wl-selected { border-width: 2px; border-color: var(--teal); }
+.wl-short { display: none; font-size: 13px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); color: var(--text-1); }
+/* Compact (default): one short line per chip, full name only for the selected region, no twin call-out over the body. */
+.wl-mode-compact .wl-chip { padding: 1px 5px 1px 5px; background-color: rgba(8, 12, 18, 0.72); }
+.wl-mode-compact .wl-title { display: none; }
+.wl-mode-compact .wl-value { display: none; }
+.wl-mode-compact .wl-short { display: flex; }
+.wl-mode-compact .wl-selected .wl-title { display: flex; color: var(--teal); }
+.wl-mode-compact #thermal-indicator { display: none; }
+.wl-mode-compact .wl-hand { border-left-width: 3px; border-left-color: var(--teal); }
+.wl-mode-compact .wl-foot { border-left-width: 3px; border-left-color: var(--amber); }
+/* Off: nothing over the scene except the selected chip. */
+.wl-mode-off .wl-chip { display: none; }
+.wl-mode-off .wl-chip.wl-selected { display: flex; }
+.wl-mode-off .wl-title { display: none; }
+.wl-mode-off .wl-value { display: none; }
+.wl-mode-off .wl-short { display: flex; }
+.wl-mode-off .wl-selected .wl-title { display: flex; color: var(--teal); }
+#thermal-indicator { position: absolute; width: 180px; translate: -50% 0; }
+.ti-scale { height: 7px; border-radius: 4px; background-color: var(--bg-3); margin-top: 4px; }
+.ti-marker { position: absolute; top: -3px; width: 2px; height: 13px; }
+.ti-dot { position: absolute; top: -2px; width: 11px; height: 11px; border-radius: 6px; background-color: rgb(96, 165, 250); border-width: 2px; border-color: rgb(8, 10, 13); }
+.band-BelowHypo .ti-dot { background-color: rgb(248, 113, 113); }
+.band-AtOrAboveTarget .ti-dot { background-color: rgb(52, 211, 153); }
+.band-Unknown .ti-dot { background-color: var(--text-3); }
+#wearable-screen {
+    position: absolute; translate: -50% -115%;
+    background-color: rgba(4, 10, 14, 0.92); border-width: 1px; border-color: var(--teal); border-radius: 9px;
+    padding: 3px 8px 4px 8px; align-items: center;
+}
+#wearable-screen.ws-synthetic { border-color: var(--tag-assumed); }
+.ws-mode { font-size: 8px; color: var(--text-3); letter-spacing: 0.5px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.ws-value { font-size: 15px; color: var(--teal); -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.ws-synthetic .ws-value { color: var(--tag-assumed); }
+.ws-sub { font-size: 8px; color: var(--text-2); }
+#hover-tip {
+    position: absolute; font-size: 13px; color: var(--text-1); background-color: rgba(8, 12, 18, 0.92);
+    border-width: 1px; border-color: var(--teal); border-radius: 4px; padding: 2px 7px 2px 7px;
+    -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf");
+}
+
+/* ---------- drawers / modals ---------- */
+.drawer {
+    position: absolute; top: 56px; bottom: 22px; width: 540px;
+    background-color: rgba(10, 16, 24, 0.985);
+    border-color: var(--line-strong); border-width: 1px;
+    padding: 14px;
+}
+.drawer-left { left: 0; }
+.drawer-right { right: 0; }
+.drawer-wide { width: 820px; }
+.sidebar-open .drawer-left { left: 196px; }
+#sidebar {
+    position: absolute; left: 0; top: 56px; bottom: 22px; width: 196px;
+    background-color: rgba(10, 16, 24, 0.985); border-right-width: 1px; border-color: var(--line-strong);
+    padding: 10px 10px 10px 10px;
+}
+.sb-head { margin-bottom: 8px; }
+.sb-btn { min-height: 36px; margin: 2px 0 2px 0; padding-left: 12px; font-size: 14px; -unity-text-align: middle-left; }
+.sb-note { font-size: 11px; color: var(--text-3); white-space: normal; }
+.set-row { flex-wrap: wrap; margin: 4px 0 4px 0; }
+.src-key { -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+#badges-toggle { margin-top: 8px; align-self: flex-start; }
+.drawer-head { flex-direction: row; align-items: center; margin-bottom: 10px; }
+.drawer-title { font-size: 17px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); flex-grow: 1; }
+.card { background-color: var(--bg-2); border-color: var(--line); border-width: 1px; border-radius: 5px; padding: 10px; margin-bottom: 8px; }
+.card.current { border-color: var(--teal); }
+.card-title { font-size: 14px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.card-text { font-size: 12px; color: var(--text-2); white-space: normal; margin-top: 3px; }
+.limit { font-size: 10px; color: var(--text-3); white-space: normal; margin-left: 8px; }
+.ptable-row { flex-direction: row; min-height: 20px; align-items: center; border-bottom-width: 1px; border-color: rgb(24, 34, 46); }
+.ptable-name { width: 200px; font-size: 12px; -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.ptable-value { width: 170px; font-size: 12px; -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); white-space: normal; }
+.ptable-status { width: 104px; }
+.ptable-owner { width: 80px; font-size: 12px; color: var(--text-2); }
+.ptable-source { flex-grow: 1; flex-shrink: 1; font-size: 11px; color: var(--text-3); white-space: normal; }
+.modal-scrim { position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.72); align-items: center; justify-content: center; }
+.modal { width: 980px; max-height: 760px; background-color: rgb(12, 18, 27); border-color: var(--crit); border-width: 2px; border-radius: 8px; padding: 18px; }
+.modal-neutral { border-color: var(--line-strong); }
+.modal-title { font-size: 20px; color: rgb(254, 202, 202); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.issue-row { flex-direction: row; min-height: 18px; }
+.issue-code { width: 54px; font-size: 11px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); color: rgb(252, 165, 165); }
+.issue-where { width: 210px; font-size: 11px; color: var(--text-3); -unity-font-definition: url("../Fonts/JetBrainsMono-Regular.ttf"); }
+.issue-msg { flex-grow: 1; flex-shrink: 1; font-size: 12px; white-space: normal; }
+.progress-track { height: 4px; background-color: var(--bg-3); margin-top: 10px; }
+.progress-fill { height: 4px; background-color: var(--teal); width: 0; }
+
+/* ---------- hardware inspector ---------- */
+#module-inspector { position: absolute; right: 310px; top: 142px; width: 360px; max-height: 420px; }
+
+/* ---------- presentation mode: patient, principal values, charts, transport, disclaimer; sidebar still available ---------- */
+.presentation #right-column { display: none; }
+.presentation .ov-secondary { display: none; }
+.presentation .pl-note { display: none; }
+.presentation #left-column { width: 280px; }
+.presentation #pipeline-strip { left: 284px; right: 4px; }
+.presentation #view-toolbar { left: 284px; right: 4px; }
+.presentation #stage { left: 284px; right: 4px; }
+.presentation #mode-legend { right: 10px; }
+.presentation #module-inspector { right: 10px; }
+.presentation #placeholder-mark { left: 292px; }
+
+/* ---------- capture toast ---------- */
+.toast {
+    position: absolute; left: 50%; top: 62px; translate: -50% 0;
+    background-color: rgba(8, 12, 18, 0.94); border-width: 1px; border-color: var(--teal); border-radius: 4px;
+    padding: 6px 12px 6px 12px; font-size: 14px; color: var(--text-1);
+}
+
+/* =====================================================================================================================
+   v4 · THEATRE / MONITOR / FULL ANALYSIS screens, per-panel hide buttons, Panels drawer
+   Root classes (ScreenPanels): scr-theatre | scr-monitor | scr-analysis, and the visibility classes no-left, no-charts,
+   no-pipeline, no-details, no-forecast, details-collapsed (= right column empty). A hidden panel carries .user-hidden.
+   Rules that must beat the breakpoint / safety / tall-chart combinations use the .neram-root prefix (two classes + id).
+   ===================================================================================================================== */
+.neram-root .user-hidden { display: none; }
+
+/* screen tabs in the header */
+#screen-tabs { flex-shrink: 0; }
+.scr-tab {
+    min-height: 34px; min-width: 104px; margin: 0 3px 0 3px; padding: 3px 12px 3px 12px; font-size: 13px; letter-spacing: 1px;
+    -unity-text-align: middle-center; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf");
+}
+.scr-tab.selected { background-color: rgba(45, 212, 191, 0.18); border-width: 2px; }
+#tab-monitor { border-color: rgba(56, 189, 248, 0.75); }
+
+/* hide buttons: a clearly visible bordered "×" in every panel's title row */
+.hide-btn {
+    min-width: 24px; min-height: 22px; width: 24px; height: 22px; padding: 0; margin: 0 0 0 6px; flex-shrink: 0;
+    font-size: 16px; -unity-text-align: middle-center; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf");
+    color: var(--text-1); background-color: rgba(26, 38, 54, 0.95); border-color: var(--line-strong); border-width: 1px; border-radius: 4px;
+}
+.hide-btn:hover { border-color: var(--crit); color: rgb(254, 202, 202); background-color: rgba(127, 29, 29, 0.55); }
+.hide-float { position: absolute; right: 6px; top: 6px; }
+#mode-legend { padding-right: 36px; }
+.ov-head { margin-bottom: 1px; }
+.ov-sec { margin-top: 8px; }
+#banner-head { min-height: 24px; }
+#pipeline-head { min-height: 24px; }
+#dp-head { min-height: 26px; }
+#channel-fault-text { flex-grow: 1; flex-shrink: 1; }
+#safety-banner .hide-btn { margin-left: 12px; }
+
+/* panel titles never overlap their source badges or collapse to a sliver: the badges keep their width, the title wraps */
+.panel-title-row { justify-content: flex-start; }
+.panel-title-row > .panel-title { flex-grow: 1; flex-shrink: 1; white-space: normal; margin-right: 6px; }
+.panel-title-row > .row { flex-shrink: 0; }
+.panel-title-row .src-badge Label { white-space: nowrap; }
+
+/* panel controls in the bottom bar */
+.pn-btn { flex-shrink: 0; font-size: 12px; min-height: 28px; padding: 2px 9px 2px 9px; margin-left: 4px; letter-spacing: 0.5px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+#btn-panels { border-color: var(--teal); color: var(--teal); }
+#t-status { flex-shrink: 1; min-width: 40px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0 8px 0 10px; -unity-text-align: middle-right; }
+
+/* Panels drawer */
+.pn-row { flex-direction: row; align-items: center; min-height: 38px; border-bottom-width: 1px; border-color: rgb(24, 34, 46); padding: 2px 4px 2px 4px; }
+.pn-name { flex-grow: 1; flex-shrink: 1; font-size: 14px; white-space: normal; }
+.pn-toggle { min-width: 130px; flex-shrink: 0; }
+
+/* the "MONITOR ▸" chip over the 3D bedside monitor */
+.monitor-chip {
+    position: absolute; translate: -50% -100%; min-height: 28px; padding: 2px 12px 2px 12px; font-size: 13px; letter-spacing: 1px;
+    color: rgb(186, 230, 253); background-color: rgba(8, 47, 73, 0.92); border-color: var(--cyan); border-width: 1px; border-radius: 5px;
+    -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf");
+}
+.monitor-chip:hover { background-color: rgba(12, 74, 110, 0.96); }
+
+/* ---------- panel visibility reflow (dashboard layout, all screens except MONITOR) ---------- */
+.no-left #left-column { display: none; }
+.no-left #stage { left: 4px; }
+.no-left #pipeline-strip { left: 4px; }
+.no-left #view-toolbar { left: 4px; }
+.no-left #placeholder-mark { left: 12px; }
+.no-left #safety-released { left: 12px; }
+.no-left #channel-fault-strip { left: 12px; }
+.no-charts #charts-strip { display: none; }
+.no-charts #left-column { bottom: 96px; }
+.no-charts #right-column { bottom: 96px; }
+.no-charts #stage { bottom: 136px; }
+.no-charts #view-toolbar { bottom: 98px; }
+.no-charts.bp-compact #right-column { bottom: 136px; }
+.no-charts.bp-compact.charts-tall #right-column { bottom: 136px; }
+.details-collapsed #safety-released { right: 12px; }
+.details-collapsed #channel-fault-strip { right: 12px; }
+/* region panel hidden, forecast shown: the right column shrinks to the forecast at its bottom */
+.no-details #right-column { top: auto; }
+.no-details.with-safety #right-column { top: auto; }
+.no-details.bp-compact #right-column { top: auto; }
+.no-details.bp-compact.no-pipeline #right-column { top: auto; }
+.no-details.with-safety.bp-compact #right-column { top: auto; }
+
+/* ---------- THEATRE ---------- */
+/* Everything secondary is hidden by default (ScreenLayout), so the reflow rules above give the stage the full screen:
+   left 4, right 4, top 60, bottom 136. The view / camera toolbar stays as the theatre's navigation. */
+.neram-root.scr-theatre #view-toolbar { background-color: rgba(8, 12, 18, 0.80); }
+
+/* ---------- MONITOR ---------- */
+#monitor-screen {
+    display: none; position: absolute; left: 0; right: 0; top: 56px; bottom: 92px;
+    background-color: rgb(7, 12, 19);
+}
+.neram-root.scr-monitor #monitor-screen { display: flex; }
+#monitor-head {
+    flex-direction: row; align-items: center; height: 50px; padding: 0 12px 0 16px;
+    background-color: rgb(11, 18, 27); border-bottom-width: 1px; border-color: var(--line-strong);
+}
+#monitor-title { font-size: 22px; letter-spacing: 4px; color: var(--cyan); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+#monitor-sub { font-size: 13px; color: var(--text-2); margin-left: 16px; flex-shrink: 1; white-space: normal; }
+.mon-nav { min-height: 34px; font-size: 14px; margin-left: 8px; padding: 3px 14px 3px 14px; flex-shrink: 0; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+#monitor-empty { margin: 60px 40px 0 40px; font-size: 20px; color: var(--text-2); -unity-text-align: middle-center; white-space: normal; }
+
+/* the 3D view and its overlays are covered */
+.neram-root.scr-monitor #stage { display: none; }
+.neram-root.scr-monitor #view-toolbar { display: none; }
+.neram-root.scr-monitor #mode-legend { display: none; }
+.neram-root.scr-monitor #placeholder-mark { display: none; }
+.neram-root.scr-monitor #world-layer { display: none; }
+.neram-root.scr-monitor #wearable-screen { display: none; }
+.neram-root.scr-monitor #hover-tip { display: none; }
+.neram-root.scr-monitor #freeroam-hint { display: none; }
+.neram-root.scr-monitor #module-inspector { display: none; }
+.neram-root.scr-monitor #channel-fault-strip { display: none; }
+.neram-root.scr-monitor #safety-released { display: none; }
+.neram-root.scr-monitor .monitor-chip { display: none; }
+.neram-root.scr-monitor #detail-panel { display: none; }
+
+/* geometry (1600 x 900 reference): header 56 · monitor head 50 -> content from 112 · bottom bar 92 -> content to 98.
+   One subject per page (ScreenPanels sets mp-values / mp-graphs / mp-flow); each page uses the full content area. */
+.neram-root.scr-monitor #detail-panel { display: none; }
+.neram-root.scr-monitor #left-column { left: 8px; right: 8px; top: 112px; bottom: 98px; width: auto; }
+.neram-root.scr-monitor #charts-strip { left: 8px; right: 8px; top: 112px; bottom: 98px; height: auto; flex-direction: column; }
+.neram-root.scr-monitor #pipeline-strip { left: 8px; right: 8px; top: 112px; height: 236px; padding: 8px 14px 10px 14px; }
+.neram-root.scr-monitor #right-column {
+    left: 8px; right: 8px; top: 356px; bottom: 98px; height: auto; width: auto;
+    background-color: rgba(0, 0, 0, 0); border-left-width: 0;
+}
+.neram-root.scr-monitor.mp-values #charts-strip { display: none; }
+.neram-root.scr-monitor.mp-values #pipeline-strip { display: none; }
+.neram-root.scr-monitor.mp-values #right-column { display: none; }
+.neram-root.scr-monitor.mp-graphs #left-column { display: none; }
+.neram-root.scr-monitor.mp-graphs #pipeline-strip { display: none; }
+.neram-root.scr-monitor.mp-graphs #right-column { display: none; }
+.neram-root.scr-monitor.mp-channels #left-column { display: none; }
+.neram-root.scr-monitor.mp-channels #pipeline-strip { display: none; }
+.neram-root.scr-monitor.mp-channels #right-column { display: none; }
+.neram-root.scr-monitor.mp-graphs #chart-c-panel { display: none; }
+.neram-root.scr-monitor.mp-channels #chart-a-panel { display: none; }
+.neram-root.scr-monitor.mp-channels #thermal-panel { display: none; }
+.neram-root.scr-monitor.mp-flow #left-column { display: none; }
+.neram-root.scr-monitor.mp-flow #charts-strip { display: none; }
+.neram-root.scr-monitor.mp-flow.no-pipeline #right-column { top: 112px; }
+.neram-root.scr-monitor.mp-flow.no-forecast #pipeline-strip { height: auto; bottom: 98px; }
+/* VALUES page: the value sections flow in two columns */
+.neram-root.scr-monitor #overview-panel .unity-scroll-view__content-container { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+.neram-root.scr-monitor #ov-pair { width: 49%; margin-right: 1%; }
+.neram-root.scr-monitor .ov-sec { width: 49%; margin-right: 1%; margin-top: 10px; }
+/* GRAPHS page: the three graphs stacked at full width */
+.neram-root.scr-monitor .chart-panel { flex-grow: 1; flex-basis: 0; width: auto; }
+.neram-root.scr-monitor #thermal-panel { flex-grow: 1.3; }
+/* latched safety banner inside the monitor, under its title bar */
+.neram-root.scr-monitor #safety-banner { top: 110px; left: 8px; right: 8px; border-radius: 6px; }
+.neram-root.scr-monitor.with-safety #left-column { top: 232px; }
+.neram-root.scr-monitor.with-safety #charts-strip { top: 232px; }
+.neram-root.scr-monitor.with-safety #pipeline-strip { top: 232px; }
+.neram-root.scr-monitor.with-safety #right-column { top: 476px; }
+.neram-root.scr-monitor.with-safety.mp-flow.no-pipeline #right-column { top: 232px; }
+/* short windows (logical height < 800) */
+.neram-root.scr-monitor.bp-short #pipeline-strip { height: 196px; }
+.neram-root.scr-monitor.bp-short #right-column { top: 316px; }
+.neram-root.scr-monitor.bp-short.with-safety #right-column { top: 436px; }
+
+/* large type on the monitor */
+.neram-root.scr-monitor .panel-title { font-size: 15px; }
+.neram-root.scr-monitor .panel { padding: 10px 14px 10px 14px; }
+.neram-root.scr-monitor .src-badge-group { font-size: 12px; }
+.neram-root.scr-monitor .src-badge-tag { font-size: 12px; }
+.neram-root.scr-monitor #banner-state { font-size: 28px; }
+.neram-root.scr-monitor #banner-sub { font-size: 15px; white-space: normal; }
+.neram-root.scr-monitor #banner-body { padding: 8px 14px 8px 14px; }
+.neram-root.scr-monitor .chip { font-size: 13px; }
+.neram-root.scr-monitor .ov-k { font-size: 16px; }
+.neram-root.scr-monitor .ov-big { font-size: 52px; }
+.neram-root.scr-monitor .ov-mid { font-size: 46px; }
+.neram-root.scr-monitor .ov-sub { font-size: 15px; }
+.neram-root.scr-monitor .ov-card { padding: 8px 10px 8px 10px; }
+.neram-root.scr-monitor .ov-row { min-height: 32px; }
+.neram-root.scr-monitor .ov-row-k { width: 230px; font-size: 17px; }
+.neram-root.scr-monitor .ov-row-v { font-size: 19px; }
+.neram-root.scr-monitor .dp-tag { font-size: 11px; }
+.neram-root.scr-monitor .ch-row { min-height: 38px; }
+.neram-root.scr-monitor .ch-head { font-size: 15px; }
+.neram-root.scr-monitor .ch-c-id { width: 150px; font-size: 18px; }
+.neram-root.scr-monitor .ch-c-status { width: 150px; font-size: 17px; }
+.neram-root.scr-monitor .ch-c-num { width: 100px; font-size: 20px; }
+.neram-root.scr-monitor .na-name { width: 230px; font-size: 17px; }
+.neram-root.scr-monitor .na-value { width: 60px; font-size: 18px; }
+.neram-root.scr-monitor .na-why { font-size: 15px; }
+.neram-root.scr-monitor .pl-title { font-size: 15px; white-space: normal; }
+.neram-root.scr-monitor .pl-value { font-size: 26px; white-space: normal; }
+.neram-root.scr-monitor .pl-detail { font-size: 15px; white-space: normal; }
+.neram-root.scr-monitor .pl-note { font-size: 13px; }
+.neram-root.scr-monitor .pl-tag { font-size: 11px; }
+.neram-root.scr-monitor .pl-card { padding: 10px 14px 10px 14px; }
+.neram-root.scr-monitor .chart-subtitle { font-size: 13px; white-space: normal; }
+.neram-root.scr-monitor .chart-value { font-size: 18px; }
+.neram-root.scr-monitor .legend-text { font-size: 13px; }
+.neram-root.scr-monitor #thermal-legend .legend-text { font-size: 12px; }
+.neram-root.scr-monitor .legend-swatch { width: 16px; height: 4px; }
+.neram-root.scr-monitor .axis-label { font-size: 13px; }
+.neram-root.scr-monitor .chart-note { font-size: 13px; }
+.neram-root.scr-monitor .chart-note-dim { font-size: 13px; }
+.neram-root.scr-monitor .lane-label { font-size: 13px; }
+.neram-root.scr-monitor .chart-cursor-label { font-size: 13px; }
+.neram-root.scr-monitor .btn-tiny { font-size: 13px; min-height: 26px; }
+.neram-root.scr-monitor #forecast-title { font-size: 17px; }
+.neram-root.scr-monitor #forecast-prov { font-size: 15px; }
+.neram-root.scr-monitor #forecast-cards { flex-direction: row; }
+.neram-root.scr-monitor .fc-card { flex-grow: 1; flex-basis: 0; flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding: 12px 18px 12px 18px; margin: 0 6px 0 6px; }
+.neram-root.scr-monitor .fc-h { width: auto; font-size: 17px; }
+.neram-root.scr-monitor .fc-mean { width: auto; font-size: 34px; }
+.neram-root.scr-monitor .fc-int { width: auto; font-size: 18px; }
+.neram-root.scr-monitor .p-track { width: auto; height: 9px; margin: 8px 0 4px 0; }
+.neram-root.scr-monitor .p-text { font-size: 18px; }
+.neram-root.scr-monitor .hide-btn { width: 28px; height: 26px; min-width: 28px; min-height: 26px; font-size: 18px; }
+
+/* ---------- short layout (logical height < 800: a window much wider than 16:9, e.g. a wide, short Editor Game view) ---------- */
+
+
+
+/* ---------- v4 fixes from the in-Unity review ---------- */
+/* monitor page buttons */
+#monitor-pages { margin-left: 18px; flex-shrink: 0; }
+.mon-page { min-height: 34px; font-size: 14px; padding: 3px 14px 3px 14px; margin-right: 6px; letter-spacing: 1px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.mon-page.selected { background-color: rgba(56, 189, 248, 0.18); border-color: var(--cyan); color: rgb(186, 230, 253); border-width: 2px; }
+#monitor-sub { max-width: 360px; }
+.bp-compact #monitor-sub { display: none; }
+/* header: the scenario name and its source chips keep their room next to the screen tabs */
+#hdr-scenario { min-width: 220px; }
+.hdr-model { max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+/* FULL ANALYSIS at 1366×768 (checked in the built player): the left column, the overview cards and the chart footers
+   fit without clipping. MONITOR keeps its own larger sizes (more specific rules below). */
+.ov-big, .ov-mid { font-size: 19px; }
+.ch-c-id { width: 58px; }
+.ch-c-status { width: 60px; }
+.ch-c-num { width: 32px; }
+.ch-head.ch-c-num { font-size: 10px; }
+#chart-c-legend, #thermal-legend { flex-shrink: 1; min-width: 0; }
+/* graph C names each channel on its own row, so its legend may be cut rather than wrap and squeeze the plot */
+#chart-c-legend { flex-wrap: nowrap; overflow: hidden; }
+.chart-value { flex-shrink: 0; }
+.neram-root.scr-analysis #chart-c-value { font-size: 12px; }
+/* a little slack so FULLSCREEN / EXIT FULLSCREEN never touches the right edge (seen at 1366×768 while playing) */
+#clock-block { margin-right: 8px; }
+.hdr-status { margin: 0 10px 0 8px; }
+#brand-sub { max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.scr-tab { min-width: 90px; padding: 3px 9px 3px 9px; }
+.bp-compact .hdr-model { display: none; }
+.bp-compact #brand-sub { display: none; }
+.bp-compact #btn-capture { display: none; }
+/* pipeline cards: the source tag never runs into the next card */
+.pl-card { overflow: hidden; }
+.pl-card .row { overflow: hidden; }
+.pl-title { flex-shrink: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pl-tag { flex-shrink: 0; }
+/* titles keep a readable minimum width; their badges move to a second line when space runs out */
+.panel-title-row { flex-wrap: wrap; }
+.panel-title-row > .panel-title { min-width: 150px; }
+#clock-time { font-size: 25px; }
+/* THEATRE: the view / camera toolbar sits under the header, so the bottom of the 3D view (the feet and the foot devices)
+   is never covered; the camera framing (NeramApp.TheatreFraming) assumes this. */
+.neram-root.scr-theatre.no-pipeline #view-toolbar { top: 62px; bottom: auto; }
+.neram-root.scr-theatre.no-pipeline.with-safety #view-toolbar { top: 178px; }
+.neram-root.scr-theatre.no-pipeline #stage { top: 102px; }
+.neram-root.scr-theatre.no-pipeline.with-safety #stage { top: 218px; }
+.neram-root.scr-theatre.no-pipeline #placeholder-mark { top: 104px; }
+.neram-root.scr-theatre.no-pipeline #mode-legend { top: 104px; }
+.neram-root.scr-theatre.no-pipeline.with-safety #placeholder-mark { top: 220px; }
+.neram-root.scr-theatre.no-pipeline.with-safety #mode-legend { top: 220px; }
+/* chart panels: the title, subtitle and legend rows keep their height; only the plot shrinks */
+.chart-panel > .row { flex-shrink: 0; }
+.chart-panel > .panel-title-row { flex-shrink: 0; }
+.neram-root.scr-monitor #monitor-sub { display: none; }
+/* header: Capture lives in the sidebar (MENU > Capture screenshot) so the clock and FULLSCREEN always fit */
+#btn-capture { display: none; }
+/* dashboard forecast: one compact row per horizon (mean + probability); the 80/95 % intervals are in each card's
+   tooltip, in graph B and on the MONITOR · PIPELINE · FORECAST page */
+#forecast-cards .fc-int { display: none; }
+.neram-root.scr-monitor #forecast-cards .fc-int { display: flex; }
+#forecast-head { flex-wrap: nowrap; }
+#forecast-head > .panel-title { min-width: 0; }
+/* region panel rows: a narrower name column so values ("Predictive warming", "HEATING 18 %") wrap between words */
+.dp-name { width: 96px; }
+.dp-value { font-size: 12px; }
+
+/* ---------- header and watermark polish (Sai, 18 Oct 2026; checked at 1366x768) ---------- */
+/* the stand-in watermark is a readable badge instead of faint spaced-out text over the 3D view */
+#placeholder-mark {
+    font-size: 11px; letter-spacing: 0.5px;
+    color: rgb(253, 224, 71); background-color: rgba(8, 12, 18, 0.9);
+    border-width: 1px; border-color: rgba(251, 191, 36, 0.65); border-radius: 4px;
+    padding: 3px 8px 3px 8px;
+}
+.neram-root.scr-theatre.no-pipeline #placeholder-mark { top: 110px; }
+/* source chips never wrap mid-word; the short labels fit next to the title */
+#scenario-chips .chip { white-space: nowrap; }
+/* controller / twin line: short form fits; the full text is in the tooltip */
+.hdr-model { max-width: 230px; font-size: 11px; }
+/* chip row under the scenario title: compact so all source chips fit at 1366 px */
+#hdr-scenario .hdr-chip-row .chip, #hdr-scenario .hdr-chip-row .hdr-badge {
+    font-size: 9px; letter-spacing: 0; padding: 1px 3px 1px 3px; margin-left: 0; margin-right: 2px;
+}
+/* FULL ANALYSIS: chart cards are opaque so 3D world labels never show through the graphs */
+.neram-root.scr-analysis .chart-panel { background-color: rgb(12, 19, 29); }
+/* graph C already names each channel inside the plot; the run-together bottom legend was cut off, so it is hidden
+   (the per-channel % values next to it stay) */
+.neram-root.scr-analysis #chart-c-legend { display: none; }
+/* every FULL ANALYSIS card is opaque (3D chips no longer show through the columns) */
+.neram-root.scr-analysis .panel { background-color: rgb(12, 19, 29); }
+/* left-column channel table: limb name and status no longer run together */
+.neram-root.scr-analysis .ch-c-id, .neram-root.scr-analysis .ch-c-status { font-size: 10px; }
+.neram-root.scr-analysis .ch-c-status { padding-left: 4px; }
+/* header: the controller/twin line yields first, so the source chips always stay whole */
+.hdr-model { max-width: 190px; }
+
+/* ======================= Parameters (key view) and Diagnostics (overview), Sai 18 Oct 2026 ======================= */
+.kp-summary, .dg-tiles { flex-direction: row; margin: 4px 0 10px 0; }
+.kp-tile, .dg-tile {
+    flex-grow: 1; flex-basis: 0; margin-right: 8px; padding: 10px 12px 10px 12px;
+    background-color: var(--bg-2); border-width: 1px; border-color: var(--line); border-radius: 8px; border-left-width: 4px;
+}
+.kp-tile-big { font-size: 26px; color: var(--text-1); -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.kp-tile-label { font-size: 11px; color: var(--text-2); letter-spacing: 1px; }
+.kp-tile-ok { border-left-color: var(--ok); }
+.kp-tile-ph { border-left-color: var(--tag-assumed); }
+.kp-tile-none { border-left-color: var(--text-3); }
+.kp-intro { font-size: 12px; color: var(--text-2); white-space: normal; margin-bottom: 6px; }
+.kp-waiting { font-size: 12px; color: var(--tag-assumed); white-space: normal; margin-bottom: 10px; }
+.kp-group { background-color: var(--bg-2); border-width: 1px; border-color: var(--line); border-radius: 8px; padding: 8px 12px 4px 12px; margin-bottom: 10px; }
+.kp-group-title { font-size: 12px; color: var(--teal); letter-spacing: 1px; margin-bottom: 4px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.kp-row { flex-direction: row; padding: 7px 0 7px 0; border-top-width: 1px; border-color: var(--line); }
+.kp-left { flex-grow: 1; flex-shrink: 1; min-width: 0; margin-right: 12px; }
+.kp-right { width: 200px; flex-shrink: 0; align-items: flex-end; }
+.kp-name { font-size: 14px; color: var(--text-1); -unity-font-definition: url("../Fonts/Inter-Medium.ttf"); }
+.kp-meaning { font-size: 11px; color: var(--text-3); white-space: normal; margin-top: 2px; }
+.kp-value { font-size: 14px; white-space: normal; -unity-text-align: upper-right; margin-bottom: 3px; -unity-font-definition: url("../Fonts/JetBrainsMono-Medium.ttf"); }
+.kp-value-set { color: var(--text-1); }
+.kp-value-ph { color: var(--text-2); }
+.kp-chip-ok { border-color: var(--ok); color: var(--ok); }
+.kp-chip-none { border-color: var(--text-3); color: var(--text-3); }
+.kp-who { font-size: 10px; color: var(--text-3); margin-top: 3px; -unity-text-align: upper-right; white-space: normal; }
+
+.dg-title { font-size: 18px; color: var(--text-1); white-space: normal; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.dg-sub { font-size: 12px; color: var(--text-3); margin-bottom: 8px; }
+.dg-tile-label { font-size: 10px; color: var(--text-3); letter-spacing: 1px; }
+.dg-tile-big { font-size: 22px; color: var(--text-1); margin: 2px 0 2px 0; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.dg-tile-sub { font-size: 11px; color: var(--text-2); }
+.dg-ok { border-left-color: var(--ok); }
+.dg-ok .dg-tile-big { color: var(--ok); }
+.dg-warn { border-left-color: var(--warn); }
+.dg-warn .dg-tile-big { color: var(--warn); }
+.dg-bad { border-left-color: var(--crit); }
+.dg-bad .dg-tile-big { color: var(--crit); }
+.dg-neutral { border-left-color: var(--info); }
+.dg-card { background-color: var(--bg-2); border-width: 1px; border-color: var(--line); border-radius: 8px; padding: 10px 12px 10px 12px; margin-bottom: 10px; }
+.dg-card-title { font-size: 13px; color: var(--teal); margin-bottom: 6px; -unity-font-definition: url("../Fonts/Inter-SemiBold.ttf"); }
+.dg-src-row { flex-direction: row; align-items: center; padding: 5px 0 5px 0; border-top-width: 1px; border-color: var(--line); }
+.dg-src-group { width: 92px; flex-shrink: 0; font-size: 12px; color: var(--text-1); }
+.dg-src-row .chip { width: 86px; flex-shrink: 0; -unity-text-align: middle-center; margin-right: 10px; }
+.dg-src-meaning { flex-grow: 1; flex-shrink: 1; min-width: 0; font-size: 12px; color: var(--text-2); white-space: normal; }
+.dg-legend { font-size: 10px; color: var(--text-3); white-space: normal; margin-top: 6px; }
+.dg-todo { padding: 6px 0 6px 0; border-top-width: 1px; border-color: var(--line); }
+.dg-todo-what { font-size: 13px; color: var(--text-1); white-space: normal; }
+.dg-todo-who { font-size: 11px; color: var(--tag-assumed); white-space: normal; margin-left: 18px; margin-top: 2px; }
+.dg-done { font-size: 12px; color: var(--ok); white-space: normal; }
+.dg-issue { font-size: 12px; color: var(--warn); white-space: normal; }
+/* advanced parameter table: status chips stack instead of running into the owner column */
+.ptable-status.col { align-items: flex-start; }
+.ptable-status.col .chip { margin-left: 0; margin-bottom: 2px; }
+.kp-tile-assumed { border-left-color: var(--tag-assumed); }
+.kp-tile-ph { border-left-color: var(--warn); }

@@ -1,0 +1,22 @@
+# NERAM Python environment (owner: Sai). Pinned to the versions that ran the 17 Oct 2026 test suite.
+# Imports verified from the code:
+#   src/*, tests/test_p_below_hypo_mc.py, tests/test_twin_export.py, analysis/*  -> numpy, scipy
+#   tools/make_twin_syn_figures.py                                                -> matplotlib
+#   analysis/dev_robust_*.py, development_*.py                                    -> numpy, scipy, pandas, requests
+#   tests/test_replay_schema.py                                                   -> jsonschema
+#   integration/*.py, tools/check_replay_semantics.py, tests/test_interface.py,
+#   tests/test_controller_log_integration.py                                      -> standard library only
+# The Colab development scripts ran with Colab's own versions; record `pip freeze` from that runtime in
+# docs/AUDIT_TRAIL.md when the development fit is run.
+name: neram
+channels:
+  - conda-forge
+dependencies:
+  - python=3.13
+  - numpy=2.5.3
+  - scipy=1.18.1
+  - pandas=3.0.5
+  - matplotlib=3.11.2
+  - requests=2.34.2
+  - jsonschema=4.26.0
+  - pytest

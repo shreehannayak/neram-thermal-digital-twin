@@ -1,0 +1,430 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:Style src="neram.uss" />
+    <ui:VisualElement name="root" class="root">
+
+        <!-- 3D viewport (full screen, behind everything). Camera/selection input is polled by NeramInputController and is
+             ignored whenever the pointer is over an element inside a "ui-block" container. -->
+        <ui:VisualElement name="viewport" picking-mode="Ignore" />
+        <ui:VisualElement name="world-layer" picking-mode="Ignore" />
+        <ui:VisualElement name="stage" picking-mode="Ignore" />
+        <ui:Label name="placeholder-mark" picking-mode="Ignore" text="SYNTHETIC STAND-IN DATA · NOT NERAM TWIN / CONTROLLER OUTPUT" class="hidden" />
+        <ui:VisualElement name="wearable-screen" picking-mode="Ignore" class="hidden" />
+        <ui:Label name="hover-tip" picking-mode="Ignore" class="hidden" />
+        <ui:Label name="freeroam-hint" picking-mode="Ignore" class="hidden" text="FREE ROAM · W A S D move · mouse look · Space up · Ctrl down · Shift faster · Esc exit" />
+        <ui:VisualElement name="channel-fault-strip" class="hidden ui-block">
+            <ui:Label name="channel-fault-text" class="t-sm wrap" />
+        </ui:VisualElement>
+        <ui:Label name="safety-released" class="hidden" picking-mode="Ignore" />
+
+        <!-- Visualisation-mode legends (top-right of the stage) -->
+        <ui:VisualElement name="mode-legend" class="ui-block hidden">
+            <ui:VisualElement name="internal-legend" class="hidden">
+                <ui:Label text="ILLUSTRATIVE ANATOMY — NOT PATIENT-SPECIFIC FLOW DATA" class="legend-title legend-warn" />
+                <ui:VisualElement class="row"><ui:VisualElement class="legend-block key-artery" /><ui:Label text="artery (simplified)" class="legend-text" /></ui:VisualElement>
+                <ui:VisualElement class="row"><ui:VisualElement class="legend-block key-vein" /><ui:Label text="vein (simplified)" class="legend-text" /></ui:VisualElement>
+                <ui:VisualElement class="row"><ui:VisualElement class="legend-dot key-pulse" /><ui:Label text="pulse = visual cue only, not a flow rate" class="legend-text" /></ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="thermal-mode-legend" class="hidden">
+                <ui:Label text="THERMAL VIEW · patient-level signal" class="legend-title" />
+                <ui:VisualElement name="thermal-legend-bar" />
+                <ui:Label name="thermal-legend-value" text="—" class="legend-value" />
+                <ui:Label text="Uniform tint = ONE patient-level value (T_obs). The replay has no regional, limb or organ temperatures, so none are shown. Device glow = replayed heat command." class="legend-note" />
+            </ui:VisualElement>
+            <ui:VisualElement name="exploded-legend" class="hidden">
+                <ui:Label name="exploded-title" text="EXPLODED VIEW" class="legend-title" />
+                <ui:Label text="Mitts: liner · insulation · heating panel · shell/cuff · straps. Boots: liner · amber heating layer · cushioning midsole · outsole + tread (upper stays on the foot)." class="legend-note" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Visualisation + camera toolbar (bottom of the stage) -->
+        <ui:VisualElement name="view-toolbar" class="ui-block">
+            <ui:Label text="VIEW" class="panel-title tb-label" />
+            <ui:Button name="view-external" text="External" class="btn btn-tb selected" />
+            <ui:Button name="view-internal" text="Internal" class="btn btn-tb" />
+            <ui:Button name="view-thermal" text="Thermal" class="btn btn-tb" />
+            <ui:Button name="view-exploded" text="Exploded" class="btn btn-tb" />
+            <ui:VisualElement name="exp-controls" class="row hidden">
+                <ui:Button name="exp-ch1" text="CH1" class="btn btn-tb btn-hand" />
+                <ui:Button name="exp-ch2" text="CH2" class="btn btn-tb btn-hand" />
+                <ui:Button name="exp-ch3" text="CH3" class="btn btn-tb btn-foot" />
+                <ui:Button name="exp-ch4" text="CH4" class="btn btn-tb btn-foot" />
+                <ui:Button name="exp-reset" text="Assemble" class="btn btn-tb" />
+            </ui:VisualElement>
+            <ui:VisualElement class="spacer" />
+            <ui:Label text="CAMERA" class="panel-title tb-label" />
+            <ui:Button name="cam-inspect" text="Inspect" class="btn btn-tb selected" />
+            <ui:Button name="cam-freeroam" text="Free Roam (R)" class="btn btn-tb" />
+            <ui:Button name="btn-camera" text="Preset ▸" class="btn btn-tb" />
+            <ui:Label name="cam-preset-label" text="Overview" class="tb-preset" />
+            <ui:Button name="cam-reset" text="Reset View" class="btn btn-tb" />
+            <ui:Button name="btn-details" text="◂ Details" tooltip="Show or hide the selected-region panel" class="btn btn-tb" />
+        </ui:VisualElement>
+
+        <!-- MONITOR screen (v4): an opaque in-app screen over the 3D view. The value column, pipeline, graphs and forecast are
+             re-laid out over it in large type (.scr-monitor rules in neram.uss); the replay, clock and camera are untouched. -->
+        <ui:VisualElement name="monitor-screen" class="ui-block">
+            <ui:VisualElement name="monitor-head">
+                <ui:Label name="monitor-title" text="MONITOR" />
+                <ui:VisualElement name="monitor-pages" class="row">
+                    <ui:Button name="mon-page-values" text="VALUES" tooltip="Temperature signal, twin estimate, controller, alerts, faults, CH1–CH4 (the bedside patient monitor opens this page)" class="btn mon-page" />
+                    <ui:Button name="mon-page-graphs" text="TEMPERATURE GRAPHS" tooltip="Graph A (temperature signal) and graph B (measured vs twin) at full width (the large wall display in the theatre opens this page)" class="btn mon-page" />
+                    <ui:Button name="mon-page-channels" text="CHANNEL GRAPH" tooltip="Graph C: replayed warming-channel commands CH1–CH4 at full size" class="btn mon-page" />
+                    <ui:Button name="mon-page-flow" text="PIPELINE · FORECAST" tooltip="Five-stage pipeline and +20/+30/+60 min forecast (the ventilator screen opens this page)" class="btn mon-page" />
+                </ui:VisualElement>
+                <ui:Label name="monitor-sub" text="Replayed values · same replay clock and scenario as the theatre view" />
+                <ui:VisualElement class="spacer" />
+                <ui:Button name="monitor-to-theatre" text="◂  THEATRE" tooltip="Back to the operating-theatre view (Esc)" class="btn mon-nav" />
+                <ui:Button name="monitor-to-analysis" text="FULL ANALYSIS" tooltip="Full dashboard over the 3D view" class="btn mon-nav" />
+                <ui:Button name="monitor-close" text="×  Close" tooltip="Close the monitor and return to the previous screen (Esc)" class="btn mon-nav" />
+            </ui:VisualElement>
+            <ui:Label name="monitor-empty" text="Every panel of this monitor page is hidden. Use SHOW PANELS or RESET LAYOUT in the bottom bar to bring them back." class="hidden" />
+        </ui:VisualElement>
+
+        <!-- Left: live parameters (every section has its own hide button, added at runtime) -->
+        <ui:VisualElement name="left-column" class="ui-block">
+            <ui:VisualElement name="controller-banner" class="tone-neutral">
+                <ui:VisualElement name="banner-stripe" />
+                <ui:VisualElement name="banner-body">
+                    <ui:VisualElement name="banner-head" class="row">
+                        <ui:Label name="banner-kicker" text="CONTROLLER" class="panel-title" />
+                        <ui:VisualElement class="spacer" />
+                        <ui:VisualElement name="banner-src" class="row" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="row">
+                        <ui:Label name="banner-state" text="-" />
+                        <ui:Label name="banner-substate" text="" class="t-sm c-2" style="margin-left: 6px;" />
+                    </ui:VisualElement>
+                    <ui:Label name="banner-sub" text="" />
+                    <ui:VisualElement name="banner-chips" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:ScrollView name="overview-panel" mode="Vertical" horizontal-scroller-visibility="Hidden" class="panel grow">
+                <ui:VisualElement name="ov-pair" class="ov-pair">
+                    <ui:VisualElement name="ov-card-temp" class="ov-card ov-half">
+                        <ui:VisualElement name="ov-head-temp" class="row ov-head">
+                            <ui:Label text="TEMP. SIGNAL" tooltip="Patient temperature signal (anatomical site not established; not core temperature)" class="ov-k grow" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="ov-obs-src" class="row ov-src" />
+                        <ui:Label name="ov-tobs" text="—" class="ov-big" />
+                        <ui:Label name="ov-tobs-sub" text="no replay loaded" class="ov-sub" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="ov-card-twin" class="ov-card ov-half">
+                        <ui:VisualElement name="ov-head-twin" class="row ov-head">
+                            <ui:Label text="TWIN ESTIMATE" tooltip="Model (digital-twin) estimate and its uncertainty, only as supplied by the replay" class="ov-k grow" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="ov-twin-src" class="row ov-src" />
+                        <ui:Label name="ov-test" text="—" class="ov-mid" />
+                        <ui:Label name="ov-test-sub" text="" class="ov-sub" />
+                        <ui:Label name="ov-twin-valid" text="" class="ov-sub" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="sec-ch" class="ov-sec">
+                    <ui:VisualElement name="sec-ch-head" class="row ov-head"><ui:Label text="WARMING CHANNELS (replayed commands)" class="ov-k grow" /></ui:VisualElement>
+                    <ui:VisualElement name="ov-channels" class="ov-channels" />
+                </ui:VisualElement>
+                <ui:VisualElement name="sec-ctrl" class="ov-sec">
+                    <ui:VisualElement name="sec-ctrl-head" class="row ov-head"><ui:Label text="CONTROLLER · ALERTS · FAULTS" class="ov-k grow" /></ui:VisualElement>
+                    <ui:VisualElement name="ov-ctrl" />
+                </ui:VisualElement>
+                <ui:VisualElement name="sec-quality" class="ov-sec ov-secondary">
+                    <ui:VisualElement name="sec-quality-head" class="row ov-head"><ui:Label text="SIGNAL QUALITY · DATA AVAILABILITY" class="ov-k grow" /></ui:VisualElement>
+                    <ui:VisualElement name="ov-quality" />
+                </ui:VisualElement>
+                <ui:VisualElement name="sec-na" class="ov-sec ov-secondary">
+                    <ui:VisualElement name="sec-na-head" class="row ov-head"><ui:Label text="NOT IN THE REPLAY" class="ov-k grow" /></ui:VisualElement>
+                    <ui:VisualElement name="ov-unavailable" />
+                </ui:VisualElement>
+            </ui:ScrollView>
+        </ui:VisualElement>
+
+        <!-- Right: selected region + forecast -->
+        <ui:VisualElement name="right-column" class="ui-block">
+            <ui:VisualElement name="detail-panel" class="panel grow">
+                <ui:VisualElement name="dp-head" class="row">
+                    <ui:Label name="dp-title" text="SELECT A REGION" class="dp-title grow" />
+                    <ui:Button name="dp-collapse" text="×" tooltip="Hide the region panel (restore: Details ◂ in the view toolbar, SHOW PANELS or PANELS ▾)" class="btn hide-btn" />
+                </ui:VisualElement>
+                <ui:Label name="dp-sub" text="" class="dp-sub" />
+                <ui:VisualElement name="dp-actions" class="dp-actions" />
+                <ui:ScrollView name="dp-body" class="grow" />
+            </ui:VisualElement>
+            <ui:VisualElement name="forecast-panel" class="panel">
+                <ui:VisualElement name="forecast-head" class="panel-title-row">
+                    <ui:Label name="forecast-title" text="FORECAST" class="panel-title" />
+                    <ui:VisualElement name="forecast-src" class="row" />
+                </ui:VisualElement>
+                <ui:Label name="forecast-prov" class="t-xs c-3" />
+                <ui:VisualElement name="forecast-cards" />
+                <ui:Label name="forecast-hidden" class="fc-hidden-msg hidden" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Pipeline strip (top of the stage) -->
+        <ui:VisualElement name="pipeline-strip" class="ui-block">
+            <ui:VisualElement name="pipeline-head" class="row">
+                <ui:Label text="PIPELINE" class="panel-title" />
+                <ui:Label name="pipeline-note" class="pl-note grow" />
+            </ui:VisualElement>
+            <ui:VisualElement name="pipeline-stages" class="row" />
+        </ui:VisualElement>
+
+        <!-- Charts (replay-driven, cursor = current frame; click A or C to seek) -->
+        <ui:VisualElement name="charts-strip" class="ui-block">
+            <ui:VisualElement name="chart-a-panel" class="panel chart-panel">
+                <ui:VisualElement name="chart-a-head" class="panel-title-row">
+                    <ui:Label text="A · PATIENT TEMPERATURE SIGNAL (°C)" class="panel-title" />
+                    <ui:VisualElement name="chart-a-src" class="row" />
+                </ui:VisualElement>
+                <ui:VisualElement class="row">
+                    <ui:Label name="chart-a-note" class="chart-subtitle" />
+                    <ui:VisualElement class="spacer" />
+                    <ui:Label name="chart-a-value" class="chart-value" />
+                </ui:VisualElement>
+                <ui:VisualElement name="chart-a-host" class="chart grow" />
+                <ui:VisualElement name="chart-a-legend" class="legend" />
+            </ui:VisualElement>
+            <ui:VisualElement name="thermal-panel" class="panel chart-panel">
+                <ui:VisualElement name="thermal-head" class="panel-title-row">
+                    <ui:Label text="B · MEASURED vs TWIN" tooltip="Measurement (T_obs) vs twin estimate (T_est ± SD) over the last 60 min, with the forecast for the next 60 min when the replay supplies it" class="panel-title" />
+                    <ui:VisualElement name="thermal-src" class="row" />
+                </ui:VisualElement>
+                <ui:VisualElement name="thermal-chart-host" class="grow" />
+                <ui:VisualElement class="row">
+                    <ui:VisualElement name="thermal-legend" class="legend grow" />
+                    <ui:Button name="tg-uncertainty" text="±SD" class="btn btn-ghost btn-tiny selected" />
+                    <ui:Button name="tg-flags" text="Flags" class="btn btn-ghost btn-tiny selected" />
+                    <ui:Button name="tg-compare" text="ASSUMED compare" class="btn btn-ghost btn-tiny" />
+                    <ui:Button name="tg-autoscale" text="Auto" class="btn btn-ghost btn-tiny" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="chart-c-panel" class="panel chart-panel">
+                <ui:VisualElement name="chart-c-head" class="panel-title-row">
+                    <ui:Label text="C · WARMING-CHANNEL COMMANDS CH1–CH4 (%)" class="panel-title" />
+                    <ui:VisualElement name="chart-c-src" class="row" />
+                </ui:VisualElement>
+                <ui:VisualElement class="row">
+                    <ui:Label name="chart-c-note" class="chart-subtitle" />
+                    <ui:VisualElement class="spacer" />
+                </ui:VisualElement>
+                <ui:VisualElement name="chart-c-host" class="chart grow" />
+                <ui:VisualElement class="row">
+                    <ui:VisualElement name="chart-c-legend" class="legend grow" />
+                    <ui:Label name="chart-c-value" class="chart-value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Hardware inspector (exploded layer list, opened from the detail panel) -->
+        <ui:VisualElement name="module-inspector" class="panel hidden ui-block" />
+
+        <!-- Safety banner (full width, SAFETY_SHUTDOWN only) -->
+        <ui:VisualElement name="safety-banner" class="hidden ui-block">
+            <ui:VisualElement class="grow">
+                <ui:Label name="safety-title" text="SAFETY SHUTDOWN - LATCHED" />
+                <ui:Label name="safety-detail" class="wrap" />
+            </ui:VisualElement>
+            <ui:Label name="safety-reset" />
+        </ui:VisualElement>
+
+        <!-- Header: menu · identity · scenario + source chips · playback status · replay clock · fullscreen · capture.
+             Secondary navigation lives in the collapsible sidebar (#sidebar). -->
+        <ui:VisualElement name="top-bar" class="ui-block">
+            <ui:Button name="btn-menu" text="☰  MENU" tooltip="Open the sidebar: scenarios, events, parameters, all fields, diagnostics, sources, settings" class="btn" />
+            <ui:VisualElement name="hdr-brand" class="col">
+                <ui:VisualElement class="row">
+                    <ui:Label name="brand" text="NERAM" />
+                    <ui:Label name="brand-title" text="Perioperative Thermal Digital Twin" />
+                </ui:VisualElement>
+                <ui:Label name="brand-sub" text="replay-driven prototype viewer" />
+                <ui:Label name="hdr-disclaimer" text="" />
+            </ui:VisualElement>
+            <ui:VisualElement class="hdr-sep" />
+            <ui:VisualElement name="screen-tabs" class="row">
+                <ui:Button name="tab-theatre" text="THEATRE" tooltip="Operating theatre and patient, secondary panels hidden" class="btn scr-tab" />
+                <ui:Button name="tab-monitor" text="MONITOR" tooltip="Monitoring screen: values, pipeline, graphs and forecast in large type (N, or click the bedside monitor in 3D)" class="btn scr-tab" />
+                <ui:Button name="tab-analysis" text="FULL ANALYSIS" tooltip="Full dashboard over the 3D view" class="btn scr-tab" />
+            </ui:VisualElement>
+            <ui:VisualElement class="hdr-sep" />
+            <ui:VisualElement name="hdr-scenario" class="col">
+                <ui:VisualElement class="row">
+                    <ui:Label name="scenario-id" />
+                    <ui:Label name="scenario-title" text="No scenario loaded" />
+                </ui:VisualElement>
+                <ui:VisualElement class="row hdr-chip-row">
+                    <ui:VisualElement name="scenario-chips" class="row" />
+                    <ui:Label name="hdr-synthetic" text="SYNTHETIC REPLAY" class="hdr-badge hidden" />
+                    <ui:Label name="hdr-assumed" text="SIM / ASSUMED" tooltip="SIMULATED and ASSUMED values are marked where they appear" class="hdr-badge hdr-badge-assumed hidden" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="spacer" />
+            <ui:VisualElement class="col hdr-status">
+                <ui:VisualElement class="row" style="justify-content: flex-end;">
+                    <ui:Label name="hdr-play-state" text="NO REPLAY" class="hdr-chip" />
+                    <ui:Label name="hdr-speed" text="×—" class="hdr-chip" />
+                </ui:VisualElement>
+                <ui:Label name="hdr-model" text="no replay" class="hdr-model" />
+            </ui:VisualElement>
+            <ui:VisualElement name="clock-block">
+                <ui:Label name="clock-time" text="T+00:00:00" />
+                <ui:Label name="clock-sub" text="" />
+            </ui:VisualElement>
+            <ui:Button name="btn-fullscreen" text="FULLSCREEN" tooltip="Fullscreen at the display's native resolution (F11). Replay state is kept." class="btn" />
+            <ui:Button name="btn-capture" text="Capture" tooltip="Save a PNG of the screen" class="btn btn-ghost" />
+        </ui:VisualElement>
+
+        <!-- Transport -->
+        <ui:VisualElement name="transport" class="ui-block">
+            <ui:VisualElement name="transport-row">
+                <ui:Button name="t-restart" text="|&lt;" tooltip="Restart (Home)" class="btn btn-icon" />
+                <ui:Button name="t-prev-event" text="&lt;&lt;" tooltip="Previous event (Shift+Left)" class="btn btn-icon" />
+                <ui:Button name="t-step-back" text="&lt;" tooltip="Step back one frame (Left)" class="btn btn-icon" />
+                <ui:Button name="t-play" text="PLAY" tooltip="Play / pause (Space)" class="btn btn-primary" style="min-width: 78px;" />
+                <ui:Button name="t-step-fwd" text="&gt;" tooltip="Step forward one frame (Right)" class="btn btn-icon" />
+                <ui:Button name="t-next-event" text="&gt;&gt;" tooltip="Next event (Shift+Right)" class="btn btn-icon" />
+                <ui:VisualElement style="width: 12px;" />
+                <ui:Label text="SPEED" class="panel-title" style="margin-right: 4px;" />
+                <ui:Button name="t-speed-1" text="1×" tooltip="Real time (key 1)" class="btn speed-btn selected" />
+                <ui:Button name="t-speed-2" text="2×" tooltip="key 2" class="btn speed-btn" />
+                <ui:Button name="t-speed-4" text="4×" tooltip="key 3" class="btn speed-btn" />
+                <ui:Button name="t-speed-10" text="10×" tooltip="key 4" class="btn speed-btn" />
+                <ui:Button name="t-speed-60" text="60×" tooltip="key 5" class="btn speed-btn" />
+                <ui:VisualElement style="width: 12px;" />
+                <ui:Label text="JUMP" class="panel-title" style="margin-right: 4px;" />
+                <ui:Button name="j-transition" text="Transition (T)" class="btn btn-ghost" />
+                <ui:Button name="j-fault" text="Fault (F)" class="btn btn-ghost" />
+                <ui:Button name="j-safety" text="Safety" class="btn btn-ghost" />
+                <ui:Button name="j-clinician" text="Clinician" class="btn btn-ghost" />
+                <ui:Button name="j-flag" text="Flag" class="btn btn-ghost" />
+                <ui:Label name="t-status" class="t-sm c-3 mono grow" />
+                <ui:Button name="btn-panels" text="PANELS ▾" tooltip="List every panel of this screen with its own show / hide switch" class="btn pn-btn" />
+                <ui:Button name="btn-hide-all" text="HIDE ALL PANELS" tooltip="Hide every panel of this screen (the theatre and patient stay visible)" class="btn pn-btn" />
+                <ui:Button name="btn-show-all" text="SHOW PANELS" tooltip="Show every panel of this screen" class="btn pn-btn" />
+                <ui:Button name="btn-reset-layout" text="RESET LAYOUT" tooltip="Restore this screen's default panels" class="btn pn-btn" />
+            </ui:VisualElement>
+            <ui:VisualElement name="timeline" />
+            <ui:VisualElement name="timeline-times">
+                <ui:Label name="tl-start" class="t-xs c-3 mono" />
+                <ui:Label name="tl-mid" class="t-xs c-3" text="state timeline - click or drag to seek - ticks: red safety/fault, blue clinician, yellow twin, grey model flags" />
+                <ui:Label name="tl-end" class="t-xs c-3 mono" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Footer disclaimer -->
+        <ui:VisualElement name="footer" class="ui-block">
+            <ui:Label name="footer-strong" text="PROOF-OF-CONCEPT" />
+            <ui:Label name="footer-text" text="SIMULATED / ASSUMED PROTOTYPE RESPONSE where marked. Not for treatment decisions. Patient temperature signal: anatomical site not established." />
+            <ui:VisualElement class="spacer" />
+            <ui:Label name="footer-right" class="t-xs c-3" />
+        </ui:VisualElement>
+
+        <!-- Drawers and modals -->
+        <ui:VisualElement name="drawer-scenarios" class="drawer drawer-left hidden ui-block" />
+        <ui:VisualElement name="drawer-params" class="drawer drawer-right drawer-wide hidden ui-block" />
+        <ui:VisualElement name="drawer-diagnostics" class="drawer drawer-right drawer-wide hidden ui-block" />
+        <ui:VisualElement name="drawer-events" class="drawer drawer-right hidden ui-block">
+            <ui:VisualElement class="drawer-head">
+                <ui:Label text="Events &amp; inspector" class="drawer-title" />
+                <ui:Button name="events-close" text="Close" class="btn" />
+            </ui:VisualElement>
+            <ui:VisualElement name="event-panel" class="grow">
+                <ui:VisualElement name="event-filters" class="row" />
+                <ui:VisualElement name="inspector" class="card" />
+                <ui:ScrollView name="event-scroll" class="grow" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="drawer-fields" class="drawer drawer-left hidden ui-block">
+            <ui:VisualElement name="telemetry-panel" class="grow">
+                <ui:VisualElement class="drawer-head">
+                    <ui:Label text="All replay fields" class="drawer-title" />
+                    <ui:Label name="telemetry-time" class="t-xs c-3 mono" />
+                    <ui:Button name="telemetry-collapse" text="-" class="btn btn-ghost btn-icon" />
+                    <ui:Button name="fields-close" text="Close" class="btn" />
+                </ui:VisualElement>
+                <ui:ScrollView name="telemetry-scroll" class="grow" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="drawer-sources" class="drawer drawer-left hidden ui-block">
+            <ui:VisualElement class="drawer-head">
+                <ui:Label text="Sources &amp; badges" class="drawer-title" />
+                <ui:Button name="sources-close" text="Close" class="btn" />
+            </ui:VisualElement>
+            <ui:ScrollView name="sources-scroll" class="grow">
+                <ui:Label class="card-text" text="Every value carries the source tag that the replay file supplies for its group (obs, twin, ctrl, hw, plant). Unity never upgrades a tag." />
+                <ui:VisualElement class="card"><ui:Label text="REAL_DEV" class="card-title src-key tag-REAL_DEV" /><ui:Label class="card-text" text="Observed development signal (e.g. VitalDB). The anatomical measurement site of the temperature signal is not established, so it is never called core temperature." /></ui:VisualElement>
+                <ui:VisualElement class="card"><ui:Label text="MODEL" class="card-title src-key tag-MODEL" /><ui:Label class="card-text" text="Output of the canonical digital-twin model, computed outside Unity and replayed. The real-data fit has not yet completed, so no shipped replay carries MODEL." /></ui:VisualElement>
+                <ui:VisualElement class="card"><ui:Label text="SIMULATED" class="card-title src-key tag-SIMULATED" /><ui:Label class="card-text" text="Synthetic stand-in values written by tools/make_synthetic_replays.py to demonstrate the viewer. Not model or controller results and not clinical observations." /></ui:VisualElement>
+                <ui:VisualElement class="card"><ui:Label text="ASSUMED" class="card-title src-key tag-ASSUMED" /><ui:Label class="card-text" text="Assumed prototype response (plant.*). VitalDB contains no warming-device response, so these values are assumptions, not measurements." /></ui:VisualElement>
+                <ui:VisualElement class="card"><ui:Label text="N/A" class="card-title src-key" /><ui:Label class="card-text" text="Heart rate, SpO₂ and mean arterial pressure are not in replay schema v1.0 and are shown as N/A. Missing observations are drawn as gaps and never carried forward." /></ui:VisualElement>
+                <ui:Button name="badges-toggle" text="Badge detail: compact" tooltip="Show the meaning text next to every source badge (B)" class="btn" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="drawer-settings" class="drawer drawer-left hidden ui-block">
+            <ui:VisualElement class="drawer-head">
+                <ui:Label text="Settings &amp; view options" class="drawer-title" />
+                <ui:Button name="settings-close" text="Close" class="btn" />
+            </ui:VisualElement>
+            <ui:ScrollView name="settings-scroll" class="grow">
+                <ui:Label text="3D LABELS" class="ov-k ov-section" />
+                <ui:VisualElement class="row set-row">
+                    <ui:Button name="set-labels-off" text="Off" class="btn btn-small" />
+                    <ui:Button name="set-labels-compact" text="Compact" class="btn btn-small selected" />
+                    <ui:Button name="set-labels-detailed" text="Detailed" class="btn btn-small" />
+                </ui:VisualElement>
+                <ui:Label class="card-text" text="Compact shows only channel IDs and commands; the selected region also shows its name. Detailed adds the controller and twin call-outs over the scene." />
+                <ui:Label text="PANELS" class="ov-k ov-section" />
+                <ui:VisualElement class="row set-row">
+                    <ui:Button name="set-details" text="Region panel" class="btn btn-small selected" />
+                    <ui:Button name="set-autodetails" text="Open panel on selection" class="btn btn-small selected" />
+                    <ui:Button name="set-pipeline" text="Pipeline strip" class="btn btn-small selected" />
+                </ui:VisualElement>
+                <ui:VisualElement class="row set-row">
+                    <ui:Button name="set-charts-tall" text="Taller charts" class="btn btn-small" />
+                </ui:VisualElement>
+                <ui:Label text="DISPLAY" class="ov-k ov-section" />
+                <ui:VisualElement class="row set-row">
+                    <ui:Button name="set-presentation" text="Presentation mode (P)" class="btn btn-small" />
+                    <ui:Button name="set-fullscreen" text="Fullscreen (F11)" class="btn btn-small" />
+                </ui:VisualElement>
+                <ui:Label name="set-display-info" class="card-text" />
+                <ui:Label class="card-text" text="These are display options only: they never change the replay, the clock or any value." />
+            </ui:ScrollView>
+        </ui:VisualElement>
+
+        <ui:VisualElement name="drawer-panels" class="drawer drawer-left hidden ui-block">
+            <ui:VisualElement class="drawer-head">
+                <ui:Label name="panels-title" text="Panels" class="drawer-title" />
+                <ui:Button name="panels-close" text="Close" class="btn" />
+            </ui:VisualElement>
+            <ui:Label class="card-text" text="Each switch shows or hides one panel on the current screen. Hiding never stops, resets or changes the replay." />
+            <ui:VisualElement class="row set-row">
+                <ui:Button name="panels-hide-all" text="HIDE ALL PANELS" class="btn btn-small" />
+                <ui:Button name="panels-show-all" text="SHOW PANELS" class="btn btn-small" />
+                <ui:Button name="panels-reset" text="RESET LAYOUT" class="btn btn-small" />
+            </ui:VisualElement>
+            <ui:ScrollView name="panels-scroll" mode="Vertical" horizontal-scroller-visibility="Hidden" class="grow" />
+        </ui:VisualElement>
+
+        <!-- Collapsible sidebar (closed by default). One drawer at a time opens beside it. -->
+        <ui:VisualElement name="sidebar" class="ui-block hidden">
+            <ui:VisualElement class="row sb-head">
+                <ui:Label text="MENU" class="panel-title grow" />
+                <ui:Button name="sidebar-close" text="×" tooltip="Close the sidebar (Esc)" class="btn btn-ghost btn-icon" />
+            </ui:VisualElement>
+            <ui:Button name="btn-scenarios" text="Scenarios" class="btn sb-btn" />
+            <ui:Button name="btn-events" text="Events" class="btn sb-btn" />
+            <ui:Button name="btn-params" text="Parameters" class="btn sb-btn" />
+            <ui:Button name="btn-fields" text="All fields" class="btn sb-btn" />
+            <ui:Button name="btn-diagnostics" text="Diagnostics" class="btn sb-btn" />
+            <ui:Button name="btn-badges" text="Sources &amp; badges" class="btn sb-btn" />
+            <ui:Button name="btn-settings" text="Settings &amp; view" class="btn sb-btn" />
+            <ui:Button name="btn-panels-drawer" text="Panels &amp; layout" class="btn sb-btn" />
+            <ui:VisualElement class="sep" />
+            <ui:Button name="btn-presentation" text="Presentation (P)" class="btn sb-btn" />
+            <ui:Button name="btn-capture-side" text="Capture screenshot" tooltip="Save a PNG of the screen" class="btn sb-btn" />
+            <ui:VisualElement class="spacer" />
+            <ui:Label class="sb-note" text="Esc closes the open drawer, then the menu. Replay, selection and camera are unchanged." />
+        </ui:VisualElement>
+        <ui:VisualElement name="loading" class="modal-scrim hidden ui-block" />
+        <ui:VisualElement name="data-error" class="modal-scrim hidden ui-block" />
+    </ui:VisualElement>
+</ui:UXML>

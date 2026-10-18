@@ -1,0 +1,79 @@
+signal,source,destination,meaning,unit,type,rate,range_or_enum,missing,fault_representation,owner,status,replay_group
+schema_version,Replay builder,Unity,Replay schema version,-,string,per file,"""1.0""",-,Unity refuses unknown major version,Sai,FROZEN,header+meta
+scenario_id,Replay builder,"Ctrl logs, Unity",Scenario name,-,string,per file,"SYN_xx, DEV_<pseudo>, TCxx, SCN_x",-,-,Sai,FROZEN,header+meta
+source_tag,Replay builder,Unity,Provenance per field group,-,string,per frame,"REAL_DEV, MODEL, SIMULATED, ASSUMED",-,-,Sai,FROZEN,src
+t_s,Ctrl / Replay,All,Time since settled start,s,double,1 Hz,>= 0,-,-,Sai,FROZEN,meta
+T_twin_s,Twin,Ctrl,Time of latest twin update,s,double,1/60 Hz,>= 0,NaN,Age > data_stale_twin_s -> Data_Stale_Twin,Sai,FROZEN,
+T_obs,Twin (observation),"Ctrl, Replay",1-min median patient temperature signal,degC,double,1/60 Hz,"25-43 (plausibility, frozen)",NaN / null + obs_missing = 1,-,Sai,FROZEN,obs
+obs_missing,Twin (observation),Replay,Observation missing flag,-,boolean,1/60 Hz,0/1,-,-,Sai,FROZEN,obs
+T_est,Twin,"Ctrl, Replay",Filtered noise-free signal mean,degC,double,1/60 Hz,25-43,NaN when NO_DATA,Twin_Valid,Sai,PROVISIONAL,twin
+T_est_sd,Twin,"Ctrl, Replay",SD of T_est,degC,double,1/60 Hz,>= 0,NaN,Twin_Valid,Sai,PROVISIONAL,twin
+T_pred_20,Twin,"Ctrl (log only), Replay",Forecast mean of observation at t + 20 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+T_pred_30,Twin,"Ctrl (log only), Replay",Forecast mean of observation at t + 30 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+T_pred_60,Twin,"Ctrl (log only), Replay",Forecast mean of observation at t + 60 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+L80_20,Twin,"Ctrl (log only), Replay",Forecast interval bound L80 at +20 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+U80_20,Twin,"Ctrl (log only), Replay",Forecast interval bound U80 at +20 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+L95_20,Twin,"Ctrl (log only), Replay",Forecast interval bound L95 at +20 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+U95_20,Twin,"Ctrl (log only), Replay",Forecast interval bound U95 at +20 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+L80_30,Twin,"Ctrl (log only), Replay",Forecast interval bound L80 at +30 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+U80_30,Twin,"Ctrl (log only), Replay",Forecast interval bound U80 at +30 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+L95_30,Twin,"Ctrl (log only), Replay",Forecast interval bound L95 at +30 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+U95_30,Twin,"Ctrl (log only), Replay",Forecast interval bound U95 at +30 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+L80_60,Twin,"Ctrl (log only), Replay",Forecast interval bound L80 at +60 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+U80_60,Twin,"Ctrl (log only), Replay",Forecast interval bound U80 at +60 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+L95_60,Twin,"Ctrl (log only), Replay",Forecast interval bound L95 at +60 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+U95_60,Twin,"Ctrl (log only), Replay",Forecast interval bound U95 at +60 min,degC,double,1/60 Hz,25-43,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+P_below_hypo_20,Twin,"Ctrl, Replay",P(observation at t + 20 < t_hypo_degC),-,double,1/60 Hz,0-1,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+P_below_hypo_30,Twin,"Ctrl, Replay",P(observation at t + 30 < t_hypo_degC),-,double,1/60 Hz,0-1,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+P_below_hypo_60,Twin,"Ctrl (alert only), Replay",Same at +60,-,double,1/60 Hz,0-1,NaN unless VALID,Twin_Valid,Sai,PROVISIONAL,twin
+P_level_shift,Twin,Replay,"Filtered mode probability at t (jump, jump+outlier)",-,double,1/60 Hz,0-1,NaN,-,Sai,PROVISIONAL,twin
+P_outlier,Twin,Replay,"Filtered mode probability at t (outlier, jump+outlier)",-,double,1/60 Hz,0-1,NaN,-,Sai,PROVISIONAL,twin
+Twin_Valid,Twin,"Ctrl, Replay",Twin reliability,enum,uint8,1/60 Hz,"0 NO_DATA, 1 INITIALISING, 2 VALID, 3 DEGRADED",0,Itself,Sai,FROZEN names,twin
+Clinician_Start,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician START press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchitha,FROZEN (Replay field PROPOSED),ctrl
+Clinician_Stop,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician STOP press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchitha,FROZEN (Replay field PROPOSED),ctrl
+Clinician_Reset,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician RESET press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchitha,FROZEN (Replay field PROPOSED),ctrl
+Module_Temp_1_A,HW,"Ctrl, Replay","Skin-interface module temperature, channel 1 sensor A",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 100+1..4,Shreehan,PROVISIONAL,hw
+Module_Temp_1_B,HW,"Ctrl, Replay","Skin-interface module temperature, channel 1 sensor B",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 100+1..4,Shreehan,PROVISIONAL,hw
+Module_Temp_2_A,HW,"Ctrl, Replay","Skin-interface module temperature, channel 2 sensor A",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 200+1..4,Shreehan,PROVISIONAL,hw
+Module_Temp_2_B,HW,"Ctrl, Replay","Skin-interface module temperature, channel 2 sensor B",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 200+1..4,Shreehan,PROVISIONAL,hw
+Module_Temp_3_A,HW,"Ctrl, Replay","Skin-interface module temperature, channel 3 sensor A",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 300+1..4,Shreehan,PROVISIONAL,hw
+Module_Temp_3_B,HW,"Ctrl, Replay","Skin-interface module temperature, channel 3 sensor B",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 300+1..4,Shreehan,PROVISIONAL,hw
+Module_Temp_4_A,HW,"Ctrl, Replay","Skin-interface module temperature, channel 4 sensor A",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 400+1..4,Shreehan,PROVISIONAL,hw
+Module_Temp_4_B,HW,"Ctrl, Replay","Skin-interface module temperature, channel 4 sensor B",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 400+1..4,Shreehan,PROVISIONAL,hw
+Module_Connected_1,HW,"Ctrl, Replay",Connector presence detected,-,boolean,1 Hz,0/1,-,0 -> code 108,Shreehan,PROVISIONAL,hw
+Module_Connected_2,HW,"Ctrl, Replay",Connector presence detected,-,boolean,1 Hz,0/1,-,0 -> code 208,Shreehan,PROVISIONAL,hw
+Module_Connected_3,HW,"Ctrl, Replay",Connector presence detected,-,boolean,1 Hz,0/1,-,0 -> code 308,Shreehan,PROVISIONAL,hw
+Module_Connected_4,HW,"Ctrl, Replay",Connector presence detected,-,boolean,1 Hz,0/1,-,0 -> code 408,Shreehan,PROVISIONAL,hw
+Heater_Current_1,HW,"Ctrl, Replay",Measured heater current,A,double (wire: uint16 mA),1 Hz,0 to i_sense_range_A,NaN (wire 0xFFFF),Thresholds -> codes 109/110/111,Shreehan,PROVISIONAL,hw
+Heater_Current_2,HW,"Ctrl, Replay",Measured heater current,A,double (wire: uint16 mA),1 Hz,0 to i_sense_range_A,NaN (wire 0xFFFF),Thresholds -> codes 209/210/211,Shreehan,PROVISIONAL,hw
+Heater_Current_3,HW,"Ctrl, Replay",Measured heater current,A,double (wire: uint16 mA),1 Hz,0 to i_sense_range_A,NaN (wire 0xFFFF),Thresholds -> codes 309/310/311,Shreehan,PROVISIONAL,hw
+Heater_Current_4,HW,"Ctrl, Replay",Measured heater current,A,double (wire: uint16 mA),1 Hz,0 to i_sense_range_A,NaN (wire 0xFFFF),Thresholds -> codes 409/410/411,Shreehan,PROVISIONAL,hw
+HW_Cutoff_1,HW,"Ctrl, Replay",Hardware over-temperature cutoff tripped,-,boolean,1 Hz,0/1,-,1 -> code 107,Shreehan,PROVISIONAL,hw
+HW_Cutoff_2,HW,"Ctrl, Replay",Hardware over-temperature cutoff tripped,-,boolean,1 Hz,0/1,-,1 -> code 207,Shreehan,PROVISIONAL,hw
+HW_Cutoff_3,HW,"Ctrl, Replay",Hardware over-temperature cutoff tripped,-,boolean,1 Hz,0/1,-,1 -> code 307,Shreehan,PROVISIONAL,hw
+HW_Cutoff_4,HW,"Ctrl, Replay",Hardware over-temperature cutoff tripped,-,boolean,1 Hz,0/1,-,1 -> code 407,Shreehan,PROVISIONAL,hw
+HW_Heartbeat_s,HW,Ctrl,Time of last valid status frame,s,double,1 Hz,>= 0,NaN,Age > data_stale_hw_s -> code 8,Shreehan,PROVISIONAL,
+HW_Fault_Code,HW,Ctrl,System-level MCU fault,-,uint16,1 Hz,0-6 (fault_codes.csv),0,Itself,Shreehan,PROVISIONAL,
+Data_Stale_Twin,Ctrl,Replay (optional),Twin data too old,-,boolean,1 Hz,0/1,-,Code 7,Suchitha,FROZEN,ctrl
+Data_Stale_HW,Ctrl,Replay (optional),Hardware data too old,-,boolean,1 Hz,0/1,-,Code 8,Suchitha,FROZEN,ctrl
+Heat_1,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchitha,FROZEN names,ctrl
+Heat_2,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchitha,FROZEN names,ctrl
+Heat_3,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchitha,FROZEN names,ctrl
+Heat_4,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchitha,FROZEN names,ctrl
+Demand_Global,Ctrl,Replay,Demand before channel limits,%,double,1 Hz,0-100,-,-,Suchitha,PROVISIONAL,ctrl
+Controller_State,Ctrl,Replay,Supervisor state,enum,uint8,1 Hz,0 NORMAL ... 6 SAFETY_SHUTDOWN (section 0.4),-,6,Suchitha,FROZEN names,ctrl
+Degraded_Substate,Ctrl,Replay,Substate in TWIN_DEGRADED,enum,uint8,1 Hz,"0 none, 1 MONITOR, 2 CLINICIAN_FIXED",-,-,Suchitha,PROVISIONAL,ctrl
+Safety_Shutdown,Ctrl,"HW (master off), Replay",In SAFETY_SHUTDOWN,-,boolean,1 Hz,0/1,-,Itself,Suchitha,FROZEN,ctrl
+Fault_Latched,Ctrl,Replay,Any fault latched,-,boolean,1 Hz,0/1,-,Itself,Suchitha,FROZEN,ctrl
+Alert,Ctrl,Replay,Highest-priority alert,enum,uint8,1 Hz,AlertCode 0-8 (section 0.4),0,"4, 5, 6",Suchitha,FROZEN names,ctrl
+Trigger_Reason,Ctrl,Replay,Reason for last state change,enum,uint8,1 Hz,TriggerReason 0-11 (section 0.4),0,8,Suchitha,FROZEN names,ctrl
+fault_code,Ctrl,Replay,Highest-priority active fault,-,uint16,1 Hz,fault_codes.csv,0,Itself,"Shreehan (codes), Suchitha (selection)",PROVISIONAL,ctrl
+Channel_Fault_1,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchitha,PROVISIONAL,ctrl
+Channel_Fault_2,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchitha,PROVISIONAL,ctrl
+Channel_Fault_3,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchitha,PROVISIONAL,ctrl
+Channel_Fault_4,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchitha,PROVISIONAL,ctrl
+Clinician_Mode,Ctrl,Replay,Clinician started/took over warming,-,boolean,1 Hz,0/1,-,-,Suchitha,PROVISIONAL,ctrl
+T_plant,Plant (test bench / Sai),Replay,SIMULATED signal,degC,double,1 Hz,-,NaN when no plant,-,"Sai (equation), Suchitha (Simulink implementation)",ASSUMED,plant
+dT_heat,Plant (test bench / Sai),Replay,ASSUMED warming contribution,degC,double,1 Hz,-,NaN when no plant,-,"Sai (equation), Suchitha (Simulink implementation)",ASSUMED,plant
+plant_mode,Ctrl log,Replay,"OPEN_LOOP, STANDIN, TWIN_IN_LOOP",-,string,per file,3 values,-,-,Suchitha,FROZEN,plant
+static_context.*,Twin metadata,Replay header,"Age band, sex, ASA, department (development case only, if terms allow)",-,various,per file,-,Omitted,-,Sai,TBD,header

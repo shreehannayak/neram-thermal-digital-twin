@@ -1,0 +1,6 @@
+{
+  "t_hypo_degC": {"value": null, "placeholder": 36.0, "unit": "degC", "status": "TBD", "owner": "Sai",
+    "source": "Value used to compute P_below_hypo in twin_SYN_01.csv (twin_SYN_01.meta.json config_used); 36.0 is the core-temperature convention, applicability to this signal unresolved"},
+  "sd_degrade_degC": {"value": null, "placeholder": 0.25, "unit": "degC", "status": "TBD", "owner": "Sai",
+    "source": "Value used for Twin_Valid in twin_SYN_01.csv (twin_SYN_01.meta.json config_used); SYNTHETIC DEMO placeholder, to be set from development data only"}
+}

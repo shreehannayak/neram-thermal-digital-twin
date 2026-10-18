@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- COMPILE-CHECK ONLY: Neram runtime + editor scripts against tools/dotnet/UnityStubs (see that project's note). -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>Neram.UnityCheck</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefineConstants>UNITY_5_3_OR_NEWER;UNITY_EDITOR;ENABLE_INPUT_SYSTEM;NERAM_INPUT_SYSTEM</DefineConstants>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../unity_editor/Assets/Scripts/**/*.cs" Exclude="../../../unity_editor/Assets/Scripts/Core/**" />
+    <Compile Include="../../../unity_editor/Assets/Editor/**/*.cs" />
+    <ProjectReference Include="../Core/Neram.Core.csproj" />
+    <ProjectReference Include="../UnityStubs/UnityStubs.csproj" />
+    <Reference Include="Newtonsoft.Json"><HintPath>$(NEWTONSOFT_DLL)</HintPath></Reference>
+  </ItemGroup>
+</Project>

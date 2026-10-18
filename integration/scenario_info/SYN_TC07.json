@@ -1,0 +1,16 @@
+{
+  "title": "Module over-temperature shutdown (controller test TC07, synthetic)",
+  "purpose": "Show the supplied TC07 controller test-bench log in the viewer: a simulated module over-temperature on channel 2 latches SAFETY_SHUTDOWN at t = 200 s. The log ends while the shutdown is still latched; no clinician reset or release is part of this test.",
+  "data_source": "Controller: Suchitha's TC07 test-bench log (SIMULATED; file hash in header.inputs, authenticity not independently confirmed). Temperature: SIMULATED observations, twin values computed by the canonical NERAM filter with ASSUMED_SYNTHETIC parameters (twin_SYN_01).",
+  "loop_description": "Open in effect: the temperature track is not coupled to controller commands. The log labels its harness plant_mode STANDIN but supplies no T_plant / dT_heat, so no warming response is shown (validator warning W108 is expected and kept).",
+  "limitations": [
+    "All four heating channels are 0 % for the whole log, so heating is never shown; this replay demonstrates the over-temperature shutdown and latch display only.",
+    "The channel-2 module temperature (sensors A and B) is an injected test stimulus rising from 33 to 45 degC with zero heater current; it is not a heater response.",
+    "Fault code 206 = channel 2 OVERTEMP_SW (100 x ch + 6, detected by MCU/controller). HW_Fault_Code (hardware SYSTEM codes 0-19) stays 0; that is consistent, not a contradiction.",
+    "HW_Cutoff_2 never trips: the hardware cutoff threshold is TBD (Shreehan); this says nothing about hardware behaviour.",
+    "The log covers only the first TC07 criterion (SAFETY_SHUTDOWN within 1 s, all Heat = 0, latched). It contains no cooling, no RESET_BLOCKED and no reset/release, so those parts of TC07 are not shown.",
+    "The log carries HW_Heartbeat_s and HW_Fault_Code, which are not section-1S log columns; it was built with --accept-ctrl-input-columns and those columns are not in the replay.",
+    "The 5-minute log lies inside the twin's 20-minute initialisation window, so no forecast is shown.",
+    "No clinical, hardware or treatment claim is made; thresholds are placeholders."
+  ]
+}

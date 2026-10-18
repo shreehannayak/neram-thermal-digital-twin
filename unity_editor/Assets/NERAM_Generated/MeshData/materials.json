@@ -1,0 +1,1789 @@
+{
+ "materials": [
+  {
+   "name": "MAT_Skin",
+   "color": [
+    0.8,
+    0.68,
+    0.61,
+    1.0
+   ],
+   "smoothness": 0.26,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Gown",
+   "color": [
+    0.5,
+    0.68,
+    0.78,
+    1.0
+   ],
+   "smoothness": 0.12,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "fabric_weave",
+   "tiling": 14,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Drape",
+   "color": [
+    0.17,
+    0.4,
+    0.53,
+    1.0
+   ],
+   "smoothness": 0.1,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "fabric_weave",
+   "tiling": 12,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_GloveFabric",
+   "color": [
+    0.92,
+    0.93,
+    0.94,
+    1.0
+   ],
+   "smoothness": 0.18,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "fabric_weave",
+   "tiling": 22,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_GloveCuff",
+   "color": [
+    0.17,
+    0.24,
+    0.31,
+    1.0
+   ],
+   "smoothness": 0.32,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_HeaterPanel",
+   "color": [
+    0.86,
+    0.63,
+    0.38,
+    1.0
+   ],
+   "smoothness": 0.25,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "fabric_weave",
+   "tiling": 22,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_HeaterLayer",
+   "color": [
+    0.96,
+    0.62,
+    0.16,
+    1.0
+   ],
+   "smoothness": 0.42,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_BootFabric",
+   "color": [
+    0.8,
+    0.82,
+    0.84,
+    1.0
+   ],
+   "smoothness": 0.2,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "fabric_weave",
+   "tiling": 18,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_BootTrim",
+   "color": [
+    0.22,
+    0.29,
+    0.36,
+    1.0
+   ],
+   "smoothness": 0.35,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Midsole",
+   "color": [
+    0.88,
+    0.89,
+    0.87,
+    1.0
+   ],
+   "smoothness": 0.25,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Outsole",
+   "color": [
+    0.14,
+    0.16,
+    0.19,
+    1.0
+   ],
+   "smoothness": 0.22,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_LabelPlate",
+   "color": [
+    0.1,
+    0.13,
+    0.17,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_WatchBand",
+   "color": [
+    0.13,
+    0.16,
+    0.2,
+    1.0
+   ],
+   "smoothness": 0.35,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_WatchBody",
+   "color": [
+    0.24,
+    0.29,
+    0.35,
+    1.0
+   ],
+   "smoothness": 0.72,
+   "metallic": 0.4,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Liner",
+   "color": [
+    0.82,
+    0.84,
+    0.87,
+    1.0
+   ],
+   "smoothness": 0.2,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Sensor",
+   "color": [
+    0.1,
+    0.72,
+    0.78,
+    1.0
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Heater",
+   "color": [
+    0.35,
+    0.18,
+    0.1,
+    1.0
+   ],
+   "smoothness": 0.3,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Insulation",
+   "color": [
+    0.86,
+    0.86,
+    0.82,
+    1.0
+   ],
+   "smoothness": 0.15,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Shell",
+   "color": [
+    0.55,
+    0.62,
+    0.7,
+    1.0
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Strap",
+   "color": [
+    0.16,
+    0.2,
+    0.26,
+    1.0
+   ],
+   "smoothness": 0.3,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Cable",
+   "color": [
+    0.11,
+    0.12,
+    0.14,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Connector",
+   "color": [
+    0.66,
+    0.68,
+    0.72,
+    1.0
+   ],
+   "smoothness": 0.7,
+   "metallic": 0.6,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Enclosure",
+   "color": [
+    0.9,
+    0.92,
+    0.94,
+    1.0
+   ],
+   "smoothness": 0.55,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Indicator",
+   "color": [
+    0.04,
+    0.05,
+    0.06,
+    1.0
+   ],
+   "smoothness": 0.85,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Button_Start",
+   "color": [
+    0.13,
+    0.62,
+    0.36,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Button_Stop",
+   "color": [
+    0.8,
+    0.18,
+    0.18,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Button_Reset",
+   "color": [
+    0.86,
+    0.6,
+    0.14,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Floor",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.55,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "floor_tiles",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Wall",
+   "color": [
+    0.87,
+    0.9,
+    0.93,
+    1.0
+   ],
+   "smoothness": 0.22,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_WallSkirt",
+   "color": [
+    0.25,
+    0.31,
+    0.38,
+    1.0
+   ],
+   "smoothness": 0.35,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_WallRail",
+   "color": [
+    0.18,
+    0.4,
+    0.46,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Ceiling",
+   "color": [
+    0.96,
+    0.97,
+    0.98,
+    1.0
+   ],
+   "smoothness": 0.2,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_CeilingPanel",
+   "color": [
+    0.95,
+    0.97,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.2,
+   "metallic": 0.0,
+   "emission": [
+    0.75,
+    0.78,
+    0.82
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_CeilingLight",
+   "color": [
+    0.95,
+    0.97,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.2,
+   "metallic": 0.0,
+   "emission": [
+    1.3,
+    1.32,
+    1.36
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_MetalWhite",
+   "color": [
+    0.88,
+    0.9,
+    0.92,
+    1.0
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.3,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Metal",
+   "color": [
+    0.72,
+    0.74,
+    0.77,
+    1.0
+   ],
+   "smoothness": 0.78,
+   "metallic": 0.9,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Brass",
+   "color": [
+    0.78,
+    0.62,
+    0.32,
+    1.0
+   ],
+   "smoothness": 0.7,
+   "metallic": 0.9,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Door",
+   "color": [
+    0.7,
+    0.76,
+    0.8,
+    1.0
+   ],
+   "smoothness": 0.4,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_GlassDark",
+   "color": [
+    0.05,
+    0.08,
+    0.1,
+    1.0
+   ],
+   "smoothness": 0.95,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_EquipDark",
+   "color": [
+    0.13,
+    0.16,
+    0.2,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_ScreenOff",
+   "color": [
+    0.02,
+    0.03,
+    0.04,
+    1.0
+   ],
+   "smoothness": 0.95,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_PanelWhite",
+   "color": [
+    0.93,
+    0.94,
+    0.95,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_EquipWhite",
+   "color": [
+    0.9,
+    0.92,
+    0.93,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Teal",
+   "color": [
+    0.08,
+    0.6,
+    0.6,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Worktop",
+   "color": [
+    0.3,
+    0.35,
+    0.4,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TableFrame",
+   "color": [
+    0.86,
+    0.88,
+    0.9,
+    1.0
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.2,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TablePad",
+   "color": [
+    0.1,
+    0.15,
+    0.2,
+    1.0
+   ],
+   "smoothness": 0.35,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_LightHead",
+   "color": [
+    0.93,
+    0.94,
+    0.95,
+    1.0
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_LightLens",
+   "color": [
+    0.85,
+    0.88,
+    0.9,
+    1.0
+   ],
+   "smoothness": 0.9,
+   "metallic": 0.0,
+   "emission": [
+    0.6,
+    0.6,
+    0.58
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_LightCell",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.9,
+   "metallic": 0.0,
+   "emission": [
+    2.4,
+    2.35,
+    2.25
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_GlassClear",
+   "color": [
+    0.75,
+    0.85,
+    0.9,
+    0.25
+   ],
+   "smoothness": 0.95,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Bellows",
+   "color": [
+    0.55,
+    0.65,
+    0.75,
+    1.0
+   ],
+   "smoothness": 0.4,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_VapA",
+   "color": [
+    0.35,
+    0.45,
+    0.55,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_VapB",
+   "color": [
+    0.45,
+    0.5,
+    0.55,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Hose",
+   "color": [
+    0.55,
+    0.72,
+    0.82,
+    0.85
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_IVBag",
+   "color": [
+    0.88,
+    0.93,
+    0.97,
+    0.35
+   ],
+   "smoothness": 0.9,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_SuctionLid",
+   "color": [
+    0.15,
+    0.42,
+    0.7,
+    1.0
+   ],
+   "smoothness": 0.5,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_O2Body",
+   "color": [
+    0.94,
+    0.95,
+    0.96,
+    1.0
+   ],
+   "smoothness": 0.55,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_O2Shoulder",
+   "color": [
+    0.99,
+    0.99,
+    0.99,
+    1.0
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TableTop_Ref",
+   "color": [
+    1.0,
+    0.0,
+    1.0,
+    0.35
+   ],
+   "smoothness": 0.0,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Skin_Ghost",
+   "color": [
+    0.8,
+    0.69,
+    0.62,
+    0.16
+   ],
+   "smoothness": 0.3,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Gown_Ghost",
+   "color": [
+    0.5,
+    0.68,
+    0.78,
+    0.12
+   ],
+   "smoothness": 0.1,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Drape_Ghost",
+   "color": [
+    0.17,
+    0.4,
+    0.53,
+    0.1
+   ],
+   "smoothness": 0.1,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_VesselArtery",
+   "color": [
+    0.7,
+    0.17,
+    0.19,
+    1.0
+   ],
+   "smoothness": 0.55,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_VesselVein",
+   "color": [
+    0.2,
+    0.33,
+    0.7,
+    1.0
+   ],
+   "smoothness": 0.55,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Pulse",
+   "color": [
+    1.0,
+    0.95,
+    0.95,
+    1.0
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.0,
+   "emission": [
+    1.6,
+    1.4,
+    1.4
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Thermal",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.2,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_IVLiquid",
+   "color": [
+    0.78,
+    0.88,
+    0.95,
+    0.6
+   ],
+   "smoothness": 0.9,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_IVDrop",
+   "color": [
+    0.85,
+    0.93,
+    1.0,
+    0.75
+   ],
+   "smoothness": 0.95,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Dressing",
+   "color": [
+    0.96,
+    0.96,
+    0.96,
+    0.55
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": true,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_Cannula",
+   "color": [
+    0.22,
+    0.62,
+    0.88,
+    1.0
+   ],
+   "smoothness": 0.6,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "",
+   "tiling": 1.0,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_label_ch1",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "label_ch1",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_label_ch2",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "label_ch2",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_label_ch3",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "label_ch3",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_label_ch4",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "label_ch4",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_label_controller",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "label_controller",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_watch_face",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "watch_face",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.9
+  },
+  {
+   "name": "MAT_TEX_screen_monitor",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "screen_monitor",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.7
+  },
+  {
+   "name": "MAT_TEX_screen_vent",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "screen_vent",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.7
+  },
+  {
+   "name": "MAT_TEX_screen_pump",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "screen_pump",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.7
+  },
+  {
+   "name": "MAT_TEX_screen_anaesthesia",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": true,
+   "texture": "screen_anaesthesia",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.7
+  },
+  {
+   "name": "MAT_TEX_gas_panel",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "gas_panel",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_o2_label",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "o2_label",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_gauge",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "gauge",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  },
+  {
+   "name": "MAT_TEX_iv_label",
+   "color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "smoothness": 0.45,
+   "metallic": 0.0,
+   "emission": [
+    0,
+    0,
+    0
+   ],
+   "emissionKeyword": false,
+   "texture": "iv_label",
+   "tiling": 1,
+   "transparent": false,
+   "emissionFromTexture": 0.0
+  }
+ ]
+}

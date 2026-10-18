@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- The exact reader the Unity editor uses (no UnityEngine dependency) + the CAD naming contract -->
+    <Compile Include="../../../unity_editor/Assets/Editor/NeramBundleReader.cs" />
+    <Compile Include="../../../unity_editor/Assets/Scripts/Scene/SceneNames.cs" />
+    <Compile Include="Program.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,56 @@
+{
+  "display_config_version": "0.1",
+  "owner": "Sai",
+  "status": "PROVISIONAL",
+  "note": "DISPLAY-ONLY settings for the Unity visualisation layer. None of these values is a model, controller or clinical parameter. They decide only what the UI draws.",
+  "settings": {
+    "flag_p_outlier_display": {
+      "value": 0.5,
+      "unit": "1",
+      "status": "PROVISIONAL",
+      "purpose": "Show a 'Possible artefact' flag when P_outlier >= this value (display only)"
+    },
+    "flag_p_level_shift_display": {
+      "value": 0.5,
+      "unit": "1",
+      "status": "PROVISIONAL",
+      "purpose": "Show a 'Possible level shift' flag when P_level_shift >= this value (display only)"
+    },
+    "history_window_min": {
+      "value": 60,
+      "unit": "min",
+      "status": "FROZEN",
+      "purpose": "Rolling history shown in the thermal panel (plan section 4J)"
+    },
+    "forecast_window_min": {
+      "value": 60,
+      "unit": "min",
+      "status": "FROZEN",
+      "purpose": "Forecast region width (longest horizon, plan section 4K)"
+    },
+    "y_axis_min_span_degC": {
+      "value": 2.0,
+      "unit": "degC",
+      "status": "PROVISIONAL",
+      "purpose": "Minimum vertical span of the thermal panel (layout only)"
+    },
+    "y_axis_padding_degC": {
+      "value": 0.3,
+      "unit": "degC",
+      "status": "PROVISIONAL",
+      "purpose": "Padding above/below data range (layout only)"
+    },
+    "trend_deadband_degC": {
+      "value": 0.02,
+      "unit": "degC",
+      "status": "PROVISIONAL",
+      "purpose": "Telemetry trend arrows show 'steady' when the 60 s change is within this band (display only)"
+    },
+    "module_label_offset_m": {
+      "value": 0.12,
+      "unit": "m",
+      "status": "PROVISIONAL",
+      "purpose": "Height of the floating module chips above each module (layout only)"
+    }
+  }
+}

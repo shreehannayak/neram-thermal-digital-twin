@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="87" result="Skipped:Ignored" total="87" passed="86" failed="0" inconclusive="0" skipped="1" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-17 20:01:27Z" end-time="2026-10-17 20:02:49Z" duration="82.4828865">
+  <test-suite type="TestSuite" id="1115" name="NERAM Thermal Twin Viewer" fullname="NERAM Thermal Twin Viewer" runstate="Runnable" testcasecount="87" result="Skipped" label="Ignored" start-time="2026-10-17 20:01:27Z" end-time="2026-10-17 20:02:49Z" duration="82.482887" total="87" passed="86" failed="0" inconclusive="0" skipped="1" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <reason>
+      <message><![CDATA[One or more child tests were ignored]]></message>
+    </reason>
+    <test-suite type="Assembly" id="1105" name="Neram.Tests.EditMode.dll" fullname="D:/Unity/Projects/NERAM_v4_test/NERAM_Unity_Workspace_v4/unity_editor/Library/ScriptAssemblies/Neram.Tests.EditMode.dll" runstate="Runnable" testcasecount="87" result="Skipped" label="Ignored" start-time="2026-10-17 20:01:27Z" end-time="2026-10-17 20:02:49Z" duration="82.450223" total="87" passed="86" failed="0" inconclusive="0" skipped="1" asserts="0">
+      <properties>
+        <property name="_PID" value="19784" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <reason>
+        <message><![CDATA[One or more child tests were ignored]]></message>
+      </reason>
+      <test-suite type="TestSuite" id="1106" name="Neram" fullname="Neram" runstate="Runnable" testcasecount="87" result="Skipped" label="Ignored" start-time="2026-10-17 20:01:27Z" end-time="2026-10-17 20:02:49Z" duration="82.446177" total="87" passed="86" failed="0" inconclusive="0" skipped="1" asserts="0">
+        <properties />
+        <reason>
+          <message><![CDATA[One or more child tests were ignored]]></message>
+        </reason>
+        <test-suite type="TestSuite" id="1107" name="Tests" fullname="Neram.Tests" runstate="Runnable" testcasecount="87" result="Skipped" label="Ignored" start-time="2026-10-17 20:01:27Z" end-time="2026-10-17 20:02:49Z" duration="82.443530" total="87" passed="86" failed="0" inconclusive="0" skipped="1" asserts="0">
+          <properties />
+          <reason>
+            <message><![CDATA[One or more child tests were ignored]]></message>
+          </reason>
+          <test-suite type="TestFixture" id="1001" name="AllReplaysSmokeTests" fullname="Neram.Tests.AllReplaysSmokeTests" classname="Neram.Tests.AllReplaysSmokeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-17 20:01:27Z" end-time="2026-10-17 20:01:55Z" duration="27.996738" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1004" name="EveryDisplayRuleEvaluatesOnEveryFrame" fullname="Neram.Tests.AllReplaysSmokeTests.EveryDisplayRuleEvaluatesOnEveryFrame" methodname="EveryDisplayRuleEvaluatesOnEveryFrame" classname="Neram.Tests.AllReplaysSmokeTests" runstate="Runnable" seed="1502269243" result="Passed" start-time="2026-10-17 20:01:27Z" end-time="2026-10-17 20:01:43Z" duration="16.222204" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="EveryReplayIsValidAndNeverFromTheHoldout" fullname="Neram.Tests.AllReplaysSmokeTests.EveryReplayIsValidAndNeverFromTheHoldout" methodname="EveryReplayIsValidAndNeverFromTheHoldout" classname="Neram.Tests.AllReplaysSmokeTests" runstate="Runnable" seed="546821551" result="Passed" start-time="2026-10-17 20:01:43Z" end-time="2026-10-17 20:01:55Z" duration="11.682794" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="ReplayTextNeverCallsTheSignalCoreTemperature" fullname="Neram.Tests.AllReplaysSmokeTests.ReplayTextNeverCallsTheSignalCoreTemperature" methodname="ReplayTextNeverCallsTheSignalCoreTemperature" classname="Neram.Tests.AllReplaysSmokeTests" runstate="Runnable" seed="1210319960" result="Passed" start-time="2026-10-17 20:01:55Z" end-time="2026-10-17 20:01:55Z" duration="0.007085" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1002" name="ThereAreReplaysToTest" fullname="Neram.Tests.AllReplaysSmokeTests.ThereAreReplaysToTest" methodname="ThereAreReplaysToTest" classname="Neram.Tests.AllReplaysSmokeTests" runstate="Runnable" seed="1452083910" result="Passed" start-time="2026-10-17 20:01:55Z" end-time="2026-10-17 20:01:55Z" duration="0.009204" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1053" name="BannerAndThermalTests" fullname="Neram.Tests.BannerAndThermalTests" classname="Neram.Tests.BannerAndThermalTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-17 20:01:55Z" end-time="2026-10-17 20:02:02Z" duration="7.270242" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1054" name="BannerUsesEnumLabelsAndTones" fullname="Neram.Tests.BannerAndThermalTests.BannerUsesEnumLabelsAndTones" methodname="BannerUsesEnumLabelsAndTones" classname="Neram.Tests.BannerAndThermalTests" runstate="Runnable" seed="49368326" result="Passed" start-time="2026-10-17 20:01:55Z" end-time="2026-10-17 20:01:56Z" duration="1.089571" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1057" name="HeaderSnapshotDisagreementsAreRecorded" fullname="Neram.Tests.BannerAndThermalTests.HeaderSnapshotDisagreementsAreRecorded" methodname="HeaderSnapshotDisagreementsAreRecorded" classname="Neram.Tests.BannerAndThermalTests" runstate="Runnable" seed="504842409" result="Passed" start-time="2026-10-17 20:01:56Z" end-time="2026-10-17 20:01:58Z" duration="2.281119" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1058" name="ProvenanceIsReportedForEveryGroup" fullname="Neram.Tests.BannerAndThermalTests.ProvenanceIsReportedForEveryGroup" methodname="ProvenanceIsReportedForEveryGroup" classname="Neram.Tests.BannerAndThermalTests" runstate="Runnable" seed="1721735312" result="Passed" start-time="2026-10-17 20:01:58Z" end-time="2026-10-17 20:02:00Z" duration="1.408163" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1055" name="ThermalBandLabelsPlaceholderThresholds" fullname="Neram.Tests.BannerAndThermalTests.ThermalBandLabelsPlaceholderThresholds" methodname="ThermalBandLabelsPlaceholderThresholds" classname="Neram.Tests.BannerAndThermalTests" runstate="Runnable" seed="2050533384" result="Passed" start-time="2026-10-17 20:02:00Z" end-time="2026-10-17 20:02:02Z" duration="2.308330" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1056" name="ThermalBandWithoutTargetDoesNotInventOne" fullname="Neram.Tests.BannerAndThermalTests.ThermalBandWithoutTargetDoesNotInventOne" methodname="ThermalBandWithoutTargetDoesNotInventOne" classname="Neram.Tests.BannerAndThermalTests" runstate="Runnable" seed="276239772" result="Passed" start-time="2026-10-17 20:02:02Z" end-time="2026-10-17 20:02:02Z" duration="0.016423" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1006" name="ClockTests" fullname="Neram.Tests.ClockTests" classname="Neram.Tests.ClockTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-17 20:02:02Z" end-time="2026-10-17 20:02:07Z" duration="5.211973" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1009" name="DashboardSpeedsIncludeTwoAndFour" fullname="Neram.Tests.ClockTests.DashboardSpeedsIncludeTwoAndFour" methodname="DashboardSpeedsIncludeTwoAndFour" classname="Neram.Tests.ClockTests" runstate="Runnable" seed="654771185" result="Passed" start-time="2026-10-17 20:02:02Z" end-time="2026-10-17 20:02:03Z" duration="0.858799" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="FrameChangedFiresOncePerChangeAndScrubIsCoherent" fullname="Neram.Tests.ClockTests.FrameChangedFiresOncePerChangeAndScrubIsCoherent" methodname="FrameChangedFiresOncePerChangeAndScrubIsCoherent" classname="Neram.Tests.ClockTests" runstate="Runnable" seed="1017355166" result="Passed" start-time="2026-10-17 20:02:03Z" end-time="2026-10-17 20:02:03Z" duration="0.621983" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1014" name="FrameLookupHandlesNonUniformTime" fullname="Neram.Tests.ClockTests.FrameLookupHandlesNonUniformTime" methodname="FrameLookupHandlesNonUniformTime" classname="Neram.Tests.ClockTests" runstate="Runnable" seed="1542583124" result="Passed" start-time="2026-10-17 20:02:03Z" end-time="2026-10-17 20:02:04Z" duration="0.739362" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="SeekIsClampedAndFrameIsLastFrameAtOrBeforeTime" fullname="Neram.Tests.ClockTests.SeekIsClampedAndFrameIsLastFrameAtOrBeforeTime" methodname="SeekIsClampedAndFrameIsLastFrameAtOrBeforeTime" classname="Neram.Tests.ClockTests" runstate="Runnable" seed="2058541729" result="Passed" start-time="2026-10-17 20:02:04Z" end-time="2026-10-17 20:02:05Z" duration="0.765667" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="SpeedsScaleLogicalTime" fullname="Neram.Tests.ClockTests.SpeedsScaleLogicalTime" methodname="SpeedsScaleLogicalTime" classname="Neram.Tests.ClockTests" runstate="Runnable" seed="2072948601" result="Passed" start-time="2026-10-17 20:02:05Z" end-time="2026-10-17 20:02:06Z" duration="0.541223" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="StartsPausedAtFirstFrame" fullname="Neram.Tests.ClockTests.StartsPausedAtFirstFrame" methodname="StartsPausedAtFirstFrame" classname="Neram.Tests.ClockTests" runstate="Runnable" seed="1500799717" result="Passed" start-time="2026-10-17 20:02:06Z" end-time="2026-10-17 20:02:06Z" duration="0.579451" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="StepPausesAndMovesExactlyOneFrame" fullname="Neram.Tests.ClockTests.StepPausesAndMovesExactlyOneFrame" methodname="StepPausesAndMovesExactlyOneFrame" classname="Neram.Tests.ClockTests" runstate="Runnable" seed="1146962221" result="Passed" start-time="2026-10-17 20:02:06Z" end-time="2026-10-17 20:02:07Z" duration="0.514868" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="StopsAtEndAndPlayRestarts" fullname="Neram.Tests.ClockTests.StopsAtEndAndPlayRestarts" methodname="StopsAtEndAndPlayRestarts" classname="Neram.Tests.ClockTests" runstate="Runnable" seed="465092336" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.557476" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1022" name="ConfigTests" fullname="Neram.Tests.ConfigTests" classname="Neram.Tests.ConfigTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.039933" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1029" name="CsvParserHandlesQuotesAndNewlines" fullname="Neram.Tests.ConfigTests.CsvParserHandlesQuotesAndNewlines" methodname="CsvParserHandlesQuotesAndNewlines" classname="Neram.Tests.ConfigTests" runstate="Runnable" seed="1925801337" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.001105" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="DisplayConfigIsDisplayOnlyAndComplete" fullname="Neram.Tests.ConfigTests.DisplayConfigIsDisplayOnlyAndComplete" methodname="DisplayConfigIsDisplayOnlyAndComplete" classname="Neram.Tests.ConfigTests" runstate="Runnable" seed="438415976" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.002069" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="EnumsJsonMatchesPlanNamesAndBuiltInDefault" fullname="Neram.Tests.ConfigTests.EnumsJsonMatchesPlanNamesAndBuiltInDefault" methodname="EnumsJsonMatchesPlanNamesAndBuiltInDefault" classname="Neram.Tests.ConfigTests" runstate="Runnable" seed="1572480952" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.010122" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="ParamsRejectATbdEntryWithAValue" fullname="Neram.Tests.ConfigTests.ParamsRejectATbdEntryWithAValue" methodname="ParamsRejectATbdEntryWithAValue" classname="Neram.Tests.ConfigTests" runstate="Runnable" seed="1036693602" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.001151" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1025" name="ParamsUseOnlyAllowedStatusesAndNoTbdHasAValue" fullname="Neram.Tests.ConfigTests.ParamsUseOnlyAllowedStatusesAndNoTbdHasAValue" methodname="ParamsUseOnlyAllowedStatusesAndNoTbdHasAValue" classname="Neram.Tests.ConfigTests" runstate="Runnable" seed="1220968060" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.003506" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="PlaceholderFaultTableFollowsThePlanPattern" fullname="Neram.Tests.ConfigTests.PlaceholderFaultTableFollowsThePlanPattern" methodname="PlaceholderFaultTableFollowsThePlanPattern" classname="Neram.Tests.ConfigTests" runstate="Runnable" seed="2126833399" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.001059" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="StringEnumsMatchEnumsJson" fullname="Neram.Tests.ConfigTests.StringEnumsMatchEnumsJson" methodname="StringEnumsMatchEnumsJson" classname="Neram.Tests.ConfigTests" runstate="Runnable" seed="1048572454" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:07Z" duration="0.006541" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1015" name="EventIndexTests" fullname="Neram.Tests.EventIndexTests" classname="Neram.Tests.EventIndexTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:20Z" duration="12.769941" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1017" name="ClinicianPressesAreInferredAndLabelledWhenFieldsAreAbsent" fullname="Neram.Tests.EventIndexTests.ClinicianPressesAreInferredAndLabelledWhenFieldsAreAbsent" methodname="ClinicianPressesAreInferredAndLabelledWhenFieldsAreAbsent" classname="Neram.Tests.EventIndexTests" runstate="Runnable" seed="36079857" result="Passed" start-time="2026-10-17 20:02:07Z" end-time="2026-10-17 20:02:10Z" duration="2.507239" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1020" name="EventsAreSortedByFrame" fullname="Neram.Tests.EventIndexTests.EventsAreSortedByFrame" methodname="EventsAreSortedByFrame" classname="Neram.Tests.EventIndexTests" runstate="Runnable" seed="1387119672" result="Passed" start-time="2026-10-17 20:02:10Z" end-time="2026-10-17 20:02:15Z" duration="5.712414" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="EveryStateChangeInTheDataHasExactlyOneTransitionEvent" fullname="Neram.Tests.EventIndexTests.EveryStateChangeInTheDataHasExactlyOneTransitionEvent" methodname="EveryStateChangeInTheDataHasExactlyOneTransitionEvent" classname="Neram.Tests.EventIndexTests" runstate="Runnable" seed="1405855092" result="Passed" start-time="2026-10-17 20:02:15Z" end-time="2026-10-17 20:02:16Z" duration="1.010956" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1018" name="ModelProbabilityFlagsAreBookmarkedAsPossibleNotConfirmed" fullname="Neram.Tests.EventIndexTests.ModelProbabilityFlagsAreBookmarkedAsPossibleNotConfirmed" methodname="ModelProbabilityFlagsAreBookmarkedAsPossibleNotConfirmed" classname="Neram.Tests.EventIndexTests" runstate="Runnable" seed="287835962" result="Passed" start-time="2026-10-17 20:02:16Z" end-time="2026-10-17 20:02:18Z" duration="1.739080" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1019" name="NavigationFindsNextAndPreviousByCategory" fullname="Neram.Tests.EventIndexTests.NavigationFindsNextAndPreviousByCategory" methodname="NavigationFindsNextAndPreviousByCategory" classname="Neram.Tests.EventIndexTests" runstate="Runnable" seed="1740880438" result="Passed" start-time="2026-10-17 20:02:18Z" end-time="2026-10-17 20:02:19Z" duration="0.796369" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1016" name="ShutdownScenarioBookmarksAreAtTheRightTimes" fullname="Neram.Tests.EventIndexTests.ShutdownScenarioBookmarksAreAtTheRightTimes" methodname="ShutdownScenarioBookmarksAreAtTheRightTimes" classname="Neram.Tests.EventIndexTests" runstate="Runnable" seed="1752022727" result="Passed" start-time="2026-10-17 20:02:19Z" end-time="2026-10-17 20:02:20Z" duration="0.997028" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1089" name="FixtureCorpusTests" fullname="Neram.Tests.FixtureCorpusTests" classname="Neram.Tests.FixtureCorpusTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-17 20:02:20Z" end-time="2026-10-17 20:02:20Z" duration="0.270361" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1090" name="EveryFixtureProducesExactlyTheExpectedErrors" fullname="Neram.Tests.FixtureCorpusTests.EveryFixtureProducesExactlyTheExpectedErrors" methodname="EveryFixtureProducesExactlyTheExpectedErrors" classname="Neram.Tests.FixtureCorpusTests" runstate="Runnable" seed="2116092238" result="Passed" start-time="2026-10-17 20:02:20Z" end-time="2026-10-17 20:02:20Z" duration="0.263546" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1038" name="ForecastVisibilityTests" fullname="Neram.Tests.ForecastVisibilityTests" classname="Neram.Tests.ForecastVisibilityTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-17 20:02:20Z" end-time="2026-10-17 20:02:29Z" duration="8.706834" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1042" name="ClinicianFixedSubstateHasItsOwnMessage" fullname="Neram.Tests.ForecastVisibilityTests.ClinicianFixedSubstateHasItsOwnMessage" methodname="ClinicianFixedSubstateHasItsOwnMessage" classname="Neram.Tests.ForecastVisibilityTests" runstate="Runnable" seed="1057981911" result="Passed" start-time="2026-10-17 20:02:20Z" end-time="2026-10-17 20:02:21Z" duration="0.807732" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1041" name="HiddenInTwinDegradedStateEvenWhenValidityHasRecovered" fullname="Neram.Tests.ForecastVisibilityTests.HiddenInTwinDegradedStateEvenWhenValidityHasRecovered" methodname="HiddenInTwinDegradedStateEvenWhenValidityHasRecovered" classname="Neram.Tests.ForecastVisibilityTests" runstate="Runnable" seed="34031855" result="Passed" start-time="2026-10-17 20:02:21Z" end-time="2026-10-17 20:02:22Z" duration="1.034835" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="HiddenWhenTwinDegradedWithMonitoringMessage" fullname="Neram.Tests.ForecastVisibilityTests.HiddenWhenTwinDegradedWithMonitoringMessage" methodname="HiddenWhenTwinDegradedWithMonitoringMessage" classname="Neram.Tests.ForecastVisibilityTests" runstate="Runnable" seed="893109002" result="Passed" start-time="2026-10-17 20:02:22Z" end-time="2026-10-17 20:02:23Z" duration="0.973757" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="HiddenWhileInitialisingAndShownWhenValid" fullname="Neram.Tests.ForecastVisibilityTests.HiddenWhileInitialisingAndShownWhenValid" methodname="HiddenWhileInitialisingAndShownWhenValid" classname="Neram.Tests.ForecastVisibilityTests" runstate="Runnable" seed="148522577" result="Passed" start-time="2026-10-17 20:02:23Z" end-time="2026-10-17 20:02:25Z" duration="1.761080" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1044" name="LabelIsPlainForecastWhenNoHeating" fullname="Neram.Tests.ForecastVisibilityTests.LabelIsPlainForecastWhenNoHeating" methodname="LabelIsPlainForecastWhenNoHeating" classname="Neram.Tests.ForecastVisibilityTests" runstate="Runnable" seed="1755741944" result="Passed" start-time="2026-10-17 20:02:25Z" end-time="2026-10-17 20:02:26Z" duration="1.121101" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="LabelSaysAssumedWarmingOnlyForTwinInTheLoop" fullname="Neram.Tests.ForecastVisibilityTests.LabelSaysAssumedWarmingOnlyForTwinInTheLoop" methodname="LabelSaysAssumedWarmingOnlyForTwinInTheLoop" classname="Neram.Tests.ForecastVisibilityTests" runstate="Runnable" seed="1845429357" result="Passed" start-time="2026-10-17 20:02:26Z" end-time="2026-10-17 20:02:26Z" duration="0.012320" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1043" name="LabelSaysNoInterventionWhenHeatingInOpenLoopOrStandIn" fullname="Neram.Tests.ForecastVisibilityTests.LabelSaysNoInterventionWhenHeatingInOpenLoopOrStandIn" methodname="LabelSaysNoInterventionWhenHeatingInOpenLoopOrStandIn" classname="Neram.Tests.ForecastVisibilityTests" runstate="Runnable" seed="1707032983" result="Passed" start-time="2026-10-17 20:02:26Z" end-time="2026-10-17 20:02:29Z" duration="2.989361" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1059" name="LayoutAndStartupTests" fullname="Neram.Tests.LayoutAndStartupTests" classname="Neram.Tests.LayoutAndStartupTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-17 20:02:29Z" end-time="2026-10-17 20:02:34Z" duration="4.737818" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1063" name="FreshSessionStartsAtTheBeginningPausedAtOneTimesSpeed" fullname="Neram.Tests.LayoutAndStartupTests.FreshSessionStartsAtTheBeginningPausedAtOneTimesSpeed" methodname="FreshSessionStartsAtTheBeginningPausedAtOneTimesSpeed" classname="Neram.Tests.LayoutAndStartupTests" runstate="Runnable" seed="1077623951" result="Passed" start-time="2026-10-17 20:02:29Z" end-time="2026-10-17 20:02:31Z" duration="1.712442" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1064" name="LoadingAnotherScenarioDoesNotInheritSpeedOrPosition" fullname="Neram.Tests.LayoutAndStartupTests.LoadingAnotherScenarioDoesNotInheritSpeedOrPosition" methodname="LoadingAnotherScenarioDoesNotInheritSpeedOrPosition" classname="Neram.Tests.LayoutAndStartupTests" runstate="Runnable" seed="1585836010" result="Passed" start-time="2026-10-17 20:02:31Z" end-time="2026-10-17 20:02:34Z" duration="3.010537" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1060" name="ReferenceScaleAndBreakpoint" fullname="Neram.Tests.LayoutAndStartupTests.ReferenceScaleAndBreakpoint" methodname="ReferenceScaleAndBreakpoint" classname="Neram.Tests.LayoutAndStartupTests" runstate="Runnable" seed="682360608" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.004028" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="SixteenByNineScreensAllUseTheSameLogicalLayout" fullname="Neram.Tests.LayoutAndStartupTests.SixteenByNineScreensAllUseTheSameLogicalLayout" methodname="SixteenByNineScreensAllUseTheSameLogicalLayout" classname="Neram.Tests.LayoutAndStartupTests" runstate="Runnable" seed="246907462" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.002212" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1061" name="WideWindowsScaleByWidthSoTextDoesNotShrink" fullname="Neram.Tests.LayoutAndStartupTests.WideWindowsScaleByWidthSoTextDoesNotShrink" methodname="WideWindowsScaleByWidthSoTextDoesNotShrink" classname="Neram.Tests.LayoutAndStartupTests" runstate="Runnable" seed="1951499981" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.000346" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1074" name="NavBoundsTests" fullname="Neram.Tests.NavBoundsTests" classname="Neram.Tests.NavBoundsTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.010692" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1075" name="CameraIsPushedOutOfThePatientAndTable" fullname="Neram.Tests.NavBoundsTests.CameraIsPushedOutOfThePatientAndTable" methodname="CameraIsPushedOutOfThePatientAndTable" classname="Neram.Tests.NavBoundsTests" runstate="Runnable" seed="1993780839" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.000466" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1076" name="CameraStaysInsideTheRoom" fullname="Neram.Tests.NavBoundsTests.CameraStaysInsideTheRoom" methodname="CameraStaysInsideTheRoom" classname="Neram.Tests.NavBoundsTests" runstate="Runnable" seed="473107145" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.000556" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1077" name="FreePositionIsUnchanged" fullname="Neram.Tests.NavBoundsTests.FreePositionIsUnchanged" methodname="FreePositionIsUnchanged" classname="Neram.Tests.NavBoundsTests" runstate="Runnable" seed="1002817468" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.000366" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1091" name="ParserTests" fullname="Neram.Tests.ParserTests" classname="Neram.Tests.ParserTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.702201" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1103" name="CancellationStopsParsingWithoutATable" fullname="Neram.Tests.ParserTests.CancellationStopsParsingWithoutATable" methodname="CancellationStopsParsingWithoutATable" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="2008581973" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.002063" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1096" name="EnumsAndSourceTagsParse" fullname="Neram.Tests.ParserTests.EnumsAndSourceTagsParse" methodname="EnumsAndSourceTagsParse" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="247144148" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.004047" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1101" name="ErrorFloodIsCappedAndStillRejected" fullname="Neram.Tests.ParserTests.ErrorFloodIsCappedAndStillRejected" methodname="ErrorFloodIsCappedAndStillRejected" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="370533106" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.086211" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1099" name="GzipAndPlainFilesGiveIdenticalTables" fullname="Neram.Tests.ParserTests.GzipAndPlainFilesGiveIdenticalTables" methodname="GzipAndPlainFilesGiveIdenticalTables" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="1746604197" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.006304" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1098" name="HeaderFieldsAreRead" fullname="Neram.Tests.ParserTests.HeaderFieldsAreRead" methodname="HeaderFieldsAreRead" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="813365741" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.003971" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1102" name="HoldoutCohortIsRejectedEvenIfOtherwiseValid" fullname="Neram.Tests.ParserTests.HoldoutCohortIsRejectedEvenIfOtherwiseValid" methodname="HoldoutCohortIsRejectedEvenIfOtherwiseValid" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="1239682127" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.021035" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1104" name="MinuteBucketsFollowTwinPeriod" fullname="Neram.Tests.ParserTests.MinuteBucketsFollowTwinPeriod" methodname="MinuteBucketsFollowTwinPeriod" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="1134380339" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.531825" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1093" name="MissingObservationIsNullAndFlagged" fullname="Neram.Tests.ParserTests.MissingObservationIsNullAndFlagged" methodname="MissingObservationIsNullAndFlagged" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="282470174" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.004289" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1092" name="NullValuesAreStoredAsMissingNeverZero" fullname="Neram.Tests.ParserTests.NullValuesAreStoredAsMissingNeverZero" methodname="NullValuesAreStoredAsMissingNeverZero" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="947155039" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.002567" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1094" name="OptionalFieldsAbsentStayMissing" fullname="Neram.Tests.ParserTests.OptionalFieldsAbsentStayMissing" methodname="OptionalFieldsAbsentStayMissing" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="1359693871" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.018325" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1095" name="RequiredFieldAbsentIsRejected" fullname="Neram.Tests.ParserTests.RequiredFieldAbsentIsRejected" methodname="RequiredFieldAbsentIsRejected" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="1991441430" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.002976" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1100" name="TimestampsMustIncreaseStrictly" fullname="Neram.Tests.ParserTests.TimestampsMustIncreaseStrictly" methodname="TimestampsMustIncreaseStrictly" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="640216946" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.002739" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1097" name="UnknownEnumValueIsRejectedNotDisplayed" fullname="Neram.Tests.ParserTests.UnknownEnumValueIsRejectedNotDisplayed" methodname="UnknownEnumValueIsRejectedNotDisplayed" classname="Neram.Tests.ParserTests" runstate="Runnable" seed="415907815" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:34Z" duration="0.003480" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1065" name="PipelineTests" fullname="Neram.Tests.PipelineTests" classname="Neram.Tests.PipelineTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:42Z" duration="7.934649" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1068" name="ControllerTransitionThenRisingCommandsBecomeTheActiveStages" fullname="Neram.Tests.PipelineTests.ControllerTransitionThenRisingCommandsBecomeTheActiveStages" methodname="ControllerTransitionThenRisingCommandsBecomeTheActiveStages" classname="Neram.Tests.PipelineTests" runstate="Runnable" seed="1143726110" result="Passed" start-time="2026-10-17 20:02:34Z" end-time="2026-10-17 20:02:36Z" duration="1.778313" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1069" name="MissingObservationIsReportedAsUnavailable" fullname="Neram.Tests.PipelineTests.MissingObservationIsReportedAsUnavailable" methodname="MissingObservationIsReportedAsUnavailable" classname="Neram.Tests.PipelineTests" runstate="Runnable" seed="837377250" result="Passed" start-time="2026-10-17 20:02:36Z" end-time="2026-10-17 20:02:37Z" duration="1.096541" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1067" name="NoCommandIsInventedWhileTheReplayCommandIsZero" fullname="Neram.Tests.PipelineTests.NoCommandIsInventedWhileTheReplayCommandIsZero" methodname="NoCommandIsInventedWhileTheReplayCommandIsZero" classname="Neram.Tests.PipelineTests" runstate="Runnable" seed="360794412" result="Passed" start-time="2026-10-17 20:02:37Z" end-time="2026-10-17 20:02:39Z" duration="1.819933" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1070" name="TemperatureInputIsNeverCalledCoreTemperature" fullname="Neram.Tests.PipelineTests.TemperatureInputIsNeverCalledCoreTemperature" methodname="TemperatureInputIsNeverCalledCoreTemperature" classname="Neram.Tests.PipelineTests" runstate="Runnable" seed="1817546570" result="Passed" start-time="2026-10-17 20:02:39Z" end-time="2026-10-17 20:02:41Z" duration="1.398108" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1066" name="WarmingChannelStageReportsReplayedCommandsExactly" fullname="Neram.Tests.PipelineTests.WarmingChannelStageReportsReplayedCommandsExactly" methodname="WarmingChannelStageReportsReplayedCommandsExactly" classname="Neram.Tests.PipelineTests" runstate="Runnable" seed="1768849009" result="Passed" start-time="2026-10-17 20:02:41Z" end-time="2026-10-17 20:02:42Z" duration="1.831005" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1046" name="SafetyAndChannelDisplayTests" fullname="Neram.Tests.SafetyAndChannelDisplayTests" classname="Neram.Tests.SafetyAndChannelDisplayTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-17 20:02:42Z" end-time="2026-10-17 20:02:49Z" duration="6.612826" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1051" name="HardwareCutoffShowsAsCutoffBeforeShutdownOverlay" fullname="Neram.Tests.SafetyAndChannelDisplayTests.HardwareCutoffShowsAsCutoffBeforeShutdownOverlay" methodname="HardwareCutoffShowsAsCutoffBeforeShutdownOverlay" classname="Neram.Tests.SafetyAndChannelDisplayTests" runstate="Runnable" seed="1453524922" result="Passed" start-time="2026-10-17 20:02:42Z" end-time="2026-10-17 20:02:43Z" duration="0.753621" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1049" name="HeatersAreOffInEveryShutdownFrame" fullname="Neram.Tests.SafetyAndChannelDisplayTests.HeatersAreOffInEveryShutdownFrame" methodname="HeatersAreOffInEveryShutdownFrame" classname="Neram.Tests.SafetyAndChannelDisplayTests" runstate="Runnable" seed="1661690537" result="Passed" start-time="2026-10-17 20:02:43Z" end-time="2026-10-17 20:02:46Z" duration="3.018155" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1048" name="ResetBlockedThenReleased" fullname="Neram.Tests.SafetyAndChannelDisplayTests.ResetBlockedThenReleased" methodname="ResetBlockedThenReleased" classname="Neram.Tests.SafetyAndChannelDisplayTests" runstate="Runnable" seed="704904412" result="Passed" start-time="2026-10-17 20:02:46Z" end-time="2026-10-17 20:02:47Z" duration="1.018425" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1047" name="ShutdownBannerShowsLatchedFaultChannelAndAwaitingReset" fullname="Neram.Tests.SafetyAndChannelDisplayTests.ShutdownBannerShowsLatchedFaultChannelAndAwaitingReset" methodname="ShutdownBannerShowsLatchedFaultChannelAndAwaitingReset" classname="Neram.Tests.SafetyAndChannelDisplayTests" runstate="Runnable" seed="1779092635" result="Passed" start-time="2026-10-17 20:02:47Z" end-time="2026-10-17 20:02:48Z" duration="1.018764" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1050" name="SingleChannelFaultsIsolateOnlyThatChannel" fullname="Neram.Tests.SafetyAndChannelDisplayTests.SingleChannelFaultsIsolateOnlyThatChannel" methodname="SingleChannelFaultsIsolateOnlyThatChannel" classname="Neram.Tests.SafetyAndChannelDisplayTests" runstate="Runnable" seed="485493235" result="Passed" start-time="2026-10-17 20:02:48Z" end-time="2026-10-17 20:02:49Z" duration="0.792049" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1052" name="UnknownFaultCodeIsNeverGivenAMeaning" fullname="Neram.Tests.SafetyAndChannelDisplayTests.UnknownFaultCodeIsNeverGivenAMeaning" methodname="UnknownFaultCodeIsNeverGivenAMeaning" classname="Neram.Tests.SafetyAndChannelDisplayTests" runstate="Runnable" seed="1305865876" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.000794" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1035" name="ScenarioCatalogTests" fullname="Neram.Tests.ScenarioCatalogTests" classname="Neram.Tests.ScenarioCatalogTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.081068" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1037" name="AnInvalidHeaderIsListedButNotLoadable" fullname="Neram.Tests.ScenarioCatalogTests.AnInvalidHeaderIsListedButNotLoadable" methodname="AnInvalidHeaderIsListedButNotLoadable" classname="Neram.Tests.ScenarioCatalogTests" runstate="Runnable" seed="379551015" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.066110" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1036" name="CatalogMarksMissingScenariosAsAwaitingData" fullname="Neram.Tests.ScenarioCatalogTests.CatalogMarksMissingScenariosAsAwaitingData" methodname="CatalogMarksMissingScenariosAsAwaitingData" classname="Neram.Tests.ScenarioCatalogTests" runstate="Runnable" seed="1910021616" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.008507" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1030" name="SchemaConsistencyTests" fullname="Neram.Tests.SchemaConsistencyTests" classname="Neram.Tests.SchemaConsistencyTests" runstate="Runnable" testcasecount="4" result="Skipped" label="Ignored" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.057259" total="4" passed="3" failed="0" inconclusive="0" skipped="1" asserts="0">
+            <properties />
+            <reason>
+              <message><![CDATA[One or more child tests were ignored]]></message>
+            </reason>
+            <test-case id="1032" name="EveryReplaySignalInTheInterfaceSpecExistsInTheSchema" fullname="Neram.Tests.SchemaConsistencyTests.EveryReplaySignalInTheInterfaceSpecExistsInTheSchema" methodname="EveryReplaySignalInTheInterfaceSpecExistsInTheSchema" classname="Neram.Tests.SchemaConsistencyTests" runstate="Runnable" seed="1538307237" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.012118" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="ForecastFieldListCoversAllHorizonFields" fullname="Neram.Tests.SchemaConsistencyTests.ForecastFieldListCoversAllHorizonFields" methodname="ForecastFieldListCoversAllHorizonFields" classname="Neram.Tests.SchemaConsistencyTests" runstate="Runnable" seed="290978539" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.000610" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="GeneratedFieldTableMatchesReplayFieldsJson" fullname="Neram.Tests.SchemaConsistencyTests.GeneratedFieldTableMatchesReplayFieldsJson" methodname="GeneratedFieldTableMatchesReplayFieldsJson" classname="Neram.Tests.SchemaConsistencyTests" runstate="Runnable" seed="599048104" result="Skipped" label="Ignored" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.031958" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <reason>
+                <message><![CDATA[unity/schema not present next to Assets]]></message>
+              </reason>
+            </test-case>
+            <test-case id="1034" name="NoFieldIsNamedCoreTemperature" fullname="Neram.Tests.SchemaConsistencyTests.NoFieldIsNamedCoreTemperature" methodname="NoFieldIsNamedCoreTemperature" classname="Neram.Tests.SchemaConsistencyTests" runstate="Runnable" seed="1930687001" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.000993" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1078" name="ScreenLayoutTests" fullname="Neram.Tests.ScreenLayoutTests" classname="Neram.Tests.ScreenLayoutTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.013327" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1081" name="EveryPanelCanBeHiddenAndRestoredIndependently" fullname="Neram.Tests.ScreenLayoutTests.EveryPanelCanBeHiddenAndRestoredIndependently" methodname="EveryPanelCanBeHiddenAndRestoredIndependently" classname="Neram.Tests.ScreenLayoutTests" runstate="Runnable" seed="1071719296" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.001953" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="EveryPanelHasATitleForThePanelsList" fullname="Neram.Tests.ScreenLayoutTests.EveryPanelHasATitleForThePanelsList" methodname="EveryPanelHasATitleForThePanelsList" classname="Neram.Tests.ScreenLayoutTests" runstate="Runnable" seed="1007826808" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.000388" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1082" name="HideAllShowAllAndResetActOnOneScreenOnly" fullname="Neram.Tests.ScreenLayoutTests.HideAllShowAllAndResetActOnOneScreenOnly" methodname="HideAllShowAllAndResetActOnOneScreenOnly" classname="Neram.Tests.ScreenLayoutTests" runstate="Runnable" seed="1739516699" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.000775" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1080" name="MonitorContainsValuesPipelineGraphsAndForecastButNo3DOverlays" fullname="Neram.Tests.ScreenLayoutTests.MonitorContainsValuesPipelineGraphsAndForecastButNo3DOverlays" methodname="MonitorContainsValuesPipelineGraphsAndForecastButNo3DOverlays" classname="Neram.Tests.ScreenLayoutTests" runstate="Runnable" seed="700640267" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.000828" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1083" name="MonitorPagesSplitTheMonitorPanelsWithoutOverlap" fullname="Neram.Tests.ScreenLayoutTests.MonitorPagesSplitTheMonitorPanelsWithoutOverlap" methodname="MonitorPagesSplitTheMonitorPanelsWithoutOverlap" classname="Neram.Tests.ScreenLayoutTests" runstate="Runnable" seed="933575954" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.002238" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1079" name="TheatreStartsCleanAndAnalysisShowsEverything" fullname="Neram.Tests.ScreenLayoutTests.TheatreStartsCleanAndAnalysisShowsEverything" methodname="TheatreStartsCleanAndAnalysisShowsEverything" classname="Neram.Tests.ScreenLayoutTests" runstate="Runnable" seed="184431723" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.000882" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1085" name="StrictJsonTests" fullname="Neram.Tests.StrictJsonTests" classname="Neram.Tests.StrictJsonTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.011959" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1086" name="AcceptsStandardJsonAndPythonConstants" fullname="Neram.Tests.StrictJsonTests.AcceptsStandardJsonAndPythonConstants" methodname="AcceptsStandardJsonAndPythonConstants" classname="Neram.Tests.StrictJsonTests" runstate="Runnable" seed="2013091665" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.004592" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1087" name="RejectsEverythingPythonRejects" fullname="Neram.Tests.StrictJsonTests.RejectsEverythingPythonRejects" methodname="RejectsEverythingPythonRejects" classname="Neram.Tests.StrictJsonTests" runstate="Runnable" seed="67923380" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.001014" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1088" name="TimestampsStayStringsAndDuplicateKeysFail" fullname="Neram.Tests.StrictJsonTests.TimestampsStayStringsAndDuplicateKeysFail" methodname="TimestampsStayStringsAndDuplicateKeysFail" classname="Neram.Tests.StrictJsonTests" runstate="Runnable" seed="338262857" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.001001" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1071" name="ThermalScaleTests" fullname="Neram.Tests.ThermalScaleTests" classname="Neram.Tests.ThermalScaleTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.006907" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1073" name="MissingValueIsNeutralGrey" fullname="Neram.Tests.ThermalScaleTests.MissingValueIsNeutralGrey" methodname="MissingValueIsNeutralGrey" classname="Neram.Tests.ThermalScaleTests" runstate="Runnable" seed="986814004" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.000322" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="MonotonicWarmthAndNoRedChannelDominance" fullname="Neram.Tests.ThermalScaleTests.MonotonicWarmthAndNoRedChannelDominance" methodname="MonotonicWarmthAndNoRedChannelDominance" classname="Neram.Tests.ThermalScaleTests" runstate="Runnable" seed="1588927856" result="Passed" start-time="2026-10-17 20:02:49Z" end-time="2026-10-17 20:02:49Z" duration="0.001761" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/9a34s/AppData/LocalLow/DefaultCompany/NERAM Thermal Twin Viewer\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

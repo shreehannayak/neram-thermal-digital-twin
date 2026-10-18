@@ -1,0 +1,97 @@
+{
+  "spec_version": "0.1",
+  "file_status": "DRAFT v0.1 - enum NAMES are FROZEN (plan section 0.4); integer values are PROVISIONAL until CP2",
+  "owner": "Sai",
+  "source": "NERAM Team Implementation Plan, section 0.4",
+  "enums": {
+    "ControllerState": {
+      "type": "uint8",
+      "names_status": "FROZEN",
+      "values_status": "PROVISIONAL",
+      "values": [
+        {"value": 0, "name": "NORMAL", "label": "Normal", "description": "Monitoring. A +60 min risk raises an information alert only."},
+        {"value": 1, "name": "PREDICTIVE_WARMING", "label": "Predictive warming", "description": "Entered from a forecast; after entry, dose comes from T_est feedback only. Simulated, clinician-supervised."},
+        {"value": 2, "name": "ACTIVE_WARMING", "label": "Active warming", "description": "T_est below t_hypo, or target lost."},
+        {"value": 3, "name": "TARGET_MAINTENANCE", "label": "Target maintenance", "description": "Holding near target; heating may reach 0."},
+        {"value": 4, "name": "CLINICIAN_WARMING", "label": "Clinician warming", "description": "Clinician pressed START; regulation is automatic."},
+        {"value": 5, "name": "TWIN_DEGRADED", "label": "Twin degraded", "description": "Twin unreliable; monitoring only (or fixed clinician demand in CLINICIAN_FIXED)."},
+        {"value": 6, "name": "SAFETY_SHUTDOWN", "label": "Safety shutdown", "description": "System fault; all heating 0; latched until Clinician_Reset."}
+      ]
+    },
+    "DegradedSubstate": {
+      "type": "uint8",
+      "names_status": "PROVISIONAL",
+      "values_status": "PROVISIONAL",
+      "values": [
+        {"value": 0, "name": "NONE", "label": "-", "description": "Not in TWIN_DEGRADED."},
+        {"value": 1, "name": "MONITOR", "label": "Monitor only", "description": "Twin unreliable; alert only; no autonomous warming."},
+        {"value": 2, "name": "CLINICIAN_FIXED", "label": "Clinician fixed demand", "description": "Twin unreliable but the clinician has started warming; fixed demand, still module-limited."}
+      ]
+    },
+    "TwinValid": {
+      "type": "uint8",
+      "names_status": "FROZEN",
+      "values_status": "PROVISIONAL",
+      "values": [
+        {"value": 0, "name": "NO_DATA", "label": "No data", "description": "No observation yet."},
+        {"value": 1, "name": "INITIALISING", "label": "Initialising", "description": "tau < 20 min since settled start."},
+        {"value": 2, "name": "VALID", "label": "Valid", "description": "Twin outputs usable."},
+        {"value": 3, "name": "DEGRADED", "label": "Degraded", "description": "Twin unreliable (missing data or high state uncertainty)."}
+      ]
+    },
+    "TriggerReason": {
+      "type": "uint8",
+      "names_status": "FROZEN",
+      "values_status": "PROVISIONAL",
+      "values": [
+        {"value": 0, "name": "NONE", "label": "None"},
+        {"value": 1, "name": "FORECAST_P20", "label": "Forecast risk (+20 min)"},
+        {"value": 2, "name": "FORECAST_P30", "label": "Forecast risk (+30 min)"},
+        {"value": 3, "name": "TEST_BELOW_HYPO", "label": "T_est below t_hypo"},
+        {"value": 4, "name": "CLINICIAN_START", "label": "Clinician START"},
+        {"value": 5, "name": "TARGET_REACHED", "label": "Target reached"},
+        {"value": 6, "name": "TARGET_LOST", "label": "Target lost"},
+        {"value": 7, "name": "CLINICIAN_STOP", "label": "Clinician STOP"},
+        {"value": 8, "name": "SAFETY_FAULT", "label": "Safety fault"},
+        {"value": 9, "name": "TWIN_DEGRADED", "label": "Twin degraded"},
+        {"value": 10, "name": "TWIN_RECOVERED", "label": "Twin recovered"},
+        {"value": 11, "name": "CLINICIAN_RESET", "label": "Clinician RESET"}
+      ]
+    },
+    "AlertCode": {
+      "type": "uint8",
+      "names_status": "FROZEN",
+      "values_status": "PROVISIONAL",
+      "values": [
+        {"value": 0, "name": "NONE", "label": "No alert", "severity": "none"},
+        {"value": 1, "name": "FORECAST_RISK_20_30", "label": "Forecast risk at +20/+30 min", "severity": "info"},
+        {"value": 2, "name": "FORECAST_RISK_60_INFO", "label": "Forecast risk at +60 min (information only)", "severity": "info"},
+        {"value": 3, "name": "TWIN_DEGRADED", "label": "Twin unreliable - monitoring only", "severity": "warning"},
+        {"value": 4, "name": "CHANNEL_FAULT", "label": "Channel fault", "severity": "warning"},
+        {"value": 5, "name": "SAFETY_SHUTDOWN", "label": "Safety shutdown", "severity": "critical"},
+        {"value": 6, "name": "DATA_STALE", "label": "Data stale", "severity": "warning"},
+        {"value": 7, "name": "CLINICIAN_STOP_ACK", "label": "Clinician STOP acknowledged", "severity": "info"},
+        {"value": 8, "name": "RESET_BLOCKED", "label": "Reset blocked - condition still present", "severity": "critical"}
+      ]
+    },
+    "SourceTag": {
+      "type": "string",
+      "names_status": "FROZEN",
+      "values": [
+        {"value": "REAL_DEV", "label": "Real development data", "description": "Development-set VitalDB observation. Never the final holdout."},
+        {"value": "MODEL", "label": "NERAM twin model output", "description": "Produced by the robust state-space twin."},
+        {"value": "SIMULATED", "label": "Simulated", "description": "Produced by a simulation, stand-in or test bench."},
+        {"value": "ASSUMED", "label": "Assumed", "description": "Depends on an assumed (not learned) relationship, e.g. the warming response."}
+      ]
+    },
+    "PlantMode": {
+      "type": "string",
+      "names_status": "FROZEN",
+      "values": [
+        {"value": "OPEN_LOOP", "label": "Open loop", "description": "Controller commands do not affect the observed signal."},
+        {"value": "STANDIN", "label": "Twin stand-in loop", "description": "Closed-loop test with a twin stand-in; not the Digital Twin."},
+        {"value": "TWIN_IN_LOOP", "label": "Twin in the loop", "description": "Summit version: twin receives the ASSUMED warming input."}
+      ]
+    }
+  }
+}

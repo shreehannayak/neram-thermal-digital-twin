@@ -1,0 +1,162 @@
+{
+  "catalog_version": "0.1",
+  "owner": "Sai",
+  "status": "PROVISIONAL",
+  "note": "Scenario slots shown in the Unity scenario selector. SCN_A-SCN_D are the plan's demo scenarios (section 4R) and are produced by the team pipeline (twin export + controller log + build_replay.py). SYN_* files are SYNTHETIC placeholders from tools/make_synthetic_replays.py for UI development; they are not outputs of the NERAM twin or controller.",
+  "scenarios": [
+    {
+      "id": "SCN_A",
+      "title": "Usual-care replay",
+      "producer": "Sai (twin export) + Suchitha (TC19 open-loop log) + build_replay.py",
+      "purpose": "Development-case replay, open loop: the twin follows a real development-set patient temperature signal; controller decisions are logged but have no effect.",
+      "expected_data_source": "Development case (REAL_DEV observations, NERAM twin MODEL output), open loop",
+      "expected_cohort": "DEVELOPMENT",
+      "limitations": [
+        "Development set only; never the final holdout.",
+        "Open loop: no warming effect is shown.",
+        "Requires the VitalDB data-use terms to allow redistribution before it is committed."
+      ]
+    },
+    {
+      "id": "SCN_B",
+      "title": "Predictive warming",
+      "producer": "Sai (twin on a synthetic trajectory) + Suchitha (Simulink log)",
+      "purpose": "Forecast-triggered, clinician-supervised warming on a synthetic trajectory with the ASSUMED warming response.",
+      "expected_data_source": "Synthetic trajectory (SIMULATED) + ASSUMED warming response",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": [
+        "SIMULATED / ASSUMED PROTOTYPE RESPONSE: not a measured or predicted benefit."
+      ]
+    },
+    {
+      "id": "SCN_C",
+      "title": "Over-temperature fault",
+      "producer": "Suchitha (TC07 log) + build_replay.py",
+      "purpose": "Latched SAFETY_SHUTDOWN after a simulated module over-temperature, blocked reset, release.",
+      "expected_data_source": "Synthetic / test-bench (SIMULATED)",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": [
+        "Module temperatures and thresholds come from the test bench; real thresholds are TBD (Shreehan)."
+      ]
+    },
+    {
+      "id": "SCN_D",
+      "title": "Twin degraded",
+      "producer": "Suchitha (TC13 log) + build_replay.py",
+      "purpose": "Twin becomes unreliable: forecast hidden, no autonomous warming, recovery.",
+      "expected_data_source": "Synthetic (SIMULATED)",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": [
+        "Engineering demonstration only."
+      ]
+    },
+    {
+      "id": "SYN_SCN_A0",
+      "title": "Usual-care layout stand-in (synthetic)",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Placeholder for SCN_A until a development replay exists.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_SCN_B",
+      "title": "Predictive warming (synthetic placeholder)",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Placeholder for SCN_B.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_SCN_C",
+      "title": "Over-temperature fault (synthetic placeholder)",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Placeholder for SCN_C.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_SCN_D",
+      "title": "Twin degraded (synthetic placeholder)",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Placeholder for SCN_D.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_ENG_01",
+      "title": "Clinician START / STOP",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Engineering test scenario.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_ENG_02",
+      "title": "Channel faults isolate single channels",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Engineering test scenario.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_ENG_03",
+      "title": "Stuck-on driver and hardware cutoff",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Engineering test scenario.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_ENG_04",
+      "title": "Hardware data stale",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Engineering test scenario.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_ENG_05",
+      "title": "Twin degraded during clinician warming",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Engineering test scenario.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_ENG_06",
+      "title": "+60 min risk is information only",
+      "producer": "tools/make_synthetic_replays.py",
+      "purpose": "Engineering test scenario.",
+      "expected_data_source": "Synthetic placeholder",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": []
+    },
+    {
+      "id": "SYN_TC07",
+      "title": "Module over-temperature shutdown (controller test TC07, synthetic)",
+      "producer": "Suchitha (TC07 test-bench log, received 2026-10-17) + Sai twin_SYN_01 (canonical filter, ASSUMED_SYNTHETIC parameters) + integration/build_replay.py",
+      "purpose": "Show the supplied TC07 controller test-bench log in the viewer: a simulated module over-temperature on channel 2 latches SAFETY_SHUTDOWN at t = 200 s. The log ends while the shutdown is still latched; no clinician reset or release is part of this test.",
+      "expected_data_source": "Synthetic: SIMULATED observations, MODEL twin with assumed parameters, SIMULATED controller test-bench log",
+      "expected_cohort": "SYNTHETIC",
+      "limitations": [
+        "All four heating channels are 0 % for the whole log, so heating is never shown; this replay demonstrates the over-temperature shutdown and latch display only.",
+        "The channel-2 module temperature (sensors A and B) is an injected test stimulus rising from 33 to 45 degC with zero heater current; it is not a heater response.",
+        "Fault code 206 = channel 2 OVERTEMP_SW (100 x ch + 6, detected by MCU/controller). HW_Fault_Code (hardware SYSTEM codes 0-19) stays 0; that is consistent, not a contradiction.",
+        "HW_Cutoff_2 never trips: the hardware cutoff threshold is TBD (Shreehan); this says nothing about hardware behaviour.",
+        "The log covers only the first TC07 criterion (SAFETY_SHUTDOWN within 1 s, all Heat = 0, latched). It contains no cooling, no RESET_BLOCKED and no reset/release, so those parts of TC07 are not shown.",
+        "The log carries HW_Heartbeat_s and HW_Fault_Code, which are not section-1S log columns; it was built with --accept-ctrl-input-columns and those columns are not in the replay.",
+        "The 5-minute log lies inside the twin's 20-minute initialisation window, so no forecast is shown.",
+        "No clinical, hardware or treatment claim is made; thresholds are placeholders."
+      ]
+    }
+  ]
+}

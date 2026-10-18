@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Off-Unity build of Neram.Core for CI / local testing. Same sources as Assets/Scripts/Core. -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>Neram.Core</AssemblyName>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../unity_editor/Assets/Scripts/Core/*.cs" />
+    <Reference Include="Newtonsoft.Json"><HintPath>$(NEWTONSOFT_DLL)</HintPath></Reference>
+  </ItemGroup>
+</Project>

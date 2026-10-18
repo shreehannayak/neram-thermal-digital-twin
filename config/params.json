@@ -1,0 +1,593 @@
+{
+  "params_version": "0.3",
+  "spec_version": "0.1",
+  "owner": "Sai",
+  "file_status": "v0.3 (18 Oct 2026). Values are null unless the owner or the plan establishes them; a placeholder exists only so simulations and displays can run and is labelled wherever used.",
+  "params": {
+    "t_hypo_degC": {
+      "value": null,
+      "placeholder": 36.0,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Clinician input for THIS signal. 36.0 is the core-temperature convention; applicability to the BT signal is unresolved; used only as a labelled placeholder",
+      "owner": "Sai",
+      "purpose": "Hypothermia threshold for the forecast probability and ACTIVE entry",
+      "used_by": "Twin export, Ctrl, Unity display"
+    },
+    "t_target_degC": {
+      "value": null,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Clinician input",
+      "owner": "Sai",
+      "purpose": "Warming target",
+      "used_by": "Ctrl, Unity display"
+    },
+    "p_trigger": {
+      "value": null,
+      "placeholder": 0.5,
+      "unit": "1",
+      "status": "PROVISIONAL",
+      "source": "SYNTHETIC DEMO placeholder (same value tools/make_synthetic_replays.py already used, recorded in integration/synthetic/meta); not a clinical or validated value",
+      "owner": "Sai",
+      "purpose": "Predictive trigger probability",
+      "used_by": "Ctrl"
+    },
+    "p_release": {
+      "value": null,
+      "placeholder": 0.4,
+      "unit": "1",
+      "status": "PROVISIONAL",
+      "source": "SYNTHETIC DEMO placeholder (same value tools/make_synthetic_replays.py already used, recorded in integration/synthetic/meta); not a clinical or validated value",
+      "owner": "Sai",
+      "purpose": "Predictive release probability",
+      "used_by": "Ctrl"
+    },
+    "n_confirm_updates": {
+      "value": null,
+      "placeholder": 2,
+      "unit": "count",
+      "status": "PROVISIONAL",
+      "source": "SYNTHETIC DEMO placeholder (same value tools/make_synthetic_replays.py already used, recorded in integration/synthetic/meta); not a clinical or validated value",
+      "owner": "Sai",
+      "purpose": "Consecutive twin minutes above trigger",
+      "used_by": "Ctrl"
+    },
+    "sd_degrade_degC": {
+      "value": null,
+      "placeholder": 0.25,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "SYNTHETIC DEMO placeholder (same value tools/make_synthetic_replays.py already used, recorded in integration/synthetic/meta); not a clinical or validated value; to be set from development data only",
+      "owner": "Sai",
+      "purpose": "T_est_sd above which the twin reports DEGRADED",
+      "used_by": "Twin export"
+    },
+    "band_target_degC": {
+      "value": 0.3,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "TARGET_LOST hysteresis band",
+      "used_by": "Ctrl"
+    },
+    "t_dwell_min_s": {
+      "value": 10,
+      "placeholder": null,
+      "unit": "s",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Minimum time a condition must hold before a non-safety transition",
+      "used_by": "Ctrl"
+    },
+    "t_recover_s": {
+      "value": 30,
+      "placeholder": null,
+      "unit": "s",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Twin recovery dwell",
+      "used_by": "Ctrl"
+    },
+    "t_stop_inhibit_s": {
+      "value": 300,
+      "placeholder": null,
+      "unit": "s",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "No autonomous re-trigger after STOP",
+      "used_by": "Ctrl"
+    },
+    "d_pred_max_pct": {
+      "value": 40,
+      "placeholder": null,
+      "unit": "%",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Demand cap per mode",
+      "used_by": "Ctrl"
+    },
+    "d_active_max_pct": {
+      "value": 70,
+      "placeholder": null,
+      "unit": "%",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Demand cap per mode",
+      "used_by": "Ctrl"
+    },
+    "d_maint_max_pct": {
+      "value": 50,
+      "placeholder": null,
+      "unit": "%",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Demand cap per mode",
+      "used_by": "Ctrl"
+    },
+    "d_fallback_pct": {
+      "value": 20,
+      "placeholder": null,
+      "unit": "%",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Demand cap per mode",
+      "used_by": "Ctrl"
+    },
+    "kp_pct_per_degC": {
+      "value": 20,
+      "placeholder": null,
+      "unit": "%/degC",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "PI proportional gain",
+      "used_by": "Ctrl"
+    },
+    "ki_pct_per_degC_s": {
+      "value": 0.5,
+      "placeholder": null,
+      "unit": "%/(degC*s)",
+      "status": "PROVISIONAL",
+      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "PI integral gain",
+      "used_by": "Ctrl"
+    },
+    "ts_ctrl_s": {
+      "value": 1,
+      "placeholder": null,
+      "unit": "s",
+      "status": "PROVISIONAL",
+      "source": "Design choice",
+      "owner": "Suchitha",
+      "purpose": "Controller step",
+      "used_by": "Ctrl, HW protocol"
+    },
+    "ts_twin_s": {
+      "value": 60,
+      "placeholder": null,
+      "unit": "s",
+      "status": "FROZEN",
+      "source": "Project model (1-min bins)",
+      "owner": "Sai",
+      "purpose": "Twin update period",
+      "used_by": "Twin, Ctrl, Unity (minute bucketing)"
+    },
+    "data_stale_twin_s": {
+      "value": null,
+      "placeholder": 120,
+      "unit": "s",
+      "status": "PROVISIONAL",
+      "source": "Derived from ts_twin_s (plan section 6): 2 x ts_twin_s = 120 s; the value Suchitha's controller uses. Placeholder until confirmed",
+      "owner": "Sai",
+      "purpose": "Twin age that triggers TWIN_DEGRADED",
+      "used_by": "Ctrl"
+    },
+    "data_stale_hw_s": {
+      "value": null,
+      "placeholder": null,
+      "unit": "s",
+      "status": "PROVISIONAL",
+      "source": "Derived (>= 2 x hw_status_period_s)",
+      "owner": "Shreehan",
+      "purpose": "Hardware age that triggers SAFETY_SHUTDOWN",
+      "used_by": "Ctrl"
+    },
+    "t_surface_limit_degC": {
+      "value": null,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Applicable standard clause (IEC 80601-2-35 believed relevant: verify) and/or clinician",
+      "owner": "Shreehan",
+      "purpose": "Maximum skin-contact surface temperature",
+      "used_by": "Shreehan thresholds"
+    },
+    "t_mod_derate_degC": {
+      "value": null,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Below t_surface_limit_degC; ordering in plan section 3M",
+      "owner": "Shreehan",
+      "purpose": "Software derate threshold",
+      "used_by": "Ctrl"
+    },
+    "t_mod_trip_degC": {
+      "value": null,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Below t_surface_limit_degC; ordering in plan section 3M",
+      "owner": "Shreehan",
+      "purpose": "Software trip threshold",
+      "used_by": "Ctrl"
+    },
+    "t_mod_reset_degC": {
+      "value": null,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Below t_surface_limit_degC; ordering in plan section 3M",
+      "owner": "Shreehan",
+      "purpose": "Reset threshold",
+      "used_by": "Ctrl"
+    },
+    "t_hw_cutoff_degC": {
+      "value": null,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Device datasheet / comparator design; ordering in plan section 3M",
+      "owner": "Shreehan",
+      "purpose": "Hardware cutoff threshold",
+      "used_by": "HW, Ctrl stand-in"
+    },
+    "p_max_ch_W": {
+      "value": null,
+      "placeholder": null,
+      "unit": "W",
+      "status": "TBD",
+      "source": "Heater datasheet + calculation",
+      "owner": "Shreehan",
+      "purpose": "Maximum electrical power per channel",
+      "used_by": "Power budget"
+    },
+    "p_max_ch_pct": {
+      "value": null,
+      "placeholder": null,
+      "unit": "%",
+      "status": "TBD",
+      "source": "Calculation from p_max_ch_W and allowed power",
+      "owner": "Shreehan",
+      "purpose": "Duty cap per channel (4 values)",
+      "used_by": "Ctrl"
+    },
+    "heater_r_ohm": {
+      "value": null,
+      "placeholder": null,
+      "unit": "ohm",
+      "status": "TBD",
+      "source": "Datasheet",
+      "owner": "Shreehan",
+      "purpose": "Heater resistance",
+      "used_by": "Power budget, i_on_A"
+    },
+    "heater_power_density_W_cm2": {
+      "value": null,
+      "placeholder": null,
+      "unit": "W/cm2",
+      "status": "TBD",
+      "source": "Datasheet",
+      "owner": "Shreehan",
+      "purpose": "Heater power density",
+      "used_by": "Power budget"
+    },
+    "v_bus_V": {
+      "value": null,
+      "placeholder": null,
+      "unit": "V",
+      "status": "TBD",
+      "source": "Heater datasheet + standard",
+      "owner": "Shreehan",
+      "purpose": "Heater supply voltage",
+      "used_by": "Power budget"
+    },
+    "i_on_A": {
+      "value": null,
+      "placeholder": null,
+      "unit": "A",
+      "status": "TBD",
+      "source": "Calculation from heater + sense design",
+      "owner": "Shreehan",
+      "purpose": "Nominal current / fault threshold",
+      "used_by": "Ctrl"
+    },
+    "i_open_max_A": {
+      "value": null,
+      "placeholder": null,
+      "unit": "A",
+      "status": "TBD",
+      "source": "Calculation from heater + sense design",
+      "owner": "Shreehan",
+      "purpose": "Nominal current / fault threshold",
+      "used_by": "Ctrl"
+    },
+    "i_over_A": {
+      "value": null,
+      "placeholder": null,
+      "unit": "A",
+      "status": "TBD",
+      "source": "Calculation from heater + sense design",
+      "owner": "Shreehan",
+      "purpose": "Nominal current / fault threshold",
+      "used_by": "Ctrl"
+    },
+    "i_stuck_A": {
+      "value": null,
+      "placeholder": null,
+      "unit": "A",
+      "status": "TBD",
+      "source": "Calculation from heater + sense design",
+      "owner": "Shreehan",
+      "purpose": "Nominal current / fault threshold",
+      "used_by": "Ctrl"
+    },
+    "sensor_accuracy_degC": {
+      "value": null,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Datasheet",
+      "owner": "Shreehan",
+      "purpose": "Module sensor accuracy",
+      "used_by": "dt_sensor_disagree_degC"
+    },
+    "sensor_sample_rate_Hz": {
+      "value": null,
+      "placeholder": 1,
+      "unit": "Hz",
+      "status": "TBD",
+      "source": "Calculation from response time",
+      "owner": "Shreehan",
+      "purpose": "Module sensor sampling",
+      "used_by": "HW, Ctrl"
+    },
+    "dt_sensor_disagree_degC": {
+      "value": null,
+      "placeholder": null,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Calculation from accuracy",
+      "owner": "Shreehan",
+      "purpose": "A/B disagreement threshold",
+      "used_by": "Ctrl"
+    },
+    "wdt_timeout_ms": {
+      "value": null,
+      "placeholder": null,
+      "unit": "ms",
+      "status": "TBD",
+      "source": "MCU datasheet + design choice",
+      "owner": "Shreehan",
+      "purpose": "MCU independent watchdog",
+      "used_by": "HW"
+    },
+    "host_heartbeat_timeout_s": {
+      "value": null,
+      "placeholder": null,
+      "unit": "s",
+      "status": "PROVISIONAL",
+      "source": "Design choice (>= 2 command periods)",
+      "owner": "Shreehan",
+      "purpose": "MCU heater-off timeout without a valid command",
+      "used_by": "HW"
+    },
+    "hw_status_period_s": {
+      "value": 1,
+      "placeholder": null,
+      "unit": "s",
+      "status": "PROVISIONAL",
+      "source": "Design choice",
+      "owner": "Shreehan",
+      "purpose": "MCU status frame period",
+      "used_by": "HW"
+    },
+    "pwm_freq_Hz": {
+      "value": null,
+      "placeholder": null,
+      "unit": "Hz",
+      "status": "TBD",
+      "source": "Design choice + switch datasheet",
+      "owner": "Shreehan",
+      "purpose": "Heater PWM frequency",
+      "used_by": "HW"
+    },
+    "k_heat_degC_per_h": {
+      "value": null,
+      "placeholder": 2.0,
+      "unit": "degC/h at 100% on all channels",
+      "status": "ASSUMED",
+      "source": "ASSUMED illustrative value (no warming data exist); every output that uses it runs the x0.5/x1/x2 grid; SYNTHETIC DEMO placeholder (same value tools/make_synthetic_replays.py already used, recorded in integration/synthetic/meta); not a clinical or validated value",
+      "owner": "Sai",
+      "purpose": "ASSUMED warming effect",
+      "used_by": "Plant, twin (summit)"
+    },
+    "tau_heat_min": {
+      "value": null,
+      "placeholder": 10.0,
+      "unit": "min",
+      "status": "ASSUMED",
+      "source": "ASSUMED illustrative value; SYNTHETIC DEMO placeholder (same value tools/make_synthetic_replays.py already used, recorded in integration/synthetic/meta); not a clinical or validated value",
+      "owner": "Sai",
+      "purpose": "Lag of the assumed warming effect",
+      "used_by": "Plant"
+    },
+    "w_ch": {
+      "value": null,
+      "placeholder": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "unit": "1",
+      "status": "ASSUMED",
+      "source": "ASSUMED equal channel weights (plan section 4E default)",
+      "owner": "Sai",
+      "purpose": "Channel weights in the warming effect (4 values)",
+      "used_by": "Plant"
+    },
+    "r_obs_degC2": {
+      "value": null,
+      "placeholder": 0.001,
+      "unit": "degC^2",
+      "status": "TBD",
+      "source": "Placeholder from synthetic verification (r in the self-test of src/thermal_robust_core.py); TBD until the development fit",
+      "owner": "Sai",
+      "purpose": "Observation noise in the plant",
+      "used_by": "Plant"
+    },
+    "sd_mod_sensor_degC": {
+      "value": null,
+      "placeholder": 0.05,
+      "unit": "degC",
+      "status": "ASSUMED",
+      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Module stand-in sensor noise",
+      "used_by": "Test bench only"
+    },
+    "tau_mod_s": {
+      "value": null,
+      "placeholder": 90,
+      "unit": "s",
+      "status": "ASSUMED",
+      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Module stand-in time constant",
+      "used_by": "Test bench only"
+    },
+    "k_mod_degC": {
+      "value": null,
+      "placeholder": 6.0,
+      "unit": "degC",
+      "status": "ASSUMED",
+      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Module stand-in gain",
+      "used_by": "Test bench only"
+    },
+    "t_skin_base_degC": {
+      "value": null,
+      "placeholder": 33.0,
+      "unit": "degC",
+      "status": "ASSUMED",
+      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Module stand-in base temperature",
+      "used_by": "Test bench only"
+    },
+    "sd_standin_degC": {
+      "value": null,
+      "placeholder": 0.05,
+      "unit": "degC",
+      "status": "ASSUMED",
+      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Twin stand-in SD",
+      "used_by": "Test bench only"
+    },
+    "tau_standin_s": {
+      "value": null,
+      "placeholder": 15,
+      "unit": "s",
+      "status": "ASSUMED",
+      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchitha",
+      "purpose": "Twin stand-in filter constant",
+      "used_by": "Test bench only"
+    },
+    "plant_passive_alpha_degC": {
+      "value": null,
+      "placeholder": 0.3,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
+      "owner": "Sai",
+      "purpose": "Passive (no-warming) trajectory: redistribution amplitude alpha in phi_t = [exp(-gamma t) - 1, t/60]",
+      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+    },
+    "plant_passive_beta_degC_per_h": {
+      "value": null,
+      "placeholder": 0.1,
+      "unit": "degC/h",
+      "status": "TBD",
+      "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
+      "owner": "Sai",
+      "purpose": "Passive trajectory: linear drift beta",
+      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+    },
+    "plant_passive_gamma_per_min": {
+      "value": null,
+      "placeholder": 0.03,
+      "unit": "1/min",
+      "status": "TBD",
+      "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
+      "owner": "Sai",
+      "purpose": "Passive trajectory: redistribution rate gamma",
+      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+    },
+    "plant_passive_u0_degC": {
+      "value": null,
+      "placeholder": 36.5,
+      "unit": "degC",
+      "status": "TBD",
+      "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
+      "owner": "Sai",
+      "purpose": "Passive trajectory: starting level u0",
+      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+    },
+    "plant_passive_q_degC2_per_min": {
+      "value": null,
+      "placeholder": 0.0004,
+      "unit": "degC^2/min",
+      "status": "TBD",
+      "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
+      "owner": "Sai",
+      "purpose": "Passive trajectory: level random-walk variance q",
+      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+    }
+  },
+  "changelog": [
+    {
+      "version": "0.2",
+      "date": "2026-10-17",
+      "owner": "Sai",
+      "changes": "Sai-owned rows only: placeholders for p_trigger 0.5, p_release 0.4, n_confirm_updates 2, sd_degrade_degC 0.25, k_heat_degC_per_h 2.0, tau_heat_min 10.0, w_ch [0.25 x4], r_obs_degC2 0.001 (all values unchanged: null); new TBD rows plant_passive_* (alpha, beta, gamma, u0, q) with synthetic-verification placeholders. No other owner's row changed. Announce to the team (plan 4D)."
+    },
+    {
+      "version": "0.2",
+      "date": "2026-10-18",
+      "owner": "Sai",
+      "changes": "Correction: t_target_degC placeholder removed again (value and placeholder null, source 'Clinician input' as in v0.1). A warming target is a clinical value and must not be invented in project config; the Unity viewer asserts this (ConfigAndSchemaTests, DisplayRuleTests). Synthetic replays keep their own labelled SYNTHETIC DEMO target in the replay header params_used."
+    },
+    {
+      "version": "0.3",
+      "date": "2026-10-18",
+      "owner": "Sai",
+      "changes": "Suchitha-owned rows filled from her controller_spec.md section 6 (as she set them): PROVISIONAL values band_target_degC, t_dwell_min_s, t_recover_s, t_stop_inhibit_s, d_pred_max_pct, d_active_max_pct, d_maint_max_pct, d_fallback_pct, kp_pct_per_degC, ki_pct_per_degC_s; ASSUMED test-bench placeholders t_skin_base_degC, k_mod_degC, tau_mod_s, sd_mod_sensor_degC, sd_standin_degC, tau_standin_s. Sai row data_stale_twin_s: placeholder 120 s (2 x ts_twin_s). Shreehan rows unchanged (null): the numbers in Suchitha's standalone table are from an old script, not Shreehan values. Sai rows p_trigger/p_release/k_heat/tau_heat/r_obs unchanged; Suchitha used different standalone stand-ins because params.json had not reached her; her code reads config/params.json automatically when present, so she should re-run with this file. Announce to the team (plan 4D)."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "ASSUMED_SYNTHETIC",
+  "owner": "Sai",
+  "purpose": "Illustrative parameter set for SYNTHETIC twin exports and synthetic observation generation only. NOT estimated from VitalDB; the real-data development fit has not succeeded. Must never be presented as fitted values.",
+  "source": "Gaussian part (gamma, q, r, m0, S) copied from the self-test block of src/thermal_robust_core.py; mixture part (pi_u, q_J, pi_e, r_O) chosen for illustration so that occasional level shifts and outliers occur.",
+  "params": {
+    "gamma": 0.03,
+    "q": 0.0004,
+    "r": 0.001,
+    "pi_u": 0.01,
+    "q_J": 0.04,
+    "pi_e": 0.01,
+    "r_O": 0.25
+  },
+  "m0": [0.3, 0.1],
+  "S": [[0.2, 0.02], [0.02, 0.05]]
+}

@@ -1,0 +1,66 @@
+{
+  "generator": "tools/make_twin_syn_outputs.py",
+  "core_sha256": "de9c6c6378301ddd6e9378cfd3d5671a97fc68cc79a190a978033aa4161ad2c5",
+  "model_params_sha256": "675a6394d62d44fd04f9f0361ed7a9105a7606ab400bc11beca387a93ddf62c8",
+  "config_sha256": "4f4ed27d7bb1b4b5da14eda251d5add658668b544d335d65c3e3fc37f58fc013",
+  "cohort": "SYNTHETIC",
+  "note": "SIMULATED observations; twin values computed by the canonical NERAM filter with ASSUMED_SYNTHETIC parameters (not fitted).",
+  "scenarios": [
+    {
+      "id": "SYN_01",
+      "title": "Usual care (synthetic)",
+      "pairs_with": "SCN_A",
+      "obs": "integration/synthetic/observations/obs_SYN_01.csv",
+      "twin": "integration/twin_outputs/twin_SYN_01.csv",
+      "twin_sha256": "51436deac37edae770ef48b859c748bd293c329b6deb9a72285890c350099941",
+      "twin_valid_counts": {
+        "NO_DATA": 0,
+        "INITIALISING": 20,
+        "VALID": 70,
+        "DEGRADED": 0
+      }
+    },
+    {
+      "id": "SYN_02",
+      "title": "Cooling toward the placeholder t_hypo (synthetic)",
+      "pairs_with": "SCN_B",
+      "obs": "integration/synthetic/observations/obs_SYN_02.csv",
+      "twin": "integration/twin_outputs/twin_SYN_02.csv",
+      "twin_sha256": "6e91d186019a1847116fd0264109b3020d4195f7c2a1334e8a1ae1fe87451624",
+      "twin_valid_counts": {
+        "NO_DATA": 0,
+        "INITIALISING": 20,
+        "VALID": 70,
+        "DEGRADED": 0
+      }
+    },
+    {
+      "id": "SYN_03",
+      "title": "Outlier and level shift (synthetic)",
+      "pairs_with": "SCN_C (twin-side companion only)",
+      "obs": "integration/synthetic/observations/obs_SYN_03.csv",
+      "twin": "integration/twin_outputs/twin_SYN_03.csv",
+      "twin_sha256": "cc276c8e2726b3ae36d4311f1d1cd1efcbbc9cab562f0cdd3d2638bc6310fb2e",
+      "twin_valid_counts": {
+        "NO_DATA": 0,
+        "INITIALISING": 20,
+        "VALID": 70,
+        "DEGRADED": 0
+      }
+    },
+    {
+      "id": "SYN_04",
+      "title": "Observation gap -> degraded twin (synthetic)",
+      "pairs_with": "SCN_D",
+      "obs": "integration/synthetic/observations/obs_SYN_04.csv",
+      "twin": "integration/twin_outputs/twin_SYN_04.csv",
+      "twin_sha256": "54d6e5bf053236bf938159c2f48f8667d66390e9cd6f1b77a65b6d08d07db0d2",
+      "twin_valid_counts": {
+        "NO_DATA": 0,
+        "INITIALISING": 20,
+        "VALID": 50,
+        "DEGRADED": 20
+      }
+    }
+  ]
+}

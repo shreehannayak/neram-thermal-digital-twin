@@ -1,0 +1,39 @@
+{
+  "scenario": {
+    "id": "SYN_01",
+    "title": "Usual care (synthetic)",
+    "seed": 101,
+    "minutes": 90,
+    "u0": 36.6,
+    "theta": [
+      0.3,
+      0.1
+    ],
+    "outliers": {},
+    "shifts": {},
+    "gaps": [],
+    "pairs_with": "SCN_A"
+  },
+  "core_sha256": "de9c6c6378301ddd6e9378cfd3d5671a97fc68cc79a190a978033aa4161ad2c5",
+  "obs_sha256": "cd27d16023f15228e9461ea1c19c8c96cac47371cc8f3d3ffa22a2c40eef1510",
+  "twin_sha256": "51436deac37edae770ef48b859c748bd293c329b6deb9a72285890c350099941",
+  "model_params_status": "ASSUMED_SYNTHETIC",
+  "config_used": {
+    "init_min": 20.0,
+    "window_min": 15.0,
+    "min_obs_in_window": 10.0,
+    "t_hypo_degC": 36.0,
+    "sd_degrade_degC": 0.25
+  },
+  "binomial_truncation_mass": {
+    "20": 6.915719108491203e-10,
+    "30": 1.6637423549958896e-08,
+    "60": 9.332431161190868e-09
+  },
+  "twin_valid_counts": {
+    "NO_DATA": 0,
+    "INITIALISING": 20,
+    "VALID": 70,
+    "DEGRADED": 0
+  }
+}

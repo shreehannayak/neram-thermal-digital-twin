@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Runs the Unity EditMode test sources (Assets/Tests/EditMode) outside Unity against Neram.Core. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <NoWarn>CS1701;CS1702</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../../unity_editor/Assets/Tests/EditMode/*.cs" />
+    <Compile Include="Runner.cs" />
+    <ProjectReference Include="../Core/Neram.Core.csproj" />
+    <Reference Include="Newtonsoft.Json"><HintPath>$(NEWTONSOFT_DLL)</HintPath></Reference>
+    <Reference Include="nunit.framework"><HintPath>$(NUNIT_DLL)</HintPath></Reference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,95 @@
+{
+ "t_hypo_degC": {
+  "value": null,
+  "placeholder": 36.0,
+  "unit": "degC",
+  "status": "TBD",
+  "owner": "Sai",
+  "source": "config/params.json placeholder: 36.0 is the core-temperature convention; applicability to this signal unresolved"
+ },
+ "t_target_degC": {
+  "value": null,
+  "placeholder": 36.5,
+  "unit": "degC",
+  "status": "TBD",
+  "owner": "Sai",
+  "source": "SYNTHETIC DEMO placeholder chosen for display only; not a clinical target"
+ },
+ "p_trigger": {
+  "value": null,
+  "placeholder": 0.5,
+  "unit": "1",
+  "status": "PROVISIONAL",
+  "owner": "Sai",
+  "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"
+ },
+ "p_release": {
+  "value": null,
+  "placeholder": 0.4,
+  "unit": "1",
+  "status": "PROVISIONAL",
+  "owner": "Sai",
+  "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"
+ },
+ "t_dwell_min_s": {
+  "value": null,
+  "placeholder": 60,
+  "unit": "s",
+  "status": "PROVISIONAL",
+  "owner": "Suchitha",
+  "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"
+ },
+ "t_stop_inhibit_s": {
+  "value": null,
+  "placeholder": 600,
+  "unit": "s",
+  "status": "PROVISIONAL",
+  "owner": "Suchitha",
+  "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"
+ },
+ "k_heat_degC_per_h": {
+  "value": null,
+  "placeholder": 2.0,
+  "unit": "degC/h at 100% on all channels",
+  "status": "ASSUMED",
+  "owner": "Sai",
+  "source": "SYNTHETIC DEMO illustrative value; not estimated; no warming data exist"
+ },
+ "tau_heat_min": {
+  "value": null,
+  "placeholder": 10.0,
+  "unit": "min",
+  "status": "ASSUMED",
+  "owner": "Sai",
+  "source": "SYNTHETIC DEMO illustrative value"
+ },
+ "w_ch": {
+  "value": null,
+  "placeholder": [
+   0.25,
+   0.25,
+   0.25,
+   0.25
+  ],
+  "unit": "1",
+  "status": "ASSUMED",
+  "owner": "Sai",
+  "source": "ASSUMED equal channel weights (plan section 4E default)"
+ },
+ "k_mod_degC": {
+  "value": null,
+  "placeholder": 6.0,
+  "unit": "degC",
+  "status": "ASSUMED",
+  "owner": "Suchitha",
+  "source": "SYNTHETIC DEMO module stand-in; not a heater or skin value"
+ },
+ "i_on_A": {
+  "value": null,
+  "placeholder": 1.0,
+  "unit": "A",
+  "status": "TBD",
+  "owner": "Shreehan",
+  "source": "SYNTHETIC DEMO normalised current (1.0 = nominal); not an electrical rating"
+ }
+}
