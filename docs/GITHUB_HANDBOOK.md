@@ -38,7 +38,7 @@ Work only inside your own folder.
 | Member | Folder | How to add something |
 |---|---|---|
 | Suchitha | `controller/` | Code in `controller/neram_ctrl/`, logs in `controller/results/logs/`; handoff logs go to Sai for `integration/controller_logs_received/<date>/` |
-| Neharika | `cad/` | STEP and `.f3d` in `cad/exports/`, drawings in `cad/drawings/`, your own `cad/README.md`; tell Sai about any new FBX the same day |
+| Neharika | `cad/` | Done: the 3D models are in `cad/exports/`. Any new FBX: tell Sai the same day so the Unity import check runs |
 | Shreehan | `hardware/` | Edit CSV/Markdown directly; diagrams and schematic come from `hardware/diagrams/make_diagrams.py` and `hardware/schematics/make_schematic.py` (commit script and images) |
 | Sai | everything else | Unity changes in the workspace, copied to `unity_editor/` with their `.meta` files |
 
@@ -85,9 +85,7 @@ oxygen flow.
 - **Everyone:** GitHub confirmation comment; family name in `CITATION.cff`.
 - **Sai:** demo video (link in README section 16); sign-off of scientific wording in the checklist.
 - **Suchitha:** `controller/neram_ctrl/` v2 code; v2 TC04 log; `T07_duty_stats.csv`; reply on issue #2.
-- **Neharika:** STEP/`.f3d`, drawings D01–D05; strain-relief parts, `NERAM_Assembly.fbx`, own
-  `exploded_offsets.csv`; foot-strap size; check the 0.5 mm insulation–heater overlap (R08); coverage area; own
-  `cad/README.md`.
+- **Neharika:** done (3D models delivered 18 Oct). Only the GitHub confirmation and family name, as for everyone.
 - **Shreehan:** 19 Oct audit from a logged-out browser (`docs/SUBMISSION_CHECKLIST.md`, dry run in
   `docs/SUBMISSION_DRYRUN_2026-10-18.md`); BOM prices in INR; MPM-65 derating factor; wrist-cell datasheet; review the
   one-channel schematic; close issue #1.

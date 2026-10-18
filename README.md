@@ -122,8 +122,8 @@ battery) and the bedside controller enclosure.
 
 - `cad/exports/source_fusion_2026-10-18/`: the Fusion exports as received.
 - `cad/exports/unity/`: Unity-ready copies (metres, Y up, plan names, `MAT_*` materials; shapes unchanged).
-- `cad/IMPORT_CHECK_SAI_2026-10-18.md`: import check, what was changed, what is still open (strain relief,
-  assembly file, STEP/native files, drawings).
+- `cad/IMPORT_CHECK_SAI_2026-10-18.md`: import check and what the Unity prep changed. The submitted CAD is the 3D
+  models; STEP/native files and 2D drawings are not part of this submission.
 - `cad/renders/`: plan renders R01–R08 (full scene, modules, exploded layers, controller, cable routing, sensor-pocket
   section); `cad/renders/unity_preview_2026-10-18/`: earlier viewer pictures.
 

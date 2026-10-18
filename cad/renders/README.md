@@ -16,9 +16,9 @@ carries the footer "NERAM proof-of-concept prototype — not a medical device".
 | `R07_cable_routing_top.png` | Cable routing, top view (ceiling hidden) | Unity viewer |
 | `R08_sensor_pocket_section.png` | Section through CH1_Sensor_A, measured layer stack | `tools/render_section.py` (from the FBX) |
 
-Exploded offsets are visual only (`cad/exports/unity/exploded_offsets_SAI_DEFAULT.csv` × 1.4) until Neharika's own
-`exploded_offsets.csv` exists. The R08 cut shows a 0.5 mm overlap between insulation (from 3.0 mm) and heater film
-(to 3.5 mm) in the exported model; it is reported, not changed.
+Exploded offsets are visual only (`cad/exports/unity/exploded_offsets_SAI_DEFAULT.csv` × 1.4) (no exploded-offsets file is part of the CAD
+deliverable). The R08 cut shows a 0.5 mm overlap between insulation (from 3.0 mm) and heater film
+(to 3.5 mm) in the exported model; it is noted, not changed.
 
 ## Reproduce
 1. Unity (workspace `unity_editor/`): **NERAM > CAD > Render plan renders R01-R07** (`unity_editor/Assets/Editor/NeramRenders.cs`) writes

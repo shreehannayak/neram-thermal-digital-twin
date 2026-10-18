@@ -5,7 +5,7 @@ heater_r_ohm_ch2,Heater resistance CH2,,ohm,Heater datasheet or calculation,TBD,
 heater_r_ohm_ch3,Heater resistance CH3,,ohm,Heater datasheet or calculation,TBD,
 heater_r_ohm_ch4,Heater resistance CH4,,ohm,Heater datasheet or calculation,TBD,
 i_on_A,Nominal channel current = v_bus_V / heater_r_ohm,,A,Calculation,TBD,Per channel
-p_max_ch_W_ch1,Max power CH1 = power density x heater area (or rated power),,W,Heater datasheet x CAD area,TBD,Needs Neharika coverage area
+p_max_ch_W_ch1,Max power CH1 = power density x heater area (or rated power),,W,Heater datasheet x CAD area,TBD,Heater area not defined in this submission
 p_max_ch_W_ch2,Max power CH2,,W,Heater datasheet x CAD area,TBD,
 p_max_ch_W_ch3,Max power CH3,,W,Heater datasheet x CAD area,TBD,
 p_max_ch_W_ch4,Max power CH4,,W,Heater datasheet x CAD area,TBD,

@@ -41,17 +41,17 @@ within 1 day of each FBX delivery".
 6. Controller decimated to 12,748 triangles (BC_Enclosure 9,772 → 5,200, BC_Front_Panel 5,770 → 3,200), quadric
    edge collapse, edges kept; normals recomputed. Render-quality originals stay in `source_fusion_2026-10-18/`.
 7. `exploded_offsets_SAI_DEFAULT.csv`: a default exploded view by layer order (liner 0, sensors 15 mm, heater 30 mm,
-   insulation 50 mm, shell 75 mm, straps 100 mm). Visual only; Neharika's own `exploded_offsets.csv` replaces it.
+   insulation 50 mm, shell 75 mm, straps 100 mm). Visual only.
 
-## Still for Neharika
+## Scope (decided by Sai, 18 Oct)
 
-1. Add `CHn_Strain_Relief` to the four modules (cable exit at the wrist / heel edge).
-2. Export `NERAM_Assembly.fbx` with `Reference_Cube_1m`, cables and connectors, plus her `exploded_offsets.csv`.
-3. Commit STEP + native files and drawings D01–D05; write `cad/README.md`. (Renders R01–R08: done by Sai on 18 Oct from
-   the Unity viewer and the FBX, `cad/renders/`; Fusion renders may replace them.)
-6. Check the 0.5 mm overlap between `CHn_Insulation` (from 3.0 mm) and `CHn_Heater` (to 3.5 mm) seen in R08.
-4. Next export from Fusion: set Y-up and centimetres/metres, and name materials `MAT_*`, so the prep step is not needed.
-5. Use the CAD envelope v2 values in `hardware/interfaces/cad_envelope.csv`.
+Neharika's part is the 3D models, delivered on 18 Oct and complete. STEP/native files, 2D drawings, strain-relief parts and an assembly file are not part of this submission. The plan's wider CAD list (strain relief, assembly
+file, STEP/native files, drawings D01–D05) is out of scope for this submission; the Unity validation keeps the missing
+strain relief as a WARN, not a failure. Renders R01–R08 were made by Sai (`cad/renders/`).
+
+Modelling notes for any later revision (not required now): the R08 section shows the insulation starting at 3.0 mm and
+the heater film ending at 3.5 mm (0.5 mm overlap), and the CAD straps enclose a 29 mm limb, so the viewer fits their
+length to the hand and foot.
 
 ## In the Unity viewer (fit v2, 18 Oct, ~16:00 IST)
 
@@ -61,7 +61,7 @@ Pictures from the Unity editor: `cad/renders/unity_preview_2026-10-18/unity_*.pn
   glove finger has its own finger. The pad layers (fabric) are draped onto the hand and fold around the fingers.
 * Feet: pad on the sole from heel to ball, toes free.
 * Straps: shown as bands that follow the hand / foot + pad (CAD width and thickness; length fitted to the limb, because
-  the CAD straps enclose a 29 mm limb). **Neharika: please size the foot straps for a foot (~60-70 mm high).**
+  the CAD straps enclose a 29 mm limb).
 * Watch: around the right wrist, display-only concept, live face from the viewer.
 * Controller: clamped on the left side rail, display facing the clinician; the screen texture names the channels and
   says SIMULATED (values are on the dashboard).

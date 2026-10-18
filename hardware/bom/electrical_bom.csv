@@ -10,10 +10,10 @@ Temperature sensor,Skin-interface module sensing (A and B),"NTC thermistor, 10 k
 Hardware cutoff,Layer-1 over-temperature cutoff,Series thermal cutoff or comparator circuit,TI LM393 dual comparator (one comparator per channel) + latch,2,"Open-collector outputs; 2-30 V supply (LM393, non-V); trips on its own NTC divider at t_hw_cutoff_degC (TBD); works with the MCU halted",https://www.ti.com/lit/ds/symlink/lm393.pdf,TBD,TBD,PROVISIONAL,Latched until manual RESET; qty 2 packages = 4 comparators (was 4: one comparator per channel is enough)
 Heater,Flexible resistive heater per module,Polyimide flexible heater,"Omega KHLVA series, custom shape per module",4,28 V max; run at v_bus 24 V; watt density TBD from coverage area,https://omega.com/en-us/p/KHRA-KHLVA-KHA-Series,TBD,Omega (India page exists; confirm),PROVISIONAL,Not self-limiting; INR price not yet read
 Connector pair,Module to controller connection,Connector with presence-detect pin,Amphenol LTW M12A-08PFFS-SF8001 panel receptacle + mating M12 8-pin A-coded cable plug,4,"8 contacts, 2 A, 30 V, IP68, solder cup, panel mount, -40 to +105 C (Future Electronics listing)",https://www.amphenolltw.com/2012download/2D%20PDF/03_M%20Series%20Sensor%20Connectors/M12A-XXPFFS-SF8001.pdf,TBD,TBD,PROVISIONAL,Keying if offered
-Cable,Fixed pigtail per module,Multi-core cable,M12 8-pin A-coded overmoulded cable; order code TBD,4,Length from Neharika routing,TBD,TBD,TBD,TBD,Length per channel TBD
+Cable,Fixed pigtail per module,Multi-core cable,M12 8-pin A-coded overmoulded cable; order code TBD,4,Length from cable routing,TBD,TBD,TBD,TBD,Length per channel TBD
 Channel fuse,Output fuse per channel,Fuse,TBD,4,fuse_ch_A TBD,TBD,TBD,TBD,TBD,Above i_on_A and below cable rating
 Channel indicator,One LED per channel,LED,TBD,4,TBD,TBD,TBD,TBD,TBD,
 Status display,Front-panel status,Display,TBD,1,TBD,TBD,TBD,TBD,TBD,
 Front-panel button,START and STOP and RESET,Push button,TBD,3,TBD,TBD,TBD,TBD,TBD,RESET recessed or guarded; STOP largest
-Enclosure hardware,Box and clamp and fixings,Enclosure parts,TBD,1,TBD,TBD,TBD,TBD,TBD,Geometry from Neharika
+Enclosure hardware,Box and clamp and fixings,Enclosure parts,TBD,1,TBD,TBD,TBD,TBD,TBD,Geometry from the CAD controller box
 Total cost,Sum of unit cost x qty,-,-,-,-,-,TBD (no INR price read yet for any chosen part),-,TBD,Becomes PROVISIONAL when every row is priced
