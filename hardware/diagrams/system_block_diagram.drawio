@@ -1,0 +1,116 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="_ZqHCKdaVLJl1HqcMFH7">
+    <mxGraphModel dx="1030" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="text;html=0;fontStyle=1;fontSize=14;align=left;" value="NERAM system block diagram (proof-of-concept prototype; hardware SIMULATED in the demo)" vertex="1">
+          <mxGeometry height="30" width="800" x="40" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f5f5f5;strokeColor=#666666;" value="Patient-observation interface&#xa;(prototype: replay of development-set data)" vertex="1">
+          <mxGeometry height="60" width="200" x="40" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Host computer (bedside laptop)&#xa;Digital Twin (Sai; Python)&#xa;Supervisory controller (Suchitha; Simulink)" vertex="1">
+          <mxGeometry height="110" width="200" x="40" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#fff2cc;strokeColor=#d6b656;" value="MCU board (layer 2)&#xa;8 sensor inputs; 4 current-sense inputs&#xa;4 PWM outputs; firmware limits&#xa;watchdog; host heartbeat" vertex="1">
+          <mxGeometry height="110" width="200" x="300" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="CH1 (left hand)&#xa;switch; current sense; fuse;&#xa;hardware cutoff; connector" vertex="1">
+          <mxGeometry height="70" width="200" x="580" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="CH2 (right hand)&#xa;switch; current sense; fuse;&#xa;hardware cutoff; connector" vertex="1">
+          <mxGeometry height="70" width="200" x="580" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="CH3 (left foot)&#xa;switch; current sense; fuse;&#xa;hardware cutoff; connector" vertex="1">
+          <mxGeometry height="70" width="200" x="580" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="bFuIpkiLgK4uRIlYQFm_-33" edge="1" parent="1" source="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="9" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#d5e8d4;strokeColor=#82b366;" value="CH4 (right foot)&#xa;switch; current sense; fuse;&#xa;hardware cutoff; connector" vertex="1">
+          <mxGeometry height="70" width="200" x="580" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Left hand module&#xa;heater + sensors A and B" vertex="1">
+          <mxGeometry height="70" width="180" x="840" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Right hand module&#xa;heater + sensors A and B" vertex="1">
+          <mxGeometry height="70" width="180" x="840" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Left foot module&#xa;heater + sensors A and B" vertex="1">
+          <mxGeometry height="70" width="180" x="840" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Right foot module&#xa;heater + sensors A and B" vertex="1">
+          <mxGeometry height="70" width="180" x="840" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e1d5e7;strokeColor=#9673a6;" value="DC/DC regulator&#xa;logic supply" vertex="1">
+          <mxGeometry height="50" width="200" x="300" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="15" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f8cecc;strokeColor=#b85450;" value="Master safety switch (default open)&#xa;opened by hardware cutoff; watchdog; or MCU" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="16" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Isolated AC/DC supply&#xa;(type and isolation level TBD)&#xa;low-voltage bus v_bus_V (TBD)" vertex="1">
+          <mxGeometry height="70" width="200" x="40" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="17" parent="1" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#f5f5f5;strokeColor=#666666;" value="Mains inlet + fuse" vertex="1">
+          <mxGeometry height="40" width="200" x="40" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="18" edge="1" parent="1" source="3" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="4" value="patient temperature signal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="19" edge="1" parent="1" source="4" style="edgeStyle=orthogonalEdgeStyle;html=1;startArrow=block;endArrow=block;" target="5" value="Heat_1..4 every 1 s; master_enable / module status">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="20" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="6" value="PWM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="21" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="7" value="PWM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="22" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="8" value="PWM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="23" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="9" value="PWM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="24" edge="1" parent="1" source="6" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="25" edge="1" parent="1" source="7" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="26" edge="1" parent="1" source="8" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="12" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="27" edge="1" parent="1" source="9" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="28" edge="1" parent="1" source="15" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;dashed=1;" target="9" value="">
+          <mxGeometry relative="1" x="0.1455" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="410" />
+              <mxPoint x="540" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" edge="1" parent="1" source="16" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;dashed=1;" target="15" value="v_bus power">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="30" edge="1" parent="1" source="17" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="16" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="31" edge="1" parent="1" source="16" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="32" edge="1" parent="1" source="14" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;" target="5" value="logic power">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="33" parent="1" style="text;html=0;fontSize=11;align=left;" value="Solid arrows: signals. Dashed arrows: heater power through the master switch to all four channels. Proof-of-concept prototype, not a medical device." vertex="1">
+          <mxGeometry height="40" width="720" x="300" y="490" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
