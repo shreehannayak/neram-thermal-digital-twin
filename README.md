@@ -127,7 +127,7 @@ Replay viewer for the twin, controller and hardware stand-ins (Unity 6000.3.26f1
   `docs/NERAM_Simulation_Handbook.pdf`.
 - **Scenarios:** all 11 shipped replays are SYNTHETIC: SYN_SCN_A0/B/C/D (demo set), SYN_ENG_01–06 and SYN_TC07
   (Suchitha's over-temperature shutdown log; latch only). Every simulated or assumed value carries a source tag.
-- **3D models:** Neharika's CAD placed on a generated mannequin (`tools/gen_cad_fit.py`, `Editor/NeramCadPlacement.cs`).
+- **3D models:** Neharika's CAD placed on a generated mannequin (`tools/gen_cad_fit.py`, `unity_editor/Assets/Editor/NeramCadPlacement.cs`).
   The mannequin, table, room and cables are generated stand-ins; the pad drape and strap length are visual fits.
 
 ## 13. Technical stack

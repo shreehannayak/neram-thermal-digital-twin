@@ -6,8 +6,11 @@ version: "0.1"
 date-released: "2026-10-11"
 repository-code: "https://github.com/shreehannayak/neram-thermal-ditital-twin"  # update if the repo is renamed
 license: Apache-2.0
-authors:
-  - name: "NERAM team (names TBD)"
+authors:  # given names as in README section 2; each member adds their family name
+  - given-names: "Saiyugan"
+  - given-names: "Suchitha"
+  - given-names: "Neharika"
+  - given-names: "Shreehan"
 references:
   - type: article
     title: "VitalDB, a high-fidelity multi-parameter vital signs database in surgical patients"

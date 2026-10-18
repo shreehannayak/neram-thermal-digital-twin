@@ -21,7 +21,7 @@ Exploded offsets are visual only (`cad/exports/unity/exploded_offsets_SAI_DEFAUL
 (to 3.5 mm) in the exported model; it is reported, not changed.
 
 ## Reproduce
-1. Unity (workspace `unity_editor/`): **NERAM > CAD > Render plan renders R01-R07** (`Editor/NeramRenders.cs`) writes
+1. Unity (workspace `unity_editor/`): **NERAM > CAD > Render plan renders R01-R07** (`unity_editor/Assets/Editor/NeramRenders.cs`) writes
    the raw 1920 × 1080 images and `R04/R05_*_labels.json` to `docs/evidence/cad_renders/`.
 2. `python tools/annotate_renders.py docs/evidence/cad_renders cad/renders` adds the title, labels and footer.
 3. `python tools/render_section.py` writes R08 from `cad/exports/unity/NERAM_Left_Hand_Module.fbx` (git-lfs files needed).

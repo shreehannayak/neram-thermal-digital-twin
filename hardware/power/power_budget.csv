@@ -9,7 +9,7 @@ p_max_ch_W_ch1,Max power CH1 = power density x heater area (or rated power),,W,H
 p_max_ch_W_ch2,Max power CH2,,W,Heater datasheet x CAD area,TBD,
 p_max_ch_W_ch3,Max power CH3,,W,Heater datasheet x CAD area,TBD,
 p_max_ch_W_ch4,Max power CH4,,W,Heater datasheet x CAD area,TBD,
-p_logic_W,Logic power (MCU + sensors + indicators + display),,W,Datasheets,TBD,
+p_logic_W,Logic power (MCU + sensors + indicators + display),,W,Datasheets,TBD,Upper bound only: the logic regulator delivers at most 5 V x 0.5 A = 2.5 W (R-78E5.0-0.5); actual draw from datasheets TBD
 P_peak_W,Sum of p_max_ch_W (all four at 100 percent) + p_logic_W,,W,Calculation,TBD,Result stays TBD until all inputs sourced
 mean_duty_ch1_scenario,Mean Heat_1 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,One row per scenario once file arrives
 mean_duty_ch2_scenario,Mean Heat_2 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,
@@ -20,9 +20,11 @@ P_cont_W,Sum of (mean duty_i x p_max_ch_W_i) + p_logic_W,,W,Calculation,TBD,Repo
 t_case_h_median,Median development-case duration,,h,Sai (development data only),TBD,
 t_case_h_p90,90th-percentile development-case duration,,h,Sai (development data only),TBD,
 E_case_Wh,P_cont_W x t_case_h,,Wh,Calculation,TBD,Median and 90th-percentile cases
-psu_derating_factor,Derating from supply datasheet derating curve,,-,Supply datasheet,TBD,
+psu_derating_factor,Derating from supply datasheet derating curve,,-,Mean Well MPM-65-SPEC derating curve (https://www.farnell.com/datasheets/3111195.pdf),TBD,"Chart not yet read; working temperature -30 to +80 C per spec, refer to the derating curve"
 psu_rating_W,Required rating >= P_peak_W x psu_derating_factor,,W,Calculation,TBD,
-psu_selected_rating_W,Rating of the chosen supply (MPM-65-24ST),65,W,Mean Well MPM-65-24ST listing,PROVISIONAL,Must satisfy psu_rating_W below once P_peak_W is known
+psu_selected_rating_W,Rating of the chosen supply (MPM-65-24ST),65,W,"Mean Well MPM-65-SPEC (24 V model: 2.71 A, 65 W)",PROVISIONAL,Must satisfy psu_rating_W below once P_peak_W is known
+psu_efficiency_typ,Typical efficiency of MPM-65-24ST,93,percent,Mean Well MPM-65-SPEC (24 V model),PROVISIONAL,Used for supply input power and heat in the controller (ctrl_heat_W)
+psu_no_load_W,No-load power of MPM-65-24ST,0.1,W (maximum),Mean Well MPM-65-SPEC: < 0.1 W,PROVISIONAL,Upper bound
 connector_contact_rating_A,Per-contact rating of the M12 8-pin connector,2,A,Amphenol LTW M12A-08PFFS-SF8001 listing,PROVISIONAL,Caps i_on_A at 2 A per channel (48 W at 24 V)
 p_max_ch_W_budget_limit,Largest per-channel heater power the 65 W supply allows = (psu_selected_rating_W / psu_derating_factor - p_logic_W) / 4,,W,Calculation,TBD,Fill once the derating factor and p_logic_W are sourced; heater area x watt density must stay below this
 wrist_cell_capacity_Wh,Capacity of a realistic wrist-worn cell,,Wh,Cell datasheet,TBD,Used only for the battery comparison in power_architecture.md

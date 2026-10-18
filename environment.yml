@@ -6,6 +6,7 @@
 #   tests/test_replay_schema.py                                                   -> jsonschema
 #   integration/*.py, tools/check_replay_semantics.py, tests/test_interface.py,
 #   tests/test_controller_log_integration.py                                      -> standard library only
+#   tools/render_section.py, tools/annotate_renders.py, hardware/*/make_*.py       -> matplotlib, pillow
 # The Colab development scripts ran with Colab's own versions; record `pip freeze` from that runtime in
 # docs/AUDIT_TRAIL.md when the development fit is run.
 name: neram
@@ -17,6 +18,7 @@ dependencies:
   - scipy=1.18.1
   - pandas=3.0.5
   - matplotlib=3.11.2
+  - pillow=12.3.0
   - requests=2.34.2
   - jsonschema=4.26.0
   - pytest

@@ -8,7 +8,7 @@ Formulas and inputs are in hardware/power/power_budget.csv and hardware/docs/pow
 - P_cont_W = sum of (mean duty_i x p_max_ch_W) + p_logic_W, from T07_duty_stats.csv
 - E_case_Wh = P_cont_W x t_case_h
 
-Status: TBD. The heater voltage, power per channel and duty statistics are not yet sourced, so no peak, continuous or energy figure exists. Nothing is estimated here.
+Status: TBD. The bus voltage is PROVISIONAL (24 V) and the supply is rated 65 W, but the heater power per channel (needs Neharika's coverage area and the heater watt density) and the duty statistics (Suchitha's T07_duty_stats.csv) are not yet available, so no peak, continuous or energy figure exists. Nothing is estimated here.
 
 ## 2. Safety architecture coverage
 Each fault is caught by at least one layer. Layer 1 = hardware cutoff (no firmware); Layer 2 = MCU firmware; Layer 3 = supervisory controller. Controller actions are in controller/docs/fault_response_matrix.csv (Suchitha); cross-check against that file is pending.
@@ -35,17 +35,22 @@ Each fault is caught by at least one layer. Layer 1 = hardware cutoff (no firmwa
 - The chosen heater (polyimide, Omega KHLVA) is not self-limiting, so the layer-1 cutoff is essential.
 - The silicone-rubber examples found are mains voltage; no low-voltage version was found.
 - The chosen MCU board must be verified to hold outputs low at reset (FROZEN requirement); none of the sources read confirmed it.
-- The MAX31875 digital sensor is a bare chip, needs a carrier or probe, and some distributor pages list it as being discontinued.
+- The chosen sensor (TDK NTCG163JX103DTDS, 0603 NTC) is a bare SMD part: it needs a flex-tail carrier and electrical isolation from the skin (TBD).
+- The channel MOSFET (IRLML6344) is rated 30 V on a 24 V bus: transient margin to be checked.
+- The M12 connector is rated 2 A and 30 V per contact (listing), which caps each channel at 48 W on the 24 V bus.
 - The skin-surface temperature limit is not yet sourced (see standards_references.md).
 
 ## 4. Cost
-TBD. The electrical BOM (hardware/bom/electrical_bom.csv) is not complete. Only one INR price has been read so far (a digital temperature sensor, 168.66 INR for 1 piece, Mouser India).
+TBD. The electrical BOM (hardware/bom/electrical_bom.csv) now links a datasheet or listing for every chosen part, but no INR price has been read for any chosen part (the one price read earlier, 168.66 INR, was for the MAX31875 candidate, which was not chosen). Distributor price pages could not be read automatically; prices are to be read by hand.
 
 ## 5. What cannot be claimed
 - Heat delivered to a patient.
 - Any clinical effect or benefit.
 - Compliance with any standard (standards are design references only).
 - That any simulated value reflects real hardware behaviour.
+- That the one-channel schematic works: it has not been built, simulated or tested, and component values are TBD.
+- Any measured temperature, current, power, cost or reliability figure.
+- That a wrist-worn battery is impossible or possible: the comparison in power_architecture.md is still TBD.
 
 ## 6. What a real device would need
 - Standards testing (electrical safety and heating-device requirements).

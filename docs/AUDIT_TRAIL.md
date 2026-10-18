@@ -184,3 +184,29 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 - Viewer labels: wearable region "WRIST WEARABLE · DISPLAY ONLY (right wrist)"; detail panel states no controls, no battery, not a controller.
 - Python tests (cloud workspace with scipy/jsonschema): interface 8/8, p_below_hypo MC 4/4, replay schema 2/2, twin export 9/9, UI contract 24/24 PASS. test_controller_log_integration passes on the laptop; on a fresh GitHub clone the TC07 reproduction failed because git had converted Suchitha's log line endings - fixed with `.gitattributes` (integration/** byte-exact).
 - GitHub (shreehannayak/neram-thermal-ditital-twin): workspace code, config, docs, tests, synthetic data, unity/ and the Unity project pushed; results/development and results/final not published.
+
+## 14. Plan renders, hardware completion, checklist dry run (Sai, 18 Oct 2026, evening)
+- **Renders R01–R08** (`cad/renders/`, taken over from Neharika): R01–R07 rendered in the Unity editor by
+  `unity_editor/Assets/Editor/NeramRenders.cs` (automation job `renders`; exploded-view label anchors from a per-part
+  silhouette pass because `Renderer.bounds` is stale in edit mode after a move), annotated by `tools/annotate_renders.py`.
+  R08 cut from `cad/exports/unity/NERAM_Left_Hand_Module.fbx` (SHA-256 = its LFS oid 37369728…) by
+  `tools/render_section.py`; measured stack: liner 0–2.5 mm, heater 2.5–3.5, Sensor A 2.5–3.3 (recess under the film),
+  insulation 3.0–7.0, shell cap 7.0–9.0 mm. Found: insulation/heater overlap of 0.5 mm in the export (reported to
+  Neharika in `cad/IMPORT_CHECK_SAI_2026-10-18.md`, not changed).
+- **Hardware (Shreehan's open items):** diagrams regenerated from one layout by `hardware/diagrams/make_diagrams.py`
+  (Simulink → Python fallback; overlaps removed); one-channel schematic `hardware/schematics/make_schematic.py`
+  (values TBD); BOM datasheet links from manufacturer or distributor pages read on 18 Oct (Infineon IRLML6344, TI INA180
+  and LM393, Mean Well MPM-65 spec, RECOM R-78E, Amphenol LTW M12A-08PFFS, TDK NTCG via Arrow, Schurter KD, ST UM2505);
+  BOM sensor row corrected (TDK part had the MAX31875 link and price); power budget rows for supply efficiency and
+  no-load power; docs synced. No INR price could be read automatically, so costs stay TBD.
+- **Checklist:** dry run in `docs/SUBMISSION_DRYRUN_2026-10-18.md`. `LICENSE-CAD-DOCS` now holds the full CC BY 4.0
+  legal code; CITATION.cff lists the four given names; interim `cad/README.md`; Pillow pinned in `environment.yml`.
+- Python suite after the changes: OVERALL PASS.
+
+| File | SHA-256 |
+|---|---|
+| tools/render_section.py | a02e68367ec6cd305c5082b9a14b812aa4ba0bafdca602ec2242dade7460b890 |
+| tools/annotate_renders.py | a0c7493b951a53ee77bdfb1f3cf7b391610d4cacdea2a0ec461f4230eeeef7c4 |
+| hardware/diagrams/make_diagrams.py | 31df5770d5531aeeb9174e827d39b0dad3356d5098bcb48419f0fcc5317f9c5f |
+| hardware/schematics/make_schematic.py | 007c41bdb8f6e57d35b428c46245870915f6dae1ed2e74027e208ebccb03ef64 |
+| cad/renders/R08_sensor_pocket_section.png | c0506b6fd491bdc3c11d490529525bbae66795f1fb8f1713d9b89fb35231d971 |
