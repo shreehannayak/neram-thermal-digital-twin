@@ -1,0 +1,25 @@
+parameter,formula or meaning,value,unit,source,status,notes
+v_bus_V,Heater supply voltage,,V,Heater datasheet + standard,TBD,Polyimide candidate (Omega KHLVA) lists 28 VDC maximum; not a chosen value
+heater_r_ohm_ch1,Heater resistance CH1 = v_bus_V^2 / rated power,,ohm,Heater datasheet or calculation,TBD,
+heater_r_ohm_ch2,Heater resistance CH2,,ohm,Heater datasheet or calculation,TBD,
+heater_r_ohm_ch3,Heater resistance CH3,,ohm,Heater datasheet or calculation,TBD,
+heater_r_ohm_ch4,Heater resistance CH4,,ohm,Heater datasheet or calculation,TBD,
+i_on_A,Nominal channel current = v_bus_V / heater_r_ohm,,A,Calculation,TBD,Per channel
+p_max_ch_W_ch1,Max power CH1 = power density x heater area (or rated power),,W,Heater datasheet x CAD area,TBD,Needs Neharika coverage area
+p_max_ch_W_ch2,Max power CH2,,W,Heater datasheet x CAD area,TBD,
+p_max_ch_W_ch3,Max power CH3,,W,Heater datasheet x CAD area,TBD,
+p_max_ch_W_ch4,Max power CH4,,W,Heater datasheet x CAD area,TBD,
+p_logic_W,Logic power (MCU + sensors + indicators + display),,W,Datasheets,TBD,
+P_peak_W,Sum of p_max_ch_W (all four at 100 percent) + p_logic_W,,W,Calculation,TBD,Result stays TBD until all inputs sourced
+mean_duty_ch1_scenario,Mean Heat_1 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,One row per scenario once file arrives
+mean_duty_ch2_scenario,Mean Heat_2 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,
+mean_duty_ch3_scenario,Mean Heat_3 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,
+mean_duty_ch4_scenario,Mean Heat_4 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,
+p95_duty_ch1_to_ch4,95th-percentile Heat percent (worst case),,percent,Suchitha T07_duty_stats.csv,TBD,Used for worst-case P_cont_W
+P_cont_W,Sum of (mean duty_i x p_max_ch_W_i) + p_logic_W,,W,Calculation,TBD,Report for each scenario and for the p95 worst case
+t_case_h_median,Median development-case duration,,h,Sai (development data only),TBD,
+t_case_h_p90,90th-percentile development-case duration,,h,Sai (development data only),TBD,
+E_case_Wh,P_cont_W x t_case_h,,Wh,Calculation,TBD,Median and 90th-percentile cases
+psu_derating_factor,Derating from supply datasheet derating curve,,-,Supply datasheet,TBD,
+psu_rating_W,Required rating >= P_peak_W x psu_derating_factor,,W,Calculation,TBD,
+wrist_cell_capacity_Wh,Capacity of a realistic wrist-worn cell,,Wh,Cell datasheet,TBD,Used only for the battery comparison in power_architecture.md
