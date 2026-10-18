@@ -51,5 +51,6 @@ unity_editor/Assets/_Recovery.meta
 # local editor automation / backups (Sai's laptop only)
 _automation/
 _sai_backup_*/
-# results/ stays off GitHub until the team decides what is published (development / holdout outputs)
-results/
+# development / holdout outputs stay off GitHub (results/figures/ is synthetic and published)
+results/development/
+results/final/

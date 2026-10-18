@@ -7,3 +7,6 @@
 *.blend filter=lfs diff=lfs merge=lfs -text
 *.mp4 filter=lfs diff=lfs merge=lfs -text
 *.xlsx filter=lfs diff=lfs merge=lfs -text
+# Data files are hashed (SHA256SUMS, replay "inputs" hashes): store them byte-for-byte, never convert line endings
+integration/** -text
+controller/results/** -text
