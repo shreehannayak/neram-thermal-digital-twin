@@ -7,6 +7,17 @@
 **Proof-of-concept prototype, not a medical device.** SIMULATED / ASSUMED PROTOTYPE RESPONSE where marked. No
 clinical efficacy, clinical validation or standards compliance is claimed.
 
+<img src="cad/renders/R01_full_scene.png" width="100%">
+
+| Unity replay viewer | Hardware block diagram |
+|---|---|
+| <img src="docs/screenshots/viewer_theatre.jpg" width="100%"> | <img src="hardware/diagrams/system_block_diagram.png" width="100%"> |
+| **Supervisory controller (Python fallback)** | **Hand module, exploded layers** |
+| <img src="controller/docs/figures/stateflow_chart_PYTHON_FALLBACK.jpg" width="100%"> | <img src="cad/renders/R04_hand_module_exploded.png" width="100%"> |
+
+More pictures: [CAD renders](cad/README.md) · [hardware diagrams and schematic](hardware/README.md) ·
+[controller figures](controller/README.md) · [viewer screenshots](unity/README.md).
+
 ## 1. Title and one-line summary
 **NERAM: Thermal Digital Twin and Simulated Warming Controller** (identical in this README, `CITATION.cff`,
 slide 1 and the video title).
@@ -129,6 +140,11 @@ Replay viewer for the twin, controller and hardware stand-ins (Unity 6000.3.26f1
   (Suchitha's over-temperature shutdown log; latch only). Every simulated or assumed value carries a source tag.
 - **3D models:** Neharika's CAD placed on a generated mannequin (`tools/gen_cad_fit.py`, `unity_editor/Assets/Editor/NeramCadPlacement.cs`).
   The mannequin, table, room and cables are generated stand-ins; the pad drape and strap length are visual fits.
+- **Scene props (illustrative):** patient monitor with sweeping ECG / pleth / respiration traces and the replay's
+  temperature signal; IV drip; anaesthesia face mask with O2 tubing from a portable cylinder; airway, lungs and oxygen
+  flow in the Internal view; a surgeon figure you can walk round the table with **I J K L** (walk / turn) and **U O**
+  (side-step) (`tools/gen_scene_extras.py`, `Editor/NeramSceneExtras.cs`). None of these models gas flow, breathing or
+  physiology. Screenshots: [`unity/README.md`](unity/README.md).
 
 ## 13. Technical stack
 | Part | Stack | Where |

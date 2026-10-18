@@ -210,3 +210,21 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 | hardware/diagrams/make_diagrams.py | 31df5770d5531aeeb9174e827d39b0dad3356d5098bcb48419f0fcc5317f9c5f |
 | hardware/schematics/make_schematic.py | 007c41bdb8f6e57d35b428c46245870915f6dae1ed2e74027e208ebccb03ef64 |
 | cad/renders/R08_sensor_pocket_section.png | c0506b6fd491bdc3c11d490529525bbae66795f1fb8f1713d9b89fb35231d971 |
+
+## 15. Viewer graphics and scene props (Sai, 18 Oct 2026, ~20:00–21:30 IST)
+- Patient monitor (`Scripts/Scene/MonitorPulse.cs`, face `textures.py monitor_live`): sweeping illustrative ECG-style,
+  pleth and respiration traces; HR / SpO2 readouts are dashes; the TEMP box shows the replay's patient temperature signal
+  (`VisualModeController.PatientSignal`). Ventilator, infusion-pump and anaesthesia screens now describe the set-up in
+  words (dashes for values) instead of "demonstration prop".
+- IV drip (`IvDripAnimator.cs`): drop forms, falls and splashes on real time (no longer frozen when paused).
+- Scene extras (`tools/gen_scene_extras.py` -> `scene_extras.json`, applied by `Editor/NeramSceneExtras.cs`, automation
+  job `extras`): theatre cap, ears, brows and lash lines on the patient; anaesthesia face mask with strap; portable O2
+  cylinder on a trolley with regulator, flowmeter, humidifier and tubing (the wall cylinders that overlapped the
+  cupboards are hidden); illustrative airway and lungs in the Internal view; airflow particles (`AirflowAnimator.cs`);
+  surgeon figure walked with I J K L / U O (`SurgeonController.cs`, keys added to `NeramInput`). 46 parts, 82k triangles.
+- Validation 97 PASS / 10 WARN / 0 FAIL; EditMode 86 pass / 0 fail / 1 skip; NERAM.exe rebuilt (160.9 MB) and checked:
+  monitor traces, Internal-view airflow, surgeon walking.
+- Renders R01–R07 re-rendered with the new scene; screenshots in `docs/screenshots/`.
+- `config/params.json`: data_stale_hw_s = 2 s (Shreehan, issue #1). Suchitha's 17 Oct Colab notebook added under
+  `controller/legacy_colab_2026-10-17/` (reproduces the received TC05/TC07/TC13 logs byte for byte).
+

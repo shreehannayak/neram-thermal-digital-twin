@@ -65,6 +65,12 @@ namespace Neram.Unity
                 case KeyCode.B: return kb.bKey;
                 case KeyCode.M: return kb.mKey;
                 case KeyCode.N: return kb.nKey;
+                case KeyCode.I: return kb.iKey;   // surgeon figure (SurgeonController)
+                case KeyCode.J: return kb.jKey;
+                case KeyCode.K: return kb.kKey;
+                case KeyCode.L: return kb.lKey;
+                case KeyCode.U: return kb.uKey;
+                case KeyCode.O: return kb.oKey;
                 case KeyCode.F11: return kb.f11Key;
                 case KeyCode.Space: return kb.spaceKey;
                 case KeyCode.LeftControl: return kb.leftCtrlKey;

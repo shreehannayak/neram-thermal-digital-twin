@@ -3,6 +3,25 @@
 Interim README written by Sai on 18 Oct 2026 so the files can be opened; Neharika replaces it with her own.
 Proof-of-concept prototype, not a medical device. The CAD shows a paper design; nothing has been manufactured.
 
+## Renders
+
+Neharika's CAD in the NERAM viewer (details in [`renders/README.md`](renders/README.md)). Mannequin, room and cables are
+generated stand-ins.
+
+<img src="renders/R01_full_scene.png" width="100%">
+
+| Hand module (CH1) | Foot modules (CH3 / CH4) |
+|---|---|
+| <img src="renders/R02_hand_module_iso.png" width="100%"> | <img src="renders/R03_foot_module_iso.png" width="100%"> |
+| **Hand module, exploded layers** | **Foot module, exploded layers** |
+| <img src="renders/R04_hand_module_exploded.png" width="100%"> | <img src="renders/R05_foot_module_exploded.png" width="100%"> |
+| **Bedside controller** | **Cable routing (top view)** |
+| <img src="renders/R06_controller_front_ports.png" width="100%"> | <img src="renders/R07_cable_routing_top.png" width="100%"> |
+
+**Sensor-pocket section** (measured from the CH1 FBX)
+
+<img src="renders/R08_sensor_pocket_section.png" width="100%">
+
 ## What is here
 | Folder | Contents |
 |---|---|

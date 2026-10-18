@@ -118,6 +118,8 @@ namespace Neram.Unity
 
         /// <summary>The single patient-level temperature signal at the current frame (NaN = no observation).</summary>
         public void SetPatientSignal(double celsius) => _patientSignal = celsius;
+        /// <summary>The patient temperature signal last set by the replay (NaN = none). Read by MonitorPulse.</summary>
+        public double PatientSignal => _patientSignal;
 
         public void SetMode(VisualMode mode, int explodeChannel = 0)
         {

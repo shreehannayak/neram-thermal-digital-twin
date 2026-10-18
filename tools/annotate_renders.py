@@ -8,7 +8,7 @@ SRC = Path(sys.argv[1]); OUT = Path(sys.argv[2]); OUT.mkdir(parents=True, exist_
 F = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"; FB = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 f_t, f_s, f_l, f_f = ImageFont.truetype(FB, 34), ImageFont.truetype(F, 22), ImageFont.truetype(FB, 24), ImageFont.truetype(F, 20)
 TITLES = {
- "R01_full_scene": ("R01  Full scene", "Patient on OR table: CH1/CH2 hand modules, CH3/CH4 foot modules, wrist display, bedside controller, cables"),
+ "R01_full_scene": ("R01  Full scene", "CH1/CH2 hand and CH3/CH4 foot modules, wrist display, bedside controller, cables; O2 mask, cylinder and surgeon are illustrative"),
  "R02_hand_module_iso": ("R02  Hand module (CH1, left), isometric", "Palmar pad: liner, heater film, insulation, shell; two sensors; two straps"),
  "R03_foot_module_iso": ("R03  Foot modules (CH3 / CH4), isometric", "Sole pad from heel to ball, toes free; two straps"),
  "R04_hand_module_exploded": ("R04  Hand module (CH1), exploded", "Layer order from the skin outward; offsets are visual only (exploded_offsets_SAI_DEFAULT.csv x1.4)"),
@@ -16,7 +16,7 @@ TITLES = {
  "R06_controller_front_ports": ("R06  Bedside controller, front and ports", "Display, START / STOP / RESET, status LEDs, CH1-CH4 module ports; screen text is illustrative"),
  "R07_cable_routing_top": ("R07  Cable routing, top view", "CH1-CH4 cables from each module to the rail-mounted controller (ceiling hidden for this view)"),
 }
-FOOT = ("NERAM proof-of-concept prototype \u2014 not a medical device. No hardware has been built.", "CAD: Neharika (Fusion, as exported). Mannequin, table, room and cables are generated stand-ins; pad drape and strap length are visual fits.")
+FOOT = ("NERAM proof-of-concept prototype \u2014 not a medical device. No hardware has been built.", "CAD: Neharika (Fusion, as exported). Mannequin, surgeon, room, O2 set-up and cables are generated stand-ins; pad drape and strap length are visual fits.")
 NICE = {"Liner": "Liner (skin side)", "Sensor_A": "Sensor A", "Sensor_B": "Sensor B", "Heater": "Heater film", "Insulation": "Insulation",
         "Shell": "Shell", "Strap": "Straps", "Hook": "Hook patches"}
 

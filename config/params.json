@@ -195,11 +195,11 @@
       "used_by": "Ctrl"
     },
     "data_stale_hw_s": {
-      "value": null,
+      "value": 2,
       "placeholder": null,
       "unit": "s",
       "status": "PROVISIONAL",
-      "source": "Derived (>= 2 x hw_status_period_s)",
+      "source": "Derived: 2 x hw_status_period_s (1 s); Shreehan, GitHub issue #1 / controller_hw_interface.md section 4",
       "owner": "Shreehan",
       "purpose": "Hardware age that triggers SAFETY_SHUTDOWN",
       "used_by": "Ctrl"
@@ -600,6 +600,12 @@
       "date": "2026-10-18",
       "owner": "Sai",
       "changes": "spec_version 0.1 -> 1.0: interface spec frozen (docs/INTERFACE_SPEC_v1.0.md). Parameter values unchanged."
+    },
+    {
+      "version": "0.3",
+      "date": "2026-10-18",
+      "owner": "Sai",
+      "changes": "data_stale_hw_s = 2 s (PROVISIONAL, derived as 2 x hw_status_period_s) merged from Shreehan's rows (GitHub issue #1). Other hardware rows already present; still TBD."
     }
   ]
 }

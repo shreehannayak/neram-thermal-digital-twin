@@ -139,6 +139,56 @@ def fabric(w=512, period=8):
     return Image.fromarray(np.clip(img, 0, 255).astype(np.uint8))
 
 
+def monitor_live(fonts, w=640, h=400):
+    """Patient-monitor face for the animated prop (Sai, 18 Oct 2026). Scripts/Scene/MonitorPulse.cs draws the moving
+    traces into the three bands at runtime; band rows here must match its constants. The waveforms are ILLUSTRATIVE
+    drawings: no number is shown (readouts are dashes) and nothing comes from the NERAM replay or from patient data."""
+    im = Image.new("RGB", (w, h), (6, 9, 13))
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, w, 50], fill=(16, 22, 30))
+    d.text((18, 25), "PATIENT MONITOR", fill=WHITE, font=font(fonts, "Inter-SemiBold.ttf", 26), anchor="lm")
+    d.text((w - 18, 25), "ILLUSTRATIVE", fill=AMBER, font=font(fonts, "Inter-SemiBold.ttf", 22), anchor="rm")
+    bands = [("ECG II", (64, 220, 120), 58, 162, "HR", True), ("Pleth", (60, 200, 230), 170, 262, "SpO\u2082", True),
+             ("Resp", (240, 200, 80), 270, 346, "TEMP \u00b0C", False)]
+    for name, col, y0, y1, rd, dashes in bands:
+        d.line([(16, y1 + 3), (462, y1 + 3)], fill=(20, 28, 38), width=1)
+        d.text((20, y0 + 10), name, fill=col, font=font(fonts, "Inter-SemiBold.ttf", 17), anchor="lm")
+        d.rounded_rectangle([474, y0 + 2, w - 12, y1 - 2], radius=8, outline=(30, 40, 52), width=2, fill=(9, 13, 18))
+        d.text((486, y0 + 16), rd, fill=col, font=font(fonts, "Inter-SemiBold.ttf", 18), anchor="lm")
+        if dashes:
+            d.text((w - 30, (y0 + y1) / 2 + 10), "--", fill=col, font=font(fonts, "Inter-SemiBold.ttf", 44), anchor="rm")
+        else:   # live value drawn by MonitorPulse.cs (replay patient temperature signal)
+            d.text((486, y1 - 12), "replay signal", fill=(150, 130, 70), font=font(fonts, "Inter-Medium.ttf", 13), anchor="lm")
+    d.rectangle([0, 354, w, h], fill=(12, 17, 23))
+    d.text((18, 370), "BED 1", fill=TEAL, font=font(fonts, "Inter-SemiBold.ttf", 17), anchor="lm")
+    d.text((90, 370), "Synthetic patient \u00b7 supine \u00b7 O\u2082 by face mask", fill=(190, 198, 208), font=font(fonts, "Inter-Medium.ttf", 16), anchor="lm")
+    d.text((18, 390), "Warming: NERAM four-channel system (simulated)  \u00b7  waveforms illustrative", fill=(130, 140, 152), font=font(fonts, "Inter-Medium.ttf", 13), anchor="lm")
+    return im
+
+
+def device_screen(fonts, title, status, rows, foot, w=640, h=400, accent=TEAL, wave=None):
+    """Equipment screen that describes the patient set-up in words. Readouts that would need real data show dashes;
+    nothing here is a measured or invented value (Sai, 18 Oct 2026)."""
+    im = Image.new("RGB", (w, h), (7, 10, 14))
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, w, 50], fill=(16, 22, 30))
+    d.text((18, 25), title, fill=WHITE, font=font(fonts, "Inter-SemiBold.ttf", 25 if w > 520 else 22), anchor="lm")
+    d.text((w - 18, 25), status, fill=accent, font=font(fonts, "Inter-SemiBold.ttf", 20), anchor="rm")
+    y = 78
+    for label, value in rows:
+        d.text((24, y), label, fill=(140, 152, 166), font=font(fonts, "Inter-Medium.ttf", 18 if w > 520 else 16), anchor="lm")
+        d.text((w - 24, y), value, fill=(225, 232, 240), font=font(fonts, "Inter-SemiBold.ttf", 20 if w > 520 else 17), anchor="rm")
+        d.line([(24, y + 20), (w - 24, y + 20)], fill=(22, 30, 40), width=1)
+        y += 44 if w > 520 else 38
+    if wave is not None:
+        y0, col = wave
+        pts = [(24 + i * 2, y0 - 22 * max(0.0, math.sin(i / 18.0)) ** 2) for i in range((w - 48) // 2)]
+        d.line(pts, fill=col, width=2)
+    d.rectangle([0, h - 34, w, h], fill=(12, 17, 23))
+    d.text((w / 2, h - 17), foot, fill=(130, 140, 152), font=font(fonts, "Inter-Medium.ttf", 14), anchor="mm")
+    return im
+
+
 def write_all(out_dir: Path, fonts: Path):
     out_dir.mkdir(parents=True, exist_ok=True)
     tex = {
@@ -150,10 +200,15 @@ def write_all(out_dir: Path, fonts: Path):
         "label_controller": controller_label(fonts),
         "controller_screen": controller_screen(fonts),
         "iv_label": iv_label(fonts),
-        "screen_monitor": prop_screen(fonts, "PATIENT MONITOR"),
-        "screen_vent": prop_screen(fonts, "VENTILATOR"),
-        "screen_pump": prop_screen(fonts, "INFUSION PUMP", 512, 320),
-        "screen_anaesthesia": prop_screen(fonts, "ANAESTHESIA WORKSTATION"),
+        "screen_monitor": monitor_live(fonts),
+        "screen_vent": device_screen(fonts, "VENTILATOR", "STANDBY", [("Patient", "breathing spontaneously"), ("Oxygen", "face mask, cylinder O\u2082"),
+                                     ("Mode", "not ventilating"), ("Pressure", "-- cmH\u2082O"), ("Tidal volume", "-- mL")],
+                                     "Standby while the patient breathes on mask O\u2082", wave=(330, (240, 200, 80))),
+        "screen_pump": device_screen(fonts, "INFUSION PUMP", "LINE 1", [("Line", "IV, right forearm"), ("Rate", "-- mL/h"), ("Volume", "-- mL"),
+                                     ("Fluid warming", "not modelled")], "IV fluids are not part of the NERAM model", w=512, h=320),
+        "screen_anaesthesia": device_screen(fonts, "ANAESTHESIA WORKSTATION", "CASE IN PROGRESS", [("Airway", "face mask"), ("Fresh gas", "O\u2082 -- L/min"),
+                                     ("Breathing", "spontaneous"), ("Temperature", "see NERAM dashboard"), ("Warming", "NERAM, simulated")],
+                                     "Synthetic case replay \u00b7 NERAM proof-of-concept"),
         "gas_panel": gas_panel(fonts),
         "o2_label": o2_label(fonts),
         "gauge": gauge(fonts),

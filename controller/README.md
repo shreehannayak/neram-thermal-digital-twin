@@ -58,3 +58,19 @@ The run is deterministic (fixed seed 42). It prints every PROVISIONAL / ASSUMED 
 ## Native deliverables NOT produced (need MATLAB/Simulink/Stateflow)
 
 `neram_controller.slx`, `neram_testbench.slx`, the MATLAB `.m` scripts and enum classes, a native Stateflow chart, native S01-S06 screenshots, the Simulation Data Inspector view, and a native `run_all_tests.m`. The `*_PYTHON_FALLBACK.png` images are drawn by code from the Python run and are labelled as such; none is a Simulink/Stateflow/SDI screenshot.
+
+## Figures
+
+All figures are drawn from the Python fallback run (labelled `PYTHON_FALLBACK`; none is a Simulink/Stateflow screenshot).
+SIMULATED / ASSUMED prototype responses.
+
+| Controller architecture | State chart (7 states, 14 transitions) |
+|---|---|
+| <img src="docs/figures/controller_block_diagram_PYTHON_FALLBACK.jpg" width="100%"> | <img src="docs/figures/stateflow_chart_PYTHON_FALLBACK.jpg" width="100%"> |
+| **Test bench (hardware stand-ins)** | **Architecture slide** |
+| <img src="docs/figures/testbench_overview_PYTHON_FALLBACK.jpg" width="100%"> | <img src="docs/slide_controller_1.jpg" width="100%"> |
+
+<img src="docs/slide_controller_2.jpg" width="100%">
+
+Demo video of the real run data: [`docs/demo_controller.mp4`](docs/demo_controller.mp4).
+

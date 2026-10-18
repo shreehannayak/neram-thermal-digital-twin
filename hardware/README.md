@@ -13,6 +13,21 @@ Proof-of-concept prototype, not a medical device. All hardware in the demo is SI
 | bom/ | electrical_bom.csv |
 | schematics/ | channel_driver.png / .pdf: one-channel schematic (written by make_schematic.py) |
 
+## Diagrams and schematic
+
+Paper design; all hardware is SIMULATED in the demo and nothing has been built. Images are written by
+`diagrams/make_diagrams.py` and `schematics/make_schematic.py` (the `.drawio` sources open at app.diagrams.net).
+
+<img src="diagrams/system_block_diagram.png" width="100%">
+
+| Safety layers | Interface map |
+|---|---|
+| <img src="diagrams/safety_layers.png" width="100%"> | <img src="diagrams/interface_map.png" width="100%"> |
+
+**One-channel schematic** (CH_i; PROVISIONAL topology, values TBD) — [PDF](schematics/channel_driver.pdf)
+
+<img src="schematics/channel_driver.png" width="100%">
+
 ## Provisional choices (CP3)
 - Heater: polyimide flexible heater, Omega KHLVA series (28 V). Not self-limiting, so the layer-1 cutoff is essential.
 - MCU: STM32 Nucleo-G474RE. Reset state of outputs must still be verified.
