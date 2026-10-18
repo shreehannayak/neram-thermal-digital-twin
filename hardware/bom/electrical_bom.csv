@@ -1,16 +1,16 @@
 item,function,generic part,candidate part number,qty,key rating,datasheet link,unit cost INR,supplier (India),status,notes
-AC/DC supply,Mains to isolated low-voltage bus,Isolated AC/DC supply intended for medical equipment,TBD,1,v_bus_V TBD; rating at least P_peak_W x derating TBD,TBD,TBD,TBD,TBD,Isolation level per IEC 60601-1 is a design reference only (TBD)
-Mains inlet and fuse,Mains entry and protection,Mains inlet with fuse and power switch,TBD,1,TBD,TBD,TBD,TBD,TBD,Type TBD
-Logic DC/DC,Powers MCU and sensors,DC/DC regulator,TBD,1,Output voltage TBD (MAX31875 needs 1.6 to 3.6 V),TBD,TBD,TBD,TBD,Separate from heater bus
+AC/DC supply,Mains to isolated low-voltage bus,Isolated AC/DC supply intended for medical equipment,Mean Well MPM-65-24ST,1,"24 V, 2.71 A, 65 W; 4 kVAC isolation; IEC/EN 60601-1 listed (distributor listing)",TBD,TBD,TBD,PROVISIONAL,Isolation level per IEC 60601-1 is a design reference only (TBD)
+Mains inlet and fuse,Mains entry and protection,Mains inlet with fuse and power switch,Schurter KD series (IEC 60320 C14 inlet with fuse holder); exact order code TBD,1,250 VAC; fuse rating TBD,TBD,TBD,TBD,PROVISIONAL,Type TBD
+Logic DC/DC,Powers MCU and sensors,DC/DC regulator,RECOM R-78E5.0-0.5,1,"24 V in -> 5 V, 0.5 A to the Nucleo 5 V input; sensors run from the board 3.3 V",TBD,TBD,TBD,PROVISIONAL,Separate from heater bus
 MCU board,Host link; PWM; sensing; watchdog,STM32 Nucleo board,NUCLEO-G474RE,1,12-bit ADC; independent watchdog,https://www.st.com/en/product/stm32g474re,TBD,TBD,PROVISIONAL,Output state at reset must be verified before final
-Channel switch,Switches heater power per channel,Logic-level MOSFET with gate pull-down,TBD,4,Rated for i_on_A TBD and v_bus_V TBD,TBD,TBD,TBD,TBD,Low-side or high-side TBD
-Master safety switch,Series switch default open,Relay or power switch,TBD,1,Rated for total current TBD,TBD,TBD,TBD,TBD,Opened by hardware cutoff or watchdog or MCU
-Current-sense device,Measures channel current,Shunt with amplifier or Hall IC,TBD,4,Range at least i_over_A TBD,TBD,TBD,TBD,TBD,Method TBD
-Temperature sensor,Skin-interface module sensing (A and B),Digital IC temperature sensor,MAX31875R2TZS+T,8,+-1 C (0 to +70 C); -50 to +150 C,https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31875.pdf,168.66,Mouser India,TBD,Candidate only; sensor choice not final; bare chip needs carrier; some distributors list as being discontinued
-Hardware cutoff,Layer-1 over-temperature cutoff,Series thermal cutoff or comparator circuit,TBD,4,Trip at t_hw_cutoff_degC TBD,TBD,TBD,TBD,TBD,Latched; works with MCU halted
-Heater,Flexible resistive heater per module,Polyimide flexible heater,Omega KHLVA series,4,28 V max; size for hand and foot TBD,https://omega.com/en-us/p/KHRA-KHLVA-KHA-Series,TBD,Omega (India page exists; confirm),PROVISIONAL,Not self-limiting; INR price not yet read
-Connector pair,Module to controller connection,Connector with presence-detect pin,TBD,4,Rated above fuse_ch_A TBD,TBD,TBD,TBD,TBD,Keying if offered
-Cable,Fixed pigtail per module,Multi-core cable,TBD,4,Rated above fuse_ch_A TBD,TBD,TBD,TBD,TBD,Length per channel TBD
+Channel switch,Switches heater power per channel,Logic-level MOSFET with gate pull-down,"Infineon IRLML6344 (logic-level N-MOSFET, low side) + gate pull-down",4,30 V; rated for i_on_A at v_bus 24 V,TBD,TBD,TBD,PROVISIONAL,Low-side or high-side TBD
+Master safety switch,Series switch default open,Relay or power switch,"Normally-open (Form A) relay, 24 V coil; order code TBD",1,"Contacts >= 4 x i_on_A; opens on cutoff, watchdog or MCU",TBD,TBD,TBD,PROVISIONAL,Opened by hardware cutoff or watchdog or MCU
+Current-sense device,Measures channel current,Shunt with amplifier or Hall IC,TI INA180A2 + low-side shunt (value TBD),4,Gain 50 V/V; shunt sized for i_over_A,TBD,TBD,TBD,PROVISIONAL,Method TBD
+Temperature sensor,Skin-interface module sensing (A and B),Digital IC temperature sensor,"TDK NTCG163JX103DTDS (10 kOhm NTC, 0603)",8,B 3435 K; open/short read out of range; 8 pcs (2 per module),https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31875.pdf,168.66,Mouser India,PROVISIONAL,Candidate only; sensor choice not final; bare chip needs carrier; some distributors list as being discontinued
+Hardware cutoff,Layer-1 over-temperature cutoff,Series thermal cutoff or comparator circuit,TI LM393 dual comparator per 2 channels + latch,4,Trips on its own NTC divider at t_hw_cutoff_degC (TBD); works with the MCU halted,TBD,TBD,TBD,PROVISIONAL,Latched; works with MCU halted
+Heater,Flexible resistive heater per module,Polyimide flexible heater,"Omega KHLVA series, custom shape per module",4,28 V max; run at v_bus 24 V; watt density TBD from coverage area,https://omega.com/en-us/p/KHRA-KHLVA-KHA-Series,TBD,Omega (India page exists; confirm),PROVISIONAL,Not self-limiting; INR price not yet read
+Connector pair,Module to controller connection,Connector with presence-detect pin,Amphenol LTW M12A-08PFFS-SF8001 panel receptacle + mating M12 8-pin A-coded cable plug,4,"8 contacts, 2 A per contact, IP68",TBD,TBD,TBD,PROVISIONAL,Keying if offered
+Cable,Fixed pigtail per module,Multi-core cable,M12 8-pin A-coded overmoulded cable; order code TBD,4,Length from Neharika routing,TBD,TBD,TBD,TBD,Length per channel TBD
 Channel fuse,Output fuse per channel,Fuse,TBD,4,fuse_ch_A TBD,TBD,TBD,TBD,TBD,Above i_on_A and below cable rating
 Channel indicator,One LED per channel,LED,TBD,4,TBD,TBD,TBD,TBD,TBD,
 Status display,Front-panel status,Display,TBD,1,TBD,TBD,TBD,TBD,TBD,

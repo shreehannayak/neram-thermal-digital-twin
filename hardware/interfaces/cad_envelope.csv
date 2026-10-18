@@ -1,27 +1,27 @@
 param,value,unit,status,source,notes
-version,v1,-,FROZEN,Shreehan,Frozen for CAD v1 at CP1; changes bump to v2
+version,v2,-,PROVISIONAL,"Sai (drafted for Shreehan, 18 Oct 2026)",v2 = first sourced values; every change after this bumps the version and Neharika is told the same day
 sensors_per_module,2,count,FROZEN,Project constraint,Two pockets per module (A and B)
-heater_outline_hand_mm,,mm (L x W),TBD,Shreehan (datasheet of chosen heater),PLACEHOLDER: Neharika models as magenta body
-heater_outline_foot_mm,,mm (L x W),TBD,Shreehan (datasheet of chosen heater),PLACEHOLDER
-heater_thickness_mm,,mm,TBD,Shreehan (datasheet),PLACEHOLDER
-heater_min_bend_radius_mm,,mm,TBD,Shreehan (datasheet),PLACEHOLDER
-heater_lead_exit,,position,TBD,Shreehan (datasheet),PLACEHOLDER
-sensor_pkg_mm,,mm (L x W x H),TBD,Shreehan (sensor datasheet),PLACEHOLDER
-sensor_lead_dia_mm,,mm,TBD,Shreehan (sensor datasheet),PLACEHOLDER
-sensor_max_cover_mm,,mm,TBD,Shreehan (datasheet mounting guidance or stated assumption),PLACEHOLDER
-cutoff_device_mm,,mm,TBD,Shreehan (cutoff datasheet),Only if an in-module thermal cutoff is chosen
-connector_body_mm,,mm,TBD,Shreehan (connector datasheet),PLACEHOLDER
-connector_mated_length_mm,,mm,TBD,Shreehan (connector datasheet),PLACEHOLDER
-connector_panel_cutout_mm,,mm,TBD,Shreehan (connector datasheet),PLACEHOLDER
-connector_pins,,count,TBD,Shreehan (connector datasheet),PLACEHOLDER
-connector_keying,,type,TBD,Shreehan (connector datasheet),Different key per channel if offered; else label + colour only
-cable_od_mm,,mm,TBD,Shreehan (cable datasheet),PLACEHOLDER
-cable_min_bend_radius_mm,,mm,TBD,Shreehan (cable datasheet),PLACEHOLDER
-cable_length_ch_m,,m,TBD,Shreehan (design choice),PLACEHOLDER
-ctrl_pcb_mm,,mm,TBD,Shreehan,PLACEHOLDER
-ctrl_psu_mm,,mm,TBD,Shreehan (supply datasheet),PLACEHOLDER
-ctrl_internal_volume_l,,L,TBD,Shreehan,PLACEHOLDER
-ctrl_heat_W,,W,TBD,Shreehan (power budget),Used by Neharika to size vents
+heater_outline_hand_mm,,mm (L x W),TBD,Custom-shape KHLVA heater cut to Neharika coverage area,Outline follows Neharika hand coverage; Omega offers custom shapes; keep magenta until her area is fixed
+heater_outline_foot_mm,,mm (L x W),TBD,Custom-shape KHLVA heater cut to Neharika coverage area,As above for the sole
+heater_thickness_mm,0.254,mm,PROVISIONAL,Omega KHLVA listing: 0.010 in max (comparisons/heater_comparison.csv),Polyimide etched-foil; excludes adhesive backing
+heater_min_bend_radius_mm,,mm,TBD,Omega KHLVA datasheet (not stated on the listings read),Neharika: keep the heater flat or gently curved until stated
+heater_lead_exit,"edge, one end",position,PROVISIONAL,Omega KHLVA standard construction (leads exit one edge),Exit side faces the strain relief / cable exit at the wrist or heel edge
+sensor_pkg_mm,1.6 x 0.8 x 0.8,mm (L x W x H),PROVISIONAL,TDK NTCG163JX103DTDS 0603 NTC (comparisons/sensor_comparison.csv),"NTC chosen PROVISIONAL: analog, open/short readable, smallest; mounted on a flex tail"
+sensor_lead_dia_mm,n/a (SMD on flex tail),mm,PROVISIONAL,Design choice,Flex-tail thickness TBD; model a 6 mm wide flat tail per sensor
+sensor_max_cover_mm,,mm,TBD,Sensor datasheet mounting guidance or a stated assumption,Thickness of material allowed between skin and sensor
+cutoff_device_mm,,mm,TBD,Cutoff datasheet,Only if an in-module thermal cutoff is chosen; layer-1 cutoff may sit on the controller PCB instead
+connector_body_mm,M12 x 1 thread,mm,PROVISIONAL,"Amphenol LTW M12A-08PFFS-SF8001 (M12, A-coded, 8 contacts, 2 A, IP68, front-mount)",Panel receptacle body and nut size from its drawing: TBD
+connector_mated_length_mm,,mm,TBD,M12A-08PFFS-SF8001 drawing + mating cable connector drawing,
+connector_panel_cutout_mm,,mm,TBD,M12A-08PFFS-SF8001 drawing,
+connector_pins,8,count,PROVISIONAL,M12A-08PFFS-SF8001: 8 contacts,"Heater 2, sensor A 2, sensor B 2, presence-detect 2"
+connector_keying,A-coded (same key all channels),type,PROVISIONAL,M12 A-coding,Same key on all four ports: label + colour per channel (CH1-CH4) to prevent swaps
+cable_od_mm,,mm,TBD,Datasheet of the chosen M12 8-pin overmoulded cable,
+cable_min_bend_radius_mm,,mm,TBD,Same cable datasheet,
+cable_length_ch_m,,m,TBD,Design choice from Neharika routing (controller at rail to each limb),
+ctrl_pcb_mm,,mm,TBD,ST UM2505 Figure 6 (NUCLEO-G474RE mechanical drawing) + channel-driver PCB,MCU board NUCLEO-G474RE (PROVISIONAL); read outline from UM2505 Fig. 6
+ctrl_psu_mm,109 x 52 x 33.5,mm (L x W x H),PROVISIONAL,"Mean Well MPM-65-24ST: 24 V, 2.71 A, 65 W, 4 kVAC isolation, IEC/EN 60601-1 listed (distributor listing)",Medical-rated enclosed supply; isolation level required for this applied part still TBD (standards reference only)
+ctrl_internal_volume_l,,L,TBD,From PSU + PCB + connector envelopes,
+ctrl_heat_W,,W,TBD,Power budget (PSU losses + logic),Vents: Neharika keeps placeholder vents
 ctrl_ui,"4 channel indicators, status display, START, STOP, RESET",count,PROVISIONAL,Shreehan + Suchitha,Front panel items
-ctrl_mains_inlet,,type,TBD,Shreehan,PLACEHOLDER
-rail_profile_mm,,mm,TBD,Shreehan (verify on real table or standard),PLACEHOLDER
+ctrl_mains_inlet,IEC 60320 C14 with fuse holder,type,PROVISIONAL,Schurter KD series (C14 inlet with fuse holder),Panel cut-out from the KD datasheet: TBD
+rail_profile_mm,25 x 10,mm,PROVISIONAL,"Standard operating-table side rail 25 x 10 mm (rail-clamp listing, e.g. AGA BKO-2522); EN 12218 / ISO 19054 cited as design reference only",Verify on the real table

@@ -1,5 +1,5 @@
 parameter,formula or meaning,value,unit,source,status,notes
-v_bus_V,Heater supply voltage,,V,Heater datasheet + standard,TBD,Polyimide candidate (Omega KHLVA) lists 28 VDC maximum; not a chosen value
+v_bus_V,Heater supply voltage,24,V,"Design choice (Sai, 18 Oct): <= 28 V KHLVA maximum; equals the MPM-65-24ST output",PROVISIONAL,Polyimide candidate (Omega KHLVA) lists 28 VDC maximum; not a chosen value
 heater_r_ohm_ch1,Heater resistance CH1 = v_bus_V^2 / rated power,,ohm,Heater datasheet or calculation,TBD,
 heater_r_ohm_ch2,Heater resistance CH2,,ohm,Heater datasheet or calculation,TBD,
 heater_r_ohm_ch3,Heater resistance CH3,,ohm,Heater datasheet or calculation,TBD,
@@ -22,4 +22,7 @@ t_case_h_p90,90th-percentile development-case duration,,h,Sai (development data 
 E_case_Wh,P_cont_W x t_case_h,,Wh,Calculation,TBD,Median and 90th-percentile cases
 psu_derating_factor,Derating from supply datasheet derating curve,,-,Supply datasheet,TBD,
 psu_rating_W,Required rating >= P_peak_W x psu_derating_factor,,W,Calculation,TBD,
+psu_selected_rating_W,Rating of the chosen supply (MPM-65-24ST),65,W,Mean Well MPM-65-24ST listing,PROVISIONAL,Must satisfy psu_rating_W below once P_peak_W is known
+connector_contact_rating_A,Per-contact rating of the M12 8-pin connector,2,A,Amphenol LTW M12A-08PFFS-SF8001 listing,PROVISIONAL,Caps i_on_A at 2 A per channel (48 W at 24 V)
+p_max_ch_W_budget_limit,Largest per-channel heater power the 65 W supply allows = (psu_selected_rating_W / psu_derating_factor - p_logic_W) / 4,,W,Calculation,TBD,Fill once the derating factor and p_logic_W are sourced; heater area x watt density must stay below this
 wrist_cell_capacity_Wh,Capacity of a realistic wrist-worn cell,,Wh,Cell datasheet,TBD,Used only for the battery comparison in power_architecture.md
