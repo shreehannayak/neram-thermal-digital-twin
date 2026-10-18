@@ -8,14 +8,47 @@ code,name,scope,detected_by,description,display_text
 6,COMM_CRC_ERROR_RATE,System,MCU / host,Too many invalid-CRC frames in a window,Communication errors
 7,TWIN_DATA_STALE,System,Controller (software),Twin output older than data_stale_twin_s,Twin data stale
 8,HW_DATA_STALE,System,Controller (software),Hardware status older than data_stale_hw_s,Hardware data stale
-100i+1,SENSOR_A_OPEN,Channel i,MCU,Sensor A open circuit (reads invalid),Channel i: sensor A open
-100i+2,SENSOR_A_SHORT,Channel i,MCU,Sensor A short circuit (reads invalid),Channel i: sensor A short
-100i+3,SENSOR_B_OPEN,Channel i,MCU,Sensor B open circuit (reads invalid),Channel i: sensor B open
-100i+4,SENSOR_B_SHORT,Channel i,MCU,Sensor B short circuit (reads invalid),Channel i: sensor B short
-100i+5,SENSOR_DISAGREE,Channel i,Controller,Sensors A and B differ by more than dt_sensor_disagree_degC,Channel i: sensors disagree
-100i+6,OVERTEMP_SW,Channel i,MCU / controller,Module temperature at or above t_mod_trip_degC,Channel i: over-temperature (software)
-100i+7,OVERTEMP_HW_CUTOFF,Channel i,Hardware -> MCU,Hardware cutoff tripped,Channel i: hardware cutoff tripped
-100i+8,DISCONNECTED,Channel i,MCU (presence pin),Module connector not detected,Channel i: module disconnected
-100i+9,HEATER_OPEN,Channel i,MCU / controller,Heater commanded ON but current below i_open_max_A,Channel i: heater open circuit
-100i+10,OVERCURRENT,Channel i,MCU / controller,Heater current above i_over_A,Channel i: overcurrent
-100i+11,STUCK_ON,Channel i,MCU / controller,Current above i_stuck_A while commanded OFF,Channel i: driver stuck on
+101,SENSOR_A_OPEN,Channel 1,MCU,"Sensor A open circuit (reads invalid) (channel 1, left hand)",CH1 left hand: sensor A open
+102,SENSOR_A_SHORT,Channel 1,MCU,"Sensor A short circuit (reads invalid) (channel 1, left hand)",CH1 left hand: sensor A short
+103,SENSOR_B_OPEN,Channel 1,MCU,"Sensor B open circuit (reads invalid) (channel 1, left hand)",CH1 left hand: sensor B open
+104,SENSOR_B_SHORT,Channel 1,MCU,"Sensor B short circuit (reads invalid) (channel 1, left hand)",CH1 left hand: sensor B short
+105,SENSOR_DISAGREE,Channel 1,Controller,"Sensors A and B differ by more than dt_sensor_disagree_degC (channel 1, left hand)",CH1 left hand: sensors disagree
+106,OVERTEMP_SW,Channel 1,MCU / controller,"Module temperature at or above t_mod_trip_degC (channel 1, left hand)",CH1 left hand: over-temperature (software)
+107,OVERTEMP_HW_CUTOFF,Channel 1,Hardware -> MCU,"Hardware cutoff tripped (channel 1, left hand)",CH1 left hand: hardware cutoff tripped
+108,DISCONNECTED,Channel 1,MCU (presence pin),"Module connector not detected (channel 1, left hand)",CH1 left hand: module disconnected
+109,HEATER_OPEN,Channel 1,MCU / controller,"Heater commanded ON but current below i_open_max_A (channel 1, left hand)",CH1 left hand: heater open circuit
+110,OVERCURRENT,Channel 1,MCU / controller,"Heater current above i_over_A (channel 1, left hand)",CH1 left hand: overcurrent
+111,STUCK_ON,Channel 1,MCU / controller,"Current above i_stuck_A while commanded OFF (channel 1, left hand)",CH1 left hand: driver stuck on
+201,SENSOR_A_OPEN,Channel 2,MCU,"Sensor A open circuit (reads invalid) (channel 2, right hand)",CH2 right hand: sensor A open
+202,SENSOR_A_SHORT,Channel 2,MCU,"Sensor A short circuit (reads invalid) (channel 2, right hand)",CH2 right hand: sensor A short
+203,SENSOR_B_OPEN,Channel 2,MCU,"Sensor B open circuit (reads invalid) (channel 2, right hand)",CH2 right hand: sensor B open
+204,SENSOR_B_SHORT,Channel 2,MCU,"Sensor B short circuit (reads invalid) (channel 2, right hand)",CH2 right hand: sensor B short
+205,SENSOR_DISAGREE,Channel 2,Controller,"Sensors A and B differ by more than dt_sensor_disagree_degC (channel 2, right hand)",CH2 right hand: sensors disagree
+206,OVERTEMP_SW,Channel 2,MCU / controller,"Module temperature at or above t_mod_trip_degC (channel 2, right hand)",CH2 right hand: over-temperature (software)
+207,OVERTEMP_HW_CUTOFF,Channel 2,Hardware -> MCU,"Hardware cutoff tripped (channel 2, right hand)",CH2 right hand: hardware cutoff tripped
+208,DISCONNECTED,Channel 2,MCU (presence pin),"Module connector not detected (channel 2, right hand)",CH2 right hand: module disconnected
+209,HEATER_OPEN,Channel 2,MCU / controller,"Heater commanded ON but current below i_open_max_A (channel 2, right hand)",CH2 right hand: heater open circuit
+210,OVERCURRENT,Channel 2,MCU / controller,"Heater current above i_over_A (channel 2, right hand)",CH2 right hand: overcurrent
+211,STUCK_ON,Channel 2,MCU / controller,"Current above i_stuck_A while commanded OFF (channel 2, right hand)",CH2 right hand: driver stuck on
+301,SENSOR_A_OPEN,Channel 3,MCU,"Sensor A open circuit (reads invalid) (channel 3, left foot)",CH3 left foot: sensor A open
+302,SENSOR_A_SHORT,Channel 3,MCU,"Sensor A short circuit (reads invalid) (channel 3, left foot)",CH3 left foot: sensor A short
+303,SENSOR_B_OPEN,Channel 3,MCU,"Sensor B open circuit (reads invalid) (channel 3, left foot)",CH3 left foot: sensor B open
+304,SENSOR_B_SHORT,Channel 3,MCU,"Sensor B short circuit (reads invalid) (channel 3, left foot)",CH3 left foot: sensor B short
+305,SENSOR_DISAGREE,Channel 3,Controller,"Sensors A and B differ by more than dt_sensor_disagree_degC (channel 3, left foot)",CH3 left foot: sensors disagree
+306,OVERTEMP_SW,Channel 3,MCU / controller,"Module temperature at or above t_mod_trip_degC (channel 3, left foot)",CH3 left foot: over-temperature (software)
+307,OVERTEMP_HW_CUTOFF,Channel 3,Hardware -> MCU,"Hardware cutoff tripped (channel 3, left foot)",CH3 left foot: hardware cutoff tripped
+308,DISCONNECTED,Channel 3,MCU (presence pin),"Module connector not detected (channel 3, left foot)",CH3 left foot: module disconnected
+309,HEATER_OPEN,Channel 3,MCU / controller,"Heater commanded ON but current below i_open_max_A (channel 3, left foot)",CH3 left foot: heater open circuit
+310,OVERCURRENT,Channel 3,MCU / controller,"Heater current above i_over_A (channel 3, left foot)",CH3 left foot: overcurrent
+311,STUCK_ON,Channel 3,MCU / controller,"Current above i_stuck_A while commanded OFF (channel 3, left foot)",CH3 left foot: driver stuck on
+401,SENSOR_A_OPEN,Channel 4,MCU,"Sensor A open circuit (reads invalid) (channel 4, right foot)",CH4 right foot: sensor A open
+402,SENSOR_A_SHORT,Channel 4,MCU,"Sensor A short circuit (reads invalid) (channel 4, right foot)",CH4 right foot: sensor A short
+403,SENSOR_B_OPEN,Channel 4,MCU,"Sensor B open circuit (reads invalid) (channel 4, right foot)",CH4 right foot: sensor B open
+404,SENSOR_B_SHORT,Channel 4,MCU,"Sensor B short circuit (reads invalid) (channel 4, right foot)",CH4 right foot: sensor B short
+405,SENSOR_DISAGREE,Channel 4,Controller,"Sensors A and B differ by more than dt_sensor_disagree_degC (channel 4, right foot)",CH4 right foot: sensors disagree
+406,OVERTEMP_SW,Channel 4,MCU / controller,"Module temperature at or above t_mod_trip_degC (channel 4, right foot)",CH4 right foot: over-temperature (software)
+407,OVERTEMP_HW_CUTOFF,Channel 4,Hardware -> MCU,"Hardware cutoff tripped (channel 4, right foot)",CH4 right foot: hardware cutoff tripped
+408,DISCONNECTED,Channel 4,MCU (presence pin),"Module connector not detected (channel 4, right foot)",CH4 right foot: module disconnected
+409,HEATER_OPEN,Channel 4,MCU / controller,"Heater commanded ON but current below i_open_max_A (channel 4, right foot)",CH4 right foot: heater open circuit
+410,OVERCURRENT,Channel 4,MCU / controller,"Heater current above i_over_A (channel 4, right foot)",CH4 right foot: overcurrent
+411,STUCK_ON,Channel 4,MCU / controller,"Current above i_stuck_A while commanded OFF (channel 4, right foot)",CH4 right foot: driver stuck on

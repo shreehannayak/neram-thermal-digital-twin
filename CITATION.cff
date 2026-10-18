@@ -4,11 +4,20 @@ title: "NERAM: Thermal Digital Twin and Simulated Warming Controller"
 type: software
 version: "0.1"
 date-released: "2026-10-11"
-repository-code: "https://github.com/shreehannayak/neram-thermal-digital-twin"
+repository-code: "https://github.com/shreehannayak/neram-thermal-ditital-twin"  # update if the repo is renamed
 license: Apache-2.0
 authors:
   - name: "NERAM team (names TBD)"
 references:
-  - type: data
+  - type: article
     title: "VitalDB, a high-fidelity multi-parameter vital signs database in surgical patients"
-    notes: "Full reference and data-use terms: TBD (Sai supplies)"
+    authors:
+      - family-names: "Lee"
+        given-names: "Hyung-Chul"
+      - name: "et al."
+    journal: "Scientific Data"
+    volume: 9
+    start: 279
+    year: 2022
+    doi: "10.1038/s41597-022-01411-5"
+    notes: "Data used under the VitalDB data-use terms; no raw VitalDB data is redistributed in this repository."

@@ -25,3 +25,13 @@ obj/
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Added 18 Oct 2026 (Sai): build outputs and data that must never be committed
+build/
+Build/
+*.zip
+final_holdout_freeze/
+dev_robust_*/
+*.csv.gz
+__pycache__/
+*.pyc
