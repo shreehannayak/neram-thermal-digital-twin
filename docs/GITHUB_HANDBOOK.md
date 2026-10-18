@@ -87,7 +87,7 @@ oxygen flow.
 - **Suchitha:** `controller/neram_ctrl/` v2 code; v2 TC04 log; `T07_duty_stats.csv`; reply on issue #2.
 - **Neharika:** done (3D models delivered 18 Oct). Only the GitHub confirmation and family name, as for everyone.
 - **Shreehan:** 19 Oct audit from a logged-out browser (`docs/SUBMISSION_CHECKLIST.md`, dry run in
-  `docs/SUBMISSION_DRYRUN_2026-10-18.md`); BOM prices in INR; MPM-65 derating factor; wrist-cell datasheet; review the
+  `docs/SUBMISSION_DRYRUN_2026-10-18.md`); remaining BOM prices (supply, inlet, relay, heaters, small parts); review the
   one-channel schematic; close issue #1.
 
 ## 7. Troubleshooting
