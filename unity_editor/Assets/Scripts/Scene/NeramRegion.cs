@@ -48,7 +48,7 @@ namespace Neram.Unity
                 case RegionId.LegLeft: return "LEFT LEG";
                 case RegionId.LegRight: return "RIGHT LEG";
                 case RegionId.Torso: return "CHEST / TORSO";
-                case RegionId.Wearable: return "WRIST WEARABLE (right forearm)";
+                case RegionId.Wearable: return "WRIST WEARABLE \u00b7 DISPLAY ONLY (right wrist)";
                 case RegionId.Controller: return "BEDSIDE CONTROLLER";
                 case RegionId.Monitor: return "PATIENT MONITOR";
                 default: return "";

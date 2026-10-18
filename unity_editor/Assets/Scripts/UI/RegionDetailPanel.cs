@@ -188,7 +188,7 @@ namespace Neram.Unity
         private void BuildWearable()
         {
             var f = _s.F;
-            _sub.text = "Concept wrist wearable. Replay schema v1.0 has NO wearable channel: this device produces no data in the replay.";
+            _sub.text = "Display-only concept wrist wearable: no controls, no battery, not a controller (plan rule). Replay schema v1.0 has NO wearable channel: this device produces no data in the replay.";
             Section("SCREEN CONTENT", "what the watch face overlay shows");
             Add("Screen mode", _ => WearableMode == WearableScreen.Mode.MirrorReplay ? "mirror of replay values (labelled with source tags)" : "SYNTHETIC DEMO pattern (deterministic, labelled, not data)", null);
             AddAction("Mirror replay values", () => { WearableMode = WearableScreen.Mode.MirrorReplay; WearableModeRequested?.Invoke(WearableMode); Select(Region); });

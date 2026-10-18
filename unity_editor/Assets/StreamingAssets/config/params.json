@@ -1,6 +1,6 @@
 {
   "params_version": "0.3",
-  "spec_version": "0.1",
+  "spec_version": "1.0",
   "owner": "Sai",
   "file_status": "v0.3 (18 Oct 2026). Values are null unless the owner or the plan establishes them; a placeholder exists only so simulations and displays can run and is labelled wherever used.",
   "params": {
@@ -209,7 +209,7 @@
       "placeholder": null,
       "unit": "degC",
       "status": "TBD",
-      "source": "Applicable standard clause (IEC 80601-2-35 believed relevant: verify) and/or clinician",
+      "source": "Applicable standard clause and/or clinician. Governing: IEC 80601-2-35 (heating pads/blankets/mattresses) Table 201.102 'Temperature limits in dependency to time' (clause 201.11) - the table values must be read from the purchased standard before a value is set. IEC 60601-1 Table 24 (general applied-part skin-contact limit, 43 degC for >= 10 min) is a design reference only and is superseded by the particular standard. No value invented.",
       "owner": "Shreehan",
       "purpose": "Maximum skin-contact surface temperature",
       "used_by": "Shreehan thresholds"
@@ -588,6 +588,18 @@
       "date": "2026-10-18",
       "owner": "Sai",
       "changes": "Suchitha-owned rows filled from her controller_spec.md section 6 (as she set them): PROVISIONAL values band_target_degC, t_dwell_min_s, t_recover_s, t_stop_inhibit_s, d_pred_max_pct, d_active_max_pct, d_maint_max_pct, d_fallback_pct, kp_pct_per_degC, ki_pct_per_degC_s; ASSUMED test-bench placeholders t_skin_base_degC, k_mod_degC, tau_mod_s, sd_mod_sensor_degC, sd_standin_degC, tau_standin_s. Sai row data_stale_twin_s: placeholder 120 s (2 x ts_twin_s). Shreehan rows unchanged (null): the numbers in Suchitha's standalone table are from an old script, not Shreehan values. Sai rows p_trigger/p_release/k_heat/tau_heat/r_obs unchanged; Suchitha used different standalone stand-ins because params.json had not reached her; her code reads config/params.json automatically when present, so she should re-run with this file. Announce to the team (plan 4D)."
+    },
+    {
+      "version": "0.3",
+      "date": "2026-10-18",
+      "owner": "Sai",
+      "changes": "Source text only (no value): t_surface_limit_degC now names the governing table (IEC 80601-2-35 Table 201.102) and records IEC 60601-1 Table 24 (43 degC) as a superseded design reference. Value and placeholder stay null (Shreehan row)."
+    },
+    {
+      "version": "0.3",
+      "date": "2026-10-18",
+      "owner": "Sai",
+      "changes": "spec_version 0.1 -> 1.0: interface spec frozen (docs/INTERFACE_SPEC_v1.0.md). Parameter values unchanged."
     }
   ]
 }
