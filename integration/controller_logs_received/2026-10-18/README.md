@@ -58,3 +58,6 @@ The run is deterministic (fixed seed 42). It prints every PROVISIONAL / ASSUMED 
 ## Native deliverables NOT produced (need MATLAB/Simulink/Stateflow)
 
 `neram_controller.slx`, `neram_testbench.slx`, the MATLAB `.m` scripts and enum classes, a native Stateflow chart, native S01-S06 screenshots, the Simulation Data Inspector view, and a native `run_all_tests.m`. The `*_PYTHON_FALLBACK.png` images are drawn by code from the Python run and are labelled as such; none is a Simulink/Stateflow/SDI screenshot.
+
+## Checksums (updated 18 Oct 2026, Sai)
+`SHA256SUMS` covers the files in this folder. The CSV, Markdown and text files are byte-identical to the copies first checked on 18 Oct. The six media files (`*.jpg`, `demo_controller.mp4`) in this folder are the laptop copies; the chat-attachment copies hashed earlier that day differ only in file metadata/encoding, so their hashes were replaced (old list: Sai backup `SHA256SUMS_received_2026-10-18`).
