@@ -25,7 +25,7 @@ the patient's own monitor data, with a simulated supervised warming controller a
 Each member confirms their own line in a GitHub comment.
 
 ## 3. College / incubator
-TBD: must match the registration exactly (to be filled in from the registration form).
+CEG, Anna University (College of Engineering Guindy, Chennai).
 
 ## 4. Problem statement
 Intraoperative temperature drifts slowly, and a population curve says little about the patient on the table.
@@ -112,8 +112,9 @@ battery) and the bedside controller enclosure.
 - `cad/exports/source_fusion_2026-10-18/`: the Fusion exports as received.
 - `cad/exports/unity/`: Unity-ready copies (metres, Y up, plan names, `MAT_*` materials; shapes unchanged).
 - `cad/IMPORT_CHECK_SAI_2026-10-18.md`: import check, what was changed, what is still open (strain relief,
-  assembly file, STEP/native files, renders, drawings).
-- `cad/renders/unity_preview_2026-10-18/`: the models in the Unity viewer.
+  assembly file, STEP/native files, drawings).
+- `cad/renders/`: plan renders R01–R08 (full scene, modules, exploded layers, controller, cable routing, sensor-pocket
+  section); `cad/renders/unity_preview_2026-10-18/`: earlier viewer pictures.
 
 ## 12. Unity demo
 Replay viewer for the twin, controller and hardware stand-ins (Unity 6000.3.26f1, URP, UI Toolkit).

@@ -23,7 +23,7 @@ within 1 day of each FBX delivery".
 | Triangles | controller FAIL (fixed) | Controller 19,890 (> 15k); modules 2,060–4,698 and watch 2,430 PASS |
 | Parts | PARTIAL | All BC_* parts present. Modules: Liner, Heater, Insulation, Shell, Strap_1/2, Hook_1/2, Sensor_A/B present. **`CHn_Strain_Relief` missing** (Unity validation shows a WARN); `CHn_Cutoff` is optional in W |
 | Hand handedness | PASS | CH1 is a true left hand, CH2 a true right hand (mirrored) |
-| Missing deliverables | OPEN | `NERAM_Assembly.fbx` (Reference_Cube_1m, OR_Table, Patient_Mannequin, Cable_CH1..4 + Connector_CH1..4), real `exploded_offsets.csv`, STEP + native .f3d, renders R01–R08, drawings D01–D05, `cad/README.md` |
+| Missing deliverables | OPEN | `NERAM_Assembly.fbx` (Reference_Cube_1m, OR_Table, Patient_Mannequin, Cable_CH1..4 + Connector_CH1..4), real `exploded_offsets.csv`, STEP + native .f3d, drawings D01–D05 (renders R01–R08: now in `cad/renders/`), `cad/README.md` |
 
 ## What the prep did (`cad/tools/fixneha.py`, reproducible)
 
@@ -47,7 +47,9 @@ within 1 day of each FBX delivery".
 
 1. Add `CHn_Strain_Relief` to the four modules (cable exit at the wrist / heel edge).
 2. Export `NERAM_Assembly.fbx` with `Reference_Cube_1m`, cables and connectors, plus her `exploded_offsets.csv`.
-3. Commit STEP + native files, renders R01–R08 and drawings D01–D05; write `cad/README.md`.
+3. Commit STEP + native files and drawings D01–D05; write `cad/README.md`. (Renders R01–R08: done by Sai on 18 Oct from
+   the Unity viewer and the FBX, `cad/renders/`; Fusion renders may replace them.)
+6. Check the 0.5 mm overlap between `CHn_Insulation` (from 3.0 mm) and `CHn_Heater` (to 3.5 mm) seen in R08.
 4. Next export from Fusion: set Y-up and centimetres/metres, and name materials `MAT_*`, so the prep step is not needed.
 5. Use the CAD envelope v2 values in `hardware/interfaces/cad_envelope.csv`.
 
