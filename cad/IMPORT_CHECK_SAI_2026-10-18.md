@@ -50,3 +50,17 @@ within 1 day of each FBX delivery".
 3. Commit STEP + native files, renders R01–R08 and drawings D01–D05; write `cad/README.md`.
 4. Next export from Fusion: set Y-up and centimetres/metres, and name materials `MAT_*`, so the prep step is not needed.
 5. Use the CAD envelope v2 values in `hardware/interfaces/cad_envelope.csv`.
+
+## In the Unity viewer (fit v2, 18 Oct, ~16:00 IST)
+
+Pictures from the Unity editor: `cad/renders/unity_preview_2026-10-18/unity_*.png`.
+
+* Hands: palm-up on the arm boards; the stand-in hand under each glove is built from the glove outline, so every
+  glove finger has its own finger. The pad layers (fabric) are draped onto the hand and fold around the fingers.
+* Feet: pad on the sole from heel to ball, toes free.
+* Straps: shown as bands that follow the hand / foot + pad (CAD width and thickness; length fitted to the limb, because
+  the CAD straps enclose a 29 mm limb). **Neharika: please size the foot straps for a foot (~60-70 mm high).**
+* Watch: around the right wrist, display-only concept, live face from the viewer.
+* Controller: clamped on the left side rail, display facing the clinician; the screen texture names the channels and
+  says SIMULATED (values are on the dashboard).
+* These are visual fits in the viewer only; the CAD files in `cad/exports/` are unchanged.
