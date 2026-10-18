@@ -16,7 +16,7 @@ Status: PASS = checked and fine; FIXED = was wrong, fixed in this commit; OPEN =
 | 7 | Demo video | OPEN (Sai, 19 Oct) | To be recorded; link goes in README §16 |
 | 8 | Licences | FIXED | `LICENSE` Apache-2.0 (GitHub detects "Apache-2.0"); `LICENSE-CAD-DOCS` now holds the full CC BY 4.0 legal code (was a 16-line summary); README §17 says which applies where |
 | 9 | Architecture PDF | PASS | `docs/architecture.pdf` (324 kB) and `docs/ARCHITECTURE.md` |
-| 10 | Presentation PDF | OPEN (Sai, in progress) | `docs/presentation.pdf` not yet in the repo |
+| 10 | Presentation PDF | PASS (added later on 18 Oct) | `docs/presentation.pdf`, 16 slides; claims checked against SAFETY_AND_LIMITATIONS.md |
 | 11 | Public repository | PASS | GitHub API: `"private": false, "visibility": "public"`. An LFS file (`cad/exports/unity/NERAM_Watch_Concept.fbx`) downloads without login and its SHA-256 matches the LFS pointer |
 
 ## Additional checks
@@ -44,7 +44,7 @@ Status: PASS = checked and fine; FIXED = was wrong, fixed in this commit; OPEN =
 | README, licences, CITATION.cff, .gitignore, .gitattributes | PASS (after fixes above) | |
 
 ## Still open on 18 Oct night
-1. Presentation PDF (Sai, in progress). 2. Demo video (Sai, 19 Oct). 3. Member confirmations in GitHub comments and
+1. ~~Presentation PDF~~ done. 2. Demo video (Sai, 19 Oct). 3. Member confirmations in GitHub comments and
 family names in CITATION.cff (all). 4. Suchitha: `neram_ctrl/` code folder and the v2 TC04 log. 5. Neharika: STEP /
 native files, drawings, strain relief, her own `cad/README.md`. 6. BOM prices and the remaining power-budget inputs
 (Shreehan / Neharika / Suchitha inputs).

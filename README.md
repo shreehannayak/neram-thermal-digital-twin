@@ -183,7 +183,8 @@ here is SYNTHETIC. Development and holdout outputs (`results/development/`, `res
 ## 16. Demo video, architecture PDF, presentation links
 - Architecture PDF: `docs/architecture.pdf`
 - Demo video: TBD (to be recorded)
-- Presentation: TBD (`docs/presentation.pdf`)
+- Presentation: [`docs/presentation.pdf`](docs/presentation.pdf) (16 slides)
+- Team handbook for the repository: [`docs/GITHUB_HANDBOOK.md`](docs/GITHUB_HANDBOOK.md)
 
 ## 17. Licences
 - Code: Apache-2.0 (see LICENSE)
