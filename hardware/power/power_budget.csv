@@ -11,11 +11,11 @@ p_max_ch_W_ch3,Max power CH3,,W,Heater datasheet x CAD area,TBD,
 p_max_ch_W_ch4,Max power CH4,,W,Heater datasheet x CAD area,TBD,
 p_logic_W,Logic power (MCU + sensors + indicators + display),,W,Datasheets,TBD,Upper bound only: the logic regulator delivers at most 5 V x 0.5 A = 2.5 W (R-78E5.0-0.5); actual draw from datasheets TBD
 P_peak_W,Sum of p_max_ch_W (all four at 100 percent) + p_logic_W,,W,Calculation,TBD,Result stays TBD until all inputs sourced
-mean_duty_ch1_scenario,Mean Heat_1 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,One row per scenario once file arrives
-mean_duty_ch2_scenario,Mean Heat_2 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,
-mean_duty_ch3_scenario,Mean Heat_3 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,
-mean_duty_ch4_scenario,Mean Heat_4 percent per scenario,,percent,Suchitha T07_duty_stats.csv,TBD,
-p95_duty_ch1_to_ch4,95th-percentile Heat percent (worst case),,percent,Suchitha T07_duty_stats.csv,TBD,Used for worst-case P_cont_W
+mean_duty_ch1_scenario,Mean Heat_1 percent per scenario,,percent,controller/results/tables/T07_duty_stats.csv,TBD,"File now available (assumed-plant test scenarios; e.g. TC04 12 h closed loop mean 28.6 %, p95 50 % per channel). Not filled per scenario here because p_max_ch_W is TBD, so P_cont_W stays TBD"
+mean_duty_ch2_scenario,Mean Heat_2 percent per scenario,,percent,controller/results/tables/T07_duty_stats.csv,TBD,
+mean_duty_ch3_scenario,Mean Heat_3 percent per scenario,,percent,controller/results/tables/T07_duty_stats.csv,TBD,
+mean_duty_ch4_scenario,Mean Heat_4 percent per scenario,,percent,controller/results/tables/T07_duty_stats.csv,TBD,
+p95_duty_ch1_to_ch4,95th-percentile Heat percent (worst case),,percent,controller/results/tables/T07_duty_stats.csv,TBD,"Used for worst-case P_cont_W; p95 is 50 % (= p_max_ch_pct placeholder) in every warming scenario"
 P_cont_W,Sum of (mean duty_i x p_max_ch_W_i) + p_logic_W,,W,Calculation,TBD,Report for each scenario and for the p95 worst case
 t_case_h_median,Median development-case duration,,h,Sai (development data only),TBD,
 t_case_h_p90,90th-percentile development-case duration,,h,Sai (development data only),TBD,

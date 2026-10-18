@@ -228,3 +228,14 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 - `config/params.json`: data_stale_hw_s = 2 s (Shreehan, issue #1). Suchitha's 17 Oct Colab notebook added under
   `controller/legacy_colab_2026-10-17/` (reproduces the received TC05/TC07/TC13 logs byte for byte).
 
+
+## 16. Team close-out (Sai, 18 Oct 2026, ~22:30–00:30 IST)
+- CAD: Neharika's part (3D models) marked complete; STEP/native files, drawings, strain relief and an assembly file
+  recorded as out of scope for this submission.
+- Hardware: MPM-65 derating factor 1.0 (100 % load to 55 C ambient and from 100 VAC, read from the Mean Well
+  datasheet chart), per-channel budget limit 15.6 W (calculated, PROVISIONAL), example wrist cell 0.555 Wh
+  (Adafruit 1317), DigiKey India qty-1 prices for 7 BOM rows (partial subtotal 6045.45 INR).
+- Controller: the v2 source was lost; `controller/neram_ctrl/` and `controller/scripts/` rebuilt from Suchitha's
+  specification. Five regenerated logs are byte-identical to her v2 logs; 129/132 result rows identical, same totals
+  (112 PASS, 18 REPORTED, 1 BLOCKED, 1 EXCLUDED). New: `ctrl_TC04.csv`, per-test logs, plots, `T07_duty_stats.csv`.
+  Details and known differences: `controller/REBUILD_2026-10-18_SAI.md`.

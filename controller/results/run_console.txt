@@ -1,0 +1,100 @@
+NERAM supervisory controller - PYTHON FALLBACK (rebuilt 18 Oct 2026 from Suchitha's v2 spec)
+Parameters: standalone-0.1 (config/params.json NOT used)
+  ts_ctrl_s                  1                      PROVISIONAL            owner Suchitha
+  data_stale_twin_s          120                    PROVISIONAL            owner Sai
+  data_stale_hw_s            5                      TBD/PLACEHOLDER        owner Shreehan
+  t_hypo_degC                36.0                   TBD/PLACEHOLDER        owner Sai
+  t_target_degC              37.0                   TBD/PLACEHOLDER        owner Sai
+  p_trigger                  0.3                    PROVISIONAL            owner Sai
+  p_release                  0.2                    PROVISIONAL            owner Sai
+  n_confirm_updates          2                      PROVISIONAL            owner Sai
+  band_target_degC           0.3                    PROVISIONAL            owner Suchitha
+  t_dwell_min_s              10                     PROVISIONAL            owner Suchitha
+  t_recover_s                30                     PROVISIONAL            owner Suchitha
+  t_stop_inhibit_s           300                    PROVISIONAL            owner Suchitha
+  d_pred_max_pct             40                     PROVISIONAL            owner Suchitha
+  d_active_max_pct           70                     PROVISIONAL            owner Suchitha
+  d_maint_max_pct            50                     PROVISIONAL            owner Suchitha
+  d_fallback_pct             20                     PROVISIONAL            owner Suchitha
+  kp_pct_per_degC            20                     PROVISIONAL            owner Suchitha
+  ki_pct_per_degC_s          0.5                    PROVISIONAL            owner Suchitha
+  p_max_ch_pct               [50, 50, 50, 50]       TBD/PLACEHOLDER        owner Shreehan
+  t_mod_derate_degC          38                     TBD/PLACEHOLDER        owner Shreehan
+  t_mod_trip_degC            41                     TBD/PLACEHOLDER        owner Shreehan
+  t_mod_reset_degC           37                     TBD/PLACEHOLDER        owner Shreehan
+  t_hw_cutoff_degC           None                   TBD (no placeholder)   owner Shreehan
+  dt_sensor_disagree_degC    2.0                    TBD/PLACEHOLDER        owner Shreehan
+  i_on_A                     0.5                    TBD/PLACEHOLDER        owner Shreehan
+  i_open_max_A               0.05                   TBD/PLACEHOLDER        owner Shreehan
+  i_over_A                   2.0                    TBD/PLACEHOLDER        owner Shreehan
+  i_stuck_A                  0.05                   TBD/PLACEHOLDER        owner Shreehan
+  module_temp_min_degC       None                   TBD (no placeholder)   owner Shreehan
+  module_temp_max_degC       None                   TBD (no placeholder)   owner Shreehan
+  k_heat_degC_per_h          0.6                    ASSUMED                owner Sai
+  tau_heat_min               15                     ASSUMED                owner Sai
+  w_ch                       [0.25, 0.25, 0.25, 0.25] ASSUMED                owner Sai
+  r_obs_degC2                0.0025                 PLACEHOLDER            owner Sai
+  plant_passive.mode         flat                   PLACEHOLDER            owner Sai
+  t_skin_base_degC           33.0                   ASSUMED                owner Suchitha
+  k_mod_degC                 6.0                    ASSUMED                owner Suchitha
+  tau_mod_s                  90                     ASSUMED                owner Suchitha
+  sd_mod_sensor_degC         0.05                   ASSUMED                owner Suchitha
+  sd_standin_degC            0.05                   ASSUMED                owner Suchitha
+  tau_standin_s              15                     ASSUMED                owner Suchitha
+LOGCHECK ctrl_SYN_02.csv: PASS
+LOGCHECK ctrl_TC04.csv: PASS
+LOGCHECK ctrl_TC05.csv: PASS
+LOGCHECK ctrl_TC07.csv: PASS
+LOGCHECK ctrl_TC08.csv: PASS
+LOGCHECK ctrl_TC13.csv: PASS
+REPRODUCTION ctrl_SYN_02.csv vs Suchitha's v2 log: byte-identical
+REPRODUCTION ctrl_TC05.csv vs Suchitha's v2 log: byte-identical
+REPRODUCTION ctrl_TC07.csv vs Suchitha's v2 log: byte-identical
+REPRODUCTION ctrl_TC08.csv vs Suchitha's v2 log: byte-identical
+REPRODUCTION ctrl_TC13.csv vs Suchitha's v2 log: byte-identical
+AU-G1a  PASS     twin_ok=0, state=5, Heat=[0.0, 0.0, 0.0, 0.0]
+AU-G1b  PASS     risk_pred seen = [0]
+AU-G1c  PASS     state=6, alert=8
+AU-G1d  PASS     Channel_Fault_1=109
+AU-G1e  PASS     state=6, fault_code=8
+AU-G1f  PASS     state=5, stale=1
+AU-G1g  PASS     state=6
+AU-G2a  BLOCKED  module_temp_min/max_degC not supplied (null). Range hook implemented; checks are DISABLED until Shre
+AU-G2b  PASS     Channel_Fault_1=102 (102 expected for out-of-range sensor A)
+AU-G3a  PASS     fault_code=3; Channel_Fault=[106, 0, 303, 408]
+AU-G3b  PASS     fault_code=303
+AU-G3c  PASS     fault_code=406, state=6
+AU-G5   PASS     codes [1, 2, 3, 4, 5, 6]
+AU-G5b  PASS     state=6, fault_code=210
+AU-G7a  PASS     states [0]
+AU-G7b  PASS     states in window [0]
+AU-G7c  PASS     state 2->2, Clinician_Mode 0->1
+AU-G7d  PASS     state=5, substate=2
+AU-G9   PASS     0 violations
+AU-D1   PASS     literal rule: false HEATER_OPEN at t=16; qualified rule: first fault t=None
+TC19: BLOCKED - no twin_DEV_<pseudo>.csv in integration/twin_outputs/
+
+test   title                                                                  result
+TC01   No action when stable (SYN_01)                                         PASS
+TC02   Predictive trigger (SYN_02)                                            PASS
+TC03   +60 min horizon is alert-only (SYN_03)                                 PASS
+TC04   Active recovery to target (STANDIN closed loop)                        PASS
+TC05   Clinician early start (SYN_01, Start at 600 s)                         PASS
+TC06   Clinician STOP mid-warming (TC04 scenario)                             PASS
+TC07   Over-temperature shutdown (STANDIN; CH2 sensor A ramp)                 PASS
+TC08   Sensor fault isolates one channel (CH3 sensor B NaN)                   PASS
+TC09   Sensor disagreement (CH1 sensor A offset)                              PASS
+TC10   Module disconnected (Module_Connected_4 = 0)                           PASS
+TC11   Hardware cutoff reported (HW_Cutoff_2 = 1)                             PASS
+TC12   Stuck-on driver (CH1 current > i_stuck_A with Heat_1 = 0)              PASS
+TC13   Twin unreliable: no autonomous warming (SYN_04)                        PASS
+TC14   Twin stale (T_twin_s frozen)                                           PASS
+TC15   Hardware stale (HW_Heartbeat_s frozen)                                 PASS
+TC16   Twin degraded during clinician warming                                 PASS
+TC17   No chattering (STANDIN, T_est noise around t_target)                   PASS
+TC18   Assumed-gain sensitivity (TC04 at 0.5x, 1x, 2x k_heat_degC_per_h)      PASS
+TC19   Development-case open-loop replay (twin_DEV_<pseudo>.csv)              BLOCKED
+TC20   Twin in the loop (summit)                                              EXCLUDED
+Criteria: 1 BLOCKED, 1 EXCLUDED, 112 PASS, 18 REPORTED
+Tests: PASS 18, FAIL 0, BLOCKED 1, EXCLUDED 1
+Run time 22 s; code version sha256:61f4371a1d3f

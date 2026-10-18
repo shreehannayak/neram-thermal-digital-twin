@@ -92,8 +92,9 @@ FaultMonitor, Supervisor, DemandLaw, channel limiter). Test results: TC01–TC18
 development twin file), TC20 excluded. All responses are SIMULATED / ASSUMED.
 
 Details: `controller/README.md`, `controller/docs/controller_spec.md`, results in `controller/results/`, demo video
-`controller/docs/demo_controller.mp4`. Still to come from Suchitha: the code folder (`neram_ctrl/`) and the v2
-TC04 log (`controller/RECEIVED_2026-10-18_SAI.md`).
+`controller/docs/demo_controller.mp4`. Run: `cd controller && python scripts/run_all_tests.py` (about 1 minute).
+The v2 source code was lost before upload; Sai rebuilt `controller/neram_ctrl/` from Suchitha's specification on
+18 Oct, and it reproduces her five v2 logs byte for byte (`controller/REBUILD_2026-10-18_SAI.md`).
 
 ## 10. Hardware
 The hardware layer is a paper design of a four-channel warming controller. In the demo every hardware signal is SIMULATED by the controller test bench stand-ins. No physical device has been built, and no heat delivery, clinical effect or standards compliance is claimed. Standards are cited as design references only.
@@ -171,7 +172,7 @@ The development pipeline runs in Colab in the order listed in `docs/AUDIT_TRAIL.
 
 Unity viewer: section 12 (EditMode tests: Window → General → Test Runner → EditMode → Run All).
 
-Controller: `controller/README.md` (needs the `neram_ctrl/` code folder, still to be uploaded).
+Controller: `cd controller && python scripts/run_all_tests.py` (see `controller/README.md`).
 
 CAD prep: `python cad/tools/fixneha.py <out_dir> cad/exports/source_fusion_2026-10-18/`.
 

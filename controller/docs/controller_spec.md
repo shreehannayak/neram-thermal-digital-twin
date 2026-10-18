@@ -1,7 +1,7 @@
 # NERAM supervisory controller - specification (Python fallback)
 
 **Status: SIMULATED / ASSUMED PROTOTYPE.** Clinician-supervised prototype logic only; no clinical efficacy, safety or validation claim.
-Code version `sha256:797ce93592f3 (no git repository)`; parameters `standalone-0.1 (config/params.json NOT supplied)`.
+Code version of the v2 run `sha256:797ce93592f3`; parameters `standalone-0.1`. The v2 source was lost; the code in `neram_ctrl/` was rebuilt from this specification on 18 Oct 2026 and reproduces the v2 logs byte for byte (`REBUILD_2026-10-18_SAI.md`).
 
 ## 1. Scope and what this document covers
 Suchitha's supervisory controller (plan pp. 4-23): TwinAdapter -> FaultMonitor -> Supervisor -> DemandLaw -> ChannelLimiter, run every `ts_ctrl_s` = 1 s.

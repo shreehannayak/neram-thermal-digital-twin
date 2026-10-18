@@ -1,0 +1,56 @@
+fault condition,fault code,channel action,system action,latched,reset / release condition
+Module_Temp_1_A NaN (open/unreadable),101,Channel 1 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_1_A out of sensor range (DISABLED until the range is supplied),102,Channel 1 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_1_B NaN (open/unreadable),103,Channel 1 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_1_B out of sensor range (DISABLED until the range is supplied),104,Channel 1 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+|A - B| > dt_sensor_disagree_degC held t_dwell_min_s,105,Channel 1 off,Alert CHANNEL_FAULT,Yes,Reset + agreement
+T_mod_1 >= t_mod_trip_degC,106,All off,SAFETY_SHUTDOWN,Yes,Reset + T_mod < t_mod_reset_degC
+HW_Cutoff_1 = 1,107,All off,SAFETY_SHUTDOWN,Yes,Reset + cutoff cleared
+Module_Connected_1 = 0,108,Channel 1 off,Alert CHANNEL_FAULT,Yes,Reset + reconnected
+"Heater open (qualified rule, D1) or Heater_Current_1 = NaN",109,Channel 1 off,Alert CHANNEL_FAULT,Yes,Reset (current readable)
+Heater_Current_1 > i_over_A,110,All off,SAFETY_SHUTDOWN,Yes,Reset + current < i_over_A
+Heat_1 = 0 and Heater_Current_1 > i_stuck_A for 2 steps,111,All off (master cutoff),SAFETY_SHUTDOWN,Yes,Reset + current < i_stuck_A
+Module_Temp_2_A NaN (open/unreadable),201,Channel 2 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_2_A out of sensor range (DISABLED until the range is supplied),202,Channel 2 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_2_B NaN (open/unreadable),203,Channel 2 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_2_B out of sensor range (DISABLED until the range is supplied),204,Channel 2 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+|A - B| > dt_sensor_disagree_degC held t_dwell_min_s,205,Channel 2 off,Alert CHANNEL_FAULT,Yes,Reset + agreement
+T_mod_2 >= t_mod_trip_degC,206,All off,SAFETY_SHUTDOWN,Yes,Reset + T_mod < t_mod_reset_degC
+HW_Cutoff_2 = 1,207,All off,SAFETY_SHUTDOWN,Yes,Reset + cutoff cleared
+Module_Connected_2 = 0,208,Channel 2 off,Alert CHANNEL_FAULT,Yes,Reset + reconnected
+"Heater open (qualified rule, D1) or Heater_Current_2 = NaN",209,Channel 2 off,Alert CHANNEL_FAULT,Yes,Reset (current readable)
+Heater_Current_2 > i_over_A,210,All off,SAFETY_SHUTDOWN,Yes,Reset + current < i_over_A
+Heat_2 = 0 and Heater_Current_2 > i_stuck_A for 2 steps,211,All off (master cutoff),SAFETY_SHUTDOWN,Yes,Reset + current < i_stuck_A
+Module_Temp_3_A NaN (open/unreadable),301,Channel 3 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_3_A out of sensor range (DISABLED until the range is supplied),302,Channel 3 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_3_B NaN (open/unreadable),303,Channel 3 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_3_B out of sensor range (DISABLED until the range is supplied),304,Channel 3 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+|A - B| > dt_sensor_disagree_degC held t_dwell_min_s,305,Channel 3 off,Alert CHANNEL_FAULT,Yes,Reset + agreement
+T_mod_3 >= t_mod_trip_degC,306,All off,SAFETY_SHUTDOWN,Yes,Reset + T_mod < t_mod_reset_degC
+HW_Cutoff_3 = 1,307,All off,SAFETY_SHUTDOWN,Yes,Reset + cutoff cleared
+Module_Connected_3 = 0,308,Channel 3 off,Alert CHANNEL_FAULT,Yes,Reset + reconnected
+"Heater open (qualified rule, D1) or Heater_Current_3 = NaN",309,Channel 3 off,Alert CHANNEL_FAULT,Yes,Reset (current readable)
+Heater_Current_3 > i_over_A,310,All off,SAFETY_SHUTDOWN,Yes,Reset + current < i_over_A
+Heat_3 = 0 and Heater_Current_3 > i_stuck_A for 2 steps,311,All off (master cutoff),SAFETY_SHUTDOWN,Yes,Reset + current < i_stuck_A
+Module_Temp_4_A NaN (open/unreadable),401,Channel 4 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_4_A out of sensor range (DISABLED until the range is supplied),402,Channel 4 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_4_B NaN (open/unreadable),403,Channel 4 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+Module_Temp_4_B out of sensor range (DISABLED until the range is supplied),404,Channel 4 off,Alert CHANNEL_FAULT,Yes,Reset + sensor valid
+|A - B| > dt_sensor_disagree_degC held t_dwell_min_s,405,Channel 4 off,Alert CHANNEL_FAULT,Yes,Reset + agreement
+T_mod_4 >= t_mod_trip_degC,406,All off,SAFETY_SHUTDOWN,Yes,Reset + T_mod < t_mod_reset_degC
+HW_Cutoff_4 = 1,407,All off,SAFETY_SHUTDOWN,Yes,Reset + cutoff cleared
+Module_Connected_4 = 0,408,Channel 4 off,Alert CHANNEL_FAULT,Yes,Reset + reconnected
+"Heater open (qualified rule, D1) or Heater_Current_4 = NaN",409,Channel 4 off,Alert CHANNEL_FAULT,Yes,Reset (current readable)
+Heater_Current_4 > i_over_A,410,All off,SAFETY_SHUTDOWN,Yes,Reset + current < i_over_A
+Heat_4 = 0 and Heater_Current_4 > i_stuck_A for 2 steps,411,All off (master cutoff),SAFETY_SHUTDOWN,Yes,Reset + current < i_stuck_A
+"Data_Stale_HW (heartbeat older than data_stale_hw_s, or NaN)",8,All off,SAFETY_SHUTDOWN,Yes,Reset + heartbeat back
+HW_Fault_Code = 1 (any non-zero code is treated the same),1,All off,SAFETY_SHUTDOWN,Yes,Reset + code cleared
+HW_Fault_Code = 2 (any non-zero code is treated the same),2,All off,SAFETY_SHUTDOWN,Yes,Reset + code cleared
+HW_Fault_Code = 3 (any non-zero code is treated the same),3,All off,SAFETY_SHUTDOWN,Yes,Reset + code cleared
+HW_Fault_Code = 4 (any non-zero code is treated the same),4,All off,SAFETY_SHUTDOWN,Yes,Reset + code cleared
+HW_Fault_Code = 5 (any non-zero code is treated the same),5,All off,SAFETY_SHUTDOWN,Yes,Reset + code cleared
+HW_Fault_Code = 6 (any non-zero code is treated the same),6,All off,SAFETY_SHUTDOWN,Yes,Reset + code cleared
+HW_Fault_Code = NaN (unreadable),8,All off,SAFETY_SHUTDOWN,Yes,Reset + code readable
+All 4 channels faulted (non-shutdown),-,-,Alert CHANNEL_FAULT; demand 0,-,-
+"Data_Stale_Twin (T_twin_s older than data_stale_twin_s, or NaN)",7,-,TWIN_DEGRADED (not a shutdown),No,Automatic via T5/T6
+Twin_Valid = DEGRADED or NO_DATA; or VALID with T_est NaN / outside 25-43 degC,-,-,TWIN_DEGRADED (not a shutdown),No,Automatic via T5/T6

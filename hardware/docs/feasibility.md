@@ -8,7 +8,7 @@ Formulas and inputs are in hardware/power/power_budget.csv and hardware/docs/pow
 - P_cont_W = sum of (mean duty_i x p_max_ch_W) + p_logic_W, from T07_duty_stats.csv
 - E_case_Wh = P_cont_W x t_case_h
 
-Status: TBD. The bus voltage is PROVISIONAL (24 V) and the supply is rated 65 W, but the heater power per channel (the heater area is not defined in this submission, and the heater watt density) and the duty statistics (Suchitha's T07_duty_stats.csv) are not yet available, so no peak, continuous or energy figure exists. Nothing is estimated here.
+Status: TBD. The bus voltage is PROVISIONAL (24 V) and the supply is rated 65 W, but the heater power per channel (the heater area is not defined in this submission, and the heater watt density) is not yet available (duty statistics now exist in controller/results/tables/T07_duty_stats.csv, from assumed-plant test scenarios), so no peak, continuous or energy figure exists. Nothing is estimated here.
 
 ## 2. Safety architecture coverage
 Each fault is caught by at least one layer. Layer 1 = hardware cutoff (no firmware); Layer 2 = MCU firmware; Layer 3 = supervisory controller. Controller actions are in controller/docs/fault_response_matrix.csv (Suchitha); cross-check against that file is pending.
