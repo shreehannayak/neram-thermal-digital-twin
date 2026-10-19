@@ -4,7 +4,7 @@ Written by Sai, 18 Oct 2026. How to work in this repository until the 20 Oct sub
 
 ## 1. The repository at a glance
 
-Everything lives in one public repository, `shreehannayak/neram-thermal-ditital-twin`, branch `main`.
+Everything lives in one public repository, `shreehannayak/neram-thermal-digital-twin`, branch `main`.
 
 | Folder | What is in it | Owner |
 |---|---|---|
@@ -21,7 +21,7 @@ Everything lives in one public repository, `shreehannayak/neram-thermal-ditital-
 
 ## 2. Daily workflow in GitHub Desktop
 
-1. Check **Current repository** = `neram-thermal-ditital-twin` and **Current branch** = `main`.
+1. Check **Current repository** = `neram-thermal-digital-twin` (GitHub Desktop may still show the old name `neram-thermal-ditital-twin` for the local folder) and **Current branch** = `main`.
 2. **Fetch origin**; if it becomes **Pull origin**, click it.
 3. Make your changes in the clone folder.
 4. In **Changes**, untick anything that should not go up.

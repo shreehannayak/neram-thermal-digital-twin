@@ -4,7 +4,7 @@ title: "NERAM: Thermal Digital Twin and Simulated Warming Controller"
 type: software
 version: "0.1"
 date-released: "2026-10-11"
-repository-code: "https://github.com/shreehannayak/neram-thermal-ditital-twin"  # update if the repo is renamed
+repository-code: "https://github.com/shreehannayak/neram-thermal-digital-twin"
 license: Apache-2.0
 authors:  # full names as in README section 2
   - given-names: "Saiyugan"
