@@ -199,7 +199,7 @@ here is SYNTHETIC. Development and holdout outputs (`results/development/`, `res
 
 ## 16. Demo video, architecture PDF, presentation links
 - Architecture PDF: `docs/architecture.pdf`
-- Demo video: TBD (to be recorded)
+- Demo video (17:58, unlisted YouTube): https://youtu.be/22L1wyx7IZk
 - Presentation: [`docs/presentation.pdf`](docs/presentation.pdf) (16 slides)
 - Team handbook for the repository: [`docs/GITHUB_HANDBOOK.md`](docs/GITHUB_HANDBOOK.md)
 

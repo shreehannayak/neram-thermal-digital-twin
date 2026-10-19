@@ -7,11 +7,11 @@ Ticked 19 Oct 2026 by Sai from the automated checks in docs/SUBMISSION_DRYRUN_20
 ## The 11 submission requirements
 - [x] 1. Team details: names, roles, contributions in README section 2; each member confirmed their line in a GitHub comment (19 Oct; all four confirmed in issue #3)
 - [x] 2. College / incubator in README section 3; matches the registration exactly (19 Oct; checked against the registration)
-- [ ] 3. Project title identical in README section 1, CITATION.cff, slide 1 and video title (text search done) — OPEN: README and CITATION.cff match; check slide 1 and the video title
+- [x] 3. Project title identical in README section 1, CITATION.cff, slide 1 and video title (text search done) (19 Oct; README, CITATION.cff, slide 1 and video title identical)
 - [x] 4. Problem statement in README section 4; no "core temperature"; no clinical-efficacy claim (19 Oct)
 - [x] 5. Healthcare use case in README section 5; same check as 4 (19 Oct)
 - [x] 6. Technical stack in README section 13 and docs/MODEL_CARD.md; every tool named has a folder or file in the repo (19 Oct)
-- [ ] 7. Demo video 15 to 20 min, unlisted YouTube; plays logged out; every simulated element labelled on screen; no holdout case shown; link in README section 16 — OPEN: video being recorded
+- [x] 7. Demo video 15 to 20 min, unlisted YouTube; plays logged out; every simulated element labelled on screen; no holdout case shown; link in README section 16 (19 Oct; 17:58, https://youtu.be/22L1wyx7IZk)
 - [x] 8. Open-source licence: LICENSE (Apache-2.0) and LICENSE-CAD-DOCS (CC BY 4.0) present; GitHub shows the licence badge; README section 17 says which applies where (19 Oct)
 - [x] 9. Architecture PDF at docs/architecture.pdf (and ARCHITECTURE.md); shows twin = estimation + forecasting, Unity = visualisation; data sources labelled (19 Oct)
 - [x] 10. Presentation PDF at docs/presentation.pdf; opens logged out; claims match SAFETY_AND_LIMITATIONS.md (19 Oct)
@@ -21,7 +21,7 @@ Ticked 19 Oct 2026 by Sai from the automated checks in docs/SUBMISSION_DRYRUN_20
 - [x] README complete: all 18 sections, run commands for each component, no unsupported claims (19 Oct)
 - [x] LICENSE, LICENSE-CAD-DOCS and CITATION.cff present and consistent (CITATION.cff has final authors and VitalDB reference; LICENSE-CAD-DOCS holds the full CC BY 4.0 text) (19 Oct)
 - [x] docs/architecture.pdf and docs/presentation.pdf present and linked (19 Oct)
-- [ ] Demo video link works logged out — OPEN: video being recorded
+- [x] Demo video link works logged out (19 Oct)
 - [x] Reproducibility: environment.yml pinned; docs/AUDIT_TRAIL.md lists every script with SHA-256 and run order; controller/README.md and unity/README.md give run and build steps; cad/README.md says how to open files (19 Oct)
 - [x] docs/SAFETY_AND_LIMITATIONS.md, MODEL_CARD.md, DATA_CARD.md present; VitalDB cited with its data-use terms (19 Oct)
 - [ ] PREREGISTRATION_dev.md committed before development results; PREREGISTRATION_final.md committed before any holdout run (commit timestamps checked) — NOTE: both entered the repo in the same commit, so timestamps cannot show order; no development result or holdout run exists
