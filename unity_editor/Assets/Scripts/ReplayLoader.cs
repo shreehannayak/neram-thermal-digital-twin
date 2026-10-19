@@ -21,7 +21,7 @@ namespace Neram.Unity
     public sealed class ReplayLoader : MonoBehaviour
     {
         [Tooltip("Scenario loaded automatically at start, if available.")]
-        [SerializeField] private string defaultScenarioId = "SYN_SCN_B";
+        [SerializeField] private string defaultScenarioId = "SCN_C";
         [Tooltip("Override folder for replays (absolute). Empty = StreamingAssets/replays.")]
         [SerializeField] private string replayFolderOverride = "";
 

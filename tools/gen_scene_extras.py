@@ -52,16 +52,46 @@ MATERIALS = [  # name, rgba, smoothness, metallic, transparent, emission
     ("MAT_FlowFloat", (0.20, 0.85, 0.35, 1), 0.7, 0.0, False, None),
     ("MAT_GaugeFace", (0.95, 0.96, 0.97, 1), 0.6, 0.0, False, None),
     ("MAT_GreenCap", (0.12, 0.62, 0.30, 1), 0.5, 0.0, False, None),
+    # 19 Oct: detailed surgeon, instruments, supplies
+    ("MAT_SurgeonSkin", (0.80, 0.60, 0.49, 1), 0.42, 0.0, False, None),
+    ("MAT_EyeWhite", (0.93, 0.92, 0.89, 1), 0.85, 0.0, False, None),
+    ("MAT_Iris", (0.27, 0.18, 0.11, 1), 0.90, 0.0, False, None),
+    ("MAT_Pupil", (0.02, 0.02, 0.02, 1), 0.95, 0.0, False, None),
+    ("MAT_SurgeonCapBand", (0.18, 0.33, 0.60, 1), 0.15, 0.0, False, None),
+    ("MAT_MaskLoop", (0.92, 0.94, 0.96, 1), 0.2, 0.0, False, None),
+    ("MAT_Badge", (0.95, 0.96, 0.97, 1), 0.55, 0.0, False, None),
+    ("MAT_SterileTowel", (0.17, 0.42, 0.55, 1), 0.10, 0.0, False, None),
+    ("MAT_Steel", (0.80, 0.81, 0.83, 1), 0.86, 1.0, False, None),
+    ("MAT_Instrument", (0.86, 0.87, 0.89, 1), 0.90, 1.0, False, None),
+    ("MAT_Gauze", (0.97, 0.97, 0.95, 1), 0.08, 0.0, False, None),
+    ("MAT_SyringeClear", (0.92, 0.96, 0.98, 0.38), 0.95, 0.0, True, None),
+    ("MAT_SyringePlunger", (0.96, 0.96, 0.96, 1), 0.5, 0.0, False, None),
+    ("MAT_SuturePack", (0.55, 0.36, 0.70, 1), 0.55, 0.0, False, None),
+    ("MAT_SuturePack2", (0.18, 0.58, 0.42, 1), 0.55, 0.0, False, None),
+    ("MAT_SharpsYellow", (0.97, 0.80, 0.10, 1), 0.45, 0.0, False, None),
+    ("MAT_BottleAmber", (0.45, 0.22, 0.06, 0.88), 0.9, 0.0, True, None),
+    ("MAT_BottleCap", (0.95, 0.95, 0.95, 1), 0.5, 0.0, False, None),
+    ("MAT_SpecimenPot", (0.93, 0.95, 0.97, 0.55), 0.9, 0.0, True, None),
+    ("MAT_GloveBox", (0.92, 0.94, 0.97, 1), 0.4, 0.0, False, None),
 ]
+TEX = "Assets/NERAM_Generated/Textures"
+NORMAL_MAPS = {  # material -> (texture, strength, tiling); fabrics and skin get a fine surface normal map (needs UVs)
+    "MAT_Scrubs": ("weave_normal.png", 0.45, 14.0), "MAT_ScrubsDark": ("weave_normal.png", 0.45, 14.0),
+    "MAT_SurgeonCap": ("nonwoven_normal.png", 0.30, 10.0), "MAT_SurgicalMask": ("nonwoven_normal.png", 0.22, 14.0),
+    "MAT_SterileTowel": ("weave_normal.png", 0.7, 10.0), "MAT_Gauze": ("weave_normal.png", 0.9, 22.0),
+    "MAT_SurgeonSkin": ("skin_normal.png", 0.25, 18.0), "MAT_Glove": ("skin_normal.png", 0.10, 18.0),
+}
 
 PARTS = []
-BUDGET = {"Patient_Theatre_Cap": 9000, "Surgeon_Scrub_Pants": 6000, "Surgeon_Skin": 10000, "Surgeon_Scrub_Top": 7000,
-          "Surgeon_Gloves": 5000, "Surgeon_Mask": 2500, "Airway_Lung_Right": 4500, "Airway_Lung_Left": 4500,
-          "Surgeon_Cap": 2500, "Surgeon_Clogs": 1800, "Patient_Ear_Left": 2600, "Patient_Ear_Right": 2600}
+BIN = bytearray()
+BIN_PATH = ROOT / "unity_editor" / "Assets" / "NERAM_Generated" / "MeshData" / "scene_extras_mesh.bytes"
+UV_MATS = set(NORMAL_MAPS) | {"MAT_Skin", "MAT_Gown"}
+BUDGET = {"Patient_Theatre_Cap": 9000, "Airway_Lung_Right": 4500, "Airway_Lung_Left": 4500,
+          "Patient_Ear_Left": 2600, "Patient_Ear_Right": 2600}
 sys.path.insert(0, str(ROOT / "cad" / "tools"))
 
 
-def add(group, name, mesh: Mesh, mat, parent="NERAM_Assembly"):
+def add(group, name, mesh: Mesh, mat, parent="NERAM_Assembly", replace=None, binary=False):
     mesh = mesh if isinstance(mesh, Mesh) else merge(mesh)
     if mesh is None or len(mesh.F) == 0:
         return
@@ -73,6 +103,19 @@ def add(group, name, mesh: Mesh, mat, parent="NERAM_Assembly"):
         V2, F2 = qem.decimate(mesh.V, Fw, BUDGET[name])
         mesh = mk(V2, F2)
     N = mesh.N if getattr(mesh, "N", None) is not None and len(mesh.N) == len(mesh.V) else vertex_normals(mesh)
+    if binary or len(mesh.V) > 4000:
+        uv = None
+        if mat in UV_MATS:
+            from geom import box_uv
+            uv = np.asarray(box_uv(mesh.V, N, 1.0), np.float32)
+        off = len(BIN)
+        BIN.extend(np.asarray(mesh.V, "<f4").tobytes()); BIN.extend(np.asarray(N, "<f4").tobytes())
+        if uv is not None:
+            BIN.extend(np.asarray(uv, "<f4").tobytes())
+        BIN.extend(np.asarray(mesh.F, "<i4").ravel().tobytes())
+        PARTS.append(dict(group=group, name=name, parent=parent, mat=mat, replace=replace or "", bin=off, nv=len(mesh.V),
+                          ni=int(mesh.F.size), has_uv=uv is not None))
+        return
     PARTS.append(dict(group=group, name=name, parent=parent, mat=mat,
                       v=np.round(mesh.V, 5).ravel().tolist(), n=np.round(N, 4).ravel().tolist(), f=mesh.F.astype(int).ravel().tolist()))
 
@@ -317,85 +360,41 @@ def build_airway():
     return paths
 
 
-# ======================================================================================== surgeon
+# ======================================================================================== surgeon (detailed, 19 Oct)
+def cached(prefix, builder):
+    """Mesh parts from a cache directory (NERAM_MESH_CACHE/<prefix>_<name>.npz) when present, else built (slow)."""
+    import os
+    cache = os.environ.get("NERAM_MESH_CACHE")
+    if cache:
+        files = sorted(Path(cache).glob(prefix + "_*.npz"))
+        if files:
+            out = []
+            for f in files:
+                d = np.load(f)
+                out.append((f.stem[len(prefix) + 1:], Mesh(d["V"], d["N"], d["F"]), str(d["mat"])))
+            return out
+    return builder(print)
+
+
 def build_surgeon():
-    g = "surgeon"
+    import human as H
     par = "Surgeon_Figure"
-    S = SIDES = (1, -1)
-    sh = {s: np.array([s * 0.195, 1.40, 0.0]) for s in S}
-    el = {s: np.array([s * 0.23, 1.13, 0.10]) for s in S}
-    wr = {s: np.array([s * 0.11, 1.17, 0.31]) for s in S}
+    for name, m, mat in cached("sg", H.build_all):
+        add("surgeon", name, m, mat, parent=par, binary=True)
+    loops = [tube(catmull(pl, 6), 0.0011, 8) for pl in H.mask_loops()]
+    add("surgeon", "Surgeon_Mask_Loops", merge(loops), "MAT_MaskLoop", parent=par, binary=True)
 
-    def scrub_top(Pp):
-        d = sd_ellipsoid(Pp, (0, 1.22, 0), (0.175, 0.24, 0.115))
-        d = smin(d, sd_ellipsoid(Pp, (0, 1.38, 0), (0.205, 0.08, 0.11)), 0.06)
-        for s in S:
-            d = smin(d, sd_capsule(Pp, sh[s], sh[s] + (el[s] - sh[s]) * 0.45, 0.052, 0.046), 0.03)   # short sleeves
-        vneck = sd_capsule(Pp, (0, 1.47, 0.12), (0, 1.36, 0.12), 0.03, 0.006)
-        d = smax(d, -vneck, 0.01)
-        return smax(d, -(Pp[..., 1] - 0.93), 0.01) if False else np.maximum(d, 0.95 - Pp[..., 1])
 
-    def scrub_pants(Pp):
-        d = sd_ellipsoid(Pp, (0, 0.96, 0), (0.17, 0.12, 0.11))
-        for s in S:
-            d = smin(d, sd_capsule(Pp, (s * 0.09, 0.92, 0), (s * 0.10, 0.11, 0.01), 0.072, 0.056), 0.04)
-        return d
+def build_instruments():
+    import instruments as I
+    for name, m, mat in cached("in", I.build_all):
+        add("instruments", name, m, mat, binary=True)
 
-    def skin(Pp):
-        d = sd_capsule(Pp, (0, 1.42, 0.0), (0, 1.56, 0.01), 0.048, 0.045)                                 # neck
-        d = smin(d, sd_ellipsoid(Pp, (0, 1.655, 0.012), (0.074, 0.104, 0.090)), 0.03)                     # head
-        d = smin(d, sd_ellipsoid(Pp, (0, 1.585, 0.05), (0.052, 0.042, 0.05)), 0.03)                        # jaw
-        d = smin(d, sd_capsule(Pp, (0, 1.672, 0.095), (0, 1.635, 0.112), 0.008, 0.011), 0.01)            # nose
-        for s in S:
-            d = smin(d, sd_ellipsoid(Pp, (s * 0.075, 1.655, 0.0), (0.012, 0.028, 0.02)), 0.008)            # ears
-            d = smin(d, sd_capsule(Pp, sh[s] + (el[s] - sh[s]) * 0.4, el[s], 0.044, 0.038), 0.02)          # upper arm
-            d = smin(d, sd_capsule(Pp, el[s], wr[s] - (wr[s] - el[s]) * 0.08, 0.038, 0.030), 0.02)         # forearm
-        return d
 
-    def gloves(Pp):
-        d = np.full(Pp.shape[:-1], 1.0)
-        for s in S:
-            dirv = (wr[s] - el[s]) / np.linalg.norm(wr[s] - el[s])
-            h = wr[s] + dirv * 0.06
-            d = np.minimum(d, sd_capsule(Pp, wr[s] - dirv * 0.03, h, 0.032, 0.03))
-            for k, off in enumerate((-0.022, -0.008, 0.007, 0.021)):
-                side = np.array([0, 1.0, 0]) * off * 0.6 + np.array([s * -1.0, 0, 0]) * off * 0.4
-                d = smin(d, sd_capsule(Pp, h + side, h + side + dirv * (0.07 - abs(k - 1.5) * 0.008), 0.0085, 0.0075), 0.006)
-            th = wr[s] + dirv * 0.03 + np.array([-s * 0.03, 0.01, 0])
-            d = smin(d, sd_capsule(Pp, th, th + dirv * 0.045 + np.array([-s * 0.012, 0.012, 0]), 0.010, 0.008), 0.006)
-        return d
-
-    def cap(Pp):
-        d = sd_ellipsoid(Pp, (0, 1.69, 0.005), (0.084, 0.08, 0.098))
-        return np.maximum(d, 1.692 - Pp[..., 1] - 0.18 * np.maximum(0, -Pp[..., 2]))
-
-    def smask(Pp):
-        d = sd_ellipsoid(Pp, (0, 1.615, 0.03), (0.080, 0.075, 0.094))
-        d = np.maximum(d, -sd_ellipsoid(Pp, (0, 1.615, 0.03), (0.074, 0.069, 0.088)))
-        d = np.maximum(d, np.abs(Pp[..., 1] - 1.612) - 0.042)
-        return np.maximum(d, 0.035 - Pp[..., 2])
-
-    def clogs(Pp):
-        d = np.full(Pp.shape[:-1], 1.0)
-        for s in S:
-            d = np.minimum(d, sd_round_box(Pp, (s * 0.10, 0.04, 0.04), (0.10, 0.08, 0.27), 0.03))
-        return d
-
-    def eyes(Pp):
-        d = np.full(Pp.shape[:-1], 1.0)
-        for s in S:
-            d = np.minimum(d, sd_ellipsoid(Pp, (s * 0.028, 1.672, 0.091), (0.009, 0.006, 0.006)))
-        return d
-
-    lo, hi = np.array([-0.32, 0.0, -0.2]), np.array([0.32, 1.80, 0.5])
-    add(g, "Surgeon_Scrub_Top", sdf_mesh(scrub_top, (-0.30, 0.9, -0.16), (0.30, 1.52, 0.2), 0.006), "MAT_Scrubs", parent=par)
-    add(g, "Surgeon_Scrub_Pants", sdf_mesh(scrub_pants, (-0.25, 0.05, -0.15), (0.25, 1.1, 0.15), 0.0065), "MAT_ScrubsDark", parent=par)
-    add(g, "Surgeon_Skin", sdf_mesh(skin, (-0.30, 1.0, -0.12), (0.30, 1.78, 0.25), 0.0045), "MAT_Skin", parent=par)
-    add(g, "Surgeon_Gloves", sdf_mesh(gloves, (-0.25, 1.05, 0.15), (0.25, 1.32, 0.48), 0.0028), "MAT_Glove", parent=par)
-    add(g, "Surgeon_Cap", sdf_mesh(cap, (-0.1, 1.58, -0.11), (0.1, 1.79, 0.12), 0.004), "MAT_SurgeonCap", parent=par)
-    add(g, "Surgeon_Mask", sdf_mesh(smask, (-0.1, 1.55, -0.02), (0.1, 1.68, 0.14), 0.0025), "MAT_SurgicalMask", parent=par)
-    add(g, "Surgeon_Clogs", sdf_mesh(clogs, (-0.2, -0.01, -0.12), (0.2, 0.1, 0.19), 0.006), "MAT_Clog", parent=par)
-    add(g, "Surgeon_Eyes", sdf_mesh(eyes, (-0.05, 1.66, 0.08), (0.05, 1.685, 0.1), 0.0015), "MAT_Lash", parent=par)
+def build_patient_hq():
+    import patient_hq as PH
+    for name, m, mat in cached("pt", PH.build_all):
+        add("patient_hq", "HQ_" + name, m, mat, replace=name, binary=True)
 
 
 SURGEON_POSE = dict(position=[-0.66, FLOOR, 0.05], yaw_deg=90.0)   # patient's right, facing the table (clear of the default camera)
@@ -410,13 +409,20 @@ def main():
     tubing = build_o2(inlet)
     lungs = build_airway()
     build_surgeon()
+    build_instruments()
+    build_patient_hq()
+    BIN_PATH.write_bytes(bytes(BIN))
     out = dict(
         version=1, generator="tools/gen_scene_extras.py (Sai, 2026-10-18)",
         note="Visual stand-ins. Mask, oxygen set-up, airway and airflow are ILLUSTRATIVE: no gas flow, oxygen concentration, "
              "respiratory rate or patient anatomy is modelled.",
-        materials=[dict(name=n, color=list(c), smoothness=s, metallic=m, transparent=t, emission=list(e) if e else None)
+        materials=[dict(name=n, color=list(c), smoothness=s, metallic=m, transparent=t, emission=list(e) if e else None,
+                        normal_map=(TEX + "/" + NORMAL_MAPS[n][0]) if n in NORMAL_MAPS else "",
+                        normal_scale=NORMAL_MAPS[n][1] if n in NORMAL_MAPS else 0.0,
+                        tiling=NORMAL_MAPS[n][2] if n in NORMAL_MAPS else 0.0)
                    for n, c, s, m, t, e in MATERIALS],
-        hide_prefixes=["O2_Cylinder_"],          # wall cylinders merged with the cupboards: replaced by the trolley set
+        bin_file="Assets/NERAM_Generated/MeshData/scene_extras_mesh.bytes",
+        hide_prefixes=["O2_Cylinder_", "Trolley_Tray_"],          # wall cylinders merged with the cupboards: replaced by the trolley set
         surgeon=SURGEON_POSE,
         # flat point lists (Unity JsonUtility reads no nested arrays): external = humidifier -> mask (always shown),
         # internal = mask -> each lung (Internal view only). Timing is a visual constant, not a respiratory rate.
@@ -426,8 +432,8 @@ def main():
         parts=PARTS)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, separators=(",", ":")))
-    tri = sum(len(p["f"]) // 3 for p in PARTS)
-    print(f"wrote {OUT} ({OUT.stat().st_size / 1e6:.1f} MB): {len(PARTS)} parts, {tri} triangles")
+    tri = sum((len(p["f"]) if "f" in p else p["ni"]) // 3 for p in PARTS)
+    print(f"wrote {OUT} ({OUT.stat().st_size / 1e6:.1f} MB) + {BIN_PATH.name} ({len(BIN) / 1e6:.1f} MB): {len(PARTS)} parts, {tri} triangles")
 
 
 if __name__ == "__main__":

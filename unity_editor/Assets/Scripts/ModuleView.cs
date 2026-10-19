@@ -159,6 +159,106 @@ namespace Neram.Unity
             }
         }
 
+        // ------------------------------------------------------------------ exploded-view labels
+        /// <summary>Display names of the construction layers (shown next to each part while the module is exploded).</summary>
+        public static readonly Dictionary<string, string> LayerNames = new Dictionary<string, string>
+        {
+            { "Liner", "Liner (skin side)" }, { "Insulation", "Insulation" }, { "Heater", "Heater film" },
+            { "Sensor_A", "Sensor A (NTC)" }, { "Sensor_B", "Sensor B (NTC)" }, { "Cutoff", "Thermal cutoff" },
+            { "Shell", "Outer shell" }, { "Cuff", "Cuff" }, { "Label_Plate", "Label plate" }, { "Label", "Label" },
+            { "Strain_Relief", "Strain relief" }, { "Strap", "Strap" }, { "Buckle", "Buckle" }, { "Toe_Cap", "Toe cap" },
+            { "Heel_Counter", "Heel counter" }, { "Collar", "Collar" }, { "Sole_Outsole", "Outsole" },
+            { "Sole_Tread", "Tread" }, { "Sole_Label", "Sole label" },
+        };
+        private GUIStyle _lblStyle, _lblTitle;
+        private static Texture2D _px;
+
+        private void OnGUI()
+        {
+            if (!_built || _explode < 0.6f || Event.current.type != EventType.Repaint) return;
+            var cam = Camera.main;
+            if (cam == null) return;
+            if (_px == null) { _px = new Texture2D(1, 1); _px.SetPixel(0, 0, Color.white); _px.Apply(); }
+            if (_lblStyle == null)
+            {
+                int fs = Mathf.Max(11, Screen.height / 72);
+                _lblStyle = new GUIStyle(GUI.skin.box) { fontSize = fs, alignment = TextAnchor.MiddleLeft, padding = new RectOffset(8, 8, 3, 3) };
+                _lblStyle.normal.textColor = new Color(0.94f, 0.97f, 1f);
+                _lblStyle.normal.background = MakeTex(new Color(0.05f, 0.10f, 0.14f, 0.86f));
+                _lblTitle = new GUIStyle(_lblStyle) { fontStyle = FontStyle.Bold };
+                _lblTitle.normal.textColor = new Color(0.98f, 0.80f, 0.35f);
+            }
+            float a = Mathf.InverseLerp(0.6f, 1f, _explode);
+            var seen = new HashSet<string>();
+            var items = new List<(Vector2 anchor, string text)>();
+            var prefix = "CH" + channel + "_";
+            foreach (var (t, _, _) in _layers)
+            {
+                if (t == null) continue;
+                var part = t.name.StartsWith(prefix) ? t.name.Substring(prefix.Length) : t.name;
+                var key = part.StartsWith(SceneNames.StrapPrefix) ? "Strap" : part;
+                if (!seen.Add(key)) continue;
+                var rs = t.GetComponentsInChildren<Renderer>();
+                if (rs.Length == 0) continue;
+                var b = rs[0].bounds;
+                foreach (var r in rs) if (!r.name.StartsWith("__")) b.Encapsulate(r.bounds);
+                var sp = cam.WorldToScreenPoint(b.center);
+                if (sp.z <= 0) continue;
+                items.Add((new Vector2(sp.x, Screen.height - sp.y), LayerNames.TryGetValue(key, out var nm) ? nm : key.Replace('_', ' ')));
+            }
+            if (items.Count == 0) return;
+            // labels in a column beside the module, sorted top to bottom, joined to their part by a leader line
+            items.Sort((p, q) => p.anchor.y.CompareTo(q.anchor.y));
+            float cx = 0f; foreach (var it in items) cx += it.anchor.x; cx /= items.Count;
+            bool right = cx < Screen.width * 0.5f;
+            float colX = right ? cx + Screen.width * 0.12f : cx - Screen.width * 0.12f;
+            float lh = _lblStyle.fontSize * 2.0f;
+            float top = items[0].anchor.y - lh;
+            var old = GUI.color;
+            GUI.color = new Color(1f, 1f, 1f, a);
+            var title = new GUIContent(ChannelTitle(channel) + " - exploded layers");
+            var ts = _lblTitle.CalcSize(title);
+            GUI.Label(new Rect(right ? colX : colX - ts.x, top - lh * 1.1f, ts.x, lh), title, _lblTitle);
+            for (int i = 0; i < items.Count; i++)
+            {
+                var c = new GUIContent(items[i].text);
+                var sz = _lblStyle.CalcSize(c);
+                float y = Mathf.Max(top + i * lh * 1.05f, items[i].anchor.y - lh * 0.5f);
+                top = y - i * lh * 1.05f;
+                var rect = new Rect(right ? colX : colX - sz.x, y, sz.x, lh * 0.9f);
+                var end = new Vector2(right ? rect.xMin : rect.xMax, rect.center.y);
+                Line(items[i].anchor, end, new Color(0.98f, 0.80f, 0.35f, 0.9f * a), 1.6f);
+                GUI.color = new Color(0.98f, 0.80f, 0.35f, a);
+                GUI.DrawTexture(new Rect(items[i].anchor.x - 3, items[i].anchor.y - 3, 6, 6), _px);
+                GUI.color = new Color(1f, 1f, 1f, a);
+                GUI.Label(rect, c, _lblStyle);
+            }
+            GUI.color = old;
+        }
+
+        private static string ChannelTitle(int ch) => ch switch
+        {
+            1 => "CH1 left hand module", 2 => "CH2 right hand module", 3 => "CH3 left foot module", 4 => "CH4 right foot module", _ => "Module",
+        };
+
+        private static Texture2D MakeTex(Color c)
+        {
+            var t = new Texture2D(1, 1); t.SetPixel(0, 0, c); t.Apply(); return t;
+        }
+
+        private static void Line(Vector2 a, Vector2 b, Color c, float w)
+        {
+            var m = GUI.matrix;
+            var old = GUI.color;
+            GUI.color = c;
+            float ang = Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
+            float len = (b - a).magnitude;
+            GUIUtility.RotateAroundPivot(ang, a);
+            GUI.DrawTexture(new Rect(a.x, a.y - w * 0.5f, len, w), _px);
+            GUI.matrix = m;
+            GUI.color = old;
+        }
+
         private void ApplyGlow(float g)
         {
             if (_heatLight != null)

@@ -22,11 +22,11 @@ namespace Neram.EditorTools
         public const string JsonPath = "Assets/NERAM_Generated/MeshData/scene_extras.json";
         private const string MeshDir = "Assets/NERAM_Generated/Meshes/Extras";
 
-        [Serializable] private class MatJ { public string name; public float[] color; public float smoothness, metallic; public bool transparent; public float[] emission; }
-        [Serializable] private class PartJ { public string group, name, parent, mat; public float[] v, n; public int[] f; }
+        [Serializable] private class MatJ { public string name; public float[] color; public float smoothness, metallic; public bool transparent; public float[] emission; public string normal_map; public float normal_scale; public float tiling; public string base_map; }
+        [Serializable] private class PartJ { public string group, name, parent, mat, replace; public float[] v, n, uv; public int[] f; public long bin = -1; public int nv, ni; public bool has_uv; }
         [Serializable] private class PoseJ { public float[] position; public float yaw_deg; }
         [Serializable] private class FlowJ { public bool @internal; public float[] p; }
-        [Serializable] private class ExtrasJ { public MatJ[] materials; public PartJ[] parts; public string[] hide_prefixes; public PoseJ surgeon; public FlowJ[] airflow; public float breath_s; }
+        [Serializable] private class ExtrasJ { public MatJ[] materials; public PartJ[] parts; public string[] hide_prefixes; public PoseJ surgeon; public FlowJ[] airflow; public float breath_s; public string bin_file; }
 
         [MenuItem("NERAM/Scene/Apply scene extras (mask, O2, airway, surgeon)", priority = 30)]
         public static void Menu() => EditorUtility.DisplayDialog("NERAM scene extras", Apply(), "OK");
@@ -38,6 +38,13 @@ namespace Neram.EditorTools
             if (ta == null) return "missing " + JsonPath + " (run tools/gen_scene_extras.py)";
             var ex = JsonUtility.FromJson<ExtrasJ>(ta.text);
             if (ex == null || ex.parts == null) return "scene_extras.json does not parse";
+            if (!string.IsNullOrEmpty(ex.bin_file))
+            {
+                var bin = AssetDatabase.LoadAssetAtPath<TextAsset>(ex.bin_file);
+                if (bin == null) return "missing " + ex.bin_file;
+                var bytes = bin.bytes;
+                foreach (var p in ex.parts) if (p.bin >= 0) Unpack(p, bytes);
+            }
             var asm = GameObject.Find(SceneNames.Assembly);
             if (asm == null) return "NERAM_Assembly not found (run NERAM > 1. Run full setup first)";
 
@@ -61,8 +68,14 @@ namespace Neram.EditorTools
 
             var lungs = new List<Transform>();
             int made = 0;
+            int swapped = 0;
             foreach (var p in ex.parts)
             {
+                if (!string.IsNullOrEmpty(p.replace))
+                {
+                    if (SwapMesh(p, asm.transform, mats, sb)) swapped++;
+                    continue;
+                }
                 Transform parent = p.parent == "Head_Neck" ? (head != null ? head : root)
                                  : p.parent == "Illustrative_Vessels" ? (airwayRoot != null ? airwayRoot : root)
                                  : p.parent == "Surgeon_Figure" ? surgeon : root;
@@ -92,8 +105,35 @@ namespace Neram.EditorTools
 
             EditorSceneManager.MarkSceneDirty(asm.scene);
             EditorSceneManager.SaveScene(asm.scene);
-            sb.Insert(0, $"scene extras: {made} parts, {hidden} wall O2 cylinder parts hidden, surgeon at {surgeon.localPosition}, scene saved\n");
+            sb.Insert(0, $"scene extras: {made} parts, {swapped} meshes upgraded in place, {hidden} wall O2 cylinder parts hidden, surgeon at {surgeon.localPosition}, scene saved\n");
             return sb.ToString();
+        }
+
+        /// <summary>Binary block per part: float32 positions (3*nv), float32 normals (3*nv), float32 uv (2*nv, if has_uv),
+        /// int32 indices (ni). Little-endian, written by tools/gen_scene_extras.py.</summary>
+        /// <summary>Writes the new geometry into an existing mesh asset through the Mesh API, so the editor re-uploads it
+        /// to the GPU (EditorUtility.CopySerialized left the old vertex buffers on screen until the editor restarted).</summary>
+        private static void CopyInto(Mesh src, Mesh dst)
+        {
+            dst.Clear();
+            dst.indexFormat = src.indexFormat;
+            dst.vertices = src.vertices;
+            dst.normals = src.normals;
+            if (src.uv != null && src.uv.Length == src.vertexCount) dst.uv = src.uv;
+            if (src.tangents != null && src.tangents.Length == src.vertexCount) dst.tangents = src.tangents;
+            dst.triangles = src.triangles;
+            dst.RecalculateBounds();
+            dst.UploadMeshData(false);
+            EditorUtility.SetDirty(dst);
+        }
+
+        private static void Unpack(PartJ p, byte[] b)
+        {
+            long o = p.bin;
+            p.v = new float[3 * p.nv]; Buffer.BlockCopy(b, (int)o, p.v, 0, 12 * p.nv); o += 12L * p.nv;
+            p.n = new float[3 * p.nv]; Buffer.BlockCopy(b, (int)o, p.n, 0, 12 * p.nv); o += 12L * p.nv;
+            if (p.has_uv) { p.uv = new float[2 * p.nv]; Buffer.BlockCopy(b, (int)o, p.uv, 0, 8 * p.nv); o += 8L * p.nv; }
+            p.f = new int[p.ni]; Buffer.BlockCopy(b, (int)o, p.f, 0, 4 * p.ni);
         }
 
         private static List<Vector3[]> Flows(FlowJ[] all, bool inner)
@@ -156,10 +196,17 @@ namespace Neram.EditorTools
             mesh.vertices = V;
             mesh.triangles = p.f;
             if (p.n != null && p.n.Length == p.v.Length) mesh.normals = N; else mesh.RecalculateNormals();
+            if (p.uv != null && p.uv.Length == nv * 2)
+            {
+                var uv = new Vector2[nv];
+                for (int i = 0; i < nv; i++) uv[i] = new Vector2(p.uv[2 * i], p.uv[2 * i + 1]);
+                mesh.uv = uv;
+                mesh.RecalculateTangents();
+            }
             mesh.RecalculateBounds();
             var path = MeshDir + "/Extras_" + p.name + ".asset";
             var old = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-            if (old != null) { EditorUtility.CopySerialized(mesh, old); mesh = old; }
+            if (old != null) { CopyInto(mesh, old); mesh = old; }
             else AssetDatabase.CreateAsset(mesh, path);
             go.AddComponent<MeshFilter>().sharedMesh = mesh;
             var mr = go.AddComponent<MeshRenderer>();
@@ -172,6 +219,65 @@ namespace Neram.EditorTools
             mr.sharedMaterial = mat;
             if (mat != null && mat.renderQueue >= (int)RenderQueue.Transparent) mr.shadowCastingMode = ShadowCastingMode.Off;
             return go.transform;
+        }
+
+        /// <summary>Upgrade an existing scene mesh in place (same GameObject, components, region and material): the new
+        /// vertices are NERAM_Assembly-local and are converted into the target's own frame.</summary>
+        private static bool SwapMesh(PartJ p, Transform asm, Dictionary<string, Material> mats, StringBuilder sb)
+        {
+            var target = Find(asm, p.replace);
+            var mf = target != null ? target.GetComponent<MeshFilter>() : null;
+            if (mf == null) { sb.AppendLine("  replace target not found: " + p.replace); return false; }
+            int nv = p.v.Length / 3;
+            var toLocal = target.worldToLocalMatrix * asm.localToWorldMatrix;
+            var V = new Vector3[nv]; var N = new Vector3[nv];
+            for (int i = 0; i < nv; i++)
+            {
+                V[i] = toLocal.MultiplyPoint3x4(new Vector3(p.v[3 * i], p.v[3 * i + 1], p.v[3 * i + 2]));
+                if (p.n != null && p.n.Length == p.v.Length) N[i] = toLocal.MultiplyVector(new Vector3(p.n[3 * i], p.n[3 * i + 1], p.n[3 * i + 2])).normalized;
+            }
+            var mesh = new Mesh { name = "Upgraded_" + p.replace };
+            if (nv > 65000) mesh.indexFormat = IndexFormat.UInt32;
+            mesh.vertices = V;
+            mesh.triangles = p.f;
+            if (p.n != null && p.n.Length == p.v.Length) mesh.normals = N; else mesh.RecalculateNormals();
+            if (p.uv != null && p.uv.Length == nv * 2)
+            {
+                var uv = new Vector2[nv];
+                for (int i = 0; i < nv; i++) uv[i] = new Vector2(p.uv[2 * i], p.uv[2 * i + 1]);
+                mesh.uv = uv;
+                mesh.RecalculateTangents();
+            }
+            mesh.RecalculateBounds();
+            var path = MeshDir + "/Upgraded_" + p.replace + ".asset";
+            var old = AssetDatabase.LoadAssetAtPath<Mesh>(path);
+            if (old != null) { CopyInto(mesh, old); mesh = old; }
+            else AssetDatabase.CreateAsset(mesh, path);
+            Undo.RecordObject(mf, "upgrade mesh");
+            mf.sharedMesh = mesh;
+            var mc = target.GetComponent<MeshCollider>();
+            if (mc != null) mc.sharedMesh = mesh;
+            if (!string.IsNullOrEmpty(p.mat) && mats.TryGetValue(p.mat, out var m) && m != null)
+            {
+                var mr = target.GetComponent<MeshRenderer>();
+                if (mr != null) mr.sharedMaterial = m;
+            }
+            return true;
+        }
+
+        private static Texture2D LoadTex(string path, bool normal)
+        {
+            if (string.IsNullOrEmpty(path)) return null;
+            var imp = AssetImporter.GetAtPath(path) as TextureImporter;
+            if (imp != null)
+            {
+                bool dirty = false;
+                if (normal && imp.textureType != TextureImporterType.NormalMap) { imp.textureType = TextureImporterType.NormalMap; dirty = true; }
+                if (imp.wrapMode != TextureWrapMode.Repeat) { imp.wrapMode = TextureWrapMode.Repeat; dirty = true; }
+                if (imp.anisoLevel < 4) { imp.anisoLevel = 8; dirty = true; }
+                if (dirty) imp.SaveAndReimport();
+            }
+            return AssetDatabase.LoadAssetAtPath<Texture2D>(path);
         }
 
         private static Dictionary<string, Material> EnsureMaterials(MatJ[] specs, StringBuilder sb)
@@ -191,6 +297,18 @@ namespace Neram.EditorTools
                 if (m.HasProperty("_Smoothness")) m.SetFloat("_Smoothness", s.smoothness);
                 if (m.HasProperty("_Metallic")) m.SetFloat("_Metallic", s.metallic);
                 if (s.transparent) NeramSceneBuilder.MakeTransparent(m); else NeramSceneBuilder.MakeOpaque(m);
+                var nmap = LoadTex(s.normal_map, true);
+                float til = s.tiling > 0 ? s.tiling : 1f;
+                if (nmap != null && m.HasProperty("_BumpMap"))
+                {
+                    m.SetTexture("_BumpMap", nmap);
+                    m.SetFloat("_BumpScale", s.normal_scale > 0 ? s.normal_scale : 1f);
+                    m.EnableKeyword("_NORMALMAP");
+                    m.SetTextureScale("_BumpMap", new Vector2(til, til));
+                    m.SetTextureScale("_BaseMap", new Vector2(til, til));
+                }
+                var bmap = LoadTex(s.base_map, false);
+                if (bmap != null && m.HasProperty("_BaseMap")) { m.SetTexture("_BaseMap", bmap); m.SetTextureScale("_BaseMap", new Vector2(til, til)); }
                 if (s.emission != null && s.emission.Length >= 3)
                 {
                     m.EnableKeyword("_EMISSION");

@@ -2,6 +2,7 @@ using System.IO;
 using Neram.Unity;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Neram.EditorTools
 {
@@ -52,6 +53,9 @@ namespace Neram.EditorTools
             {
                 var cam = go.AddComponent<Camera>();
                 cam.fieldOfView = fov; cam.nearClipPlane = 0.005f; cam.farClipPlane = 50f;
+                var ad = cam.GetUniversalAdditionalCameraData();     // same look as the player: post-processing, SMAA, shadows
+                ad.renderPostProcessing = true; ad.antialiasing = AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                ad.antialiasingQuality = AntialiasingQuality.High; ad.renderShadows = true; cam.allowHDR = true;
                 cam.clearFlags = CameraClearFlags.SolidColor; cam.backgroundColor = new Color(0.16f, 0.18f, 0.21f);
                 cam.transform.position = pos;
                 cam.transform.LookAt(target);

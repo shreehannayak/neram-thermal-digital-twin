@@ -71,6 +71,7 @@ namespace Neram.Unity
                 case KeyCode.L: return kb.lKey;
                 case KeyCode.U: return kb.uKey;
                 case KeyCode.O: return kb.oKey;
+                case KeyCode.V: return kb.vKey;   // surgeon camera (behind / eyes / off)
                 case KeyCode.F11: return kb.f11Key;
                 case KeyCode.Space: return kb.spaceKey;
                 case KeyCode.LeftControl: return kb.leftCtrlKey;

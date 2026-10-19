@@ -107,7 +107,8 @@ class Diagram:
     def write(self, stem):
         (HERE / f"{stem}.drawio").write_text(self.drawio(), encoding="utf-8")
         self.png(HERE / f"{stem}.png")
-        print("wrote", stem + ".drawio", stem + ".png")
+        self.png(HERE / f"{stem}.pdf")      # plan section AC: block diagram as .drawio + .png + .pdf
+        print("wrote", stem + ".drawio", stem + ".png", stem + ".pdf")
 
 
 FOOT = "Proof-of-concept prototype, not a medical device. All hardware is SIMULATED in the demo; no hardware has been built. PROVISIONAL parts per bom/electrical_bom.csv."

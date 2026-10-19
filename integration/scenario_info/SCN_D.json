@@ -1,0 +1,13 @@
+{
+  "title": "Twin degraded (controller TC13, synthetic)",
+  "purpose": "Forecast-triggered warming is running when Twin_Valid becomes DEGRADED at 300 s: TWIN_DEGRADED.MONITOR, all heat 0, no autonomous warming; the twin is VALID again from 600 s and the controller returns to NORMAL after t_recover_s (630 s).",
+  "data_source": "Controller: Suchitha's supervisory controller test TC13 (SIMULATED test bench, controller/neram_ctrl). Twin fields: test-bench stand-in values the controller received (SIMULATED).",
+  "loop_description": "Open loop: synthetic twin input, no patient plant.",
+  "limitations": [
+    "Synthetic twin input values; the degradation is scripted.",
+    "Controller: Suchitha's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
+    "Twin fields are test-bench stand-ins (synthetic inputs or a first-order filter stand-in), NOT the NERAM twin. The forecast is the stand-in's flat persistence (T_pred = T_est) with normal bands from T_est_sd.",
+    "Hardware signals and module temperatures come from test stand-ins; no hardware exists. Thresholds are placeholders (Shreehan, TBD).",
+    "No clinical, hardware or treatment claim is made."
+  ]
+}

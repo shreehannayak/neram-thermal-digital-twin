@@ -239,3 +239,23 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
   specification. Five regenerated logs are byte-identical to her v2 logs; 129/132 result rows identical, same totals
   (112 PASS, 18 REPORTED, 1 BLOCKED, 1 EXCLUDED). New: `ctrl_TC04.csv`, per-test logs, plots, `T07_duty_stats.csv`.
   Details and known differences: `controller/REBUILD_2026-10-18_SAI.md`.
+
+## 17. Controller replays, KiCad schematic, viewer detail pass (Sai, 19 Oct 2026)
+- Controller replays: `tools/make_controller_replays.py` (sha256 ae802793242660ce…) runs Suchitha's test bench
+  (`controller/neram_ctrl`) for TC02, TC07, TC13, TC04 and TC08 and builds SCN_B–SCN_F with `integration/build_replay.py
+  --twin-source SIMULATED`. All five validate with 0 warnings and pass the semantic check. Twin fields are stand-ins
+  (flat persistence forecast with normal bands from T_est_sd), not the NERAM twin. Replays: SCN_B 47c1a5367c139c2f…,
+  SCN_C 78b65f1d2aa81377…, SCN_D be0567e015088668…, SCN_E 41afb9c5bcb78193…, SCN_F b31aa7b53921c130….
+  Controller logs added to `integration/controller_logs/SHA256SUMS`. Start-up scenario: SCN_C.
+- SCN_A stays blocked (development-case export and data-use clearance). TC19 stays BLOCKED for the same reason.
+- Hardware: `hardware/schematics/make_kicad_schematic.py` (0d0f2673655fc989…) writes `channel_driver.kicad_sch`
+  (616c4aee5b14e108…, KiCad 8 format, not yet opened in KiCad by Shreehan) and `channel_driver_netlist.csv`;
+  diagram PDFs and `hardware/power/power_budget.xlsx` added.
+- Viewer: detailed surgeon (`tools/meshgen/human.py`, cfcacac7637b6bf6…), instrument set
+  (`tools/meshgen/instruments.py`, b980dbd801111075…), 3 mm patient skin/gown (`tools/meshgen/patient_hq.py`,
+  a5934fb295d2acd1…), fabric/skin normal maps (`tools/meshgen/detail_normals.py`, 3fd35781800d451b…), extras writer
+  `tools/gen_scene_extras.py` (b54442d698e0bfea…; binary mesh block `scene_extras_mesh.bytes`). Editor:
+  `NeramLook.cs` (lighting/post), `NeramSceneExtras.cs` (meshes are now rewritten through the Mesh API so the editor
+  shows them without a restart), surgeon camera views (V), exploded-layer labels (`ModuleView.cs`).
+- Checks: `tools/run_all_tests.py` OVERALL PASS; Unity EditMode 86 pass / 0 fail / 1 skip; project validation PASSED;
+  Windows player rebuilt (190.4 MB) and opened with SCN_C.

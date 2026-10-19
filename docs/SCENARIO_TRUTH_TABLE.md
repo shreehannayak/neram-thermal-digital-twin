@@ -1,4 +1,4 @@
-# Scenario truth table (updated 18 Oct 2026, 01:30 IST, after the Unity Editor session)
+# Scenario truth table (updated 19 Oct 2026: SCN_B–SCN_F from the controller test bench added)
 
 A replay that passes `integration/validate_replay.py` (and its C# twin) is **well-formed**. This table records
 whether its frames **behave** as the title says. The checks used:
@@ -6,7 +6,21 @@ whether its frames **behave** as the title says. The checks used:
 * the JSON Schema test;
 * a reading of the source rows against the controller test definitions in plan §1N.
 
-Every scenario is SYNTHETIC. No VitalDB observation and no holdout case appears anywhere.
+Every scenario is SYNTHETIC or SIMULATED. No VitalDB observation and no holdout case appears anywhere.
+
+## 0. Controller replays (19 Oct 2026; `tools/make_controller_replays.py`)
+Built from the rebuilt `controller/neram_ctrl` test bench (Suchitha's v2 design). Twin fields are test-bench
+stand-ins (`--twin-source SIMULATED`, flat persistence forecast with normal bands); closed-loop runs use the ASSUMED
+patient plant. All five: VALID with 0 warnings, semantic check OK, played in the Windows player 19 Oct (SCN_C).
+
+| Scenario ID | Test | Behaviour shown | Loop | Demo |
+|---|---|---|---|---|
+| SCN_B | TC02 | Synthetic forecast risk confirmed → PREDICTIVE_WARMING at 370 s, PI heat capped at 40 % | open | YES (plan SCN_B) |
+| SCN_C | TC07 | CH2 sensor disagreement (205) → over-temperature SAFETY_SHUTDOWN (206), RESET blocked while hot, release at 1250 s, warming resumes | closed (ASSUMED plant) | YES (plan SCN_C, start-up scenario); covers TC07 criteria 3–5 that SYN_TC07 could not |
+| SCN_D | TC13 | Twin DEGRADED at 300 s → MONITOR, heat 0; VALID again at 600 s, NORMAL at 630 s | open | YES (plan SCN_D) |
+| SCN_E | TC04 | 35 °C start → ACTIVE_WARMING at the 50 % cap → TARGET_MAINTENANCE at 6.8 h (12 h replay) | closed (ASSUMED plant) | YES (extra) |
+| SCN_F | TC08 | CH3 sensor B open → only CH3 off (303), RESET refused while open, latch held until RESET at 240 s | open | YES (extra) |
+
 
 ## 1. Shipped replays (integration/replays = unity_editor/Assets/StreamingAssets/replays, byte-identical)
 | Scenario ID | Source twin | Source controller log | Provenance | Declared behaviour | Actual frame behaviour | Schema | Behaviour | v4 runtime | Demo | Limitation |
@@ -40,9 +54,9 @@ Every scenario is SYNTHETIC. No VitalDB observation and no holdout case appears 
 | Plan case | Shown as | Can the required behaviour be demonstrated? |
 |---|---|---|
 | SCN_A usual care (development case, open loop) | SYN_SCN_A0 (layout stand-in) | **No.** Needs the development fit and data-use clearance |
-| SCN_B predictive warming (synthetic, SIMULATED + ASSUMED) | SYN_SCN_B | Yes (stand-in controller) |
-| SCN_C over-temperature fault | SYN_SCN_C; SYN_TC07 (real controller log, latch only) | Yes for the shutdown. TC07's reset/release cannot be shown from Suchitha's log |
-| SCN_D twin degraded | SYN_SCN_D | Yes (stand-in) |
+| SCN_B predictive warming (synthetic, SIMULATED + ASSUMED) | SCN_B (controller TC02); SYN_SCN_B | Yes |
+| SCN_C over-temperature fault | SCN_C (controller TC07, closed loop); SYN_SCN_C; SYN_TC07 | Yes, including blocked reset and release (SCN_C) |
+| SCN_D twin degraded | SCN_D (controller TC13); SYN_SCN_D | Yes |
 | Heating from Suchitha's real controller | — | **No.** No supplied log commands any heat |
 
 ## 5. Suchitha's controller package v2 (received 18 Oct 2026, Python fallback) — `integration/controller_logs_received/2026-10-18/`

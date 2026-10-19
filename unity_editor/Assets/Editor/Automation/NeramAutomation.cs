@@ -13,7 +13,7 @@ using UnityEngine;
 namespace Neram.EditorTools
 {
     /// <summary>
-    /// File-based request queue so routine editor jobs (refresh, CAD placement, evidence renders, validation, EditMode
+    /// File-based request queue so routine editor jobs (refresh, CAD placement, evidence renders, plan renders R01-R07, validation, EditMode
     /// tests, player build) can be triggered without clicking menus. Drop an empty "&lt;job&gt;.req" file into
     /// &lt;workspace&gt;/_automation/; the result is written to "&lt;job&gt;.txt" next to it. Editor-only, no effect on the player.
     /// </summary>
@@ -61,6 +61,10 @@ namespace Neram.EditorTools
                 if (Take("refresh")) { AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport); Write("refresh.txt", "refreshed " + DateTime.Now.ToString("u")); }
                 if (Take("place")) Place();
                 if (Take("snap")) Write("snap.txt", NeramCadSnapshots.RenderViews(Path.Combine(Dir, "views.txt"), Path.Combine(Dir, "snaps")));
+                if (Take("renders")) Write("renders.txt", NeramRenders.RenderAll());
+                if (Take("extras")) Write("extras.txt", NeramSceneExtras.Apply());
+                if (Take("look")) Write("look.txt", NeramLook.Apply());
+                if (Take("diag")) Write("diag.txt", Neram.EditorTools.NeramDiag.Run());
                 if (Take("validate")) { bool ok = NeramValidation.Run(out var rep); Write("validate.txt", (ok ? "PASSED\n" : "FAILED\n") + rep); }
                 if (Take("tests")) RunTests();
                 if (Take("build")) { var r = NeramBuild.BuildWindows(); Write("build.txt", (r.ok ? "OK " : "FAIL ") + r.message); }
