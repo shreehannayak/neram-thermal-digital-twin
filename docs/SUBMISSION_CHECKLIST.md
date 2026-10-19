@@ -5,8 +5,8 @@ Audit date: Mon 19 Oct 2026 (CP5). Do it from a logged-out browser. Tick each bo
 Ticked 19 Oct 2026 by Sai from the automated checks in docs/SUBMISSION_DRYRUN_2026-10-19.md; Shreehan confirms the logged-out items (public links, LFS download).
 
 ## The 11 submission requirements
-- [ ] 1. Team details: names, roles, contributions in README section 2; each member confirmed their line in a GitHub comment — OPEN: Sai confirmed; Suchita, Neharikaa, Shreehan still to comment on the team confirmation issue
-- [ ] 2. College / incubator in README section 3; matches the registration exactly — OPEN: compare with the registration text
+- [x] 1. Team details: names, roles, contributions in README section 2; each member confirmed their line in a GitHub comment (19 Oct; all four confirmed in issue #3)
+- [x] 2. College / incubator in README section 3; matches the registration exactly (19 Oct; checked against the registration)
 - [ ] 3. Project title identical in README section 1, CITATION.cff, slide 1 and video title (text search done) — OPEN: README and CITATION.cff match; check slide 1 and the video title
 - [x] 4. Problem statement in README section 4; no "core temperature"; no clinical-efficacy claim (19 Oct)
 - [x] 5. Healthcare use case in README section 5; same check as 4 (19 Oct)
