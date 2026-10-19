@@ -1,11 +1,11 @@
-# CAD (owner: Neharika)
+# CAD (owner: Neharikaa)
 
-README written by Sai on 18 Oct 2026 for Neharika's CAD.
+README written by Sai on 18 Oct 2026 for Neharikaa's CAD.
 Proof-of-concept prototype, not a medical device. The CAD shows a paper design; nothing has been manufactured.
 
 ## Renders
 
-Neharika's CAD in the NERAM viewer (details in [`renders/README.md`](renders/README.md)). Mannequin, room and cables are
+Neharikaa's CAD in the NERAM viewer (details in [`renders/README.md`](renders/README.md)). Mannequin, room and cables are
 generated stand-ins.
 
 <img src="renders/R01_full_scene.png" width="100%">
@@ -25,7 +25,7 @@ generated stand-ins.
 ## What is here
 | Folder | Contents |
 |---|---|
-| `exports/source_fusion_2026-10-18/` | Neharika's four FBX files exactly as exported from Autodesk Fusion (hand modules CH1+CH2, foot modules CH3+CH4, bedside controller, wearable display concept) |
+| `exports/source_fusion_2026-10-18/` | Neharikaa's four FBX files exactly as exported from Autodesk Fusion (hand modules CH1+CH2, foot modules CH3+CH4, bedside controller, wearable display concept) |
 | `exports/unity/` | Unity-ready copies made by `tools/fixneha.py`: metres, Y up, plan object names, `MAT_*` materials; shapes unchanged. `PREP_REPORT_2026-10-18.json` lists every change; `exploded_offsets_SAI_DEFAULT.csv` is a visual default |
 | `renders/` | Plan renders R01–R08 (see `renders/README.md`) and earlier viewer pictures |
 | `tools/` | `fixneha.py` (the Unity prep step) with its helpers `fbxio.py`, `fbxinspect.py`, `qem.py` (decimation) |
