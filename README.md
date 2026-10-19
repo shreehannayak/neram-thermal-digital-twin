@@ -28,10 +28,10 @@ the patient's own monitor data, with a simulated supervised warming controller a
 ## 2. Team and contributions
 | Member | Role | Contribution |
 |---|---|---|
-| Saiyugan (Sai) | Lead; Digital Twin, integration, Unity viewer | Twin model and export (`src/`, `analysis/`), replay contract and validators (`integration/`, `config/`, `tests/`), Unity viewer (`unity_editor/`), CAD integration, documentation (`docs/`) |
-| Suchitha | Supervisory controller | Controller states, fault handling, test bench, test cases and logs (`controller/`), Python fallback because MATLAB/Simulink was unavailable |
-| Neharika | CAD | Hand and foot warming modules, wearable display concept, bedside controller (`cad/`) |
-| Shreehan | Hardware, repository, licences, audit | Hardware architecture, safety layers, comparisons, BOM, power budget, interfaces (`hardware/`), README skeleton, licences, submission audit |
+| Saiyugan Jegan (Sai) | Lead; Digital Twin, integration, Unity viewer | Twin model and export (`src/`, `analysis/`), replay contract and validators (`integration/`, `config/`, `tests/`), Unity viewer (`unity_editor/`), CAD integration, documentation (`docs/`) |
+| Suchita Venkatesh | Supervisory controller | Controller states, fault handling, test bench, test cases and logs (`controller/`), Python fallback because MATLAB/Simulink was unavailable |
+| Neharikaa M | CAD | Hand and foot warming modules, wearable display concept, bedside controller (`cad/`) |
+| Shreehan S Nayak | Hardware, repository, licences, audit | Hardware architecture, safety layers, comparisons, BOM, power budget, interfaces (`hardware/`), README skeleton, licences, submission audit |
 
 Each member confirms their own line in a GitHub comment.
 
