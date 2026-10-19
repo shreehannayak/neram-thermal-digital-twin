@@ -39,6 +39,6 @@ generated stand-ins.
 - PNG renders open in any image viewer.
 
 ## Scope
-Neharika's part is the 3D models, delivered on 18 Oct and complete. STEP/native files, 2D drawings, strain-relief parts and an assembly file are not part of this submission.
+Neharikaa's part is the 3D models, delivered on 18 Oct and complete. STEP/native files, 2D drawings, strain-relief parts and an assembly file are not part of this submission.
 
 Licence: CC BY 4.0 (`LICENSE-CAD-DOCS`).
