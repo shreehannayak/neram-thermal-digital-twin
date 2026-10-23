@@ -23,10 +23,10 @@ namespace Neram.EditorTools
         private const string MeshDir = "Assets/NERAM_Generated/Meshes/Extras";
 
         [Serializable] private class MatJ { public string name; public float[] color; public float smoothness, metallic; public bool transparent; public float[] emission; public string normal_map; public float normal_scale; public float tiling; public string base_map; }
-        [Serializable] private class PartJ { public string group, name, parent, mat, replace; public float[] v, n, uv; public int[] f; public long bin = -1; public int nv, ni; public bool has_uv; }
+        [Serializable] private class PartJ { public string group, name, parent, mat, replace; public float[] v, n, uv; public int[] f; public long bin = -1; public int bf, nv, ni; public bool has_uv; }
         [Serializable] private class PoseJ { public float[] position; public float yaw_deg; }
         [Serializable] private class FlowJ { public bool @internal; public float[] p; }
-        [Serializable] private class ExtrasJ { public MatJ[] materials; public PartJ[] parts; public string[] hide_prefixes; public PoseJ surgeon; public FlowJ[] airflow; public float breath_s; public string bin_file; }
+        [Serializable] private class ExtrasJ { public MatJ[] materials; public PartJ[] parts; public string[] hide_prefixes; public PoseJ surgeon; public FlowJ[] airflow; public float breath_s; public string bin_file; public string[] bin_files; }
 
         [MenuItem("NERAM/Scene/Apply scene extras (mask, O2, airway, surgeon)", priority = 30)]
         public static void Menu() => EditorUtility.DisplayDialog("NERAM scene extras", Apply(), "OK");
@@ -38,12 +38,19 @@ namespace Neram.EditorTools
             if (ta == null) return "missing " + JsonPath + " (run tools/gen_scene_extras.py)";
             var ex = JsonUtility.FromJson<ExtrasJ>(ta.text);
             if (ex == null || ex.parts == null) return "scene_extras.json does not parse";
-            if (!string.IsNullOrEmpty(ex.bin_file))
+            // binary mesh blocks: bin_files (split blocks, 23 Oct) or the single bin_file of older exports
+            var files = ex.bin_files != null && ex.bin_files.Length > 0 ? ex.bin_files
+                      : (!string.IsNullOrEmpty(ex.bin_file) ? new[] { ex.bin_file } : new string[0]);
+            if (files.Length > 0)
             {
-                var bin = AssetDatabase.LoadAssetAtPath<TextAsset>(ex.bin_file);
-                if (bin == null) return "missing " + ex.bin_file;
-                var bytes = bin.bytes;
-                foreach (var p in ex.parts) if (p.bin >= 0) Unpack(p, bytes);
+                var blocks = new List<byte[]>();
+                foreach (var f in files)
+                {
+                    var bin = AssetDatabase.LoadAssetAtPath<TextAsset>(f);
+                    if (bin == null) return "missing " + f;
+                    blocks.Add(bin.bytes);
+                }
+                foreach (var p in ex.parts) if (p.bin >= 0 && p.nv > 0) Unpack(p, blocks[Mathf.Clamp(p.bf, 0, blocks.Count - 1)]);
             }
             var asm = GameObject.Find(SceneNames.Assembly);
             if (asm == null) return "NERAM_Assembly not found (run NERAM > 1. Run full setup first)";

@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Neram.EditorTools
 {
     /// <summary>
-    /// CAD integration for Neharika's models (docs/unity/CAD_INTEGRATION.md).
+    /// CAD integration for Neharikaa's models (docs/unity/CAD_INTEGRATION.md).
     ///  1. Export FBX in metres, Y up, origin = table-top centre, +Z toward the head (patient's left = +X), object names per
     ///     the CAD contract (Left_Hand_Module with children CH1_Liner ... CH1_Heater ..., Bedside_Controller with BC_* ...).
     ///  2. Drop the FBX files into Assets/NERAM_CAD/ (import settings are applied automatically below).

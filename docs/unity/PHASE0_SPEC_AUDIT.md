@@ -1,6 +1,6 @@
 # Phase 0 — Specification audit for the Unity layer
 
-Inputs audited: *NERAM — Team Implementation Plan* (§0 rules, §1 Suchitha, §2 Neharika, §3 Shreehan, §4 Sai + Unity, §5 interface spec, §6 parameter table, §7 file tree), `config/interface_spec.csv` (78 rows), `config/params.json` (51 parameters), `config/enums.json` v0.1.
+Inputs audited: *NERAM — Team Implementation Plan* (§0 rules, §1 Suchitha, §2 Neharikaa, §3 Shreehan, §4 Sai + Unity, §5 interface spec, §6 parameter table, §7 file tree), `config/interface_spec.csv` (78 rows), `config/params.json` (51 parameters), `config/enums.json` v0.1.
 
 Status legend: **OK** consistent · **GAP** something Unity needs is not specified · **CONFLICT** two sources disagree · **PROPOSED** Unity-side proposal awaiting team sign-off.
 
@@ -28,8 +28,8 @@ Status legend: **OK** consistent · **GAP** something Unity needs is not specifi
 | 6 | GAP | `t_hypo_degC` placeholder 36.0 is the core-temperature convention; applicability to this signal is unresolved. | Shown with status TBD and the note "applicability to this signal unresolved"; the indicator says "display banding only, not a clinical classification". | Sai. |
 | 7 | GAP | `hardware/interfaces/fault_codes.csv` does not exist yet. | Plan-derived **PLACEHOLDER** table (53 codes) with a visible warning chip; unknown codes are shown as "Unknown fault code N (not in <table>)", never given a meaning. | Shreehan: deliver CSV (`code,name,scope,detected_by,description,display_text`). |
 | 8 | GAP | Enum integers in `enums.json` v0.1 are PROVISIONAL; names are FROZEN. | Unity resolves by **name** at load (`ReplaySession`), so renumbering needs only a config change. | Suchitha: freeze integers with the Stateflow enum definition. |
-| 9 | GAP | No CAD coordinate frame was specified. | Contract: metres, Y up, origin = table-top centre, +Z toward the head, patient supine ⇒ **patient's left = +X** (Unity left-handed). Placeholder scene follows it. | Neharika: export in this frame (CAD_INTEGRATION.md). |
-| 10 | GAP | No exploded-view offsets. | Optional `cad/exploded_offsets.csv` (`object,dx_m,dy_m,dz_m`); visual defaults otherwise. | Neharika (optional). |
+| 9 | GAP | No CAD coordinate frame was specified. | Contract: metres, Y up, origin = table-top centre, +Z toward the head, patient supine ⇒ **patient's left = +X** (Unity left-handed). Placeholder scene follows it. | Neharikaa: export in this frame (CAD_INTEGRATION.md). |
+| 10 | GAP | No exploded-view offsets. | Optional `cad/exploded_offsets.csv` (`object,dx_m,dy_m,dz_m`); visual defaults otherwise. | Neharikaa (optional). |
 | 11 | CHECK | Schema hard range `T_obs` 25–43 °C (E013) is a replay plausibility bound, not a clinical value. | Kept as validation-only. | Sai: must equal the Code 4 BT validity filter; change in `unity/schema/replay_fields.json` + regenerate if different. |
 | 12 | OK | `ts_twin_s` = 60 FROZEN, `ts_ctrl_s` = 1 PROVISIONAL. | Clock is frame-based (1 frame per controller step); twin minute buckets use `ts_twin_s`. | — |
 | 13 | OK | Forecast "NaN unless VALID" (interface spec). | Enforced by validator (E040/E041) and by the display rule (hidden unless VALID and not TWIN_DEGRADED). | — |

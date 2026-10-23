@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Neram.Unity
 {
     /// <summary>
-    /// Binds replay data to the 3D assembly by NAME, so Neharika's CAD/FBX can replace the placeholders without code
+    /// Binds replay data to the 3D assembly by NAME, so Neharikaa's CAD/FBX can replace the placeholders without code
     /// changes. For every role (Left_Hand_Module, Bedside_Controller, Cable_CH1, ...) the binder prefers an object with the
     /// exact CAD name and disables the "&lt;role&gt;_PLACEHOLDER" object. Modules get a ModuleView, the controller a
     /// ControllerView3D, and any renderer without a collider gets a MeshCollider for picking.

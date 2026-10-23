@@ -196,7 +196,7 @@ The full table is in `docs/SCENARIO_TRUTH_TABLE.md`. Summary:
   this session. The manual steps are in §G.
 * **Missing dependencies:**
   * `hardware/interfaces/fault_codes.csv` (Shreehan; the UI uses PLACEHOLDER texts);
-  * `cad/exploded_offsets.csv` and all FBX including `Reference_Cube_1m` (Neharika; placeholder geometry, 13 setup
+  * `cad/exploded_offsets.csv` and all FBX including `Reference_Cube_1m` (Neharikaa; placeholder geometry, 13 setup
     WARNs on 10 Oct);
   * the CAD import check (scale, axes, names, triangle budgets) cannot be done.
 

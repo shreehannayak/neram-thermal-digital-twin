@@ -1,6 +1,6 @@
 # CAD renders R01-R08 (plan section U)
 
-Made by Sai on 18 Oct 2026, taking over the render task for Neharika. **The geometry is Neharika's Fusion CAD**
+Made by Sai on 18 Oct 2026, taking over the render task for Neharikaa. **The geometry is Neharikaa's Fusion CAD**
 (`cad/exports/unity/`, shapes unchanged). The mannequin, OR table, room and cables are generated stand-ins, and the
 pad drape and strap length are visual fits in the viewer (see `cad/IMPORT_CHECK_SAI_2026-10-18.md`). Each image
 carries the footer "NERAM proof-of-concept prototype — not a medical device".

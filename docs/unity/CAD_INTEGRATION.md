@@ -1,4 +1,4 @@
-# CAD integration (Neharika → Unity)
+# CAD integration (Neharikaa → Unity)
 
 The scene binds data to geometry **by object name**. Any FBX that follows these names replaces the generated placeholders with no code change.
 

@@ -162,17 +162,17 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 * Unity replays from the v2 logs: NOT BUILT — the twin input she used is not in the logs (see SCENARIO_TRUTH_TABLE §5). Hand-off in TEAM_HANDOFFS_SAI.md §5.
 * No files deleted.
 
-## 11. Neharika's CAD in the viewer (Sai, 2026-10-18)
-- Source: Neharika's 4 Fusion FBX (received 18 Oct). Unity prep (metres, Y up, plan V/W names, MAT_* materials, plan pivots, controller decimated 19,890 -> 12,748 tris) by `cad/tools/fixneha.py` in the team repo; report in the repo `cad/IMPORT_CHECK_SAI_2026-10-18.md`.
-- Unity: 6 FBX in `Assets/NERAM_CAD/`; `Editor/NeramCadPlacement.cs` (NERAM > CAD > Place Neharika CAD on the mannequin) poses them from the stand-ins and runs automatically after a scene rebuild; `Editor/NeramCadSnapshots.cs` writes `docs/evidence/cad_unity/*.png`.
+## 11. Neharikaa's CAD in the viewer (Sai, 2026-10-18)
+- Source: Neharikaa's 4 Fusion FBX (received 18 Oct). Unity prep (metres, Y up, plan V/W names, MAT_* materials, plan pivots, controller decimated 19,890 -> 12,748 tris) by `cad/tools/fixneha.py` in the team repo; report in the repo `cad/IMPORT_CHECK_SAI_2026-10-18.md`.
+- Unity: 6 FBX in `Assets/NERAM_CAD/`; `Editor/NeramCadPlacement.cs` (NERAM > CAD > Place Neharikaa CAD on the mannequin) poses them from the stand-ins and runs automatically after a scene rebuild; `Editor/NeramCadSnapshots.cs` writes `docs/evidence/cad_unity/*.png`.
 - The stand-in mitts/boots enclosed the hands/feet, so the mannequin had none; `tools/gen_cad_body_parts.py` generates hand/foot skin from the same SDF shapes (`Assets/NERAM_Generated/MeshData/cad_body_parts.json`, visual stand-in).
-- `StreamingAssets/cad/exploded_offsets.csv`: Sai default by layer order (visual only) until Neharika supplies hers.
+- `StreamingAssets/cad/exploded_offsets.csv`: Sai default by layer order (visual only) until Neharikaa supplies hers.
 - Validator: `CHn_Cutoff` optional (plan W brackets it); a CAD module without `CHn_Strain_Relief` is a WARN naming the part. NERAM > 4 Validate: PASSED. Windows player rebuilt.
 
 ## 12. CAD fit v2: gloves, feet, watch, controller (Sai, 18 Oct 2026, ~16:00 IST)
 - Builds on the fit pipeline added at ~12:30 IST (`tools/gen_cad_fit.py`, `_automation/` queue, raised arm boards, reshaped wrists, rail-mounted controller). That version's originals: `_sai_backup_2026-10-17/unity_2026-10-18/cad_fit_v1_before_v2/`.
-- Hands: anatomical palm-up hand built from the medial axis of the glove liner outline (one rounded finger under every glove finger, flattened palm), back of the hand on the board. Neharika's pad layers (liner, heater, insulation, shell, sensors) subdivided and draped onto the hand with the edges folded around the fingers (visual fit of a fabric pad).
-- Straps (hands and feet): rebuilt as bands following the limb + pad cross-section at the CAD strap position (CAD width/thickness kept, length fitted); closure tabs lie on the band. Visual fit - Neharika's CAD straps enclose a 29 mm limb.
+- Hands: anatomical palm-up hand built from the medial axis of the glove liner outline (one rounded finger under every glove finger, flattened palm), back of the hand on the board. Neharikaa's pad layers (liner, heater, insulation, shell, sensors) subdivided and draped onto the hand with the edges folded around the fingers (visual fit of a fabric pad).
+- Straps (hands and feet): rebuilt as bands following the limb + pad cross-section at the CAD strap position (CAD width/thickness kept, length fitted); closure tabs lie on the band. Visual fit - Neharikaa's CAD straps enclose a 29 mm limb.
 - Feet: adult toe lengths (big toe ~3 cm), sole pad heel-to-ball, toes free.
 - Controller: lit display quad with `controller_screen.png` (channel names + SIMULATED; values stay on the dashboard, like the watch face); cables re-routed under the rail/table and onto the boards/table at each pad.
 - New/changed files: `tools/gen_cad_fit.py` (v2), `tools/cadfit_lib.py`, `tools/fbxio.py`, `tools/meshgen/textures.py` (controller_screen), `Editor/NeramCadPlacement.cs` (fitted part meshes + texture material), `Assets/NERAM_Generated/MeshData/cad_fit.json`, `Assets/NERAM_Generated/Textures/controller_screen.png`.
@@ -186,13 +186,13 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 - GitHub (shreehannayak/neram-thermal-ditital-twin): workspace code, config, docs, tests, synthetic data, unity/ and the Unity project pushed; results/development and results/final not published.
 
 ## 14. Plan renders, hardware completion, checklist dry run (Sai, 18 Oct 2026, evening)
-- **Renders R01–R08** (`cad/renders/`, taken over from Neharika): R01–R07 rendered in the Unity editor by
+- **Renders R01–R08** (`cad/renders/`, taken over from Neharikaa): R01–R07 rendered in the Unity editor by
   `unity_editor/Assets/Editor/NeramRenders.cs` (automation job `renders`; exploded-view label anchors from a per-part
   silhouette pass because `Renderer.bounds` is stale in edit mode after a move), annotated by `tools/annotate_renders.py`.
   R08 cut from `cad/exports/unity/NERAM_Left_Hand_Module.fbx` (SHA-256 = its LFS oid 37369728…) by
   `tools/render_section.py`; measured stack: liner 0–2.5 mm, heater 2.5–3.5, Sensor A 2.5–3.3 (recess under the film),
   insulation 3.0–7.0, shell cap 7.0–9.0 mm. Found: insulation/heater overlap of 0.5 mm in the export (reported to
-  Neharika in `cad/IMPORT_CHECK_SAI_2026-10-18.md`, not changed).
+  Neharikaa in `cad/IMPORT_CHECK_SAI_2026-10-18.md`, not changed).
 - **Hardware (Shreehan's open items):** diagrams regenerated from one layout by `hardware/diagrams/make_diagrams.py`
   (Simulink → Python fallback; overlaps removed); one-channel schematic `hardware/schematics/make_schematic.py`
   (values TBD); BOM datasheet links from manufacturer or distributor pages read on 18 Oct (Infineon IRLML6344, TI INA180
@@ -230,7 +230,7 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 
 
 ## 16. Team close-out (Sai, 18 Oct 2026, ~22:30–00:30 IST)
-- CAD: Neharika's part (3D models) marked complete; STEP/native files, drawings, strain relief and an assembly file
+- CAD: Neharikaa's part (3D models) marked complete; STEP/native files, drawings, strain relief and an assembly file
   recorded as out of scope for this submission.
 - Hardware: MPM-65 derating factor 1.0 (100 % load to 55 C ambient and from 100 VAC, read from the Mean Well
   datasheet chart), per-channel budget limit 15.6 W (calculated, PROVISIONAL), example wrist cell 0.555 Wh
@@ -259,3 +259,13 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
   shows them without a restart), surgeon camera views (V), exploded-layer labels (`ModuleView.cs`).
 - Checks: `tools/run_all_tests.py` OVERALL PASS; Unity EditMode 86 pass / 0 fail / 1 skip; project validation PASSED;
   Windows player rebuilt (190.4 MB) and opened with SCN_C.
+
+## 18. Name, pictures and surgeon detail (Sai, 23 Oct 2026)
+- Team member's name corrected to **Neharikaa** in every document, script comment, diagram, render footer and PDF.
+- Surgeon: smooth short hair under the cap (`tools/meshgen/human.py` `sdf_hair_back`), sleeves widened so the upper-arm
+  skin no longer shows through. Scene mesh data split into two blocks under 20 MB (`scene_extras_mesh.bytes`,
+  `scene_extras_mesh_1.bytes`); `Editor/NeramSceneExtras.cs` reads `bin_files`.
+- Pictures regenerated from the current viewer: `cad/renders/R01`–`R08`, `docs/screenshots/*` (new `viewer_exploded.jpg`),
+  hardware interface map, `docs/architecture.pdf`, `docs/presentation.pdf` (also: repository link after the rename, replay
+  count). README: clickable architecture PDF, AI-assistance note.
+- Checks: Unity project validation PASSED; EditMode 86 pass / 0 fail / 1 skip; Windows player rebuilt.

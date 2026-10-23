@@ -267,7 +267,7 @@ namespace Neram.EditorTools
                 bool isCad = asm.transform.Find(SceneNames.Modules[i]) != null;
                 var missing = SceneNames.ModuleParts.Where(p => p != "Cutoff").Select(p => SceneNames.Part(ch, p)).Where(n => !names.Contains(n)).ToList();
                 if (missing.Count == 0) log.P(SceneNames.Modules[i] + ": all CH" + ch + "_* parts named per CAD contract");
-                else if (isCad) log.W(SceneNames.Modules[i] + ": CAD has no " + string.Join(", ", missing) + " (Neharika to add)");
+                else if (isCad) log.W(SceneNames.Modules[i] + ": CAD has no " + string.Join(", ", missing) + " (Neharikaa to add)");
                 else log.F(SceneNames.Modules[i] + ": missing parts " + string.Join(", ", missing));
                 var conn = asm.GetComponentsInChildren<Transform>(true).FirstOrDefault(t => t.name == SceneNames.Connector(ch));
                 log.Check(conn != null, SceneNames.Connector(ch) + " present (connection state shown at the plug)");

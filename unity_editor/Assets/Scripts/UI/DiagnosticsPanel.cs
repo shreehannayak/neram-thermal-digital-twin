@@ -120,7 +120,7 @@ namespace Neram.Unity
             if (h.Placeholder) { todo.Add(Todo("This replay is a scripted stand-in, not NERAM twin / controller output", "Suchitha: controller logs with real heating → Sai rebuilds the replay")); n++; }
             if (_s.Faults != null && _s.Faults.IsPlaceholder) { todo.Add(Todo("Fault explanations use built-in placeholder text", "Shreehan: hardware/interfaces/fault_codes.csv")); n++; }
             int phParts = AssemblyReport?.Count(r => r.Contains("PLACEHOLDER")) ?? 0;
-            if (phParts > 0) { todo.Add(Todo(phParts + " 3D parts are placeholder shapes", "Neharika: FBX exports of the modules and bedside controller")); n++; }
+            if (phParts > 0) { todo.Add(Todo(phParts + " 3D parts are placeholder shapes", "Neharikaa: FBX exports of the modules and bedside controller")); n++; }
             int phParams = _s.Params.Entries.Values.Count(e => e.IsPlaceholderInUse);
             int noneParams = _s.Params.Entries.Values.Count(e => !e.HasValue && !e.IsPlaceholderInUse);
             if (phParams + noneParams > 0) { todo.Add(Todo(phParams + " parameter values are placeholders, " + noneParams + " not set yet", "Sai (development fit), a clinician, Suchitha, Shreehan — see MENU → Parameters")); n++; }
@@ -159,7 +159,7 @@ namespace Neram.Unity
             {
                 var asm = Section("3D assembly (CAD vs PLACEHOLDER)");
                 foreach (var r in AssemblyReport) asm.Add(UiUtil.Label(r, "card-text"));
-                asm.Add(UiUtil.Label("Replace a placeholder by importing Neharika's FBX under NERAM_Assembly with the role name (see docs/unity/CAD_INTEGRATION.md).", "card-text"));
+                asm.Add(UiUtil.Label("Replace a placeholder by importing Neharikaa's FBX under NERAM_Assembly with the role name (see docs/unity/CAD_INTEGRATION.md).", "card-text"));
             }
             if (PerformanceText != null)
             {

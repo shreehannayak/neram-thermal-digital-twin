@@ -7,7 +7,7 @@ These sensors protect the skin. They are NOT the Digital Twin's patient-state in
 | Parameter | Unit | Required value or range | Source | Status |
 |---|---|---|---|---|
 | sensors_per_module | count | 2, independent (separate lines and ADC inputs) | Project constraint | FROZEN |
-| sensor_location | - | Skin interface; flush pockets in the heater area (geometry by Neharika) | Project constraint | FROZEN |
+| sensor_location | - | Skin interface; flush pockets in the heater area (geometry by Neharikaa) | Project constraint | FROZEN |
 | sensor_range_degC | degC | Must cover ambient to above t_hw_cutoff_degC | Datasheet | TBD |
 | sensor_accuracy_degC | degC | Over the operating range | Datasheet | TBD |
 | sensor_response_s | s | Thermal response as mounted | Datasheet + mounting estimate | TBD |
@@ -20,7 +20,7 @@ These sensors protect the skin. They are NOT the Digital Twin's patient-state in
 See hardware/comparisons/sensor_comparison.csv (NTC thermistor, Pt1000 RTD, digital IC, thermocouple). **Chosen (PROVISIONAL): TDK NTCG163JX103DTDS 10 kΩ NTC (0603) on a flex tail, 2 per module.** Reasons: analog, so an open or short reads out of range (never a plausible temperature); no I²C addressing problem for 8 sensors; the layer-1 hardware comparator can use an NTC divider directly; smallest package for a flush pocket. Every number there comes from a linked datasheet or listing; blanks are TBD.
 
 ## Notes
-- Sensor A sits near the centre of the heated area; sensor B at the location expected to be hottest (to be identified with Neharika).
+- Sensor A sits near the centre of the heated area; sensor B at the location expected to be hottest (to be identified with Neharikaa).
 - Open or short circuits must never read as a plausible temperature. A digital IC can fail by returning no reply, so the firmware must treat a missing reply as invalid.
 - Layer-2 firmware and the supervisory controller both use these readings; the layer-1 hardware cutoff uses its own independent sensor or device.
 

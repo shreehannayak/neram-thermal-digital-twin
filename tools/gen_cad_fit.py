@@ -1,4 +1,4 @@
-"""Fit Neharika's CAD (cad/exports/unity/*.fbx, Unity-prepped) to the generated mannequin (Sai, 2026-10-18).
+"""Fit Neharikaa's CAD (cad/exports/unity/*.fbx, Unity-prepped) to the generated mannequin (Sai, 2026-10-18).
 
 Writes unity_editor/Assets/NERAM_Generated/MeshData/cad_fit.json, read by Editor/NeramCadPlacement.cs:
   poses   : world position + LookRotation(fwd, up) + uniform scale per CAD root
@@ -9,7 +9,7 @@ Writes unity_editor/Assets/NERAM_Generated/MeshData/cad_fit.json, read by Editor
             - the hand pads are fabric layers (liner, heater film, insulation, shell): subdivided and draped onto the
               hand, edges folded around the fingers (v2, Sai: they floated flat over the fingers before)
             - straps rebuilt as bands that follow the limb + pad section (CAD width/thickness kept, length fitted to
-              the limb - visual fit, flagged for Neharika); the closure tabs (Hook) lie on the band
+              the limb - visual fit, flagged for Neharikaa); the closure tabs (Hook) lie on the band
             - BC_Display_Screen: lit quad on the controller display (texture controller_screen)
   cables  : waypoints from the controller ports to each pad's cable edge
   watch   : node position for the live watch face

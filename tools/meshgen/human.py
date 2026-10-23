@@ -239,7 +239,7 @@ def sdf_scrub_top(P):
     for s in S2:   # short sleeves: upper-arm capsule, cut square at mid upper arm (only the sleeve is cut)
         S, E = SH[s], EL[s]
         ax = unit(E - S)
-        sl = sd_capsule(P, S + ax * 0.03, S + (E - S) * 0.58, 0.050, 0.049)
+        sl = sd_capsule(P, S + ax * 0.03, S + (E - S) * 0.58, 0.052, 0.055)   # widens towards the hem: covers the biceps
         sl = smax(sl, (P - (S + (E - S) * 0.50)) @ ax, 0.004)
         body = smin(body, sl, 0.018)
     wr = 0.0016 * noise3(P, 20.0, 1.0) + 0.0005 * noise3(P, 70.0, 2.0)
@@ -264,7 +264,7 @@ def sdf_top_details(P):
         q = P - c
         t = q @ ax
         rad = np.linalg.norm(q - t[..., None] * ax, axis=-1)
-        band = np.maximum(np.abs(rad - 0.0585) - 0.0028, np.abs(t + 0.008) - 0.011)
+        band = np.maximum(np.abs(rad - 0.0640) - 0.0028, np.abs(t + 0.008) - 0.011)
         d = np.minimum(d, band)
     # V-neck binding: thin tube along the V edge
     d = np.minimum(d, sd_round_box(P, (0.088, 1.285, 0.122), (0.090, 0.095, 0.006), 0.002))    # chest pocket
@@ -353,18 +353,18 @@ def sdf_brows(P):
 
 
 def sdf_hair_back(P):
-    """Short hair visible below the cap at the back of the neck and sideburns."""
+    """Short hair at the back of the head below the cap: a smooth layer over the skin that thins to nothing at a
+    curved nape hairline (no hard edges, kept clear of the ears)."""
     c = HEAD_C
-    shell = sdf_head(P) - 0.0038 - 0.0003 * noise3(P, 120.0, 3.0)
     q = P - c
-    keep = np.maximum(-(q[..., 1] + 0.080), q[..., 1] + 0.010)                # band between the nape and the cap edge
-    back = np.maximum(keep, q[..., 2] - (-0.020))
-    sb = np.full(P.shape[:-1], 1.0)
-    for s in S2:
-        sb = np.minimum(sb, sd_box(P, c + (s * 0.068, -0.010, 0.030), (0.010, 0.018, 0.010)))
-    region = back                                                                # no sideburns (read as dark blocks)
-    inner = sdf_head(P) + 0.0005
-    return np.maximum(np.maximum(shell, region), -inner)
+    skin = smin(sdf_head(P), sdf_neck(P), 0.02)
+    nape = -0.082 + 0.030 * np.clip(q[..., 0] / 0.060, -1, 1) ** 2               # hairline curves up towards the ears
+    fade = np.clip((q[..., 1] - nape) / 0.022, 0.0, 1.0)                          # thickness fades in over 2.2 cm
+    shell = skin - (0.0006 + 0.0034 * fade) - 0.00025 * noise3(P, 140.0, 3.0)
+    region = smax(nape - q[..., 1], q[..., 1] - 0.012, 0.006)                     # between the hairline and under the cap
+    region = smax(region, q[..., 2] + 0.012, 0.010)                               # back half only
+    region = smax(region, np.abs(q[..., 0]) - 0.064, 0.008)                       # stop short of the ears
+    return smax(smax(shell, region, 0.003), -(skin + 0.0004), 0.0008)
 
 
 def sdf_eyes(P):
@@ -467,7 +467,7 @@ def build_all(log=print, skip=()):
         ("Surgeon_Iris", lambda: mesh(sdf_iris, (-0.05, 1.652, 0.080), (0.05, 1.690, 0.097), 0.0003, 0, target=3000), "MAT_Iris"),
         ("Surgeon_Pupil", lambda: mesh(sdf_pupil, (-0.05, 1.652, 0.080), (0.05, 1.690, 0.098), 0.0003, 0, target=1200), "MAT_Pupil"),
         ("Surgeon_Brows", lambda: mesh(sdf_brows, (-0.06, 1.675, 0.070), (0.06, 1.702, 0.102), 0.0007, 2, target=3000), "MAT_Hair"),
-        ("Surgeon_Hair", lambda: mesh(sdf_hair_back, (-0.10, 1.57, -0.12), (0.10, 1.70, 0.02), 0.0012, 3, cell=0.0022, target=8000), "MAT_Hair"),
+        ("Surgeon_Hair", lambda: mesh(sdf_hair_back, (-0.08, 1.56, -0.12), (0.08, 1.70, 0.01), 0.0009, 4, cell=0.0016), "MAT_Hair"),
         ("Surgeon_Cap", lambda: mesh(sdf_cap, (-0.11, 1.59, -0.14), (0.11, 1.81, 0.135), 0.0012, 3, cell=0.0022), "MAT_SurgeonCap"),
         ("Surgeon_Cap_Band", lambda: mesh(sdf_cap_band, (-0.10, 1.60, -0.13), (0.10, 1.73, 0.12), 0.0010, 2, cell=0.0020, target=6000), "MAT_SurgeonCapBand"),
         ("Surgeon_Mask", lambda: mesh(sdf_mask, (-0.10, 1.54, 0.02), (0.10, 1.68, 0.14), 0.0008, 2, cell=0.0015), "MAT_SurgicalMask"),

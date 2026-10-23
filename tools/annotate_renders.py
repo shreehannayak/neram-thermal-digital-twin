@@ -16,7 +16,7 @@ TITLES = {
  "R06_controller_front_ports": ("R06  Bedside controller, front and ports", "Display, START / STOP / RESET, status LEDs, CH1-CH4 module ports; screen text is illustrative"),
  "R07_cable_routing_top": ("R07  Cable routing, top view", "CH1-CH4 cables from each module to the rail-mounted controller (ceiling hidden for this view)"),
 }
-FOOT = ("NERAM proof-of-concept prototype \u2014 not a medical device. No hardware has been built.", "CAD: Neharika (Fusion, as exported). Mannequin, surgeon, room, O2 set-up and cables are generated stand-ins; pad drape and strap length are visual fits.")
+FOOT = ("NERAM proof-of-concept prototype \u2014 not a medical device. No hardware has been built.", "CAD: Neharikaa (Fusion, as exported). Mannequin, surgeon, room, O2 set-up and cables are generated stand-ins; pad drape and strap length are visual fits.")
 NICE = {"Liner": "Liner (skin side)", "Sensor_A": "Sensor A", "Sensor_B": "Sensor B", "Heater": "Heater film", "Insulation": "Insulation",
         "Shell": "Shell", "Strap": "Straps", "Hook": "Hook patches"}
 
@@ -52,7 +52,7 @@ for p in sorted(SRC.glob("R0*.png")):
     d.rectangle([0, 0, W, 104], fill=(14, 18, 24, 215))
     t, s = TITLES[rid]
     d.text((36, 18), t, font=f_t, fill=(255, 255, 255)); d.text((36, 64), s, font=f_s, fill=(190, 205, 220))
-    d.text((W - 36, 30), "NERAM", font=f_t, fill=(64, 210, 200), anchor="ra"); d.text((W - 36, 70), "Unity viewer render, 2026-10-18", font=f_f, fill=(170, 180, 190), anchor="ra")
+    d.text((W - 36, 30), "NERAM", font=f_t, fill=(64, 210, 200), anchor="ra"); d.text((W - 36, 70), "Unity viewer render, 2026-10-23", font=f_f, fill=(170, 180, 190), anchor="ra")
     d.rectangle([0, H - 72, W, H], fill=(14, 18, 24, 225)); d.text((W / 2, H - 50), FOOT[0], font=f_l, fill=(255, 255, 255), anchor="mm"); d.text((W / 2, H - 20), FOOT[1], font=f_f, fill=(200, 205, 212), anchor="mm")
     Image.alpha_composite(img, ov).convert("RGB").save(OUT / f"{rid}.png", optimize=True)
     print("ok", rid)

@@ -1,13 +1,13 @@
-# Neharika's FBX set: Unity import check and Unity prep (Sai, 18 Oct 2026)
+# Neharikaa's FBX set: Unity import check and Unity prep (Sai, 18 Oct 2026)
 
 Plan reference: Person 2 sections V (export rules), W (names), AB (definition of done); hand-off "Unity import check
 within 1 day of each FBX delivery".
 
-* `cad/exports/source_fusion_2026-10-18/`: the 4 FBX exactly as Neharika exported them from Fusion (unchanged).
+* `cad/exports/source_fusion_2026-10-18/`: the 4 FBX exactly as Neharikaa exported them from Fusion (unchanged).
 * `cad/exports/unity/`: the 6 Unity-ready FBX Sai made from them on 18 Oct (script: `cad/tools/fixneha.py`,
-  report: `PREP_REPORT_2026-10-18.json`). **Shapes and sizes are Neharika's.** Only units, axes, names, grouping,
+  report: `PREP_REPORT_2026-10-18.json`). **Shapes and sizes are Neharikaa's.** Only units, axes, names, grouping,
   pivots and material names changed; the controller was decimated.
-* These 6 files are placed on the mannequin in the Unity viewer (`NERAM > CAD > Place Neharika CAD on the mannequin`);
+* These 6 files are placed on the mannequin in the Unity viewer (`NERAM > CAD > Place Neharikaa CAD on the mannequin`);
   pictures: `cad/renders/unity_preview_2026-10-18/`.
 
 ## Check of the files as received
@@ -37,7 +37,7 @@ within 1 day of each FBX delivery".
 5. Materials → one per function: MAT_Liner, MAT_Heater, MAT_Insulation, MAT_Shell, MAT_Strap (straps + hooks),
    MAT_Sensor, MAT_Enclosure, MAT_Indicator (LEDs), MAT_Connector (ports, inlet, switch), plus MAT_Display,
    MAT_Button_Start/Stop/Reset and MAT_Placeholder (magenta, PCB/PSU placeholders, plan convention). Colours are
-   Neharika's; texture-only fabrics got the flat colour their appearance name says (light brown / grey / black).
+   Neharikaa's; texture-only fabrics got the flat colour their appearance name says (light brown / grey / black).
 6. Controller decimated to 12,748 triangles (BC_Enclosure 9,772 → 5,200, BC_Front_Panel 5,770 → 3,200), quadric
    edge collapse, edges kept; normals recomputed. Render-quality originals stay in `source_fusion_2026-10-18/`.
 7. `exploded_offsets_SAI_DEFAULT.csv`: a default exploded view by layer order (liner 0, sensors 15 mm, heater 30 mm,
@@ -45,7 +45,7 @@ within 1 day of each FBX delivery".
 
 ## Scope (decided by Sai, 18 Oct)
 
-Neharika's part is the 3D models, delivered on 18 Oct and complete. STEP/native files, 2D drawings, strain-relief parts and an assembly file are not part of this submission. The plan's wider CAD list (strain relief, assembly
+Neharikaa's part is the 3D models, delivered on 18 Oct and complete. STEP/native files, 2D drawings, strain-relief parts and an assembly file are not part of this submission. The plan's wider CAD list (strain relief, assembly
 file, STEP/native files, drawings D01–D05) is out of scope for this submission; the Unity validation keeps the missing
 strain relief as a WARN, not a failure. Renders R01–R08 were made by Sai (`cad/renders/`).
 

@@ -14,18 +14,23 @@ chart meanings, value provenance and limitations are in **`../docs/UNITY_WORKSPA
 
 ## Screenshots
 
-Theatre view of the replay viewer (`NERAM.exe`, scenario SYN_SCN_B, SYNTHETIC). The surgeon figure, O2 set-up, face mask,
-airway and airflow are illustrative scene props: they do not model gas flow, breathing or anatomy.
+Theatre view of the replay viewer (`NERAM.exe`, scenario SCN_C, Suchitha's controller test TC07: over-temperature safety
+shutdown, latched). Screenshots taken 23 Oct 2026. The surgeon figure, instruments, O2 set-up, face mask, airway and airflow
+are illustrative scene props: they do not model gas flow, breathing or anatomy.
 
 <img src="../docs/screenshots/viewer_theatre.jpg" width="100%">
 
-| MONITOR page: pipeline and no-intervention forecast | Face mask, theatre cap, O2 tubing |
+| MONITOR page during the safety shutdown | Face mask, theatre cap, O2 tubing |
 |---|---|
 | <img src="../docs/screenshots/viewer_monitor_pipeline.jpg" width="100%"> | <img src="../docs/screenshots/scene_mask_closeup.jpg" width="100%"> |
-| **Portable O2 cylinder, flowmeter, humidifier** | **Surgeon figure (walk with I J K L, U O)** |
+| **Portable O2 cylinder, flowmeter, humidifier** | **Surgeon figure (walk with I J K L, U O; V changes view)** |
 | <img src="../docs/screenshots/scene_o2_trolley.jpg" width="100%"> | <img src="../docs/screenshots/scene_surgeon.jpg" width="100%"> |
 
 <img src="../docs/screenshots/scene_head_end.jpg" width="100%">
+
+Exploded view: every layer of the module is named on screen.
+
+<img src="../docs/screenshots/viewer_exploded.jpg" width="100%">
 
 What moves in the viewer: heater glow and channel chips follow the replayed heating commands; the patient monitor
 sweeps illustrative ECG / pleth / respiration traces and shows the replay's temperature signal; the IV drip forms, falls

@@ -45,5 +45,5 @@ Status: PASS = checked and fine; FIXED = was wrong, fixed in this commit; OPEN =
 
 ## Still open on 18 Oct night
 1. ~~Presentation PDF~~ done. 2. Demo video (Sai, 19 Oct). 3. Member confirmations in GitHub comments and
-family names in CITATION.cff (all). 4. ~~Suchitha: `neram_ctrl/` code folder and the v2 TC04 log~~ done: code rebuilt from her spec, TC04 log and T07 duty table generated (`controller/REBUILD_2026-10-18_SAI.md`). 5. Neharika: done (3D models; STEP/drawings out of scope). 6. BOM prices and the remaining power-budget inputs
-(Shreehan / Neharika / Suchitha inputs).
+family names in CITATION.cff (all). 4. ~~Suchitha: `neram_ctrl/` code folder and the v2 TC04 log~~ done: code rebuilt from her spec, TC04 log and T07 duty table generated (`controller/REBUILD_2026-10-18_SAI.md`). 5. Neharikaa: done (3D models; STEP/drawings out of scope). 6. BOM prices and the remaining power-budget inputs
+(Shreehan / Neharikaa / Suchitha inputs).

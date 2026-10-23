@@ -35,7 +35,7 @@ generated stand-ins.
 - FBX files are stored with Git LFS: install Git LFS before cloning (`git lfs install`), or download them from the GitHub file page.
 - **Autodesk Fusion:** File → Open → Open from my computer → choose the `.fbx`.
 - **Blender (free):** File → Import → FBX. The `exports/unity/` copies import at real size in metres.
-- **Unity:** the viewer project `unity_editor/` already contains the Unity copies; menu **NERAM > CAD > Place Neharika CAD on the mannequin**.
+- **Unity:** the viewer project `unity_editor/` already contains the Unity copies; menu **NERAM > CAD > Place Neharikaa CAD on the mannequin**.
 - PNG renders open in any image viewer.
 
 ## Scope

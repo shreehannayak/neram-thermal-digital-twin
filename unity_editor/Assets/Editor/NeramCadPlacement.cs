@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Neram.EditorTools
 {
     /// <summary>
-    /// Places Neharika's CAD (Unity-prepped 2026-10-18: metres, Y up, plan V/W names, MAT_* materials) on the generated
+    /// Places Neharikaa's CAD (Unity-prepped 2026-10-18: metres, Y up, plan V/W names, MAT_* materials) on the generated
     /// mannequin. All poses and fits come from Assets/NERAM_Generated/MeshData/cad_fit.json, written by
     /// tools/gen_cad_fit.py from the CAD geometry and the mannequin skeleton (single source of truth):
     ///   hands  : palm-up on the raised arm boards; anatomical hand (one finger under every glove finger, built from the
@@ -40,7 +40,7 @@ namespace Neram.EditorTools
         private static Vector3 V(float[] a, int i = 0) => new Vector3(a[i], a[i + 1], a[i + 2]);
         private static GameObject Load(string file) => AssetDatabase.LoadAssetAtPath<GameObject>(NeramCadTools.CadFolder + "/" + file);
 
-        [MenuItem("NERAM/CAD/Place Neharika CAD on the mannequin", priority = 19)]
+        [MenuItem("NERAM/CAD/Place Neharikaa CAD on the mannequin", priority = 19)]
         public static void PlaceMenu()
         {
             var asm = GameObject.Find(SceneNames.Assembly);
@@ -274,7 +274,7 @@ namespace Neram.EditorTools
         }
 
         /// <summary>CAD straps enclose a 29 mm limb (a hand); on the foot they are lengthened to the foot height at their
-        /// position (top edge kept) and the hook moved with the strap end. Visual fit only; noted for Neharika.</summary>
+        /// position (top edge kept) and the hook moved with the strap end. Visual fit only; noted for Neharikaa.</summary>
         private static void FitStraps(Transform root, StrapJ[] straps, int ch, StringBuilder sb)
         {
             if (straps == null) return;
@@ -312,7 +312,7 @@ namespace Neram.EditorTools
         }
 
         /// <summary>MAT_* slots that exist in the project palette use the project material (heater glow, indicator
-        /// states); other MAT_* slots (MAT_Display, MAT_Button_*, MAT_Placeholder) keep Neharika's flat colours.</summary>
+        /// states); other MAT_* slots (MAT_Display, MAT_Button_*, MAT_Placeholder) keep Neharikaa's flat colours.</summary>
         private static void ApplyProjectMaterials(Transform asm)
         {
             var lib = new Dictionary<string, Material>();

@@ -35,6 +35,8 @@ the patient's own monitor data, with a simulated supervised warming controller a
 
 Each member confirms their own line in a GitHub comment.
 
+Parts of the code and documentation were written with an AI coding assistant (Claude). The design decisions, review and verification are the team's.
+
 ## 3. College / incubator
 CEG, Anna University (College of Engineering Guindy, Chennai).
 
@@ -70,7 +72,7 @@ Full text: `docs/SAFETY_AND_LIMITATIONS.md`.
 Twin = estimation and forecasting. Controller = simulated supervision. Unity = replay-only visualisation. One JSONL
 replay contract (`config/interface_spec.csv`, `unity/schema/`) joins them.
 
-`docs/architecture.pdf` (source `docs/ARCHITECTURE.md`, `docs/architecture_src/`).
+[`docs/architecture.pdf`](docs/architecture.pdf) (source [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), `docs/architecture_src/`).
 
 ## 8. Digital Twin and results
 See `docs/MODEL_CARD.md`, `docs/RESULTS.md` and `docs/DATA_CARD.md`.
@@ -119,7 +121,7 @@ A master safety switch, default open, sits in series with all four channels. Eac
 **Files.** See hardware/README.md for the full list: diagrams (block diagram, safety layers, interface map), comparisons (sensor, MCU, heater), documents (observation interface, module sensing, power architecture, standards references, feasibility), interface files (fault codes, communication protocol, controller interface, CAD envelope), power budget and electrical bill of materials.
 
 ## 11. CAD
-Owner: Neharika. Hand modules (CH1 left, CH2 right: palmar pad of liner, heater film, insulation and shell with two
+Owner: Neharikaa. Hand modules (CH1 left, CH2 right: palmar pad of liner, heater film, insulation and shell with two
 sensors and two straps), foot modules (CH3, CH4: sole pads), a display-only wrist wearable concept (no controls, no
 battery) and the bedside controller enclosure.
 
@@ -150,7 +152,7 @@ Replay viewer for the twin, controller and hardware stand-ins (Unity 6000.3.26f1
   source tag.
 - **Exploded view:** each module separates into its layers and every layer is named on screen (liner, insulation,
   heater film, sensors A/B, thermal cutoff, shell, straps …) with leader lines.
-- **3D models:** Neharika's CAD placed on a generated mannequin (`tools/gen_cad_fit.py`, `unity_editor/Assets/Editor/NeramCadPlacement.cs`).
+- **3D models:** Neharikaa's CAD placed on a generated mannequin (`tools/gen_cad_fit.py`, `unity_editor/Assets/Editor/NeramCadPlacement.cs`).
   The mannequin, table, room and cables are generated stand-ins; the pad drape and strap length are visual fits.
 - **Scene props (illustrative):** patient monitor with sweeping ECG / pleth / respiration traces and the replay's
   temperature signal; IV drip; anaesthesia face mask with O2 tubing from a portable cylinder; airway, lungs and oxygen
@@ -198,7 +200,7 @@ Agreement. No case-level clinical data and no holdout material are in this repos
 here is SYNTHETIC. Development and holdout outputs (`results/development/`, `results/final/`) are not published.
 
 ## 16. Demo video, architecture PDF, presentation links
-- Architecture PDF: `docs/architecture.pdf`
+- Architecture PDF: [`docs/architecture.pdf`](docs/architecture.pdf)
 - Demo video (17:58, unlisted YouTube): https://youtu.be/22L1wyx7IZk
 - Presentation: [`docs/presentation.pdf`](docs/presentation.pdf) (16 slides)
 - Team handbook for the repository: [`docs/GITHUB_HANDBOOK.md`](docs/GITHUB_HANDBOOK.md)

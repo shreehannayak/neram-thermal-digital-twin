@@ -402,11 +402,11 @@ namespace Neram.EditorTools
                           "(not CAD, not design dimensions). Coordinate contract: metres, Y up, origin = table-top centre, +Z toward the head, " +
                           "patient supine => patient's LEFT = +X. Values on screen come only from validated replay files.";
 
-            // Neharika's CAD (Assets/NERAM_CAD) replaces the stand-ins it covers; stand-ins stay for roles without CAD.
+            // Neharikaa's CAD (Assets/NERAM_CAD) replaces the stand-ins it covers; stand-ins stay for roles without CAD.
             var cadLog = NeramCadPlacement.PlaceAll(built.Assembly, out int cadPlaced);
             if (cadPlaced > 0)
             {
-                marker.note += " Exception: " + cadPlaced + " object(s) use Neharika's CAD from Assets/NERAM_CAD (see NERAM > CAD).";
+                marker.note += " Exception: " + cadPlaced + " object(s) use Neharikaa's CAD from Assets/NERAM_CAD (see NERAM > CAD).";
                 Debug.Log("[NERAM CAD]\n" + cadLog);
             }
 

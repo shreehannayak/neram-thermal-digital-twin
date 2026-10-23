@@ -1,5 +1,5 @@
 param,value,unit,status,source,notes
-version,v2,-,PROVISIONAL,"Sai (drafted for Shreehan, 18 Oct 2026)",v2 = first sourced values; every change after this bumps the version and Neharika is told the same day
+version,v2,-,PROVISIONAL,"Sai (drafted for Shreehan, 18 Oct 2026)",v2 = first sourced values; every change after this bumps the version and Neharikaa is told the same day
 sensors_per_module,2,count,FROZEN,Project constraint,Two pockets per module (A and B)
 heater_outline_hand_mm,,mm (L x W),TBD,Custom-shape KHLVA heater cut to the module footprint (area TBD),Outline would follow the hand module footprint; Omega offers custom shapes; area not defined in this submission
 heater_outline_foot_mm,,mm (L x W),TBD,Custom-shape KHLVA heater cut to the module footprint (area TBD),As above for the sole

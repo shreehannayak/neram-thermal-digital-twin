@@ -12,7 +12,7 @@ namespace Neram.EditorTools
     /// Copies team outputs from the repository into StreamingAssets (same behaviour as tools/sync_unity_streaming_assets.py):
     ///   config/{enums.json, params.json, unity_display.json, unity_scenarios.json, interface_spec.csv} -> StreamingAssets/config/
     ///   hardware/interfaces/fault_codes.csv (Shreehan, optional)                                   -> StreamingAssets/config/
-    ///   cad/exploded_offsets.csv (Neharika, optional)                                              -> StreamingAssets/cad/
+    ///   cad/exploded_offsets.csv (Neharikaa, optional)                                              -> StreamingAssets/cad/
     ///   integration/replays/*.jsonl(.gz)                                                           -> StreamingAssets/replays/
     /// HOLDOUT GUARD: every replay is fully validated before it is copied. A file whose header cohort is not SYNTHETIC or
     /// DEVELOPMENT (or that fails validation for any other reason) is NOT copied, so final-holdout data can never reach

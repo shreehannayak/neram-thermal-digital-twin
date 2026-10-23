@@ -4,7 +4,7 @@ NERAM > 2. Sync config + replays from repository).
 
   config/{enums.json, params.json, unity_display.json, unity_scenarios.json, interface_spec.csv} -> StreamingAssets/config/
   hardware/interfaces/fault_codes.csv (Shreehan, optional)                                   -> StreamingAssets/config/
-  cad/exploded_offsets.csv (Neharika, optional)                                              -> StreamingAssets/cad/
+  cad/exploded_offsets.csv (Neharikaa, optional)                                              -> StreamingAssets/cad/
   integration/replays/*.jsonl[.gz]                                                           -> StreamingAssets/replays/
 
 HOLDOUT GUARD: every replay is fully validated (integration/validate_replay.py) before it is copied. A replay that is

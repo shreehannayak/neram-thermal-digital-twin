@@ -83,8 +83,10 @@ NORMAL_MAPS = {  # material -> (texture, strength, tiling); fabrics and skin get
 }
 
 PARTS = []
-BIN = bytearray()
-BIN_PATH = ROOT / "unity_editor" / "Assets" / "NERAM_Generated" / "MeshData" / "scene_extras_mesh.bytes"
+BINS = [bytearray()]          # binary mesh blocks, split so that no file exceeds BIN_CHUNK (GitHub / transfer limits)
+BIN_CHUNK = 20_000_000
+BIN_DIR = ROOT / "unity_editor" / "Assets" / "NERAM_Generated" / "MeshData"
+BIN_NAMES = lambda i: "scene_extras_mesh.bytes" if i == 0 else f"scene_extras_mesh_{i}.bytes"
 UV_MATS = set(NORMAL_MAPS) | {"MAT_Skin", "MAT_Gown"}
 BUDGET = {"Patient_Theatre_Cap": 9000, "Airway_Lung_Right": 4500, "Airway_Lung_Left": 4500,
           "Patient_Ear_Left": 2600, "Patient_Ear_Right": 2600}
@@ -108,13 +110,16 @@ def add(group, name, mesh: Mesh, mat, parent="NERAM_Assembly", replace=None, bin
         if mat in UV_MATS:
             from geom import box_uv
             uv = np.asarray(box_uv(mesh.V, N, 1.0), np.float32)
-        off = len(BIN)
-        BIN.extend(np.asarray(mesh.V, "<f4").tobytes()); BIN.extend(np.asarray(N, "<f4").tobytes())
+        block = np.asarray(mesh.V, "<f4").tobytes() + np.asarray(N, "<f4").tobytes()
         if uv is not None:
-            BIN.extend(np.asarray(uv, "<f4").tobytes())
-        BIN.extend(np.asarray(mesh.F, "<i4").ravel().tobytes())
-        PARTS.append(dict(group=group, name=name, parent=parent, mat=mat, replace=replace or "", bin=off, nv=len(mesh.V),
-                          ni=int(mesh.F.size), has_uv=uv is not None))
+            block += np.asarray(uv, "<f4").tobytes()
+        block += np.asarray(mesh.F, "<i4").ravel().tobytes()
+        if len(BINS[-1]) and len(BINS[-1]) + len(block) > BIN_CHUNK:
+            BINS.append(bytearray())
+        off = len(BINS[-1])
+        BINS[-1].extend(block)
+        PARTS.append(dict(group=group, name=name, parent=parent, mat=mat, replace=replace or "", bin=off, bf=len(BINS) - 1,
+                          nv=len(mesh.V), ni=int(mesh.F.size), has_uv=uv is not None))
         return
     PARTS.append(dict(group=group, name=name, parent=parent, mat=mat,
                       v=np.round(mesh.V, 5).ravel().tolist(), n=np.round(N, 4).ravel().tolist(), f=mesh.F.astype(int).ravel().tolist()))
@@ -411,7 +416,8 @@ def main():
     build_surgeon()
     build_instruments()
     build_patient_hq()
-    BIN_PATH.write_bytes(bytes(BIN))
+    for i, b in enumerate(BINS):
+        (BIN_DIR / BIN_NAMES(i)).write_bytes(bytes(b))
     out = dict(
         version=1, generator="tools/gen_scene_extras.py (Sai, 2026-10-18)",
         note="Visual stand-ins. Mask, oxygen set-up, airway and airflow are ILLUSTRATIVE: no gas flow, oxygen concentration, "
@@ -422,6 +428,7 @@ def main():
                         tiling=NORMAL_MAPS[n][2] if n in NORMAL_MAPS else 0.0)
                    for n, c, s, m, t, e in MATERIALS],
         bin_file="Assets/NERAM_Generated/MeshData/scene_extras_mesh.bytes",
+        bin_files=["Assets/NERAM_Generated/MeshData/" + BIN_NAMES(i) for i in range(len(BINS))],
         hide_prefixes=["O2_Cylinder_", "Trolley_Tray_"],          # wall cylinders merged with the cupboards: replaced by the trolley set
         surgeon=SURGEON_POSE,
         # flat point lists (Unity JsonUtility reads no nested arrays): external = humidifier -> mask (always shown),
@@ -433,7 +440,7 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, separators=(",", ":")))
     tri = sum((len(p["f"]) if "f" in p else p["ni"]) // 3 for p in PARTS)
-    print(f"wrote {OUT} ({OUT.stat().st_size / 1e6:.1f} MB) + {BIN_PATH.name} ({len(BIN) / 1e6:.1f} MB): {len(PARTS)} parts, {tri} triangles")
+    print(f"wrote {OUT} ({OUT.stat().st_size / 1e6:.1f} MB) + {len(BINS)} mesh block(s) ({", ".join(f'{len(b) / 1e6:.1f}' for b in BINS)} MB): {len(PARTS)} parts, {tri} triangles")
 
 
 if __name__ == "__main__":

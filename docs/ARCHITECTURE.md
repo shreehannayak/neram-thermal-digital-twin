@@ -10,7 +10,7 @@ Source of the PDF: `docs/architecture_src/architecture.html`, rendered with head
   It decides the four heating commands from the twin outputs, module telemetry and clinician buttons.
 * **Hardware = specification and simulated telemetry only** (Shreehan). No hardware is built; every hardware
   value in the demo is SIMULATED.
-* **CAD = physical design** of the four modules and the bedside controller (Neharika). Unity imports the FBX.
+* **CAD = physical design** of the four modules and the bedside controller (Neharikaa). Unity imports the FBX.
 * **Unity = visualisation and integration only.** It reads one replay file. No model, no controller and no physics
   run in C#.
 
@@ -77,6 +77,6 @@ T_plant = T_pass + ΔT_heat. Here Δt is in minutes and k_heat in °C/h at 100 %
 * Real-data twin parameters: the development fit failed (docs/RESULTS.md).
 * Development-case replay SCN_A (DEV_<pseudo>).
 * Hardware fault-code display text (Shreehan).
-* CAD FBX (Neharika).
+* CAD FBX (Neharikaa).
 * A controller log with heating (Suchitha).
 * Summit closed loop.

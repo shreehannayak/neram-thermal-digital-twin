@@ -30,7 +30,7 @@ Everything else in the plan is done, done to the agreed scope, or blocked for a 
 | Shreehan confirms hardware assumptions in a GitHub comment | **LEFT** | issue #2 |
 | Controller output in the simulation | DONE (19 Oct) | SCN_B–SCN_F replays from her test runs; SCN_C is the start-up scenario |
 
-## Neharika — CAD (checklist 2AB)
+## Neharikaa — CAD (checklist 2AB)
 | Item | Status | Evidence |
 |---|---|---|
 | Four modules, controller, assembly | DONE (scope) | `cad/exports/`, placed in the viewer |

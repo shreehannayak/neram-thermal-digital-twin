@@ -1,4 +1,4 @@
-"""R08 (plan section U): sensor-pocket section of Neharika's CH1 hand module (Unity-ready FBX, shapes as exported), cut through the
+"""R08 (plan section U): sensor-pocket section of Neharikaa's CH1 hand module (Unity-ready FBX, shapes as exported), cut through the
 centre of CH1_Sensor_A by the plane z = const. Thicknesses are measured from the cut, not typed in.
 Usage: python tools/render_section.py [hand_module.fbx] [out.png]   (needs git-lfs files, numpy, matplotlib, Pillow)"""
 import sys, json
@@ -59,7 +59,7 @@ print(json.dumps({"z_cut_mm": round(zc * 1000, 1), "x_sensor_mm": round(xc * 100
 
 fig = plt.figure(figsize=(19.2, 10.8), dpi=100); fig.patch.set_facecolor("white")
 fig.text(0.02, 0.955, "R08  Sensor-pocket section, CH1 hand module (left)", fontsize=26, weight="bold")
-fig.text(0.02, 0.918, f"Section plane through the centre of CH1_Sensor_A (z = {zc*1000:.1f} mm in module coordinates). Geometry: Neharika's Fusion export (Unity-ready copy, shapes unchanged). "
+fig.text(0.02, 0.918, f"Section plane through the centre of CH1_Sensor_A (z = {zc*1000:.1f} mm in module coordinates). Geometry: Neharikaa's Fusion export (Unity-ready copy, shapes unchanged). "
          "All dimensions measured from the cut.", fontsize=13, color="#333")
 def draw(ax, xlim, ylim, scale_note):
     for n in ORDER:
@@ -99,11 +99,11 @@ for n in ORDER:
 notes = ["y-ranges measured on the cut: Sensor A at x = %.1f mm,\n   the other layers at x = \u221230 mm." % xs,
          "Sensor A (10 \u00d7 10 \u00d7 0.8 mm) sits on the liner in a recess\n   under the heater film (film 3.3\u20133.5 mm over the sensor).",
          "Shell: cap at 7.0\u20139.0 mm, walls down to 2.0 mm at the rim.",
-         "CAD check: insulation starts at 3.0 mm, the heater film ends\n   at 3.5 mm \u2192 0.5 mm overlap in the export (for Neharika).",
+         "CAD check: insulation starts at 3.0 mm, the heater film ends\n   at 3.5 mm \u2192 0.5 mm overlap in the export (for Neharikaa).",
          "CAD geometry only: no thermal or electrical value is implied."]
 for t in notes:
     ax3.text(0.0, y - 0.03, "\u2022 " + t, fontsize=13, va="top", transform=ax3.transAxes)
     y -= 0.135 if chr(10) in t else 0.075
 fig.text(0.5, 0.03, "NERAM proof-of-concept prototype — not a medical device. No hardware has been built.", ha="center", fontsize=15, weight="bold")
-fig.text(0.5, 0.008, "CAD: Neharika (Fusion export). Section drawn by tools/render_section.py from the Unity-ready FBX.", ha="center", fontsize=11, color="#444")
+fig.text(0.5, 0.008, "CAD: Neharikaa (Fusion export). Section drawn by tools/render_section.py from the Unity-ready FBX.", ha="center", fontsize=11, color="#444")
 fig.savefig(OUT, dpi=100, facecolor="white"); from PIL import Image as _I; _I.open(OUT).convert("RGB").save(OUT); print("saved", OUT)

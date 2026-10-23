@@ -12,7 +12,7 @@
 | 1:15 | Press **T** to jump to PREDICTIVE_WARMING | The transition comes from the controller log (trigger reason shown). Open loop: heaters would be commanded, but this replay applies no warming — the forecast is labelled "No-intervention forecast". |
 | 2:00 | SCN_B (or SYN_SCN_B) | Twin in the loop with an **ASSUMED** warming response: label "Forecast under ASSUMED warming"; heater glow follows Heat_i; "Compare" shows the ASSUMED no-warming trajectory from the same file. Simulated, not evidence of benefit. |
 | 3:00 | SCN_C (or SYN_SCN_C), **F** to the fault | Over-temperature on one channel → SAFETY_SHUTDOWN latched, all heaters dark, fault code and channel outlined; RESET blocked until conditions clear, then released. |
-| 4:00 | Click the module → Exploded view | Layer stack (liner, sensors A/B, flexible resistive heater, independent cutoff, insulation, shell). CAD from Neharika (or placeholder geometry, labelled). |
+| 4:00 | Click the module → Exploded view | Layer stack (liner, sensors A/B, flexible resistive heater, independent cutoff, insulation, shell). CAD from Neharikaa (or placeholder geometry, labelled). |
 | 4:45 | SCN_D (or SYN_SCN_D) | Twin degraded → forecast hidden, banner "Twin unreliable — monitoring only". Uncertainty drives behaviour; no forecast is shown when the twin is not valid. |
 | 5:30 | Parameters drawer | Every threshold shows its status (FROZEN / PROVISIONAL / TBD / ASSUMED). TBD values are not invented. |
 | 6:00 | Footer | "Simulated / assumed prototype response. Not for treatment decisions." |

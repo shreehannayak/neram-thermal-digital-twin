@@ -48,7 +48,7 @@ sent yet; Sai sends them. Nothing here changes another owner's files.
 > 5. **Power budget:** the development-case duration median/P90 comes from Colab (runbook Cell 7); I'll send it
 >    as soon as it has run.
 
-## 4. To Neharika (CAD) — plan 2, 4P; full spec in docs/unity/CAD_INTEGRATION.md
+## 4. To Neharikaa (CAD) — plan 2, 4P; full spec in docs/unity/CAD_INTEGRATION.md
 > 1. **FBX exports:** metres, Y up, origin = table-top centre, +Z toward the head (patient's left = +X). Object
 >    names per the CAD contract: `Left_Hand_Module` (children CH1_Liner … CH1_Heater …), the other three modules,
 >    `Bedside_Controller` (BC_Enclosure, BC_Display, BC_LED_CH1…4, BC_Button_Start/Stop/Reset, …). Each object placed in

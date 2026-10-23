@@ -1,4 +1,4 @@
-"""Sai's Unity-prep of Neharika's Fusion FBX exports (plan section V/W). Geometry shape is not changed except
+"""Sai's Unity-prep of Neharikaa's Fusion FBX exports (plan section V/W). Geometry shape is not changed except
 controller decimation; every change is listed in the report the script prints."""
 import copy, json, sys
 import numpy as np
