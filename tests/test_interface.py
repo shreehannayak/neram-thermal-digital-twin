@@ -41,7 +41,7 @@ PLAN_TWIN = (["T_twin_s", "T_obs", "obs_missing", "T_est", "T_est_sd"]
 PLAN_OWNERS = {
     "Sai": ["t_hypo_degC", "t_target_degC", "p_trigger", "p_release", "n_confirm_updates", "sd_degrade_degC",
             "ts_twin_s", "data_stale_twin_s", "k_heat_degC_per_h", "tau_heat_min", "w_ch", "r_obs_degC2"],
-    "Suchitha": ["band_target_degC", "t_dwell_min_s", "t_recover_s", "t_stop_inhibit_s", "d_pred_max_pct",
+    "Suchita": ["band_target_degC", "t_dwell_min_s", "t_recover_s", "t_stop_inhibit_s", "d_pred_max_pct",
                  "d_active_max_pct", "d_maint_max_pct", "d_fallback_pct", "kp_pct_per_degC", "ki_pct_per_degC_s",
                  "ts_ctrl_s", "sd_mod_sensor_degC", "tau_mod_s", "k_mod_degC", "t_skin_base_degC",
                  "sd_standin_degC", "tau_standin_s"],

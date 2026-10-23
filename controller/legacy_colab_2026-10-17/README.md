@@ -1,6 +1,6 @@
-# Suchitha's Colab notebook, 17 Oct 2026 version (superseded)
+# Suchita's Colab notebook, 17 Oct 2026 version (superseded)
 
-`neram.ipynb`: Suchitha's single-cell Colab controller (supervisor, fault monitor, closed-loop stand-in plant, TC01–TC03
+`neram.ipynb`: Suchita's single-cell Colab controller (supervisor, fault monitor, closed-loop stand-in plant, TC01–TC03
 and fault demos) plus the integration-log exporter. Received from Sai on 18 Oct 2026, kept unchanged with its saved
 outputs. **Superseded** by the 18 Oct v2 package (`controller/README.md`; results in `controller/results/`), whose code
 folder `neram_ctrl/` is still to come.

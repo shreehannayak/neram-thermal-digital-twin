@@ -88,14 +88,14 @@ See `docs/MODEL_CARD.md`, `docs/RESULTS.md` and `docs/DATA_CARD.md`.
   `docs/PREREGISTRATION_final.md`. No holdout result exists.
 
 ## 9. Controller
-Supervisory controller (owner: Suchitha), implemented as a **Python fallback** because MATLAB/Simulink/Stateflow
+Supervisory controller (owner: Suchita), implemented as a **Python fallback** because MATLAB/Simulink/Stateflow
 were not available. Seven states, 14 transitions and latched faults; five blocks run every second (TwinAdapter,
 FaultMonitor, Supervisor, DemandLaw, channel limiter). Test results: TC01–TC18 PASS, TC19 BLOCKED (needs a
 development twin file), TC20 excluded. All responses are SIMULATED / ASSUMED.
 
 Details: `controller/README.md`, `controller/docs/controller_spec.md`, results in `controller/results/`, demo video
 `controller/docs/demo_controller.mp4`. Run: `cd controller && python scripts/run_all_tests.py` (about 1 minute).
-The v2 source code was lost before upload; Sai rebuilt `controller/neram_ctrl/` from Suchitha's specification on
+The v2 source code was lost before upload; Sai rebuilt `controller/neram_ctrl/` from Suchita's specification on
 18 Oct, and it reproduces her five v2 logs byte for byte (`controller/REBUILD_2026-10-18_SAI.md`).
 
 ## 10. Hardware
@@ -141,7 +141,7 @@ Replay viewer for the twin, controller and hardware stand-ins (Unity 6000.3.26f1
 - **Open the project:** Unity Hub → Add → `unity_editor/`, open with 6000.3.26f1, then **NERAM → 1. Run full setup**
   and Play. Guides: `docs/UNITY_WORKSPACE_README.md`, `docs/NERAM_Viewer_User_Guide.pdf`,
   `docs/NERAM_Simulation_Handbook.pdf`.
-- **Scenarios:** SCN_B–SCN_F are built from Suchitha's controller test runs (`tools/make_controller_replays.py`):
+- **Scenarios:** SCN_B–SCN_F are built from Suchita's controller test runs (`tools/make_controller_replays.py`):
   SCN_B predictive warming (TC02), SCN_C over-temperature fault and reset (TC07, closed loop; the start-up scenario),
   SCN_D twin degraded (TC13), SCN_E active recovery to target over 12 h (TC04, closed loop) and SCN_F single-channel
   sensor fault (TC08). Their twin fields are test-bench stand-ins (twin source SIMULATED, not the NERAM twin) and the

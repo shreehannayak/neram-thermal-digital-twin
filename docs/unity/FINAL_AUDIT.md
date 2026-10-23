@@ -17,7 +17,7 @@ Verification available in this build: .NET 8 build of `Neram.Core` (warnings as 
 | `t_target_degC` | TBD | no value in params.json; synthetic headers use 36.5 marked SYNTHETIC DEMO placeholder |
 | `t_hypo_degC` applicability to this signal | TBD | placeholder 36.0 shown with status TBD |
 | `T_obs` validation range 25–43 °C equals Code 4 BT filter | TBD | Sai to confirm (PHASE0 #11) |
-| Enum integers | PROVISIONAL | resolved by name; Suchitha to freeze |
+| Enum integers | PROVISIONAL | resolved by name; Suchita to freeze |
 
 ## Replay engine
 | Item | Status | Evidence |

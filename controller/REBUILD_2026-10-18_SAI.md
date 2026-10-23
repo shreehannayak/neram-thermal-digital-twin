@@ -1,13 +1,13 @@
 # Controller code rebuild (Sai, 18 Oct 2026)
 
 ## Why
-Suchitha's v2 controller (spec, results, logs, figures, video) was produced in a Claude chat session that was not her
+Suchita's v2 controller (spec, results, logs, figures, video) was produced in a Claude chat session that was not her
 own account. The chat's generated files were hidden when the chat was shared, and she does not have the source files
 (`neram_ctrl/`, scripts, tests). Her v2 **outputs** arrived on 18 Oct and are in the repository unchanged
 (`integration/controller_logs_received/2026-10-18/`). Without code, the README's run commands could not work, so Sai
 rebuilt the code from her specification (`docs/controller_spec.md`) the same night, with Claude's help.
 
-The design, the states, transitions, fault table, parameters and test criteria are Suchitha's. The Python files in
+The design, the states, transitions, fault table, parameters and test criteria are Suchita's. The Python files in
 `neram_ctrl/` and `scripts/` were written on 18 Oct by Sai to that design.
 
 ## How the rebuild was checked

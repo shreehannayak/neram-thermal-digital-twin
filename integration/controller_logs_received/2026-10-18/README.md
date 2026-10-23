@@ -1,6 +1,6 @@
 # NERAM supervisory controller - Python fallback
 
-Owner: Suchitha (supervisory controller, plan pp. 4-23). **SIMULATED / ASSUMED prototype. No clinical efficacy or clinical validation is claimed.**
+Owner: Suchita (supervisory controller, plan pp. 4-23). **SIMULATED / ASSUMED prototype. No clinical efficacy or clinical validation is claimed.**
 
 MATLAB/Simulink/Stateflow were not available, so the controller, test bench, tests, logs, plots and tables are implemented and
 run in Python. This is a *fallback*: the native `.slx`/Stateflow deliverables are **not** produced (list at the end).

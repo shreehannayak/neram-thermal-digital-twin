@@ -69,8 +69,8 @@
       "placeholder": null,
       "unit": "degC",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "TARGET_LOST hysteresis band",
       "used_by": "Ctrl"
     },
@@ -79,8 +79,8 @@
       "placeholder": null,
       "unit": "s",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Minimum time a condition must hold before a non-safety transition",
       "used_by": "Ctrl"
     },
@@ -89,8 +89,8 @@
       "placeholder": null,
       "unit": "s",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Twin recovery dwell",
       "used_by": "Ctrl"
     },
@@ -99,8 +99,8 @@
       "placeholder": null,
       "unit": "s",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "No autonomous re-trigger after STOP",
       "used_by": "Ctrl"
     },
@@ -109,8 +109,8 @@
       "placeholder": null,
       "unit": "%",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Demand cap per mode",
       "used_by": "Ctrl"
     },
@@ -119,8 +119,8 @@
       "placeholder": null,
       "unit": "%",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Demand cap per mode",
       "used_by": "Ctrl"
     },
@@ -129,8 +129,8 @@
       "placeholder": null,
       "unit": "%",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Demand cap per mode",
       "used_by": "Ctrl"
     },
@@ -139,8 +139,8 @@
       "placeholder": null,
       "unit": "%",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Demand cap per mode",
       "used_by": "Ctrl"
     },
@@ -149,8 +149,8 @@
       "placeholder": null,
       "unit": "%/degC",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "PI proportional gain",
       "used_by": "Ctrl"
     },
@@ -159,8 +159,8 @@
       "placeholder": null,
       "unit": "%/(degC*s)",
       "status": "PROVISIONAL",
-      "source": "Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "PI integral gain",
       "used_by": "Ctrl"
     },
@@ -170,7 +170,7 @@
       "unit": "s",
       "status": "PROVISIONAL",
       "source": "Design choice",
-      "owner": "Suchitha",
+      "owner": "Suchita",
       "purpose": "Controller step",
       "used_by": "Ctrl, HW protocol"
     },
@@ -189,7 +189,7 @@
       "placeholder": 120,
       "unit": "s",
       "status": "PROVISIONAL",
-      "source": "Derived from ts_twin_s (plan section 6): 2 x ts_twin_s = 120 s; the value Suchitha's controller uses. Placeholder until confirmed",
+      "source": "Derived from ts_twin_s (plan section 6): 2 x ts_twin_s = 120 s; the value Suchita's controller uses. Placeholder until confirmed",
       "owner": "Sai",
       "purpose": "Twin age that triggers TWIN_DEGRADED",
       "used_by": "Ctrl"
@@ -464,8 +464,8 @@
       "placeholder": 0.05,
       "unit": "degC",
       "status": "ASSUMED",
-      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "ASSUMED test-bench stand-in value; Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Module stand-in sensor noise",
       "used_by": "Test bench only"
     },
@@ -474,8 +474,8 @@
       "placeholder": 90,
       "unit": "s",
       "status": "ASSUMED",
-      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "ASSUMED test-bench stand-in value; Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Module stand-in time constant",
       "used_by": "Test bench only"
     },
@@ -484,8 +484,8 @@
       "placeholder": 6.0,
       "unit": "degC",
       "status": "ASSUMED",
-      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "ASSUMED test-bench stand-in value; Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Module stand-in gain",
       "used_by": "Test bench only"
     },
@@ -494,8 +494,8 @@
       "placeholder": 33.0,
       "unit": "degC",
       "status": "ASSUMED",
-      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "ASSUMED test-bench stand-in value; Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Module stand-in base temperature",
       "used_by": "Test bench only"
     },
@@ -504,8 +504,8 @@
       "placeholder": 0.05,
       "unit": "degC",
       "status": "ASSUMED",
-      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "ASSUMED test-bench stand-in value; Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Twin stand-in SD",
       "used_by": "Test bench only"
     },
@@ -514,8 +514,8 @@
       "placeholder": 15,
       "unit": "s",
       "status": "ASSUMED",
-      "source": "ASSUMED test-bench stand-in value; Suchitha, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
-      "owner": "Suchitha",
+      "source": "ASSUMED test-bench stand-in value; Suchita, controller_spec.md section 6 (Python fallback, received 18 Oct 2026; integration/controller_logs_received/2026-10-18/); her design choice, tuned only on the ASSUMED plant",
+      "owner": "Suchita",
       "purpose": "Twin stand-in filter constant",
       "used_by": "Test bench only"
     },
@@ -527,7 +527,7 @@
       "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
       "owner": "Sai",
       "purpose": "Passive (no-warming) trajectory: redistribution amplitude alpha in phi_t = [exp(-gamma t) - 1, t/60]",
-      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+      "used_by": "Plant (Suchita test bench STANDIN), synthetic twin trajectories"
     },
     "plant_passive_beta_degC_per_h": {
       "value": null,
@@ -537,7 +537,7 @@
       "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
       "owner": "Sai",
       "purpose": "Passive trajectory: linear drift beta",
-      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+      "used_by": "Plant (Suchita test bench STANDIN), synthetic twin trajectories"
     },
     "plant_passive_gamma_per_min": {
       "value": null,
@@ -547,7 +547,7 @@
       "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
       "owner": "Sai",
       "purpose": "Passive trajectory: redistribution rate gamma",
-      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+      "used_by": "Plant (Suchita test bench STANDIN), synthetic twin trajectories"
     },
     "plant_passive_u0_degC": {
       "value": null,
@@ -557,7 +557,7 @@
       "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
       "owner": "Sai",
       "purpose": "Passive trajectory: starting level u0",
-      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+      "used_by": "Plant (Suchita test bench STANDIN), synthetic twin trajectories"
     },
     "plant_passive_q_degC2_per_min": {
       "value": null,
@@ -567,7 +567,7 @@
       "source": "Development fit (population values) when available; placeholder = synthetic-verification value from the self-test of src/thermal_robust_core.py",
       "owner": "Sai",
       "purpose": "Passive trajectory: level random-walk variance q",
-      "used_by": "Plant (Suchitha test bench STANDIN), synthetic twin trajectories"
+      "used_by": "Plant (Suchita test bench STANDIN), synthetic twin trajectories"
     }
   },
   "changelog": [
@@ -587,7 +587,7 @@
       "version": "0.3",
       "date": "2026-10-18",
       "owner": "Sai",
-      "changes": "Suchitha-owned rows filled from her controller_spec.md section 6 (as she set them): PROVISIONAL values band_target_degC, t_dwell_min_s, t_recover_s, t_stop_inhibit_s, d_pred_max_pct, d_active_max_pct, d_maint_max_pct, d_fallback_pct, kp_pct_per_degC, ki_pct_per_degC_s; ASSUMED test-bench placeholders t_skin_base_degC, k_mod_degC, tau_mod_s, sd_mod_sensor_degC, sd_standin_degC, tau_standin_s. Sai row data_stale_twin_s: placeholder 120 s (2 x ts_twin_s). Shreehan rows unchanged (null): the numbers in Suchitha's standalone table are from an old script, not Shreehan values. Sai rows p_trigger/p_release/k_heat/tau_heat/r_obs unchanged; Suchitha used different standalone stand-ins because params.json had not reached her; her code reads config/params.json automatically when present, so she should re-run with this file. Announce to the team (plan 4D)."
+      "changes": "Suchita-owned rows filled from her controller_spec.md section 6 (as she set them): PROVISIONAL values band_target_degC, t_dwell_min_s, t_recover_s, t_stop_inhibit_s, d_pred_max_pct, d_active_max_pct, d_maint_max_pct, d_fallback_pct, kp_pct_per_degC, ki_pct_per_degC_s; ASSUMED test-bench placeholders t_skin_base_degC, k_mod_degC, tau_mod_s, sd_mod_sensor_degC, sd_standin_degC, tau_standin_s. Sai row data_stale_twin_s: placeholder 120 s (2 x ts_twin_s). Shreehan rows unchanged (null): the numbers in Suchita's standalone table are from an old script, not Shreehan values. Sai rows p_trigger/p_release/k_heat/tau_heat/r_obs unchanged; Suchita used different standalone stand-ins because params.json had not reached her; her code reads config/params.json automatically when present, so she should re-run with this file. Announce to the team (plan 4D)."
     },
     {
       "version": "0.3",

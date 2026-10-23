@@ -51,7 +51,7 @@ disclosed.
 Open `unity_editor/` in Unity 6000.3.26f1 and run NERAM → 1. Run full setup, then Play.
 
 All 11 shipped scenarios are SYNTHETIC: the SYN_SCN_* demo set (plan SCN_A layout stand-in, SCN_B, SCN_C, SCN_D),
-SYN_ENG_01–06, and SYN_TC07 (Suchitha's TC07 over-temperature shutdown log; latch only, no heating). The
+SYN_ENG_01–06, and SYN_TC07 (Suchita's TC07 over-temperature shutdown log; latch only, no heating). The
 development-case SCN_A needs the development fit. Every simulated or assumed value carries a source tag. The footer reads
 "Proof-of-concept. SIMULATED / ASSUMED PROTOTYPE RESPONSE where marked."
 
@@ -59,7 +59,7 @@ development-case SCN_A needs the development fit. Every simulated or assumed val
 * Python with NumPy, SciPy and pandas (`environment.yml`).
 * GPB2 switching state-space filter with jump/outlier mixtures (`src/thermal_robust_core.py`).
 * Unity 6 (URP, UI Toolkit), C# replay loader and validator mirrored by Python.
-* Controller: MATLAB/Simulink/Stateflow (Suchitha).
+* Controller: MATLAB/Simulink/Stateflow (Suchita).
 
 ## §14 Reproduce Sai's components
 ```

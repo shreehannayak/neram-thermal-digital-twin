@@ -1,6 +1,6 @@
 # Controller-Hardware Interface (v1, CP1)
 
-Status: PROVISIONAL. All hardware in the demo is SIMULATED (Suchitha's stand-ins). Proof-of-concept prototype, not a medical device.
+Status: PROVISIONAL. All hardware in the demo is SIMULATED (Suchita's stand-ins). Proof-of-concept prototype, not a medical device.
 
 ## 1. Meaning of Heat_i
 - Heat_i (i = 1..4) is the PWM duty in percent at pwm_freq_Hz (TBD).
@@ -44,7 +44,7 @@ Sai merges these. No value is invented: TBD means no sourced value yet.
 
 Required ordering (FROZEN): t_mod_derate_degC < t_mod_trip_degC < t_hw_cutoff_degC <= t_surface_limit_degC.
 
-## 5. Hardware assumptions (for Suchitha to confirm)
+## 5. Hardware assumptions (for Suchita to confirm)
 - Command update every 1 s.
 - Hardware removes heater power within one command period after Heat_i = 0.
 - Status heartbeat at least every data_stale_hw_s / 2.

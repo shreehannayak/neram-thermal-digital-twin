@@ -1,7 +1,7 @@
 {
   "title": "Module over-temperature shutdown (controller test TC07, synthetic)",
   "purpose": "Show the supplied TC07 controller test-bench log in the viewer: a simulated module over-temperature on channel 2 latches SAFETY_SHUTDOWN at t = 200 s. The log ends while the shutdown is still latched; no clinician reset or release is part of this test.",
-  "data_source": "Controller: Suchitha's TC07 test-bench log (SIMULATED; file hash in header.inputs, authenticity not independently confirmed). Temperature: SIMULATED observations, twin values computed by the canonical NERAM filter with ASSUMED_SYNTHETIC parameters (twin_SYN_01).",
+  "data_source": "Controller: Suchita's TC07 test-bench log (SIMULATED; file hash in header.inputs, authenticity not independently confirmed). Temperature: SIMULATED observations, twin values computed by the canonical NERAM filter with ASSUMED_SYNTHETIC parameters (twin_SYN_01).",
   "loop_description": "Open in effect: the temperature track is not coupled to controller commands. The log labels its harness plant_mode STANDIN but supplies no T_plant / dT_heat, so no warming response is shown (validator warning W108 is expected and kept).",
   "limitations": [
     "All four heating channels are 0 % for the whole log, so heating is never shown; this replay demonstrates the over-temperature shutdown and latch display only.",

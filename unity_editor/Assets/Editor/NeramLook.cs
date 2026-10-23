@@ -237,7 +237,7 @@ namespace Neram.EditorTools
                 if (p == null) continue;
                 p.stringValue = "SCN_C";
                 so.ApplyModifiedProperties();
-                sb.AppendLine("start-up scenario: SCN_C (Suchitha's controller TC07, closed loop)");
+                sb.AppendLine("start-up scenario: SCN_C (Suchita's controller TC07, closed loop)");
             }
         }
     }

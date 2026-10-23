@@ -14,7 +14,7 @@ chart meanings, value provenance and limitations are in **`../docs/UNITY_WORKSPA
 
 ## Screenshots
 
-Theatre view of the replay viewer (`NERAM.exe`, scenario SCN_C, Suchitha's controller test TC07: over-temperature safety
+Theatre view of the replay viewer (`NERAM.exe`, scenario SCN_C, Suchita's controller test TC07: over-temperature safety
 shutdown, latched). Screenshots taken 23 Oct 2026. The surgeon figure, instruments, O2 set-up, face mask, airway and airflow
 are illustrative scene props: they do not model gas flow, breathing or anatomy.
 

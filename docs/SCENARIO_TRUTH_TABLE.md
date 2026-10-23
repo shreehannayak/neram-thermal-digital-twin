@@ -9,7 +9,7 @@ whether its frames **behave** as the title says. The checks used:
 Every scenario is SYNTHETIC or SIMULATED. No VitalDB observation and no holdout case appears anywhere.
 
 ## 0. Controller replays (19 Oct 2026; `tools/make_controller_replays.py`)
-Built from the rebuilt `controller/neram_ctrl` test bench (Suchitha's v2 design). Twin fields are test-bench
+Built from the rebuilt `controller/neram_ctrl` test bench (Suchita's v2 design). Twin fields are test-bench
 stand-ins (`--twin-source SIMULATED`, flat persistence forecast with normal bands); closed-loop runs use the ASSUMED
 patient plant. All five: VALID with 0 warnings, semantic check OK, played in the Windows player 19 Oct (SCN_C).
 
@@ -30,17 +30,17 @@ patient plant. All five: VALID with 0 warnings, semantic check OK, played in the
 | SYN_SCN_C | same | same | same | Over-temperature fault (SCN_C) | Warming, then SAFETY_SHUTDOWN | VALID, 0 W; pass | OK | 10 Oct | **YES (SCN_C)** | Stand-in controller |
 | SYN_SCN_D | same | same | same | Twin degraded (SCN_D) | TWIN_DEGRADED; forecast hidden; 120 s recovery dwell, then TWIN_RECOVERED | VALID, 0 W; pass | OK (S03 INFO: recovery dwell) | 10 Oct (not replayed 18 Oct) | **YES (SCN_D)** | Stand-in twin and controller |
 | SYN_ENG_01–06 | same | same | same | Engineering cases (START/STOP, channel faults, stuck-on/cutoff, HW stale, degraded during clinician warming, +60 info-only) | As titled; ENG_03/04 end still latched | VALID, 0 W; pass | OK | 10 Oct | YES (engineering) | Stand-in controller |
-| **SYN_TC07** | `twin_SYN_01.csv`: canonical filter, ASSUMED_SYNTHETIC parameters (src twin MODEL) | `ctrl_TC07.csv` (Suchitha; hash b3f7ce8d…; received 17 Oct; owner confirmation pending) | `build_replay.py --accept-ctrl-input-columns --params-used SYN_TC07_params_used.json --params-version 0.2` (no `--placeholder`: canonical twin + real controller log), byte-reproducible, SHA-256 7714f8a8… | Module over-temperature shutdown (first TC07 criterion only) | Channel-2 module temperature (A and B), an injected stimulus, rises 33 → 45 °C with zero heater current. At t = 200 s (temperature 41.0): SAFETY_SHUTDOWN, Fault_Latched, fault_code = Channel_Fault_2 = 206 (= channel 2 OVERTEMP_SW), Alert SAFETY_SHUTDOWN. Still latched at t = 300 s. Heat 0 % throughout | VALID, 301 × W108 (STANDIN without plant values; kept); pass | OK (S04, S06 INFO) | **Played in Editor 18 Oct (PASS)**: banner "SAFETY SHUTDOWN — LATCHED", fault 206 OVERTEMP_SW CH2 (placeholder text), "CH2 Right hand: 206", latched since T+00:03:20, all heating commands 0, CH1–CH4 SHUTDOWN, "Latched — awaiting clinician RESET"; no placeholder watermark; MONITOR shows OBS SIMULATED / TWIN MODEL; CH2 T_A = T_B = 41.0 °C | **CONDITIONAL**: shutdown and latch display only | No heating, no cooling, no RESET_BLOCKED, no reset/release, so TC07 criteria 3–5 are not shown. HW cutoff threshold TBD |
+| **SYN_TC07** | `twin_SYN_01.csv`: canonical filter, ASSUMED_SYNTHETIC parameters (src twin MODEL) | `ctrl_TC07.csv` (Suchita; hash b3f7ce8d…; received 17 Oct; owner confirmation pending) | `build_replay.py --accept-ctrl-input-columns --params-used SYN_TC07_params_used.json --params-version 0.2` (no `--placeholder`: canonical twin + real controller log), byte-reproducible, SHA-256 7714f8a8… | Module over-temperature shutdown (first TC07 criterion only) | Channel-2 module temperature (A and B), an injected stimulus, rises 33 → 45 °C with zero heater current. At t = 200 s (temperature 41.0): SAFETY_SHUTDOWN, Fault_Latched, fault_code = Channel_Fault_2 = 206 (= channel 2 OVERTEMP_SW), Alert SAFETY_SHUTDOWN. Still latched at t = 300 s. Heat 0 % throughout | VALID, 301 × W108 (STANDIN without plant values; kept); pass | OK (S04, S06 INFO) | **Played in Editor 18 Oct (PASS)**: banner "SAFETY SHUTDOWN — LATCHED", fault 206 OVERTEMP_SW CH2 (placeholder text), "CH2 Right hand: 206", latched since T+00:03:20, all heating commands 0, CH1–CH4 SHUTDOWN, "Latched — awaiting clinician RESET"; no placeholder watermark; MONITOR shows OBS SIMULATED / TWIN MODEL; CH2 T_A = T_B = 41.0 °C | **CONDITIONAL**: shutdown and latch display only | No heating, no cooling, no RESET_BLOCKED, no reset/release, so TC07 criteria 3–5 are not shown. HW cutoff threshold TBD |
 
 ## 2. Candidates rejected for the demo
 | Candidate | Source | Finding (verified from source rows) | Plan §1N criterion | Status |
 |---|---|---|---|---|
-| TC05 replay | `ctrl_TC05.csv` (7381e4d3…) | t_s 600–610 `Controller_State = 4` (CLINICIAN_WARMING), Trigger 4 (CLINICIAN_START), Clinician_Mode 1, **Heat_1..4 = 0 and Demand_Global = 0**. t_s 611 `Controller_State = 3`, Trigger 5 (TARGET_REACHED), while `t_target_degC` had no value in params.json v0.1 | TC05 requires "Heat set by PI, not fixed 100 %"; zero heat for the whole episode fails it | **Verified, open** (Suchitha). Excluded |
-| TC13 replay | `ctrl_TC13.csv` (c1bef0c8…) | t_s 70–80 and 641–651 PREDICTIVE_WARMING with all heat 0, then TARGET_REACHED at 81 and 652. t_s 300–629 TWIN_DEGRADED (MONITOR), Alert TWIN_DEGRADED, heat 0. TWIN_RECOVERED at 630 | The degraded part **meets** its TC13 criteria. The predictive episodes fail TC02's "0 < Heat_i ≤ d_pred_max_pct" | **Verified, open** (Suchitha). Excluded |
-| TC13 pairing | — | The log does not record the Twin_Valid timeline it was driven with. Plan says SYN_04 (then a copy of SYN_SCN_D). No single time offset of `twin_SYN_SCN_D` reproduces it: that twin is DEGRADED for 1,140 s (2280–3419 s), the controller for 330 s | — | **Verified, open.** A faithful replay needs Suchitha's twin input file |
+| TC05 replay | `ctrl_TC05.csv` (7381e4d3…) | t_s 600–610 `Controller_State = 4` (CLINICIAN_WARMING), Trigger 4 (CLINICIAN_START), Clinician_Mode 1, **Heat_1..4 = 0 and Demand_Global = 0**. t_s 611 `Controller_State = 3`, Trigger 5 (TARGET_REACHED), while `t_target_degC` had no value in params.json v0.1 | TC05 requires "Heat set by PI, not fixed 100 %"; zero heat for the whole episode fails it | **Verified, open** (Suchita). Excluded |
+| TC13 replay | `ctrl_TC13.csv` (c1bef0c8…) | t_s 70–80 and 641–651 PREDICTIVE_WARMING with all heat 0, then TARGET_REACHED at 81 and 652. t_s 300–629 TWIN_DEGRADED (MONITOR), Alert TWIN_DEGRADED, heat 0. TWIN_RECOVERED at 630 | The degraded part **meets** its TC13 criteria. The predictive episodes fail TC02's "0 < Heat_i ≤ d_pred_max_pct" | **Verified, open** (Suchita). Excluded |
+| TC13 pairing | — | The log does not record the Twin_Valid timeline it was driven with. Plan says SYN_04 (then a copy of SYN_SCN_D). No single time offset of `twin_SYN_SCN_D` reproduces it: that twin is DEGRADED for 1,140 s (2280–3419 s), the controller for 330 s | — | **Verified, open.** A faithful replay needs Suchita's twin input file |
 | SCN_C / SCN_D from the 17 Oct ChatGPT bundle | bundle | SCN_D's twin was edited to agree with the controller, and stitched from out-of-order segments (jump at 300 s). SCN_C claimed "blocked reset, release", which is not in TC07. Both are SYNTHETIC without the `SYN_` prefix and would fail v4 `AllReplaysSmokeTests` | — | **Superseded**: not used |
 
-## 3. Controller-log contract deviations (for Suchitha; verified)
+## 3. Controller-log contract deviations (for Suchita; verified)
 * **Extra columns.** All three logs carry `HW_Heartbeat_s` and `HW_Fault_Code`. They are declared HW → Ctrl
   inputs in `config/interface_spec.csv`, but are **not** in the §1S log column list. The builder refuses them unless
   `--accept-ctrl-input-columns` is given.
@@ -57,9 +57,9 @@ patient plant. All five: VALID with 0 warnings, semantic check OK, played in the
 | SCN_B predictive warming (synthetic, SIMULATED + ASSUMED) | SCN_B (controller TC02); SYN_SCN_B | Yes |
 | SCN_C over-temperature fault | SCN_C (controller TC07, closed loop); SYN_SCN_C; SYN_TC07 | Yes, including blocked reset and release (SCN_C) |
 | SCN_D twin degraded | SCN_D (controller TC13); SYN_SCN_D | Yes |
-| Heating from Suchitha's real controller | — | **No.** No supplied log commands any heat |
+| Heating from Suchita's real controller | — | **No.** No supplied log commands any heat |
 
-## 5. Suchitha's controller package v2 (received 18 Oct 2026, Python fallback) — `integration/controller_logs_received/2026-10-18/`
+## 5. Suchita's controller package v2 (received 18 Oct 2026, Python fallback) — `integration/controller_logs_received/2026-10-18/`
 | Log | SHA-256 (16) | Behaviour verified from the rows | Earlier finding | Unity |
 |---|---|---|---|---|
 | ctrl_SYN_02 | 624a213f743fcec4 | NORMAL → PREDICTIVE_WARMING at 370 s (FORECAST_P20); heat 10–40 % | — | not built: twin input missing |

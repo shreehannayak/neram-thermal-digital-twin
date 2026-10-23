@@ -6,7 +6,7 @@ Source of the PDF: `docs/architecture_src/architecture.html`, rendered with head
 ## 1. Roles in one sentence each
 * **Digital Twin = estimation and forecasting** of one patient's temperature-signal state
   (`src/twin_replay_export.py` running the unchanged canonical `src/thermal_robust_core.py`).
-* **Supervisory controller = simulated, clinician-supervised prototype** (Suchitha, MATLAB/Simulink/Stateflow).
+* **Supervisory controller = simulated, clinician-supervised prototype** (Suchita, MATLAB/Simulink/Stateflow).
   It decides the four heating commands from the twin outputs, module telemetry and clinician buttons.
 * **Hardware = specification and simulated telemetry only** (Shreehan). No hardware is built; every hardware
   value in the demo is SIMULATED.
@@ -28,7 +28,7 @@ Source of the PDF: `docs/architecture_src/architecture.html`, rendered with head
           twin CSV, 1 row/min, interface spec §4A — integration/twin_outputs/twin_<id>.csv
           checked by integration/validate_twin_output.py
                        ▼
- ┌─────── SUPERVISORY CONTROLLER (Suchitha, simulated) ──────┐     ┌── HARDWARE (Shreehan, simulated) ──┐
+ ┌─────── SUPERVISORY CONTROLLER (Suchita, simulated) ──────┐     ┌── HARDWARE (Shreehan, simulated) ──┐
  │ Stateflow: 7 states, triggers on forecast probability,     │◄───►│ Module_Temp_i_A/B, Module_Connected│
  │ doses from feedback (never from forecasts), latched faults │     │ Heater_Current, HW_Cutoff, faults  │
  └──────────────┬─────────────────────────────────────────────┘     └────────────────────────────────────┘
@@ -78,5 +78,5 @@ T_plant = T_pass + ΔT_heat. Here Δt is in minutes and k_heat in °C/h at 100 %
 * Development-case replay SCN_A (DEV_<pseudo>).
 * Hardware fault-code display text (Shreehan).
 * CAD FBX (Neharikaa).
-* A controller log with heating (Suchitha).
+* A controller log with heating (Suchita).
 * Summit closed loop.

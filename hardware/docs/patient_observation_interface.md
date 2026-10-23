@@ -18,7 +18,7 @@ No new body sensor is added to the twin path.
 
 ## Notes
 * The observation reaches the host computer, which runs the Digital Twin (Sai) and the supervisory controller
-  (Suchitha). It never goes to the MCU board; the MCU only handles the warming modules.
+  (Suchita). It never goes to the MCU board; the MCU only handles the warming modules.
 * The anatomical site of the signal is not established, so it is called a *patient temperature signal* everywhere.
 * Using a monitor other than Solar8000 (VitalDB `BT`) changes the signal the model was developed on; any such
   use must state the domain shift and is outside the 20 Oct prototype.

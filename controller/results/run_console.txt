@@ -1,6 +1,6 @@
-NERAM supervisory controller - PYTHON FALLBACK (rebuilt 18 Oct 2026 from Suchitha's v2 spec)
+NERAM supervisory controller - PYTHON FALLBACK (rebuilt 18 Oct 2026 from Suchita's v2 spec)
 Parameters: standalone-0.1 (config/params.json NOT used)
-  ts_ctrl_s                  1                      PROVISIONAL            owner Suchitha
+  ts_ctrl_s                  1                      PROVISIONAL            owner Suchita
   data_stale_twin_s          120                    PROVISIONAL            owner Sai
   data_stale_hw_s            5                      TBD/PLACEHOLDER        owner Shreehan
   t_hypo_degC                36.0                   TBD/PLACEHOLDER        owner Sai
@@ -8,16 +8,16 @@ Parameters: standalone-0.1 (config/params.json NOT used)
   p_trigger                  0.3                    PROVISIONAL            owner Sai
   p_release                  0.2                    PROVISIONAL            owner Sai
   n_confirm_updates          2                      PROVISIONAL            owner Sai
-  band_target_degC           0.3                    PROVISIONAL            owner Suchitha
-  t_dwell_min_s              10                     PROVISIONAL            owner Suchitha
-  t_recover_s                30                     PROVISIONAL            owner Suchitha
-  t_stop_inhibit_s           300                    PROVISIONAL            owner Suchitha
-  d_pred_max_pct             40                     PROVISIONAL            owner Suchitha
-  d_active_max_pct           70                     PROVISIONAL            owner Suchitha
-  d_maint_max_pct            50                     PROVISIONAL            owner Suchitha
-  d_fallback_pct             20                     PROVISIONAL            owner Suchitha
-  kp_pct_per_degC            20                     PROVISIONAL            owner Suchitha
-  ki_pct_per_degC_s          0.5                    PROVISIONAL            owner Suchitha
+  band_target_degC           0.3                    PROVISIONAL            owner Suchita
+  t_dwell_min_s              10                     PROVISIONAL            owner Suchita
+  t_recover_s                30                     PROVISIONAL            owner Suchita
+  t_stop_inhibit_s           300                    PROVISIONAL            owner Suchita
+  d_pred_max_pct             40                     PROVISIONAL            owner Suchita
+  d_active_max_pct           70                     PROVISIONAL            owner Suchita
+  d_maint_max_pct            50                     PROVISIONAL            owner Suchita
+  d_fallback_pct             20                     PROVISIONAL            owner Suchita
+  kp_pct_per_degC            20                     PROVISIONAL            owner Suchita
+  ki_pct_per_degC_s          0.5                    PROVISIONAL            owner Suchita
   p_max_ch_pct               [50, 50, 50, 50]       TBD/PLACEHOLDER        owner Shreehan
   t_mod_derate_degC          38                     TBD/PLACEHOLDER        owner Shreehan
   t_mod_trip_degC            41                     TBD/PLACEHOLDER        owner Shreehan
@@ -35,23 +35,23 @@ Parameters: standalone-0.1 (config/params.json NOT used)
   w_ch                       [0.25, 0.25, 0.25, 0.25] ASSUMED                owner Sai
   r_obs_degC2                0.0025                 PLACEHOLDER            owner Sai
   plant_passive.mode         flat                   PLACEHOLDER            owner Sai
-  t_skin_base_degC           33.0                   ASSUMED                owner Suchitha
-  k_mod_degC                 6.0                    ASSUMED                owner Suchitha
-  tau_mod_s                  90                     ASSUMED                owner Suchitha
-  sd_mod_sensor_degC         0.05                   ASSUMED                owner Suchitha
-  sd_standin_degC            0.05                   ASSUMED                owner Suchitha
-  tau_standin_s              15                     ASSUMED                owner Suchitha
+  t_skin_base_degC           33.0                   ASSUMED                owner Suchita
+  k_mod_degC                 6.0                    ASSUMED                owner Suchita
+  tau_mod_s                  90                     ASSUMED                owner Suchita
+  sd_mod_sensor_degC         0.05                   ASSUMED                owner Suchita
+  sd_standin_degC            0.05                   ASSUMED                owner Suchita
+  tau_standin_s              15                     ASSUMED                owner Suchita
 LOGCHECK ctrl_SYN_02.csv: PASS
 LOGCHECK ctrl_TC04.csv: PASS
 LOGCHECK ctrl_TC05.csv: PASS
 LOGCHECK ctrl_TC07.csv: PASS
 LOGCHECK ctrl_TC08.csv: PASS
 LOGCHECK ctrl_TC13.csv: PASS
-REPRODUCTION ctrl_SYN_02.csv vs Suchitha's v2 log: byte-identical
-REPRODUCTION ctrl_TC05.csv vs Suchitha's v2 log: byte-identical
-REPRODUCTION ctrl_TC07.csv vs Suchitha's v2 log: byte-identical
-REPRODUCTION ctrl_TC08.csv vs Suchitha's v2 log: byte-identical
-REPRODUCTION ctrl_TC13.csv vs Suchitha's v2 log: byte-identical
+REPRODUCTION ctrl_SYN_02.csv vs Suchita's v2 log: byte-identical
+REPRODUCTION ctrl_TC05.csv vs Suchita's v2 log: byte-identical
+REPRODUCTION ctrl_TC07.csv vs Suchita's v2 log: byte-identical
+REPRODUCTION ctrl_TC08.csv vs Suchita's v2 log: byte-identical
+REPRODUCTION ctrl_TC13.csv vs Suchita's v2 log: byte-identical
 AU-G1a  PASS     twin_ok=0, state=5, Heat=[0.0, 0.0, 0.0, 0.0]
 AU-G1b  PASS     risk_pred seen = [0]
 AU-G1c  PASS     state=6, alert=8

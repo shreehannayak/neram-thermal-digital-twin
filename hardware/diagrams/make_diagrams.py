@@ -118,7 +118,7 @@ def block_diagram():
     d = Diagram("system_block_diagram", 1900, 1030, "NERAM system block diagram (paper design; hardware SIMULATED in the demo)")
     A, B, C, D = 40, 600, 1090, 1570
     SB, PB = 1030, 1060          # signal bus (PWM out; sensors + current in) and heater-power bus x positions
-    d.node("host", A, 90, 380, 130, "Host computer (bedside laptop)\nDigital Twin (Sai; Python)\nSupervisory controller, layer 3\n(Suchitha; Python fallback)", "host")
+    d.node("host", A, 90, 380, 130, "Host computer (bedside laptop)\nDigital Twin (Sai; Python)\nSupervisory controller, layer 3\n(Suchita; Python fallback)", "host")
     d.node("obs", A, 310, 380, 100, "Patient-observation interface\n(prototype: replay of recorded\nmonitor data)", "neutral")
     d.node("dcdc", A, 500, 380, 90, "Logic DC/DC (PROVISIONAL)\nRECOM R-78E5.0-0.5: 24 V to 5 V", "power")
     d.node("psu", A, 680, 380, 110, "Isolated AC/DC supply (PROVISIONAL)\nMean Well MPM-65-24ST\n24 V bus (v_bus_V), 65 W", "power")
@@ -160,7 +160,7 @@ def block_diagram():
 def safety_layers():
     d = Diagram("safety_layers", 1500, 900, "Safety layers: each layer can remove heater power without the layers above it")
     L, R = 40, 960
-    d.node("l3", L, 90, 640, 150, "Layer 3: supervisory controller (software; Suchitha)\nPython fallback for MATLAB/Simulink (not available)\nderate at t_mod_derate_degC; trip at t_mod_trip_degC\nfault latch; SAFETY_SHUTDOWN sets Heat_i = 0, master_enable = 0", "host", size=12.5)
+    d.node("l3", L, 90, 640, 150, "Layer 3: supervisory controller (software; Suchita)\nPython fallback for MATLAB/Simulink (not available)\nderate at t_mod_derate_degC; trip at t_mod_trip_degC\nfault latch; SAFETY_SHUTDOWN sets Heat_i = 0, master_enable = 0", "host", size=12.5)
     d.node("l2", L, 300, 640, 150, "Layer 2: MCU firmware (Shreehan)\nfirmware limits; independent watchdog (wdt_timeout_ms, TBD)\nhost-heartbeat timeout: all heaters OFF\nstuck-on detection from current sense", "mcu", size=12.5)
     d.node("l1", L, 510, 640, 150, "Layer 1: hardware cutoff (no firmware; Shreehan)\ncomparator on its own NTC per channel at t_hw_cutoff_degC (TBD)\nlatched until manual RESET\nworks with the MCU halted", "safety", size=12.5)
     d.node("msw", R, 200, 480, 110, "Master safety switch\nin series with all four channels\ndefault open (relay coil off)", "safety")
@@ -182,14 +182,14 @@ def interface_map():
     d = Diagram("interface_map", 1800, 1040, "NERAM interface map: who hands what to whom (hardware SIMULATED in the demo)")
     d.node("sai", 690, 100, 420, 110, "Sai\nDigital Twin; config files; replay builder", "host")
     d.node("uni", 1360, 100, 400, 110, "Unity replay viewer\nreads only the merged replay", "unity")
-    d.node("suc", 50, 470, 400, 110, "Suchitha\nSupervisory controller (Python fallback)", "chan")
+    d.node("suc", 50, 470, 400, 110, "Suchita\nSupervisory controller (Python fallback)", "chan")
     d.node("neh", 1360, 470, 400, 110, "Neharikaa\nCAD: modules, wearable, controller", "module")
     d.node("shr", 690, 830, 420, 110, "Shreehan\nHardware; README; licences; audit", "mcu")
     d.edge([(1110, 155), (1360, 155)], label="replay .jsonl.gz", lpos=(1235, 132))
-    d.edge([(690, 185), (300, 470)], both=True, label="Sai to Suchitha: twin CSV, interface spec, enums, params\nSuchitha to Sai: ctrl_*.csv logs, test results", lpos=(470, 330))
+    d.edge([(690, 185), (300, 470)], both=True, label="Sai to Suchita: twin CSV, interface spec, enums, params\nSuchita to Sai: ctrl_*.csv logs, test results", lpos=(470, 330))
     d.edge([(900, 210), (900, 830)], both=True, label="Shreehan to Sai: fault codes, channel map, hardware signals\nSai to Shreehan: case-duration statistics, scientific wording", lpos=(900, 520))
     d.edge([(1110, 185), (1500, 470)], both=True, label="Neharikaa to Sai: FBX set\nSai to Neharikaa: Unity import check", lpos=(1330, 330))
-    d.edge([(250, 580), (690, 885)], both=True, label="Shreehan to Suchitha: fault_codes.csv, controller_hw_interface.md\nSuchitha to Shreehan: T07_duty_stats.csv, hardware assumptions", lpos=(420, 720))
+    d.edge([(250, 580), (690, 885)], both=True, label="Shreehan to Suchita: fault_codes.csv, controller_hw_interface.md\nSuchita to Shreehan: T07_duty_stats.csv, hardware assumptions", lpos=(420, 720))
     d.edge([(1560, 580), (1110, 885)], both=True, label="Shreehan to Neharikaa: cad_envelope.csv\nNeharikaa to Shreehan: coverage area, ports", lpos=(1380, 720))
     d.text(24, 990, "Rule: change a row you do not own through a GitHub issue tagged interface-change; the owner approves and Sai merges. "
                     "Nothing reaches Unity except through Sai's replay.", size=11)

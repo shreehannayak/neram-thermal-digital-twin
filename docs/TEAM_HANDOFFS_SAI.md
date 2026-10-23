@@ -5,7 +5,7 @@ sent yet; Sai sends them. Nothing here changes another owner's files.
 
 ---
 ## 1. To everyone — params.json v0.2 (plan 4D)
-> `config/params.json` is now **v0.2** (spec_version unchanged, 0.1). Only Sai-owned rows changed; no Suchitha or
+> `config/params.json` is now **v0.2** (spec_version unchanged, 0.1). Only Sai-owned rows changed; no Suchita or
 > Shreehan row was touched.
 > * Placeholders (value stays null, status unchanged, labelled "SYNTHETIC DEMO placeholder"): p_trigger 0.5,
 >   p_release 0.4, n_confirm_updates 2, sd_degrade_degC 0.25, k_heat_degC_per_h 2.0, tau_heat_min 10, w_ch 0.25×4,
@@ -15,7 +15,7 @@ sent yet; Sai sends them. Nothing here changes another owner's files.
 > * **t_target_degC stays null** (clinician input; never invented in project config).
 > * Read values by name from params.json. Do not hard-code them. The changelog is inside the file.
 
-## 2. To Suchitha (controller) — plan 1N, 1S, 4T, CP3
+## 2. To Suchita (controller) — plan 1N, 1S, 4T, CP3
 > 1. **TC05** (`ctrl_TC05.csv`, 7381e4d3…): t_s 600–610 is CLINICIAN_WARMING with Heat_1..4 = 0 and Demand_Global = 0,
 >    then TARGET_REACHED at 611. TC05 requires "Heat set by PI, not fixed 100 %", so please re-run it with a non-zero
 >    PI output.
@@ -58,7 +58,7 @@ sent yet; Sai sends them. Nothing here changes another owner's files.
 >    labelled placeholder geometry.
 
 ---
-## 5. To Suchitha — after her v2 package (18 Oct 2026) — replaces section 2 items 1–3
+## 5. To Suchita — after her v2 package (18 Oct 2026) — replaces section 2 items 1–3
 > Thanks — the v2 package fixes everything I flagged: TC05 now heats by PI, TC13's predictive episodes heat, TC07 has the
 > full RESET_BLOCKED → RESET cycle, and the module temperatures are interleaved. Logs filed with hashes in
 > integration/controller_logs_received/2026-10-18/. To put them in the Unity demo I need:

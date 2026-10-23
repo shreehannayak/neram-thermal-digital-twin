@@ -1,7 +1,7 @@
 # Unity layer — architecture
 
 ```
- Sai: twin CSV (§4A)        Suchitha: controller log CSV (§1S, 1 Hz)      Shreehan: fault_codes.csv, HW columns
+ Sai: twin CSV (§4A)        Suchita: controller log CSV (§1S, 1 Hz)      Shreehan: fault_codes.csv, HW columns
           \                         |                                              |
            +------ integration/build_replay.py (holdout guard, validates before writing) ---+
                                     |

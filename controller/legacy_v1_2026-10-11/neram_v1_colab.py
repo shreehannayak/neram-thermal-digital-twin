@@ -30,7 +30,7 @@ P = dict(
     p_release=0.2,              # TBD placeholder
     n_confirm_updates=2,        # TBD placeholder
 
-    # --- Suchitha's own design choices (PROVISIONAL, real) ---
+    # --- Suchita's own design choices (PROVISIONAL, real) ---
     band_target_degC=0.3,
     t_dwell_min_s=10,
     t_recover_s=30,
@@ -58,7 +58,7 @@ P = dict(
     tau_heat_min=15,
     w_ch=[0.25, 0.25, 0.25, 0.25],
 
-    # --- Suchitha's test-only ASSUMED stand-ins (section M.4) ---
+    # --- Suchita's test-only ASSUMED stand-ins (section M.4) ---
     t_skin_base_degC=33.0,
     k_mod_degC=6.0,
     tau_mod_s=90,
@@ -530,7 +530,7 @@ class PatientPlant:
     M.2 intent): without heat, settles toward a cold `baseline` (why the
     patient needs warming at all); active heat pulls it up at
     k_heat_degC_per_h. NOT a clinical/physiological model - a labelled
-    stand-in only, same spirit as Suchitha's module thermal stand-in.
+    stand-in only, same spirit as Suchita's module thermal stand-in.
     Passive settling is given a much longer time constant than the active
     warming response (10x tau_heat_min) so the two don't just cancel out -
     a body cools far slower passively than an active warmer can raise it."""

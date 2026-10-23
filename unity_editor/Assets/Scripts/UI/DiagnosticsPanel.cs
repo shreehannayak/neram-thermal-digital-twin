@@ -117,13 +117,13 @@ namespace Neram.Unity
             var todo = UiUtil.Box("dg-card");
             todo.Add(UiUtil.Label("Still placeholders — and who replaces them", "dg-card-title"));
             int n = 0;
-            if (h.Placeholder) { todo.Add(Todo("This replay is a scripted stand-in, not NERAM twin / controller output", "Suchitha: controller logs with real heating → Sai rebuilds the replay")); n++; }
+            if (h.Placeholder) { todo.Add(Todo("This replay is a scripted stand-in, not NERAM twin / controller output", "Suchita: controller logs with real heating → Sai rebuilds the replay")); n++; }
             if (_s.Faults != null && _s.Faults.IsPlaceholder) { todo.Add(Todo("Fault explanations use built-in placeholder text", "Shreehan: hardware/interfaces/fault_codes.csv")); n++; }
             int phParts = AssemblyReport?.Count(r => r.Contains("PLACEHOLDER")) ?? 0;
             if (phParts > 0) { todo.Add(Todo(phParts + " 3D parts are placeholder shapes", "Neharikaa: FBX exports of the modules and bedside controller")); n++; }
             int phParams = _s.Params.Entries.Values.Count(e => e.IsPlaceholderInUse);
             int noneParams = _s.Params.Entries.Values.Count(e => !e.HasValue && !e.IsPlaceholderInUse);
-            if (phParams + noneParams > 0) { todo.Add(Todo(phParams + " parameter values are placeholders, " + noneParams + " not set yet", "Sai (development fit), a clinician, Suchitha, Shreehan — see MENU → Parameters")); n++; }
+            if (phParams + noneParams > 0) { todo.Add(Todo(phParams + " parameter values are placeholders, " + noneParams + " not set yet", "Sai (development fit), a clinician, Suchita, Shreehan — see MENU → Parameters")); n++; }
             if (n == 0) todo.Add(UiUtil.Label("Nothing in this replay is a placeholder.", "dg-done"));
             _body.Add(todo);
 

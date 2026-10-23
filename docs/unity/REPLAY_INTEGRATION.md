@@ -6,10 +6,10 @@ Unity only displays what `build_replay.py` produces. Steps per scenario:
 | File | Producer | Columns |
 |---|---|---|
 | `integration/twin_outputs/<run>.csv` | Sai | plan §4A: `T_twin_s, T_obs, obs_missing, T_est, T_est_sd, Twin_Valid, P_level_shift, P_outlier, T_pred_{20,30,60}, L80_*, U80_*, L95_*, U95_*, P_below_hypo_*` (one row per minute) |
-| `integration/controller_logs/<run>.csv` | Suchitha (Simulink/Stateflow) | plan §1S: `t_s, Controller_State, Degraded_Substate, Heat_1..4, Demand_Global, Trigger_Reason, Alert, Safety_Shutdown, Fault_Latched, fault_code, Channel_Fault_1..4, Clinician_Mode` (+ optional `Data_Stale_Twin, Data_Stale_HW, Clinician_Start/Stop/Reset`), HW telemetry `Module_Temp_i_A, Module_Temp_i_B, Module_Connected_i, Heater_Current_i, HW_Cutoff_i`, plant `T_plant, dT_heat, plant_mode` (one row per controller step) |
+| `integration/controller_logs/<run>.csv` | Suchita (Simulink/Stateflow) | plan §1S: `t_s, Controller_State, Degraded_Substate, Heat_1..4, Demand_Global, Trigger_Reason, Alert, Safety_Shutdown, Fault_Latched, fault_code, Channel_Fault_1..4, Clinician_Mode` (+ optional `Data_Stale_Twin, Data_Stale_HW, Clinician_Start/Stop/Reset`), HW telemetry `Module_Temp_i_A, Module_Temp_i_B, Module_Connected_i, Heater_Current_i, HW_Cutoff_i`, plant `T_plant, dT_heat, plant_mode` (one row per controller step) |
 | `hardware/interfaces/fault_codes.csv` | Shreehan | `code,name,scope,detected_by,description,display_text` |
 | `scenario_<X>.json` | Sai | `title, purpose, data_source, loop_description, limitations[]` |
-| `params_used_<X>.json` | Sai/Suchitha | parameter snapshot `{name: {value|placeholder, unit, status, owner, source}}` |
+| `params_used_<X>.json` | Sai/Suchita | parameter snapshot `{name: {value|placeholder, unit, status, owner, source}}` |
 
 Use `null` (empty CSV cell) for missing values — **never 0**.
 

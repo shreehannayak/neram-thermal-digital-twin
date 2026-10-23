@@ -1,11 +1,11 @@
 {
   "title": "Predictive warming (controller TC02, synthetic forecast input)",
   "purpose": "A synthetic forecast risk (P_below_hypo_20 crosses 0.3 at 300 s) is confirmed over two twin updates; the controller enters PREDICTIVE_WARMING at 370 s and raises all four channels with the PI law, capped at 40 %.",
-  "data_source": "Controller: Suchitha's supervisory controller test TC02 (SIMULATED test bench, controller/neram_ctrl). Twin fields: test-bench stand-in values the controller received (SIMULATED).",
+  "data_source": "Controller: Suchita's supervisory controller test TC02 (SIMULATED test bench, controller/neram_ctrl). Twin fields: test-bench stand-in values the controller received (SIMULATED).",
   "loop_description": "Open loop: the synthetic twin input does not respond to heating (no patient plant).",
   "limitations": [
     "Synthetic constant T_est 36.5 degC and stepped forecast probability; not a forecast made by the twin.",
-    "Controller: Suchitha's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
+    "Controller: Suchita's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
     "Twin fields are test-bench stand-ins (synthetic inputs or a first-order filter stand-in), NOT the NERAM twin. The forecast is the stand-in's flat persistence (T_pred = T_est) with normal bands from T_est_sd.",
     "Hardware signals and module temperatures come from test stand-ins; no hardware exists. Thresholds are placeholders (Shreehan, TBD).",
     "No clinical, hardware or treatment claim is made."

@@ -246,28 +246,28 @@ The reference below is generated from `unity/schema/replay_fields.json` (kind, u
 | twin | `P_level_shift` | number | 1 | 0–1 | 3 | yes | Filtered mode probability at t (jump, jump+outlier) | 1/60 Hz | Sai · PROVISIONAL | Signal quality; chart B flags; event log |
 | twin | `P_outlier` | number | 1 | 0–1 | 3 | yes | Filtered mode probability at t (outlier, jump+outlier) | 1/60 Hz | Sai · PROVISIONAL | Signal quality; chart B flags; event log |
 | twin | `Twin_Valid` | enum | - | enum TwinValid | 0 | no | Twin reliability | 1/60 Hz | Sai · FROZEN names | Twin validity line; header model summary; forecast visibility |
-| ctrl | `Controller_State` | enum | - | enum ControllerState | 0 | no | Supervisor state | 1 Hz | Suchitha · FROZEN names | Controller banner; pipeline stage 3; timeline colours; CTRL world label; controller region |
-| ctrl | `Degraded_Substate` | enum | - | enum DegradedSubstate | 0 | no | Substate in TWIN_DEGRADED | 1 Hz | Suchitha · PROVISIONAL | Controller banner substate |
-| ctrl | `Heat_1` | number | % | 0–100 | 1 | no | Heating command per channel | 1 Hz | Suchitha · FROZEN names | CH table; pipeline stage 4; chart C lane; device glow + light; world label; region panel |
-| ctrl | `Heat_2` | number | % | 0–100 | 1 | no | Heating command per channel | 1 Hz | Suchitha · FROZEN names | CH table; pipeline stage 4; chart C lane; device glow + light; world label; region panel |
-| ctrl | `Heat_3` | number | % | 0–100 | 1 | no | Heating command per channel | 1 Hz | Suchitha · FROZEN names | CH table; pipeline stage 4; chart C lane; device glow + light; world label; region panel |
-| ctrl | `Heat_4` | number | % | 0–100 | 1 | no | Heating command per channel | 1 Hz | Suchitha · FROZEN names | CH table; pipeline stage 4; chart C lane; device glow + light; world label; region panel |
-| ctrl | `Demand_Global` | number | % | 0–100 | 1 | no | Demand before channel limits | 1 Hz | Suchitha · PROVISIONAL | All fields; controller region |
-| ctrl | `Trigger_Reason` | enum | - | enum TriggerReason | 0 | no | Reason for last state change | 1 Hz | Suchitha · FROZEN names | Banner "reason"; pipeline stage 3 detail |
-| ctrl | `Alert` | enum | - | enum AlertCode | 0 | no | Highest-priority alert | 1 Hz | Suchitha · FROZEN names | Banner alert chip; controller rows; event log |
-| ctrl | `Safety_Shutdown` | bool | - | — | 2 | no | In SAFETY_SHUTDOWN | 1 Hz | Suchitha · FROZEN | Safety banner (red, latched); banner chip; channels "Shutdown" |
-| ctrl | `Fault_Latched` | bool | - | — | 2 | no | Any fault latched | 1 Hz | Suchitha · FROZEN | Banner chip; controller rows |
-| ctrl | `fault_code` | int | - | 0–65535 | 0 | no | Highest-priority active fault | 1 Hz | Shreehan (codes), Suchitha (selection) · PROVISIONAL | Controller rows; event log (text from fault table) |
-| ctrl | `Channel_Fault_1` | int | - | 0–65535 | 0 | no | Latched code per channel | 1 Hz | Suchitha · PROVISIONAL | CH status "Fault"; channel-fault strip; world label; region panel |
-| ctrl | `Channel_Fault_2` | int | - | 0–65535 | 0 | no | Latched code per channel | 1 Hz | Suchitha · PROVISIONAL | CH status "Fault"; channel-fault strip; world label; region panel |
-| ctrl | `Channel_Fault_3` | int | - | 0–65535 | 0 | no | Latched code per channel | 1 Hz | Suchitha · PROVISIONAL | CH status "Fault"; channel-fault strip; world label; region panel |
-| ctrl | `Channel_Fault_4` | int | - | 0–65535 | 0 | no | Latched code per channel | 1 Hz | Suchitha · PROVISIONAL | CH status "Fault"; channel-fault strip; world label; region panel |
-| ctrl | `Clinician_Mode` | bool | - | — | 2 | no | Clinician started/took over warming | 1 Hz | Suchitha · PROVISIONAL | Banner chip; event log |
-| ctrl | `Data_Stale_Twin` | bool | - | — | 2 | no | Twin data too old | 1 Hz | Suchitha · FROZEN | Banner chip; signal quality |
-| ctrl | `Data_Stale_HW` | bool | - | — | 2 | no | Hardware data too old | 1 Hz | Suchitha · FROZEN | Banner chip; signal quality |
-| ctrl | `Clinician_Start` | bool | - | — | 2 | no | Clinician START press (rising edge acts) | 1 Hz | Suchitha · FROZEN (Replay field PROPOSED) · proposed | Event log (clinician ticks) |
-| ctrl | `Clinician_Stop` | bool | - | — | 2 | no | Clinician STOP press (rising edge acts) | 1 Hz | Suchitha · FROZEN (Replay field PROPOSED) · proposed | Event log |
-| ctrl | `Clinician_Reset` | bool | - | — | 2 | no | Clinician RESET press (rising edge acts) | 1 Hz | Suchitha · FROZEN (Replay field PROPOSED) · proposed | Event log; safety banner reset text |
+| ctrl | `Controller_State` | enum | - | enum ControllerState | 0 | no | Supervisor state | 1 Hz | Suchita · FROZEN names | Controller banner; pipeline stage 3; timeline colours; CTRL world label; controller region |
+| ctrl | `Degraded_Substate` | enum | - | enum DegradedSubstate | 0 | no | Substate in TWIN_DEGRADED | 1 Hz | Suchita · PROVISIONAL | Controller banner substate |
+| ctrl | `Heat_1` | number | % | 0–100 | 1 | no | Heating command per channel | 1 Hz | Suchita · FROZEN names | CH table; pipeline stage 4; chart C lane; device glow + light; world label; region panel |
+| ctrl | `Heat_2` | number | % | 0–100 | 1 | no | Heating command per channel | 1 Hz | Suchita · FROZEN names | CH table; pipeline stage 4; chart C lane; device glow + light; world label; region panel |
+| ctrl | `Heat_3` | number | % | 0–100 | 1 | no | Heating command per channel | 1 Hz | Suchita · FROZEN names | CH table; pipeline stage 4; chart C lane; device glow + light; world label; region panel |
+| ctrl | `Heat_4` | number | % | 0–100 | 1 | no | Heating command per channel | 1 Hz | Suchita · FROZEN names | CH table; pipeline stage 4; chart C lane; device glow + light; world label; region panel |
+| ctrl | `Demand_Global` | number | % | 0–100 | 1 | no | Demand before channel limits | 1 Hz | Suchita · PROVISIONAL | All fields; controller region |
+| ctrl | `Trigger_Reason` | enum | - | enum TriggerReason | 0 | no | Reason for last state change | 1 Hz | Suchita · FROZEN names | Banner "reason"; pipeline stage 3 detail |
+| ctrl | `Alert` | enum | - | enum AlertCode | 0 | no | Highest-priority alert | 1 Hz | Suchita · FROZEN names | Banner alert chip; controller rows; event log |
+| ctrl | `Safety_Shutdown` | bool | - | — | 2 | no | In SAFETY_SHUTDOWN | 1 Hz | Suchita · FROZEN | Safety banner (red, latched); banner chip; channels "Shutdown" |
+| ctrl | `Fault_Latched` | bool | - | — | 2 | no | Any fault latched | 1 Hz | Suchita · FROZEN | Banner chip; controller rows |
+| ctrl | `fault_code` | int | - | 0–65535 | 0 | no | Highest-priority active fault | 1 Hz | Shreehan (codes), Suchita (selection) · PROVISIONAL | Controller rows; event log (text from fault table) |
+| ctrl | `Channel_Fault_1` | int | - | 0–65535 | 0 | no | Latched code per channel | 1 Hz | Suchita · PROVISIONAL | CH status "Fault"; channel-fault strip; world label; region panel |
+| ctrl | `Channel_Fault_2` | int | - | 0–65535 | 0 | no | Latched code per channel | 1 Hz | Suchita · PROVISIONAL | CH status "Fault"; channel-fault strip; world label; region panel |
+| ctrl | `Channel_Fault_3` | int | - | 0–65535 | 0 | no | Latched code per channel | 1 Hz | Suchita · PROVISIONAL | CH status "Fault"; channel-fault strip; world label; region panel |
+| ctrl | `Channel_Fault_4` | int | - | 0–65535 | 0 | no | Latched code per channel | 1 Hz | Suchita · PROVISIONAL | CH status "Fault"; channel-fault strip; world label; region panel |
+| ctrl | `Clinician_Mode` | bool | - | — | 2 | no | Clinician started/took over warming | 1 Hz | Suchita · PROVISIONAL | Banner chip; event log |
+| ctrl | `Data_Stale_Twin` | bool | - | — | 2 | no | Twin data too old | 1 Hz | Suchita · FROZEN | Banner chip; signal quality |
+| ctrl | `Data_Stale_HW` | bool | - | — | 2 | no | Hardware data too old | 1 Hz | Suchita · FROZEN | Banner chip; signal quality |
+| ctrl | `Clinician_Start` | bool | - | — | 2 | no | Clinician START press (rising edge acts) | 1 Hz | Suchita · FROZEN (Replay field PROPOSED) · proposed | Event log (clinician ticks) |
+| ctrl | `Clinician_Stop` | bool | - | — | 2 | no | Clinician STOP press (rising edge acts) | 1 Hz | Suchita · FROZEN (Replay field PROPOSED) · proposed | Event log |
+| ctrl | `Clinician_Reset` | bool | - | — | 2 | no | Clinician RESET press (rising edge acts) | 1 Hz | Suchita · FROZEN (Replay field PROPOSED) · proposed | Event log; safety banner reset text |
 | hw | `Module_Temp_1_A` | number | degC | — | 2 | yes | Skin-interface module temperature, channel 1 sensor A | 1 Hz | Shreehan · PROVISIONAL | Region panel / hardware inspector; All fields |
 | hw | `Module_Temp_1_B` | number | degC | — | 2 | yes | Skin-interface module temperature, channel 1 sensor B | 1 Hz | Shreehan · PROVISIONAL | Region panel / hardware inspector; All fields |
 | hw | `Module_Temp_2_A` | number | degC | — | 2 | yes | Skin-interface module temperature, channel 2 sensor A | 1 Hz | Shreehan · PROVISIONAL | Region panel / hardware inspector; All fields |
@@ -288,9 +288,9 @@ The reference below is generated from `unity/schema/replay_fields.json` (kind, u
 | hw | `HW_Cutoff_2` | bool | - | — | 2 | no | Hardware over-temperature cutoff tripped | 1 Hz | Shreehan · PROVISIONAL | CH status "Cutoff"; region panel |
 | hw | `HW_Cutoff_3` | bool | - | — | 2 | no | Hardware over-temperature cutoff tripped | 1 Hz | Shreehan · PROVISIONAL | CH status "Cutoff"; region panel |
 | hw | `HW_Cutoff_4` | bool | - | — | 2 | no | Hardware over-temperature cutoff tripped | 1 Hz | Shreehan · PROVISIONAL | CH status "Cutoff"; region panel |
-| plant | `T_plant` | number | degC | — | 2 | yes | SIMULATED signal | 1 Hz | Sai (equation), Suchitha (Simulink implementation) · ASSUMED | Chart B "ASSUMED compare" (optional) |
-| plant | `dT_heat` | number | degC | — | 3 | yes | ASSUMED warming contribution | 1 Hz | Sai (equation), Suchitha (Simulink implementation) · ASSUMED | Chart B "ASSUMED compare" (T_plant − dT_heat) |
-| plant | `plant_mode` | string_enum | - | enum PlantMode | 0 | no | OPEN_LOOP, STANDIN, TWIN_IN_LOOP | per file | Suchitha · FROZEN | All fields |
+| plant | `T_plant` | number | degC | — | 2 | yes | SIMULATED signal | 1 Hz | Sai (equation), Suchita (Simulink implementation) · ASSUMED | Chart B "ASSUMED compare" (optional) |
+| plant | `dT_heat` | number | degC | — | 3 | yes | ASSUMED warming contribution | 1 Hz | Sai (equation), Suchita (Simulink implementation) · ASSUMED | Chart B "ASSUMED compare" (T_plant − dT_heat) |
+| plant | `plant_mode` | string_enum | - | enum PlantMode | 0 | no | OPEN_LOOP, STANDIN, TWIN_IN_LOOP | per file | Suchita · FROZEN | All fields |
 | src | `obs` | string_enum | - | enum SourceTag | 0 | no | Source tag (obs) |  |  ·  | Source badge next to every value of that group |
 | src | `twin` | string_enum | - | enum SourceTag | 0 | no | Source tag (twin) |  |  ·  | Source badge next to every value of that group |
 | src | `ctrl` | string_enum | - | enum SourceTag | 0 | no | Source tag (ctrl) |  |  ·  | Source badge next to every value of that group |
@@ -1896,17 +1896,17 @@ The column "Synthetic generator uses" shows the constant hard-coded in `tools/ma
 | `p_release` | null | null | 1 | PROVISIONAL | Sai | Documented design choice; may be revisited with development data only | Predictive release probability | Ctrl | display in Parameters panel only | 0.4 |
 | `n_confirm_updates` | null | null | count | PROVISIONAL | Sai | Design choice | Consecutive twin minutes above trigger | Ctrl | display in Parameters panel only | 2 |
 | `sd_degrade_degC` | null | null | degC | TBD | Sai | Development data | T_est_sd above which the twin reports DEGRADED | Twin export | display in Parameters panel only | 0.25 |
-| `band_target_degC` | null | null | degC | PROVISIONAL | Suchitha | Design choice tuned on the test bench | TARGET_LOST hysteresis band | Ctrl | display in Parameters panel only | 0.2 |
-| `t_dwell_min_s` | null | null | s | PROVISIONAL | Suchitha | Design choice | Minimum time a condition must hold before a non-safety transition | Ctrl | display in Parameters panel only | 60 |
-| `t_recover_s` | null | null | s | PROVISIONAL | Suchitha | Design choice | Twin recovery dwell | Ctrl | display in Parameters panel only | 120 |
-| `t_stop_inhibit_s` | null | null | s | PROVISIONAL | Suchitha | Design choice | No autonomous re-trigger after STOP | Ctrl | display in Parameters panel only | 600 |
-| `d_pred_max_pct` | null | null | % | PROVISIONAL | Suchitha | Design choice on the ASSUMED plant | Demand cap per mode | Ctrl | display in Parameters panel only | 40 |
-| `d_active_max_pct` | null | null | % | PROVISIONAL | Suchitha | Design choice on the ASSUMED plant | Demand cap per mode | Ctrl | display in Parameters panel only | 70 |
-| `d_maint_max_pct` | null | null | % | PROVISIONAL | Suchitha | Design choice on the ASSUMED plant | Demand cap per mode | Ctrl | display in Parameters panel only | 30 |
-| `d_fallback_pct` | null | null | % | PROVISIONAL | Suchitha | Design choice on the ASSUMED plant | Demand cap per mode | Ctrl | display in Parameters panel only | 25 |
-| `kp_pct_per_degC` | null | null | %/degC | PROVISIONAL | Suchitha | Tuned on the ASSUMED plant (not a clinical claim) | PI proportional gain | Ctrl | display in Parameters panel only | 60.0 |
-| `ki_pct_per_degC_s` | null | null | %/(degC*s) | PROVISIONAL | Suchitha | Tuned on the ASSUMED plant (not a clinical claim) | PI integral gain | Ctrl | display in Parameters panel only | 0.02 |
-| `ts_ctrl_s` | 1 | null | s | PROVISIONAL | Suchitha | Design choice | Controller step | Ctrl, HW protocol | display in Parameters panel only | – |
+| `band_target_degC` | null | null | degC | PROVISIONAL | Suchita | Design choice tuned on the test bench | TARGET_LOST hysteresis band | Ctrl | display in Parameters panel only | 0.2 |
+| `t_dwell_min_s` | null | null | s | PROVISIONAL | Suchita | Design choice | Minimum time a condition must hold before a non-safety transition | Ctrl | display in Parameters panel only | 60 |
+| `t_recover_s` | null | null | s | PROVISIONAL | Suchita | Design choice | Twin recovery dwell | Ctrl | display in Parameters panel only | 120 |
+| `t_stop_inhibit_s` | null | null | s | PROVISIONAL | Suchita | Design choice | No autonomous re-trigger after STOP | Ctrl | display in Parameters panel only | 600 |
+| `d_pred_max_pct` | null | null | % | PROVISIONAL | Suchita | Design choice on the ASSUMED plant | Demand cap per mode | Ctrl | display in Parameters panel only | 40 |
+| `d_active_max_pct` | null | null | % | PROVISIONAL | Suchita | Design choice on the ASSUMED plant | Demand cap per mode | Ctrl | display in Parameters panel only | 70 |
+| `d_maint_max_pct` | null | null | % | PROVISIONAL | Suchita | Design choice on the ASSUMED plant | Demand cap per mode | Ctrl | display in Parameters panel only | 30 |
+| `d_fallback_pct` | null | null | % | PROVISIONAL | Suchita | Design choice on the ASSUMED plant | Demand cap per mode | Ctrl | display in Parameters panel only | 25 |
+| `kp_pct_per_degC` | null | null | %/degC | PROVISIONAL | Suchita | Tuned on the ASSUMED plant (not a clinical claim) | PI proportional gain | Ctrl | display in Parameters panel only | 60.0 |
+| `ki_pct_per_degC_s` | null | null | %/(degC*s) | PROVISIONAL | Suchita | Tuned on the ASSUMED plant (not a clinical claim) | PI integral gain | Ctrl | display in Parameters panel only | 0.02 |
+| `ts_ctrl_s` | 1 | null | s | PROVISIONAL | Suchita | Design choice | Controller step | Ctrl, HW protocol | display in Parameters panel only | – |
 | `ts_twin_s` | 60 | null | s | FROZEN | Sai | Project model (1-min bins) | Twin update period | Twin, Ctrl, Unity (minute bucketing) | minute bucketing (ReplayTable), telemetry trend period | – |
 | `data_stale_twin_s` | null | null | s | PROVISIONAL | Sai | Derived from ts_twin_s | Twin age that triggers TWIN_DEGRADED | Ctrl | display in Parameters panel only | – |
 | `data_stale_hw_s` | null | null | s | PROVISIONAL | Shreehan | Derived (>= 2 x hw_status_period_s) | Hardware age that triggers SAFETY_SHUTDOWN | Ctrl | display in Parameters panel only | 3 |
@@ -1935,12 +1935,12 @@ The column "Synthetic generator uses" shows the constant hard-coded in `tools/ma
 | `tau_heat_min` | null | null | min | ASSUMED | Sai | ASSUMED | Lag of the assumed warming effect | Plant | display in Parameters panel only | 10.0 |
 | `w_ch` | null | null | 1 | ASSUMED | Sai | ASSUMED equal | Channel weights in the warming effect (4 values) | Plant | display in Parameters panel only | [0.25,0.25,0.25,0.25] |
 | `r_obs_degC2` | null | null | degC^2 | TBD | Sai | Development fit of the robust model | Observation noise in the plant | Plant | display in Parameters panel only | – |
-| `sd_mod_sensor_degC` | null | null | degC | ASSUMED | Suchitha | ASSUMED, test-only | Module stand-in sensor noise | Test bench only | display in Parameters panel only | 0.03 |
-| `tau_mod_s` | null | null | s | ASSUMED | Suchitha | ASSUMED, test-only | Module stand-in time constant | Test bench only | display in Parameters panel only | 120.0 |
-| `k_mod_degC` | null | null | degC | ASSUMED | Suchitha | ASSUMED, test-only | Module stand-in gain | Test bench only | display in Parameters panel only | 6.0 |
-| `t_skin_base_degC` | null | null | degC | ASSUMED | Suchitha | ASSUMED, test-only | Module stand-in base temperature | Test bench only | display in Parameters panel only | 33.0 |
-| `sd_standin_degC` | null | null | degC | ASSUMED | Suchitha | ASSUMED, test-only | Twin stand-in SD | Test bench only | display in Parameters panel only | – |
-| `tau_standin_s` | null | null | s | ASSUMED | Suchitha | ASSUMED, test-only | Twin stand-in filter constant | Test bench only | display in Parameters panel only | – |
+| `sd_mod_sensor_degC` | null | null | degC | ASSUMED | Suchita | ASSUMED, test-only | Module stand-in sensor noise | Test bench only | display in Parameters panel only | 0.03 |
+| `tau_mod_s` | null | null | s | ASSUMED | Suchita | ASSUMED, test-only | Module stand-in time constant | Test bench only | display in Parameters panel only | 120.0 |
+| `k_mod_degC` | null | null | degC | ASSUMED | Suchita | ASSUMED, test-only | Module stand-in gain | Test bench only | display in Parameters panel only | 6.0 |
+| `t_skin_base_degC` | null | null | degC | ASSUMED | Suchita | ASSUMED, test-only | Module stand-in base temperature | Test bench only | display in Parameters panel only | 33.0 |
+| `sd_standin_degC` | null | null | degC | ASSUMED | Suchita | ASSUMED, test-only | Twin stand-in SD | Test bench only | display in Parameters panel only | – |
+| `tau_standin_s` | null | null | s | ASSUMED | Suchita | ASSUMED, test-only | Twin stand-in filter constant | Test bench only | display in Parameters panel only | – |
 
 Summary: 51 parameters.
 - Only 3 have an established value: `ts_ctrl_s`, `ts_twin_s`, `hw_status_period_s`.

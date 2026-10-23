@@ -1,11 +1,11 @@
 # NERAM supervisory controller - Python fallback
 
-Owner: Suchitha (supervisory controller, plan pp. 4-23). **SIMULATED / ASSUMED prototype. No clinical efficacy or clinical validation is claimed.**
+Owner: Suchita (supervisory controller, plan pp. 4-23). **SIMULATED / ASSUMED prototype. No clinical efficacy or clinical validation is claimed.**
 
 MATLAB/Simulink/Stateflow were not available, so the controller, test bench, tests, logs, plots and tables are implemented and
 run in Python. This is a *fallback*: the native `.slx`/Stateflow deliverables are **not** produced (list at the end).
 
-> **Code rebuilt on 18 Oct 2026.** Suchitha's v2 design, specification, results and logs are hers. The original v2
+> **Code rebuilt on 18 Oct 2026.** Suchita's v2 design, specification, results and logs are hers. The original v2
 > source files (made in a Claude chat session) were lost before upload, so Sai rebuilt `neram_ctrl/` and the scripts
 > from her specification (`docs/controller_spec.md`) on 18 Oct. The rebuild reproduces her five received v2 logs
 > **byte for byte** and 129 of her 132 result rows exactly; the 3 remaining rows are the TC17 stress-noise
@@ -20,7 +20,7 @@ run in Python. This is a *fallback*: the native `.slx`/Stateflow deliverables ar
 | matplotlib | 3.11.2 |
 
 Linux, no GPU. Install: `pip install numpy matplotlib` (both are in the repository's `environment.yml`). The v2
-video and figure images in `docs/` were made with Suchitha's v2 tooling (pandas, Pillow, imageio-ffmpeg) and are
+video and figure images in `docs/` were made with Suchita's v2 tooling (pandas, Pillow, imageio-ffmpeg) and are
 kept as received; the rebuild does not regenerate them.
 
 ## Run everything (one command, about 1 minute)
@@ -33,7 +33,7 @@ python scripts/check_interface.py           # re-validates the six handoff logs 
 ```
 
 The run is deterministic (numpy seed 42). It prints every PROVISIONAL / ASSUMED / placeholder parameter used, checks
-the six handoff logs, and compares five of them with Suchitha's received v2 logs (`results/reproduction_check.csv`).
+the six handoff logs, and compares five of them with Suchita's received v2 logs (`results/reproduction_check.csv`).
 
 ## Where things are
 
@@ -47,7 +47,7 @@ the six handoff logs, and compares five of them with Suchitha's received v2 logs
 | `results/plots/` | P01-P05 per test as `TCxx_P0n.png` (1600x900): state, heat and demand, module sensors, alerts and faults, temperature. (v2 had P01-P09; the rebuild draws these five.) |
 | `results/logs/` | per-test 1 Hz controller logs (handoff names + one per remaining TC up to TC17) |
 | `results/reproduction_check.csv`, `results/run_console.txt` | rebuilt vs received v2 logs; console output of the last run |
-| `docs/controller_spec.md` | architecture, states, transitions, faults, parameters, assumptions, limitations (Suchitha v2) |
+| `docs/controller_spec.md` | architecture, states, transitions, faults, parameters, assumptions, limitations (Suchita v2) |
 | `docs/figures/*_PYTHON_FALLBACK.jpg`, `docs/slide_controller_1/2.jpg`, `docs/demo_controller.mp4` | v2 figures, slides and ~2.3 min video, as received (S01-S07 screenshots were not received) |
 
 ## Inputs that were NOT supplied (dependencies)

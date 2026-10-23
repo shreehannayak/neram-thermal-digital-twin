@@ -49,7 +49,7 @@ def main():
     res_dir = os.path.join(CTRL, "results")
     for d in ("logs", "tables", "plots"):
         os.makedirs(os.path.join(res_dir, d), exist_ok=True)
-    print("NERAM supervisory controller - PYTHON FALLBACK (rebuilt 18 Oct 2026 from Suchitha's v2 spec)")
+    print("NERAM supervisory controller - PYTHON FALLBACK (rebuilt 18 Oct 2026 from Suchita's v2 spec)")
     print("Parameters:", PARAMS_VERSION)
     for k, v in TABLE.items():
         if v[2] != "FROZEN":
@@ -79,7 +79,7 @@ def main():
         print("LOGCHECK ctrl_%s.csv: %s" % (name, "PASS" if not errs else "FAIL " + "; ".join(errs[:3])))
         lc_ok = lc_ok and not errs
 
-    # reproduction check against the v2 logs received from Suchitha on 18 Oct
+    # reproduction check against the v2 logs received from Suchita on 18 Oct
     rep = []
     for name in ("SYN_02", "TC05", "TC07", "TC08", "TC13"):
         mine = os.path.join(res_dir, "logs", "ctrl_%s.csv" % name)
@@ -87,7 +87,7 @@ def main():
         if os.path.exists(ref):
             same = open(mine, "rb").read() == open(ref, "rb").read()
             rep.append((name, "byte-identical" if same else "DIFFERENT"))
-            print("REPRODUCTION ctrl_%s.csv vs Suchitha's v2 log: %s" % (name, rep[-1][1]))
+            print("REPRODUCTION ctrl_%s.csv vs Suchita's v2 log: %s" % (name, rep[-1][1]))
 
     # audit and tables
     au = audit.run_audit(P, R)
@@ -104,7 +104,7 @@ def main():
     summary = tables.write_all(os.path.join(res_dir, "tables"), P, rows, au, R, lc_ok)
     with open(os.path.join(res_dir, "reproduction_check.csv"), "w", newline="") as f:
         w = csv.writer(f, lineterminator="\n")
-        w.writerow(["log", "rebuilt vs Suchitha v2 log (integration/controller_logs_received/2026-10-18)"])
+        w.writerow(["log", "rebuilt vs Suchita v2 log (integration/controller_logs_received/2026-10-18)"])
         w.writerows(rep)
 
     # per-test summary

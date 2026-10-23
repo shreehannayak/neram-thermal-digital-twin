@@ -37,7 +37,7 @@ Paper design; all hardware is SIMULATED in the demo and nothing has been built. 
 ## Three safety layers
 1. Hardware cutoff (no firmware).
 2. MCU firmware (limits, independent watchdog, host heartbeat, stuck-on detection).
-3. Supervisory controller (Suchitha).
+3. Supervisory controller (Suchita).
 Each layer can remove heater power without the layers above it.
 
 ## How to open the files

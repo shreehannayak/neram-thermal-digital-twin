@@ -36,7 +36,7 @@
   "placeholder": 60,
   "unit": "s",
   "status": "PROVISIONAL",
-  "owner": "Suchitha",
+  "owner": "Suchita",
   "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"
  },
  "t_stop_inhibit_s": {
@@ -44,7 +44,7 @@
   "placeholder": 600,
   "unit": "s",
   "status": "PROVISIONAL",
-  "owner": "Suchitha",
+  "owner": "Suchita",
   "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"
  },
  "k_heat_degC_per_h": {
@@ -81,7 +81,7 @@
   "placeholder": 6.0,
   "unit": "degC",
   "status": "ASSUMED",
-  "owner": "Suchitha",
+  "owner": "Suchita",
   "source": "SYNTHETIC DEMO module stand-in; not a heater or skin value"
  },
  "i_on_A": {

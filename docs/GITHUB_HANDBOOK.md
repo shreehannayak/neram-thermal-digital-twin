@@ -11,7 +11,7 @@ Everything lives in one public repository, `shreehannayak/neram-thermal-digital-
 | `README.md` | The 18-section submission README, picture gallery at the top | Shreehan (skeleton), Sai |
 | `src/`, `analysis/` | Digital Twin model and development pipeline | Sai |
 | `integration/`, `config/`, `unity/schema/`, `tests/` | Replay builder, validators, interface spec v1.0, parameters, tests | Sai |
-| `controller/` | Supervisory controller (Python fallback): spec, results, figures, logs, video | Suchitha |
+| `controller/` | Supervisory controller (Python fallback): spec, results, figures, logs, video | Suchita |
 | `hardware/` | Diagrams, one-channel schematic, comparisons, BOM, power budget, interfaces | Shreehan |
 | `cad/` | FBX exports, Unity-ready copies, renders R01–R08 | Neharikaa |
 | `unity_editor/` | Unity 6000.3.26f1 project of the replay viewer | Sai |
@@ -37,7 +37,7 @@ Work only inside your own folder.
 
 | Member | Folder | How to add something |
 |---|---|---|
-| Suchitha | `controller/` | Code in `controller/neram_ctrl/` (run `python scripts/run_all_tests.py` from `controller/`), logs in `controller/results/logs/`; handoff logs are copied to `integration/controller_logs/` |
+| Suchita | `controller/` | Code in `controller/neram_ctrl/` (run `python scripts/run_all_tests.py` from `controller/`), logs in `controller/results/logs/`; handoff logs are copied to `integration/controller_logs/` |
 | Neharikaa | `cad/` | Done: the 3D models are in `cad/exports/`. Any new FBX: tell Sai the same day so the Unity import check runs |
 | Shreehan | `hardware/` | Edit CSV/Markdown directly; diagrams and schematic come from `hardware/diagrams/make_diagrams.py` and `hardware/schematics/make_schematic.py` (commit script and images) |
 | Sai | everything else | Unity changes in the workspace, copied to `unity_editor/` with their `.meta` files |
@@ -84,7 +84,7 @@ oxygen flow.
 
 - **Everyone:** GitHub confirmation comment; family name in `CITATION.cff`.
 - **Sai:** demo video (link in README section 16); sign-off of scientific wording in the checklist.
-- **Suchitha:** done (code rebuilt from her spec on 18 Oct, TC04 log and `T07_duty_stats.csv` generated). Only a reply on issue #2, the GitHub confirmation and family name.
+- **Suchita:** done (code rebuilt from her spec on 18 Oct, TC04 log and `T07_duty_stats.csv` generated). Only a reply on issue #2, the GitHub confirmation and family name.
 - **Neharikaa:** done (3D models delivered 18 Oct). Only the GitHub confirmation and family name, as for everyone.
 - **Shreehan:** 19 Oct audit from a logged-out browser (`docs/SUBMISSION_CHECKLIST.md`, dry run in
   `docs/SUBMISSION_DRYRUN_2026-10-18.md`); remaining BOM prices (supply, inlet, relay, heaters, small parts); review the

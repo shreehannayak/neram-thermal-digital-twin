@@ -58,7 +58,7 @@ Originals of every modified file are in `_sai_backup_2026-10-17/`:
 |---|---|
 | `src/twin_replay_export.py`: Twin_Valid uses **T_est_sd < sd_degrade** (was ≤) | 4A says "<" |
 | Exporter reads t_hypo_degC and sd_degrade_degC from `config/params.json`; `twin_export_config.json` v0.2 keeps only the 20 / 10-of-15 rule constants | 0.3: one source of truth; nobody hard-codes a value that has a params row |
-| `config/params.json` **v0.2**: placeholders for Sai-owned rows only (t_target 36.5, p_trigger 0.5, p_release 0.4, n_confirm 2, sd_degrade 0.25, k_heat 2.0, tau_heat 10, w_ch equal, r_obs 0.001), plus new TBD rows `plant_passive_*` (α, β, γ, u0, q). All values stay null. Changelog inside the file | §6 (plant_passive; "labelled placeholder for simulation"); 4T hand-off of plant_passive and assumed-warming values to Suchitha. Placeholders equal those the synthetic replays were already built with (tested) |
+| `config/params.json` **v0.2**: placeholders for Sai-owned rows only (t_target 36.5, p_trigger 0.5, p_release 0.4, n_confirm 2, sd_degrade 0.25, k_heat 2.0, tau_heat 10, w_ch equal, r_obs 0.001), plus new TBD rows `plant_passive_*` (α, β, γ, u0, q). All values stay null. Changelog inside the file | §6 (plant_passive; "labelled placeholder for simulation"); 4T hand-off of plant_passive and assumed-warming values to Suchita. Placeholders equal those the synthetic replays were already built with (tested) |
 | `integration/build_replay.py`: HW_Heartbeat_s / HW_Fault_Code are now **refused by default** and accepted only with `--accept-ctrl-input-columns` | §1S lists the log columns, and these two are not in it |
 | SYN_TC07 rebuilt with the flag; scenario_info and catalog limitations rewritten (fault 206 meaning, TC07 criteria not covered, §1S deviation) | truthfulness |
 | Tests renamed or added per plan §7: `test_interface.py`, `test_replay_schema.py`, `test_p_below_hypo_mc.py` (the MC tests moved from test_twin_export.py), plus TC07 timing and strict-default tests | §7 |
@@ -72,7 +72,7 @@ Originals of every modified file are in `_sai_backup_2026-10-17/`:
 
 **Deliberately unchanged:**
 * the canonical core and the Colab scripts;
-* Suchitha's logs (copies only, in `integration/controller_logs_received/`);
+* Suchita's logs (copies only, in `integration/controller_logs_received/`);
 * all Unity scenes, C# scripts, UXML/USS and EditMode tests. Static review found the plan's §4H–4P features
   already implemented; see SAI_REMAINING_WORK_AUDIT §D;
 * v4's synthetic generator and its 10 replays (byte-identical);
@@ -128,7 +128,7 @@ Originals of every modified file are in `_sai_backup_2026-10-17/`:
 Fixes in pass 3 (originals in `_sai_backup_2026-10-17/unity_2026-10-18/`):
 * `config/params.json`: t_target_degC placeholder removed again (clinical value; never invented in project config). Changelog entry added.
 * `Assets/Scripts/Core/StrictJson.cs`: numbers outside the double range (1e400) now read as ±Infinity / 0 like Python json.loads, after the strict syntax check; E011 then rejects them per field.
-* SYN_TC07 rebuilt without `--placeholder` (it is canonical NERAM twin + Suchitha's real log, so the "NOT NERAM TWIN OR CONTROLLER OUTPUT" watermark was false) and with a 2-value params_used snapshot (t_hypo 36.0, sd_degrade 0.25 — the values twin_SYN_01 was computed with). `integration/scenario_info/SYN_TC07_params_used.json` added.
+* SYN_TC07 rebuilt without `--placeholder` (it is canonical NERAM twin + Suchita's real log, so the "NOT NERAM TWIN OR CONTROLLER OUTPUT" watermark was false) and with a 2-value params_used snapshot (t_hypo 36.0, sd_degrade 0.25 — the values twin_SYN_01 was computed with). `integration/scenario_info/SYN_TC07_params_used.json` added.
 * Header / overlay polish at 1366×768 (NeramApp.cs, HeaderStatus.cs, NeramMain.uxml, neram.uss): short chips (PLACEHOLDER, FAULT TEXT TBD) with full-text tooltips; duplicate "1 config warning" chip for the missing fault table removed; status line "Ctrl … · Twin …" (full text in tooltip); watermark is a solid readable badge "SYNTHETIC STAND-IN DATA · NOT NERAM TWIN / CONTROLLER OUTPUT"; redundant header "ASSUMED / SIMULATED" badge hidden (footer + panel tags carry it); FULL ANALYSIS cards opaque (3D chips no longer bleed through); channel table spacing; graph C bottom legend hidden in FULL ANALYSIS (channel names are inside the plot).
 * tests: test_interface.py (t_target exception), test_controller_log_integration.py (SYN_TC07 not placeholder; reproducible with the new arguments).
 
@@ -155,10 +155,10 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 * `docs/NERAM_Viewer_User_Guide.pdf` (14 pages, screenshots from the Editor) — plain-language guide to every screen.
 * Originals: `_sai_backup_2026-10-17/unity_2026-10-18/` (ParametersPanel.cs, DiagnosticsPanel.cs). No files deleted.
 
-## 10. Suchitha's controller package v2 integrated (18 Oct 2026, ~11:00 IST)
+## 10. Suchita's controller package v2 integrated (18 Oct 2026, ~11:00 IST)
 * Received: README, controller_spec.md, test_results.csv (TC01–TC18 PASS, TC19 BLOCKED, TC20 EXCLUDED), requirements_traceability.csv, audit_checks.csv, 5 logs, demo_controller.mp4 (141 s), 5 figures. Copied read-only with SHA256SUMS to integration/controller_logs_received/2026-10-18/.
 * Verified from the rows: no warming with zero heat, no heat in SAFETY_SHUTDOWN, 1 Hz continuous; previous TC05/TC07/TC13 findings resolved.
-* config/params.json **v0.3**: Suchitha's 10 PROVISIONAL rows set to her values, 6 ASSUMED test-bench rows given her placeholders; data_stale_twin_s placeholder 120 s (Sai). Shreehan rows unchanged. Synced to StreamingAssets (sync tool) and copied into build/NERAM_Windows (no rebuild needed). test_interface 8/8 PASS.
+* config/params.json **v0.3**: Suchita's 10 PROVISIONAL rows set to her values, 6 ASSUMED test-bench rows given her placeholders; data_stale_twin_s placeholder 120 s (Sai). Shreehan rows unchanged. Synced to StreamingAssets (sync tool) and copied into build/NERAM_Windows (no rebuild needed). test_interface 8/8 PASS.
 * Unity replays from the v2 logs: NOT BUILT — the twin input she used is not in the logs (see SCENARIO_TRUTH_TABLE §5). Hand-off in TEAM_HANDOFFS_SAI.md §5.
 * No files deleted.
 
@@ -182,7 +182,7 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 - `config/interface_spec.csv` frozen at spec_version 1.0 (`config/enums.json`, `config/params.json`): 34 Sai rows FROZEN, 38 teammate rows "FROZEN names"; evidence and meaning in `docs/INTERFACE_SPEC_v1.0.md`. Only the status column changed (52 rows).
 - `t_surface_limit_degC`: still null/TBD. Source now names IEC 80601-2-35 Table 201.102 (time-dependent limits; values not public) as governing and IEC 60601-1 Table 24 (43 degC) as a superseded design reference. No value invented; the Unity test "no surface limit is invented" is unchanged.
 - Viewer labels: wearable region "WRIST WEARABLE · DISPLAY ONLY (right wrist)"; detail panel states no controls, no battery, not a controller.
-- Python tests (cloud workspace with scipy/jsonschema): interface 8/8, p_below_hypo MC 4/4, replay schema 2/2, twin export 9/9, UI contract 24/24 PASS. test_controller_log_integration passes on the laptop; on a fresh GitHub clone the TC07 reproduction failed because git had converted Suchitha's log line endings - fixed with `.gitattributes` (integration/** byte-exact).
+- Python tests (cloud workspace with scipy/jsonschema): interface 8/8, p_below_hypo MC 4/4, replay schema 2/2, twin export 9/9, UI contract 24/24 PASS. test_controller_log_integration passes on the laptop; on a fresh GitHub clone the TC07 reproduction failed because git had converted Suchita's log line endings - fixed with `.gitattributes` (integration/** byte-exact).
 - GitHub (shreehannayak/neram-thermal-ditital-twin): workspace code, config, docs, tests, synthetic data, unity/ and the Unity project pushed; results/development and results/final not published.
 
 ## 14. Plan renders, hardware completion, checklist dry run (Sai, 18 Oct 2026, evening)
@@ -225,7 +225,7 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 - Validation 97 PASS / 10 WARN / 0 FAIL; EditMode 86 pass / 0 fail / 1 skip; NERAM.exe rebuilt (160.9 MB) and checked:
   monitor traces, Internal-view airflow, surgeon walking.
 - Renders R01–R07 re-rendered with the new scene; screenshots in `docs/screenshots/`.
-- `config/params.json`: data_stale_hw_s = 2 s (Shreehan, issue #1). Suchitha's 17 Oct Colab notebook added under
+- `config/params.json`: data_stale_hw_s = 2 s (Shreehan, issue #1). Suchita's 17 Oct Colab notebook added under
   `controller/legacy_colab_2026-10-17/` (reproduces the received TC05/TC07/TC13 logs byte for byte).
 
 
@@ -235,13 +235,13 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
 - Hardware: MPM-65 derating factor 1.0 (100 % load to 55 C ambient and from 100 VAC, read from the Mean Well
   datasheet chart), per-channel budget limit 15.6 W (calculated, PROVISIONAL), example wrist cell 0.555 Wh
   (Adafruit 1317), DigiKey India qty-1 prices for 7 BOM rows (partial subtotal 6045.45 INR).
-- Controller: the v2 source was lost; `controller/neram_ctrl/` and `controller/scripts/` rebuilt from Suchitha's
+- Controller: the v2 source was lost; `controller/neram_ctrl/` and `controller/scripts/` rebuilt from Suchita's
   specification. Five regenerated logs are byte-identical to her v2 logs; 129/132 result rows identical, same totals
   (112 PASS, 18 REPORTED, 1 BLOCKED, 1 EXCLUDED). New: `ctrl_TC04.csv`, per-test logs, plots, `T07_duty_stats.csv`.
   Details and known differences: `controller/REBUILD_2026-10-18_SAI.md`.
 
 ## 17. Controller replays, KiCad schematic, viewer detail pass (Sai, 19 Oct 2026)
-- Controller replays: `tools/make_controller_replays.py` (sha256 ae802793242660ce…) runs Suchitha's test bench
+- Controller replays: `tools/make_controller_replays.py` (sha256 ae802793242660ce…) runs Suchita's test bench
   (`controller/neram_ctrl`) for TC02, TC07, TC13, TC04 and TC08 and builds SCN_B–SCN_F with `integration/build_replay.py
   --twin-source SIMULATED`. All five validate with 0 warnings and pass the semantic check. Twin fields are stand-ins
   (flat persistence forecast with normal bands from T_est_sd), not the NERAM twin. Replays: SCN_B 47c1a5367c139c2f…,
@@ -269,3 +269,11 @@ Known, not fixed: the Editor Game view at 0.81× crops the bottom ~4 px of the f
   hardware interface map, `docs/architecture.pdf`, `docs/presentation.pdf` (also: repository link after the rename, replay
   count). README: clickable architecture PDF, AI-assistance note.
 - Checks: Unity project validation PASSED; EditMode 86 pass / 0 fail / 1 skip; Windows player rebuilt.
+
+## 19. Name corrected to Suchita (Sai, 23 Oct 2026)
+- "Suchitha" corrected to **Suchita** in every document, script, config owner field, controller table and log header text.
+- All 16 replays rebuilt with the corrected text (`tools/make_synthetic_replays.py`, `tools/make_controller_replays.py`;
+  SYN_TC07 header text patched in place, inputs and frames unchanged) and re-synced to StreamingAssets; the replay
+  SHA-256 values quoted in earlier sections refer to the previous builds. `integration/controller_logs_received/2026-10-18/SHA256SUMS`
+  updated for the two edited documents. Handbook PDF rebuilt by the new `tools/build_handbook_pdf.py`; user guide,
+  architecture, presentation and hardware diagram PDFs rebuilt. `tools/run_all_tests.py`: OVERALL PASS.

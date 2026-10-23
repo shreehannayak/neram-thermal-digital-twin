@@ -11,7 +11,7 @@ Formulas and inputs are in hardware/power/power_budget.csv and hardware/docs/pow
 Status: TBD. The bus voltage is PROVISIONAL (24 V) and the supply is rated 65 W, but the heater power per channel (the heater area is not defined in this submission, and the heater watt density) is not yet available (duty statistics now exist in controller/results/tables/T07_duty_stats.csv, from assumed-plant test scenarios), so no peak, continuous or energy figure exists. Nothing is estimated here.
 
 ## 2. Safety architecture coverage
-Each fault is caught by at least one layer. Layer 1 = hardware cutoff (no firmware); Layer 2 = MCU firmware; Layer 3 = supervisory controller. Controller actions are in controller/docs/fault_response_matrix.csv (Suchitha); cross-check against that file is pending.
+Each fault is caught by at least one layer. Layer 1 = hardware cutoff (no firmware); Layer 2 = MCU firmware; Layer 3 = supervisory controller. Controller actions are in controller/docs/fault_response_matrix.csv (Suchita); cross-check against that file is pending.
 
 | Fault (code) | Layer 1 | Layer 2 | Layer 3 |
 |---|---|---|---|

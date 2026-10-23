@@ -8,7 +8,7 @@ WHAT THIS IS
 WHAT THIS IS NOT
   - Not the NERAM twin: twin fields come from a simple stand-in (exponential filter + fixed rules),
     tagged src.twin = SIMULATED.
-  - Not Suchitha's controller: controller fields come from a simplified scripted stand-in that follows the
+  - Not Suchita's controller: controller fields come from a simplified scripted stand-in that follows the
     plan's state list so the UI can be exercised. It is not the Simulink/Stateflow model.
   - Not physiology: the baseline trajectory, the assumed warming response and the module temperatures use
     illustrative values chosen only so that every display path is exercised. Every such value is listed
@@ -73,9 +73,9 @@ PARAMS_USED = {
                   "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"},
     "p_release": {"value": None, "placeholder": SYN["p_release"], "unit": "1", "status": "PROVISIONAL", "owner": "Sai",
                   "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"},
-    "t_dwell_min_s": {"value": None, "placeholder": SYN["t_dwell_min_s"], "unit": "s", "status": "PROVISIONAL", "owner": "Suchitha",
+    "t_dwell_min_s": {"value": None, "placeholder": SYN["t_dwell_min_s"], "unit": "s", "status": "PROVISIONAL", "owner": "Suchita",
                       "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"},
-    "t_stop_inhibit_s": {"value": None, "placeholder": SYN["t_stop_inhibit_s"], "unit": "s", "status": "PROVISIONAL", "owner": "Suchitha",
+    "t_stop_inhibit_s": {"value": None, "placeholder": SYN["t_stop_inhibit_s"], "unit": "s", "status": "PROVISIONAL", "owner": "Suchita",
                          "source": "SYNTHETIC DEMO placeholder for the scripted stand-in controller"},
     "k_heat_degC_per_h": {"value": None, "placeholder": SYN["k_heat_degC_per_h"], "unit": "degC/h at 100% on all channels", "status": "ASSUMED", "owner": "Sai",
                           "source": "SYNTHETIC DEMO illustrative value; not estimated; no warming data exist"},
@@ -83,7 +83,7 @@ PARAMS_USED = {
                      "source": "SYNTHETIC DEMO illustrative value"},
     "w_ch": {"value": None, "placeholder": SYN["w_ch"], "unit": "1", "status": "ASSUMED", "owner": "Sai",
              "source": "ASSUMED equal channel weights (plan section 4E default)"},
-    "k_mod_degC": {"value": None, "placeholder": SYN["k_mod_degC"], "unit": "degC", "status": "ASSUMED", "owner": "Suchitha",
+    "k_mod_degC": {"value": None, "placeholder": SYN["k_mod_degC"], "unit": "degC", "status": "ASSUMED", "owner": "Suchita",
                    "source": "SYNTHETIC DEMO module stand-in; not a heater or skin value"},
     "i_on_A": {"value": None, "placeholder": SYN["i_on_A"], "unit": "A", "status": "TBD", "owner": "Shreehan",
                "source": "SYNTHETIC DEMO normalised current (1.0 = nominal); not an electrical rating"},

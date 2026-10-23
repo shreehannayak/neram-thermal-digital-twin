@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the controller demo replays SCN_B-SCN_F from Suchitha's supervisory controller (controller/neram_ctrl,
+"""Build the controller demo replays SCN_B-SCN_F from Suchita's supervisory controller (controller/neram_ctrl,
 v2 design, code rebuilt 18 Oct 2026) and its test bench.
 
 For every scenario the controller test run is executed, the twin values the controller actually received are written
@@ -30,7 +30,7 @@ TWIN_COLS = (["T_twin_s", "T_obs", "obs_missing", "T_est", "T_est_sd"]
              + ["P_below_hypo_20", "P_below_hypo_30", "P_below_hypo_60", "P_level_shift", "P_outlier", "Twin_Valid"])
 CREATED = "2026-10-19T00:00:00Z"
 COMMON_LIMITS = [
-    "Controller: Suchitha's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on "
+    "Controller: Suchita's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on "
     "18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
     "Twin fields are test-bench stand-ins (synthetic inputs or a first-order filter stand-in), NOT the NERAM twin. "
     "The forecast is the stand-in's flat persistence (T_pred = T_est) with normal bands from T_est_sd.",
@@ -154,7 +154,7 @@ def main():
         ctrl_path = log_dir / f"ctrl_CTRL_{sid}.csv"
         write_ctrl(ctrl_path, rows)
         info = {"title": cfg["title"], "purpose": cfg["purpose"],
-                "data_source": "Controller: Suchitha's supervisory controller test %s (SIMULATED test bench, "
+                "data_source": "Controller: Suchita's supervisory controller test %s (SIMULATED test bench, "
                                "controller/neram_ctrl). Twin fields: test-bench stand-in values the controller "
                                "received (SIMULATED)." % cfg["test"],
                 "loop_description": cfg["loop"], "limitations": cfg["extra"] + COMMON_LIMITS}

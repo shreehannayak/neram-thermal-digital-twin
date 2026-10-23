@@ -2,7 +2,7 @@
 
 TwinAdapter -> FaultMonitor -> Supervisor -> DemandLaw -> ChannelLimiter
 
-Rebuilt by Sai on 18 Oct 2026 from Suchitha's v2 specification (docs/controller_spec.md) after the original v2
+Rebuilt by Sai on 18 Oct 2026 from Suchita's v2 specification (docs/controller_spec.md) after the original v2
 source files were lost. SIMULATED / ASSUMED prototype logic; no clinical claim.
 """
 import math

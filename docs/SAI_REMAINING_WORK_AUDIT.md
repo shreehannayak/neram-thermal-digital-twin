@@ -7,7 +7,7 @@
 > * Play mode: SYN_SCN_B and SYN_TC07 checked on THEATRE, MONITOR and FULL ANALYSIS. SYN_TC07 shows the latched shutdown exactly as predicted.
 > * Fixed: 4 failing EditMode tests (params t_target placeholder removed; StrictJson 1e400), the false placeholder watermark on SYN_TC07 (rebuilt, new hash 7714f8a8…), and the header/overlay clipping at 1366×768.
 > * Windows player: rebuilt from this state (AUDIT_TRAIL §7).
-> * Still open (unchanged): development fit (C2 / O1–O3 decision + Colab), PREREGISTRATION_dev commit/push (no Git repository found on this computer), duration statistics (Colab Cell 7), FBX and fault_codes.csv from teammates, Suchitha's TC05/TC13 logs, the video, SYN_SCN_D not replayed tonight.
+> * Still open (unchanged): development fit (C2 / O1–O3 decision + Colab), PREREGISTRATION_dev commit/push (no Git repository found on this computer), duration statistics (Colab Cell 7), FBX and fault_codes.csv from teammates, Suchita's TC05/TC13 logs, the video, SYN_SCN_D not replayed tonight.
 > **Verdict for 20 Oct (Sai's scope): CONDITIONALLY READY** — the Unity condition is now met; the remaining conditions are the preregistration commit and reporting the development fit honestly as failed / correction pending.
 
 **Requirement source:** `NERAM — Team Implementation Plan(2).pdf`, 71 pages. The full text was extracted and read
@@ -79,7 +79,7 @@ originals are exactly the files listed above.
 * All later runs used `PYTHONDONTWRITEBYTECODE`, and no `__pycache__` exists in the workspace.
 
 **Deliberately untouched:**
-* the canonical scripts and Suchitha's logs;
+* the canonical scripts and Suchita's logs;
 * Unity scenes, C#, UXML/USS and EditMode tests;
 * v4's generator and its 10 replays;
 * `interface_spec.csv` and `enums.json`;
@@ -161,7 +161,7 @@ The full table is in `docs/SCENARIO_TRUTH_TABLE.md`. Summary:
 
 **What could not be shown:**
 * SCN_A from a development case.
-* Heating driven by Suchitha's controller.
+* Heating driven by Suchita's controller.
 * TC07 reset/release.
 
 ## D. Unity v4 report
@@ -225,12 +225,12 @@ workspace.
 |---|---|---|---|---|---|---|---|
 | Canonical core unchanged | 4A, 7 | Sai | src/thermal_robust_core.py | hash matches | COMPLETE | copy + hash test | — |
 | Twin export | 4A | Sai | src/twin_replay_export.py | 13 tests | COMPLETE (synthetic) | strict rule, params source | fitted parameters for real data |
-| twin_SYN_01..04 | 4T, 9.6 CP0 | Sai | integration/twin_outputs/ | valid, distinct, reproducible | COMPLETE | regenerated through the canonical filter | Suchitha re-runs TC01–TC03/TC05/TC13 on them |
-| plant_passive values + assumed-warming parameters to Suchitha | 4T, 6 | Sai | params.json v0.2 | rows present, placeholders labelled | COMPLETE (placeholders) | added | send the announcement in docs/TEAM_HANDOFFS_SAI.md §1 |
+| twin_SYN_01..04 | 4T, 9.6 CP0 | Sai | integration/twin_outputs/ | valid, distinct, reproducible | COMPLETE | regenerated through the canonical filter | Suchita re-runs TC01–TC03/TC05/TC13 on them |
+| plant_passive values + assumed-warming parameters to Suchita | 4T, 6 | Sai | params.json v0.2 | rows present, placeholders labelled | COMPLETE (placeholders) | added | send the announcement in docs/TEAM_HANDOFFS_SAI.md §1 |
 | Assumed warming | 4E | Sai | src/assumed_warming.py | equation + grid tests | COMPLETE | — | twin-in-the-loop (CP6) |
 | Shared interface | 0.3–0.5, 4D, 5, 6 | Sai | config/* | test_interface 8/8 | VERIFIED; v0.2 params | placeholders, plant_passive | values TBD (clinician, Shreehan); spec v1.0 freeze was due at CP2 |
-| Validators | 4D | Sai | validate_twin_output.py, validate_replay.py | 62 fixtures + negative tests | COMPLETE | twin validator | Suchitha's check_interface.m (hers) |
-| Replay builder | 4G | Sai | build_replay.py | strict §1S, reproducible | COMPLETE | opt-in flag | Suchitha's logs: §1S deviations |
+| Validators | 4D | Sai | validate_twin_output.py, validate_replay.py | 62 fixtures + negative tests | COMPLETE | twin validator | Suchita's check_interface.m (hers) |
+| Replay builder | 4G | Sai | build_replay.py | strict §1S, reproducible | COMPLETE | opt-in flag | Suchita's logs: §1S deviations |
 | JSON Schema | 4F | Sai | unity/schema/replay_schema.json | all lines pass | VERIFIED | test added | — |
 | Four Unity scenarios with labels | 4R, 9.7 | Sai | replays | SYN_SCN_B/C/D (+ A0 stand-in) | CONDITIONALLY COMPLETE | SYN_TC07 added | SCN_A needs the dev fit. Unity re-check DONE 18 Oct (EditMode 86/0/1, SYN_SCN_B + SYN_TC07 played); SYN_SCN_D not replayed tonight |
 | Unity viewer features | 4H–4P | Sai | unity_editor/ | static review; Editor-tested 10 Oct | STATIC PASS | — | 15-min Editor check (§G) |

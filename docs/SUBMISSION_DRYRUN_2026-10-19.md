@@ -7,7 +7,7 @@ the team agreed; BLOCKED = cannot be done without data we may not publish; LEFT 
 ## What is left before submission
 1. **GitHub comments (all four members).**
    - Issue #1 "Hardware rows for params.json" and issue #2 "Hardware assumptions: please confirm" have no comments
-     yet: Shreehan confirms the hardware rows and assumptions; Suchitha confirms the controller uses them.
+     yet: Shreehan confirms the hardware rows and assumptions; Suchita confirms the controller uses them.
    - Each member confirms their line in README §2 in a GitHub comment (checklist item 1) and adds their family name
      to `CITATION.cff`.
 2. **Demo video (Sai).** Record, upload unlisted, put the link in README §16. The plan asks for 15–20 min
@@ -17,7 +17,7 @@ the team agreed; BLOCKED = cannot be done without data we may not publish; LEFT 
 
 Everything else in the plan is done, done to the agreed scope, or blocked for a data-use reason (below).
 
-## Suchitha — controller (checklist 1Y)
+## Suchita — controller (checklist 1Y)
 | Item | Status | Evidence |
 |---|---|---|
 | Runs from a clean clone | DONE (scope) | Python fallback `controller/neram_ctrl` (MATLAB/Simulink were not available); `python controller/scripts/run_all_tests.py` |

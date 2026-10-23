@@ -2,12 +2,12 @@
   "catalog_version": "0.1",
   "owner": "Sai",
   "status": "PROVISIONAL",
-  "note": "Scenario slots shown in the Unity scenario selector. SCN_A-SCN_D are the plan's demo scenarios (section 4R); SCN_B-SCN_F are built from Suchitha's controller test runs by tools/make_controller_replays.py (SCN_A needs a development-case twin export and is not built). SYN_* files are SYNTHETIC placeholders from tools/make_synthetic_replays.py for UI development; they are not outputs of the NERAM twin or controller.",
+  "note": "Scenario slots shown in the Unity scenario selector. SCN_A-SCN_D are the plan's demo scenarios (section 4R); SCN_B-SCN_F are built from Suchita's controller test runs by tools/make_controller_replays.py (SCN_A needs a development-case twin export and is not built). SYN_* files are SYNTHETIC placeholders from tools/make_synthetic_replays.py for UI development; they are not outputs of the NERAM twin or controller.",
   "scenarios": [
     {
       "id": "SCN_A",
       "title": "Usual-care replay",
-      "producer": "Sai (twin export) + Suchitha (TC19 open-loop log) + build_replay.py",
+      "producer": "Sai (twin export) + Suchita (TC19 open-loop log) + build_replay.py",
       "purpose": "Development-case replay, open loop: the twin follows a real development-set patient temperature signal; controller decisions are logged but have no effect.",
       "expected_data_source": "Development case (REAL_DEV observations, NERAM twin MODEL output), open loop",
       "expected_cohort": "DEVELOPMENT",
@@ -20,14 +20,14 @@
     {
       "id": "SCN_B",
       "title": "Predictive warming (controller TC02, synthetic forecast input)",
-      "producer": "Suchitha's supervisory controller (controller/neram_ctrl, test TC02) + tools/make_controller_replays.py + integration/build_replay.py",
+      "producer": "Suchita's supervisory controller (controller/neram_ctrl, test TC02) + tools/make_controller_replays.py + integration/build_replay.py",
       "purpose": "A synthetic forecast risk (P_below_hypo_20 crosses 0.3 at 300 s) is confirmed over two twin updates; the controller enters PREDICTIVE_WARMING at 370 s and raises all four channels with the PI law, capped at 40 %.",
       "expected_data_source": "Synthetic: controller test bench (SIMULATED), twin stand-in (SIMULATED)",
       "expected_cohort": "SYNTHETIC",
       "limitations": [
         "Open loop: the synthetic twin input does not respond to heating (no patient plant).",
         "Synthetic constant T_est 36.5 degC and stepped forecast probability; not a forecast made by the twin.",
-        "Controller: Suchitha's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
+        "Controller: Suchita's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
         "Twin fields are test-bench stand-ins (synthetic inputs or a first-order filter stand-in), NOT the NERAM twin. The forecast is the stand-in's flat persistence (T_pred = T_est) with normal bands from T_est_sd.",
         "Hardware signals and module temperatures come from test stand-ins; no hardware exists. Thresholds are placeholders (Shreehan, TBD).",
         "No clinical, hardware or treatment claim is made."
@@ -36,7 +36,7 @@
     {
       "id": "SCN_C",
       "title": "Over-temperature fault (controller TC07, closed loop)",
-      "producer": "Suchitha's supervisory controller (controller/neram_ctrl, test TC07) + tools/make_controller_replays.py + integration/build_replay.py",
+      "producer": "Suchita's supervisory controller (controller/neram_ctrl, test TC07) + tools/make_controller_replays.py + integration/build_replay.py",
       "purpose": "Active warming of a patient stand-in from 35 degC; a test ramp on CH2 sensor A first isolates CH2 (205 sensor disagreement), then crosses 41 degC: SAFETY_SHUTDOWN (206) in the same second, RESET blocked at 1050 s while still hot, latch held after cooling, RESET at 1250 s releases, warming resumes.",
       "expected_data_source": "Synthetic: controller test bench (SIMULATED), twin stand-in (SIMULATED), ASSUMED patient plant",
       "expected_cohort": "SYNTHETIC",
@@ -44,7 +44,7 @@
         "Closed loop with the ASSUMED patient plant and the twin stand-in.",
         "The CH2 sensor-A ramp is an injected test stimulus, not a heater response.",
         "T_plant is an ASSUMED plant response (k_heat 0.6 degC/h at 100 %), not a prediction.",
-        "Controller: Suchitha's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
+        "Controller: Suchita's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
         "Twin fields are test-bench stand-ins (synthetic inputs or a first-order filter stand-in), NOT the NERAM twin. The forecast is the stand-in's flat persistence (T_pred = T_est) with normal bands from T_est_sd.",
         "Hardware signals and module temperatures come from test stand-ins; no hardware exists. Thresholds are placeholders (Shreehan, TBD).",
         "No clinical, hardware or treatment claim is made."
@@ -53,14 +53,14 @@
     {
       "id": "SCN_D",
       "title": "Twin degraded (controller TC13, synthetic)",
-      "producer": "Suchitha's supervisory controller (controller/neram_ctrl, test TC13) + tools/make_controller_replays.py + integration/build_replay.py",
+      "producer": "Suchita's supervisory controller (controller/neram_ctrl, test TC13) + tools/make_controller_replays.py + integration/build_replay.py",
       "purpose": "Forecast-triggered warming is running when Twin_Valid becomes DEGRADED at 300 s: TWIN_DEGRADED.MONITOR, all heat 0, no autonomous warming; the twin is VALID again from 600 s and the controller returns to NORMAL after t_recover_s (630 s).",
       "expected_data_source": "Synthetic: controller test bench (SIMULATED), twin stand-in (SIMULATED)",
       "expected_cohort": "SYNTHETIC",
       "limitations": [
         "Open loop: synthetic twin input, no patient plant.",
         "Synthetic twin input values; the degradation is scripted.",
-        "Controller: Suchitha's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
+        "Controller: Suchita's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
         "Twin fields are test-bench stand-ins (synthetic inputs or a first-order filter stand-in), NOT the NERAM twin. The forecast is the stand-in's flat persistence (T_pred = T_est) with normal bands from T_est_sd.",
         "Hardware signals and module temperatures come from test stand-ins; no hardware exists. Thresholds are placeholders (Shreehan, TBD).",
         "No clinical, hardware or treatment claim is made."
@@ -69,7 +69,7 @@
     {
       "id": "SCN_E",
       "title": "Active recovery to target (controller TC04, closed loop, 12 h)",
-      "producer": "Suchitha's supervisory controller (controller/neram_ctrl, test TC04) + tools/make_controller_replays.py + integration/build_replay.py",
+      "producer": "Suchita's supervisory controller (controller/neram_ctrl, test TC04) + tools/make_controller_replays.py + integration/build_replay.py",
       "purpose": "Patient stand-in starts at 35 degC (below t_hypo 36 degC): ACTIVE_WARMING after the 10 s dwell, PI warming at the 50 % channel cap, TARGET_MAINTENANCE at 24430 s (6.8 h) with low maintenance heat.",
       "expected_data_source": "Synthetic: controller test bench (SIMULATED), twin stand-in (SIMULATED), ASSUMED patient plant",
       "expected_cohort": "SYNTHETIC",
@@ -77,7 +77,7 @@
         "Closed loop with the ASSUMED patient plant and the twin stand-in.",
         "Time to target (about 7 h) is a property of the ASSUMED plant gain; TC18 shows 3.6-13.9 h for 2x-0.5x gain. It is not a prediction.",
         "Flat passive trajectory: no passive cooling is modelled.",
-        "Controller: Suchitha's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
+        "Controller: Suchita's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
         "Twin fields are test-bench stand-ins (synthetic inputs or a first-order filter stand-in), NOT the NERAM twin. The forecast is the stand-in's flat persistence (T_pred = T_est) with normal bands from T_est_sd.",
         "Hardware signals and module temperatures come from test stand-ins; no hardware exists. Thresholds are placeholders (Shreehan, TBD).",
         "No clinical, hardware or treatment claim is made."
@@ -86,14 +86,14 @@
     {
       "id": "SCN_F",
       "title": "Sensor fault isolates one channel (controller TC08, synthetic)",
-      "producer": "Suchitha's supervisory controller (controller/neram_ctrl, test TC08) + tools/make_controller_replays.py + integration/build_replay.py",
+      "producer": "Suchita's supervisory controller (controller/neram_ctrl, test TC08) + tools/make_controller_replays.py + integration/build_replay.py",
       "purpose": "CH3 sensor B becomes unreadable at 120 s: only CH3 is switched off (303) and CHANNEL_FAULT is raised; a RESET at 150 s with the sensor still open is refused; the sensor recovers at 200 s but the latch holds until the RESET at 240 s.",
       "expected_data_source": "Synthetic: controller test bench (SIMULATED), twin stand-in (SIMULATED)",
       "expected_cohort": "SYNTHETIC",
       "limitations": [
         "Open loop: synthetic below-hypo twin input, no patient plant.",
         "The NaN on CH3 sensor B is an injected test fault.",
-        "Controller: Suchitha's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
+        "Controller: Suchita's supervisory controller design (v2 specification); Python fallback code rebuilt by Sai on 18 Oct 2026 from that specification (reproduces her v2 logs byte for byte). Not a Simulink/Stateflow model.",
         "Twin fields are test-bench stand-ins (synthetic inputs or a first-order filter stand-in), NOT the NERAM twin. The forecast is the stand-in's flat persistence (T_pred = T_est) with normal bands from T_est_sd.",
         "Hardware signals and module temperatures come from test stand-ins; no hardware exists. Thresholds are placeholders (Shreehan, TBD).",
         "No clinical, hardware or treatment claim is made."
@@ -192,7 +192,7 @@
     {
       "id": "SYN_TC07",
       "title": "Module over-temperature shutdown (controller test TC07, synthetic)",
-      "producer": "Suchitha (TC07 test-bench log, received 2026-10-17) + Sai twin_SYN_01 (canonical filter, ASSUMED_SYNTHETIC parameters) + integration/build_replay.py",
+      "producer": "Suchita (TC07 test-bench log, received 2026-10-17) + Sai twin_SYN_01 (canonical filter, ASSUMED_SYNTHETIC parameters) + integration/build_replay.py",
       "purpose": "Show the supplied TC07 controller test-bench log in the viewer: a simulated module over-temperature on channel 2 latches SAFETY_SHUTDOWN at t = 200 s. The log ends while the shutdown is still latched; no clinician reset or release is part of this test.",
       "expected_data_source": "Synthetic: SIMULATED observations, MODEL twin with assumed parameters, SIMULATED controller test-bench log",
       "expected_cohort": "SYNTHETIC",

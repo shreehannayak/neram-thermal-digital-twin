@@ -29,9 +29,9 @@ P_below_hypo_60,Twin,"Ctrl (alert only), Replay",Same at +60,-,double,1/60 Hz,0-
 P_level_shift,Twin,Replay,"Filtered mode probability at t (jump, jump+outlier)",-,double,1/60 Hz,0-1,NaN,-,Sai,FROZEN,twin
 P_outlier,Twin,Replay,"Filtered mode probability at t (outlier, jump+outlier)",-,double,1/60 Hz,0-1,NaN,-,Sai,FROZEN,twin
 Twin_Valid,Twin,"Ctrl, Replay",Twin reliability,enum,uint8,1/60 Hz,"0 NO_DATA, 1 INITIALISING, 2 VALID, 3 DEGRADED",0,Itself,Sai,FROZEN names,twin
-Clinician_Start,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician START press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchitha,FROZEN (Replay field PROPOSED),ctrl
-Clinician_Stop,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician STOP press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchitha,FROZEN (Replay field PROPOSED),ctrl
-Clinician_Reset,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician RESET press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchitha,FROZEN (Replay field PROPOSED),ctrl
+Clinician_Start,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician START press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchita,FROZEN (Replay field PROPOSED),ctrl
+Clinician_Stop,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician STOP press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchita,FROZEN (Replay field PROPOSED),ctrl
+Clinician_Reset,Test bench / UI,"Ctrl, Replay (optional, proposed)",Clinician RESET press (rising edge acts),-,boolean,1 Hz,0/1,0,-,Suchita,FROZEN (Replay field PROPOSED),ctrl
 Module_Temp_1_A,HW,"Ctrl, Replay","Skin-interface module temperature, channel 1 sensor A",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 100+1..4,Shreehan,FROZEN names,hw
 Module_Temp_1_B,HW,"Ctrl, Replay","Skin-interface module temperature, channel 1 sensor B",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 100+1..4,Shreehan,FROZEN names,hw
 Module_Temp_2_A,HW,"Ctrl, Replay","Skin-interface module temperature, channel 2 sensor A",degC,double (wire: int16 0.01 degC),1 Hz,Sensor range (Shreehan),NaN (wire 0x7FFF),Open/short -> NaN -> codes 200+1..4,Shreehan,FROZEN names,hw
@@ -54,26 +54,26 @@ HW_Cutoff_3,HW,"Ctrl, Replay",Hardware over-temperature cutoff tripped,-,boolean
 HW_Cutoff_4,HW,"Ctrl, Replay",Hardware over-temperature cutoff tripped,-,boolean,1 Hz,0/1,-,1 -> code 407,Shreehan,FROZEN names,hw
 HW_Heartbeat_s,HW,Ctrl,Time of last valid status frame,s,double,1 Hz,>= 0,NaN,Age > data_stale_hw_s -> code 8,Shreehan,FROZEN names,
 HW_Fault_Code,HW,Ctrl,System-level MCU fault,-,uint16,1 Hz,0-6 (fault_codes.csv),0,Itself,Shreehan,FROZEN names,
-Data_Stale_Twin,Ctrl,Replay (optional),Twin data too old,-,boolean,1 Hz,0/1,-,Code 7,Suchitha,FROZEN,ctrl
-Data_Stale_HW,Ctrl,Replay (optional),Hardware data too old,-,boolean,1 Hz,0/1,-,Code 8,Suchitha,FROZEN,ctrl
-Heat_1,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchitha,FROZEN names,ctrl
-Heat_2,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchitha,FROZEN names,ctrl
-Heat_3,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchitha,FROZEN names,ctrl
-Heat_4,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchitha,FROZEN names,ctrl
-Demand_Global,Ctrl,Replay,Demand before channel limits,%,double,1 Hz,0-100,-,-,Suchitha,FROZEN names,ctrl
-Controller_State,Ctrl,Replay,Supervisor state,enum,uint8,1 Hz,0 NORMAL ... 6 SAFETY_SHUTDOWN (section 0.4),-,6,Suchitha,FROZEN names,ctrl
-Degraded_Substate,Ctrl,Replay,Substate in TWIN_DEGRADED,enum,uint8,1 Hz,"0 none, 1 MONITOR, 2 CLINICIAN_FIXED",-,-,Suchitha,FROZEN names,ctrl
-Safety_Shutdown,Ctrl,"HW (master off), Replay",In SAFETY_SHUTDOWN,-,boolean,1 Hz,0/1,-,Itself,Suchitha,FROZEN,ctrl
-Fault_Latched,Ctrl,Replay,Any fault latched,-,boolean,1 Hz,0/1,-,Itself,Suchitha,FROZEN,ctrl
-Alert,Ctrl,Replay,Highest-priority alert,enum,uint8,1 Hz,AlertCode 0-8 (section 0.4),0,"4, 5, 6",Suchitha,FROZEN names,ctrl
-Trigger_Reason,Ctrl,Replay,Reason for last state change,enum,uint8,1 Hz,TriggerReason 0-11 (section 0.4),0,8,Suchitha,FROZEN names,ctrl
-fault_code,Ctrl,Replay,Highest-priority active fault,-,uint16,1 Hz,fault_codes.csv,0,Itself,"Shreehan (codes), Suchitha (selection)",FROZEN names,ctrl
-Channel_Fault_1,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchitha,FROZEN names,ctrl
-Channel_Fault_2,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchitha,FROZEN names,ctrl
-Channel_Fault_3,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchitha,FROZEN names,ctrl
-Channel_Fault_4,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchitha,FROZEN names,ctrl
-Clinician_Mode,Ctrl,Replay,Clinician started/took over warming,-,boolean,1 Hz,0/1,-,-,Suchitha,FROZEN names,ctrl
-T_plant,Plant (test bench / Sai),Replay,SIMULATED signal,degC,double,1 Hz,-,NaN when no plant,-,"Sai (equation), Suchitha (Simulink implementation)",ASSUMED,plant
-dT_heat,Plant (test bench / Sai),Replay,ASSUMED warming contribution,degC,double,1 Hz,-,NaN when no plant,-,"Sai (equation), Suchitha (Simulink implementation)",ASSUMED,plant
-plant_mode,Ctrl log,Replay,"OPEN_LOOP, STANDIN, TWIN_IN_LOOP",-,string,per file,3 values,-,-,Suchitha,FROZEN,plant
+Data_Stale_Twin,Ctrl,Replay (optional),Twin data too old,-,boolean,1 Hz,0/1,-,Code 7,Suchita,FROZEN,ctrl
+Data_Stale_HW,Ctrl,Replay (optional),Hardware data too old,-,boolean,1 Hz,0/1,-,Code 8,Suchita,FROZEN,ctrl
+Heat_1,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchita,FROZEN names,ctrl
+Heat_2,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchita,FROZEN names,ctrl
+Heat_3,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchita,FROZEN names,ctrl
+Heat_4,Ctrl,"HW, Replay",Heating command per channel,%,double (wire: uint8),1 Hz,0 to p_max_ch_pct_i,- (never NaN; 0 on any doubt),0 in shutdown,Suchita,FROZEN names,ctrl
+Demand_Global,Ctrl,Replay,Demand before channel limits,%,double,1 Hz,0-100,-,-,Suchita,FROZEN names,ctrl
+Controller_State,Ctrl,Replay,Supervisor state,enum,uint8,1 Hz,0 NORMAL ... 6 SAFETY_SHUTDOWN (section 0.4),-,6,Suchita,FROZEN names,ctrl
+Degraded_Substate,Ctrl,Replay,Substate in TWIN_DEGRADED,enum,uint8,1 Hz,"0 none, 1 MONITOR, 2 CLINICIAN_FIXED",-,-,Suchita,FROZEN names,ctrl
+Safety_Shutdown,Ctrl,"HW (master off), Replay",In SAFETY_SHUTDOWN,-,boolean,1 Hz,0/1,-,Itself,Suchita,FROZEN,ctrl
+Fault_Latched,Ctrl,Replay,Any fault latched,-,boolean,1 Hz,0/1,-,Itself,Suchita,FROZEN,ctrl
+Alert,Ctrl,Replay,Highest-priority alert,enum,uint8,1 Hz,AlertCode 0-8 (section 0.4),0,"4, 5, 6",Suchita,FROZEN names,ctrl
+Trigger_Reason,Ctrl,Replay,Reason for last state change,enum,uint8,1 Hz,TriggerReason 0-11 (section 0.4),0,8,Suchita,FROZEN names,ctrl
+fault_code,Ctrl,Replay,Highest-priority active fault,-,uint16,1 Hz,fault_codes.csv,0,Itself,"Shreehan (codes), Suchita (selection)",FROZEN names,ctrl
+Channel_Fault_1,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchita,FROZEN names,ctrl
+Channel_Fault_2,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchita,FROZEN names,ctrl
+Channel_Fault_3,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchita,FROZEN names,ctrl
+Channel_Fault_4,Ctrl,Replay,Latched code per channel,-,uint16,1 Hz,0 or 100i+k,0,Itself,Suchita,FROZEN names,ctrl
+Clinician_Mode,Ctrl,Replay,Clinician started/took over warming,-,boolean,1 Hz,0/1,-,-,Suchita,FROZEN names,ctrl
+T_plant,Plant (test bench / Sai),Replay,SIMULATED signal,degC,double,1 Hz,-,NaN when no plant,-,"Sai (equation), Suchita (Simulink implementation)",ASSUMED,plant
+dT_heat,Plant (test bench / Sai),Replay,ASSUMED warming contribution,degC,double,1 Hz,-,NaN when no plant,-,"Sai (equation), Suchita (Simulink implementation)",ASSUMED,plant
+plant_mode,Ctrl log,Replay,"OPEN_LOOP, STANDIN, TWIN_IN_LOOP",-,string,per file,3 values,-,-,Suchita,FROZEN,plant
 static_context.*,Twin metadata,Replay header,"Age band, sex, ASA, department (development case only, if terms allow)",-,various,per file,-,Omitted,-,Sai,TBD,header

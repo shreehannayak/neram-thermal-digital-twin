@@ -15,7 +15,7 @@ Criteria: (1) shows only replayed data, (2) no clinical/hardware value invented,
 | Presentation mode, camera presets, capture | **BUILT** | P, C, Capture button. |
 | Comparison vs ASSUMED no-warming trajectory | **BUILT (conditional)** | Only with a plant group in the replay; labelled ASSUMED. |
 | Diagnostics drawer (validation report, hashes, CAD-vs-placeholder, perf) | **BUILT** | Judges can see the engineering rigour. |
-| Live fault injection | **REJECTED** | Needs the controller inside Unity. Use Suchitha's TC logs. |
+| Live fault injection | **REJECTED** | Needs the controller inside Unity. Use Suchita's TC logs. |
 | Body temperature heat map | **REJECTED** | Would invent physiology. |
 | "What-if" slider changing the heater power | **REJECTED** | Would require a physiological simulator in Unity; possible only as precomputed replays from Sai's plant model, labelled ASSUMED. |
 | Smooth interpolation of missing samples | **REJECTED** | Fabricates data. |

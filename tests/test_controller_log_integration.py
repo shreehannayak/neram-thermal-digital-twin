@@ -66,7 +66,7 @@ def test_tc07_controller_fields_survive_exactly():
             assert fr["plant"]["plant_mode"] == row["plant_mode"].strip()
             assert "HW_Fault_Code" not in fr["hw"] and "HW_Heartbeat_s" not in fr["hw"]
         h = F[0]
-        # canonical NERAM twin + Suchitha's controller log: real pipeline outputs, so NOT a placeholder replay
+        # canonical NERAM twin + Suchita's controller log: real pipeline outputs, so NOT a placeholder replay
         assert h["cohort"] == "SYNTHETIC" and h.get("placeholder") is not True
         assert set(h["inputs"]) == {"twin_SYN_01.csv", "ctrl_TC07.csv"}
 

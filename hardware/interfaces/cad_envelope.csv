@@ -22,6 +22,6 @@ ctrl_pcb_mm,,mm,TBD,ST UM2505 Figure 6 (NUCLEO-G474RE mechanical drawing) + chan
 ctrl_psu_mm,109 x 52 x 33.5,mm (L x W x H),PROVISIONAL,"Mean Well MPM-65-24ST: 24 V, 2.71 A, 65 W, 4 kVAC isolation, IEC/EN 60601-1 listed (distributor listing)",Medical-rated enclosed supply; isolation level required for this applied part still TBD (standards reference only)
 ctrl_internal_volume_l,,L,TBD,From PSU + PCB + connector envelopes,
 ctrl_heat_W,,W,TBD,Power budget (PSU losses + logic),Vents shown in the CAD controller box
-ctrl_ui,"4 channel indicators, status display, START, STOP, RESET",count,PROVISIONAL,Shreehan + Suchitha,Front panel items
+ctrl_ui,"4 channel indicators, status display, START, STOP, RESET",count,PROVISIONAL,Shreehan + Suchita,Front panel items
 ctrl_mains_inlet,IEC 60320 C14 with fuse holder,type,PROVISIONAL,Schurter KD series (C14 inlet with fuse holder),Panel cut-out from the KD datasheet: TBD
 rail_profile_mm,25 x 10,mm,PROVISIONAL,"Standard operating-table side rail 25 x 10 mm (rail-clamp listing, e.g. AGA BKO-2522); EN 12218 / ISO 19054 cited as design reference only",Verify on the real table
